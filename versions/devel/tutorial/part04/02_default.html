@@ -87,13 +87,16 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index_part01.html">Part 1 - Modelling outbreaks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part02.html">Part 2 - Refining the model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part03.html">Part 3 - Customising the outbreak</a></li>
@@ -105,9 +108,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="03_regional.html">Extracting by location</a></li>
-<li class="toctree-l3"><a class="reference internal" href="04_iterators.html">Combining extractors with iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_rates.html">Extracting rates by ward</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
 </ul>
 </li>
 </ul>
@@ -116,13 +122,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -168,7 +185,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../tutorial.html">Tutorial</a> &raquo;</li>
+          <li><a href="../index.html">Tutorial</a> &raquo;</li>
         
           <li><a href="../index_part04.html">Part 4 - Customising the output</a> &raquo;</li>
         
@@ -202,7 +219,7 @@
 <h1>Accumulating into a Workspace<a class="headerlink" href="#accumulating-into-a-workspace" title="Permalink to this headline">¶</a></h1>
 <p>The default function that is always called by
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">extract()</span></code> is
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">metawards.extractors.extract_core()</span></code>.</p>
+<a class="reference internal" href="../../api/generated/metawards.extractors.output_core.html#metawards.extractors.output_core" title="metawards.extractors.output_core"><code class="xref py py-meth docutils literal notranslate"><span class="pre">metawards.extractors.output_core()</span></code></a>.</p>
 <p>This core extractor performs the bulk of the work of accumulating all of
 the infection data into a single <a class="reference internal" href="../../api/generated/metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Workspace</span></code></a> object.</p>
 <p>This <a class="reference internal" href="../../api/generated/metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Workspace</span></code></a> object contains;</p>
@@ -227,13 +244,15 @@ e.g. the <a class="reference internal" href="../../api/generated/metawards.extra
 writes the incidence to a file called <code class="docutils literal notranslate"><span class="pre">incidence.dat.bz2</span></code>. For example,
 you can call this from your <code class="docutils literal notranslate"><span class="pre">population.py</span></code> extractor by changing it
 to read;</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">output_population</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello output_population&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">Console</span>
+
+<span class="k">def</span> <span class="nf">output_population</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Hello output_population&quot;</span><span class="p">)</span>
 
     <span class="c1"># create an output file called &#39;population.dat&#39;</span>
     <span class="n">popfile</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;population.dat&quot;</span><span class="p">,</span>
-                            <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span>
-                                    <span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">])</span>
+                              <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">])</span>
 
     <span class="c1"># write the population to this file</span>
     <span class="n">popfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">population</span><span class="o">.</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">population</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">isoformat</span><span class="p">()</span><span class="si">}</span><span class="s2"> &quot;</span>
@@ -242,7 +261,7 @@ to read;</p>
 
 
 <span class="k">def</span> <span class="nf">extract_population</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello extract_population&quot;</span><span class="p">)</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;hello extract_population&quot;</span><span class="p">)</span>
 
     <span class="kn">from</span> <span class="nn">metawards.extractors</span> <span class="kn">import</span> <span class="n">output_incidence</span>
 
@@ -290,7 +309,9 @@ via the <code class="docutils literal notranslate"><span class="pre">--extractor
 </div>
 <p>As well as <a class="reference internal" href="../../api/generated/metawards.extractors.extract_default.html#metawards.extractors.extract_default" title="metawards.extractors.extract_default"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extract_default()</span></code></a>, there is also
 <a class="reference internal" href="../../api/generated/metawards.extractors.extract_small.html#metawards.extractors.extract_small" title="metawards.extractors.extract_small"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extract_small()</span></code></a> (only extracting the
-“small” files), and
+“small” files),
+“meth:<a class="reference internal" href="../../api/generated/metawards.extractors.extract_large.html#metawards.extractors.extract_large" title="metawards.extractors.extract_large"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_large</span></code></a> (extract everything, including
+producing large trajectory files) and
 <a class="reference internal" href="../../api/generated/metawards.extractors.extract_none.html#metawards.extractors.extract_none" title="metawards.extractors.extract_none"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extract_none()</span></code></a> (extract nothing - useful if
 you want to restrict output only to <code class="docutils literal notranslate"><span class="pre">results.csv.bz2</span></code>).</p>
 </div>
@@ -317,7 +338,7 @@ you want to restrict output only to <code class="docutils literal notranslate"><
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

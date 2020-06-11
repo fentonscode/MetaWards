@@ -30,6 +30,7 @@ metawards.InputFiles
       ~InputFiles.coordinates
       ~InputFiles.identifier
       ~InputFiles.identifier2
+      ~InputFiles.is_single
       ~InputFiles.lookup
       ~InputFiles.lookup_columns
       ~InputFiles.nodes_to_track

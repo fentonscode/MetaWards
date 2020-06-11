@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -111,16 +125,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards.html">MetaWards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -202,18 +219,11 @@
 <h1>metawards.app.cli<a class="headerlink" href="#metawards-app-cli" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="metawards.app.cli">
-<code class="descclassname">metawards.app.</code><code class="descname">cli</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/app/run.html#cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.app.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main function for the command line interface. This does one of three
-things:</p>
-<ol class="arabic simple">
-<li>If this is the main process, then it parses the arguments and
-runs and manages the jobs</li>
-<li>If this is a worker process, then it starts up and waits for work</li>
-<li>If this is a supervisor process, then it query the job scheduling
-system for information about the compute nodes to use, and will then
-set up and run a manager (main) process that will use those
-nodes to run the jobs</li>
-</ol>
+<code class="descclassname">metawards.app.</code><code class="descname">cli</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/app/plot.html#cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.app.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function for the metawards-plot command line interface.
+This is a simple program that creates basic plots of the output
+data. The aim is to make visualisation of the data as quick
+and painless as possible.</p>
 </dd></dl>
 
 </div>
@@ -239,7 +249,7 @@ nodes to run the jobs</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

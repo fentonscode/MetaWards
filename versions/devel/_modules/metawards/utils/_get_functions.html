@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -178,6 +192,7 @@
 <span class="kn">from</span> <span class="nn">.._network</span> <span class="kn">import</span> <span class="n">Network</span>
 <span class="kn">from</span> <span class="nn">.._networks</span> <span class="kn">import</span> <span class="n">Networks</span>
 <span class="kn">from</span> <span class="nn">.._population</span> <span class="kn">import</span> <span class="n">Population</span>
+<span class="kn">from</span> <span class="nn">.._population</span> <span class="kn">import</span> <span class="n">Populations</span>
 <span class="kn">from</span> <span class="nn">.._infections</span> <span class="kn">import</span> <span class="n">Infections</span>
 <span class="kn">from</span> <span class="nn">.._outputfiles</span> <span class="kn">import</span> <span class="n">OutputFiles</span>
 <span class="kn">from</span> <span class="nn">.._workspace</span> <span class="kn">import</span> <span class="n">Workspace</span>
@@ -185,6 +200,7 @@
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;get_functions&quot;</span><span class="p">,</span> <span class="s2">&quot;get_model_loop_functions&quot;</span><span class="p">,</span>
            <span class="s2">&quot;get_initialise_functions&quot;</span><span class="p">,</span> <span class="s2">&quot;get_finalise_functions&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;get_summary_functions&quot;</span><span class="p">,</span>
            <span class="s2">&quot;accepts_stage&quot;</span><span class="p">,</span> <span class="s2">&quot;MetaFunction&quot;</span><span class="p">,</span>
            <span class="s2">&quot;call_function_on_network&quot;</span><span class="p">]</span>
 
@@ -220,7 +236,9 @@
                   <span class="n">extractor</span><span class="p">:</span> <span class="n">MetaFunction</span><span class="p">,</span>
                   <span class="n">mixer</span><span class="p">:</span> <span class="n">MetaFunction</span><span class="p">,</span>
                   <span class="n">mover</span><span class="p">:</span> <span class="n">MetaFunction</span><span class="p">,</span>
-                  <span class="n">rngs</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="p">:</span> <span class="n">Profiler</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
+                  <span class="n">rngs</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="p">:</span> <span class="n">Profiler</span><span class="p">,</span>
+                  <span class="n">trajectory</span><span class="p">:</span> <span class="n">Populations</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">results</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Return the functions that must be called for the specified</span>
 <span class="sd">       stage of the day;</span>
 
@@ -237,10 +255,13 @@
 <span class="sd">                in each ward in each demographic</span>
 <span class="sd">       * &quot;infect&quot;: Called to advance the outbreak by calculating</span>
 <span class="sd">                   the number of new infections</span>
-<span class="sd">       * &quot;analyse&quot;: Called at the end of the day to merge and analyse</span>
-<span class="sd">                    the data and extrac the results</span>
+<span class="sd">       * &quot;analyse&quot;: Called at the end of the day to analyse</span>
+<span class="sd">                    the data and extract the results</span>
 <span class="sd">       * &quot;finalise&quot;: Called at the end of the model run to finalise</span>
 <span class="sd">                     any outputs or produce overall summary files</span>
+<span class="sd">       * &quot;summary&quot;: Called at the end of lots of model runs, to write</span>
+<span class="sd">                    overview summary files. Only the extractor has</span>
+<span class="sd">                    a summary stage</span>
 
 <span class="sd">       Parameters</span>
 <span class="sd">       ----------</span>
@@ -275,7 +296,8 @@
 <span class="sd">         stage of the day</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;initialise&quot;</span><span class="p">,</span> <span class="s2">&quot;setup&quot;</span><span class="p">,</span> <span class="s2">&quot;foi&quot;</span><span class="p">,</span> <span class="s2">&quot;infect&quot;</span><span class="p">,</span> <span class="s2">&quot;analyse&quot;</span><span class="p">,</span> <span class="s2">&quot;finalise&quot;</span><span class="p">]</span>
+    <span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;initialise&quot;</span><span class="p">,</span> <span class="s2">&quot;setup&quot;</span><span class="p">,</span> <span class="s2">&quot;foi&quot;</span><span class="p">,</span> <span class="s2">&quot;infect&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;analyse&quot;</span><span class="p">,</span> <span class="s2">&quot;finalise&quot;</span><span class="p">,</span> <span class="s2">&quot;summary&quot;</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="n">stage</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stages</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
@@ -288,15 +310,20 @@
               <span class="s2">&quot;infections&quot;</span><span class="p">:</span> <span class="n">infections</span><span class="p">,</span>
               <span class="s2">&quot;rngs&quot;</span><span class="p">:</span> <span class="n">rngs</span><span class="p">,</span>
               <span class="s2">&quot;nthreads&quot;</span><span class="p">:</span> <span class="n">nthreads</span><span class="p">,</span>
-              <span class="s2">&quot;profiler&quot;</span><span class="p">:</span> <span class="n">profiler</span><span class="p">}</span>
+              <span class="s2">&quot;profiler&quot;</span><span class="p">:</span> <span class="n">profiler</span><span class="p">,</span>
+              <span class="s2">&quot;trajectory&quot;</span><span class="p">:</span> <span class="n">trajectory</span><span class="p">,</span>
+              <span class="s2">&quot;results&quot;</span><span class="p">:</span> <span class="n">results</span><span class="p">}</span>
 
-    <span class="n">funcs</span> <span class="o">=</span> <span class="n">mover</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> <span class="n">iterator</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> \
-        <span class="n">mixer</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> <span class="n">extractor</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;summary&quot;</span><span class="p">:</span>
+        <span class="n">funcs</span> <span class="o">=</span> <span class="n">extractor</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">funcs</span> <span class="o">=</span> <span class="n">mover</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> <span class="n">iterator</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> \
+            <span class="n">mixer</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">+</span> <span class="n">extractor</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">funcs</span></div>
 
 
-<div class="viewcode-block" id="get_model_loop_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_model_loop_functions.html#metawards.utils.get_model_loop_functions">[docs]</a><span class="k">def</span> <span class="nf">get_model_loop_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">get_model_loop_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Convenience function that returns all of the functions</span>
 <span class="sd">       that should be called during the model loop</span>
 <span class="sd">       (i.e. the &quot;setup&quot;, &quot;foi&quot;, &quot;infect&quot; and &quot;analyse&quot; stages)</span>
@@ -337,7 +364,7 @@
     <span class="n">funcs</span> <span class="o">+=</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;infect&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">funcs</span> <span class="o">+=</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;analyse&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">funcs</span></div>
+    <span class="k">return</span> <span class="n">funcs</span>
 
 
 <div class="viewcode-block" id="get_initialise_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_initialise_functions.html#metawards.utils.get_initialise_functions">[docs]</a><span class="k">def</span> <span class="nf">get_initialise_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
@@ -378,7 +405,8 @@
     <span class="k">return</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;initialise&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_finalise_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_finalise_functions.html#metawards.utils.get_finalise_functions">[docs]</a><span class="k">def</span> <span class="nf">get_finalise_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
+<div class="viewcode-block" id="get_finalise_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_finalise_functions.html#metawards.utils.get_finalise_functions">[docs]</a><span class="k">def</span> <span class="nf">get_finalise_functions</span><span class="p">(</span><span class="n">trajectory</span><span class="p">:</span> <span class="n">Populations</span><span class="p">,</span>
+                           <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Convenience function that returns all of the functions</span>
 <span class="sd">       that should be called during the finalisation step</span>
 <span class="sd">       of the model (e.g. the &quot;finalise&quot; stage)</span>
@@ -389,6 +417,8 @@
 <span class="sd">         The network(s) to be modelled</span>
 <span class="sd">       population: Population</span>
 <span class="sd">         The population experiencing the outbreak</span>
+<span class="sd">       trajectory: Populations</span>
+<span class="sd">         The trajectory of populations over time</span>
 <span class="sd">       infections: Infections</span>
 <span class="sd">         Space to record the infections through the day</span>
 <span class="sd">       iterator: function</span>
@@ -416,6 +446,29 @@
     <span class="k">return</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;finalise&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
+<span class="k">def</span> <span class="nf">get_summary_functions</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="n">Network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">],</span>
+                          <span class="n">results</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">OutputFiles</span><span class="p">,</span>
+                          <span class="n">extractor</span><span class="p">:</span> <span class="n">MetaFunction</span><span class="p">,</span>
+                          <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+                          <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convenience function that returns all of the functions</span>
+<span class="sd">       that should be called during the summary report</span>
+<span class="sd">       stage of the simulation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;workspace&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">()</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;infections&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Infections</span><span class="p">()</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Population</span><span class="p">()</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;iterator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mixer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;mover&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;rngs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;profiler&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;summary&quot;</span><span class="p">,</span> <span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="p">,</span>
+                         <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                         <span class="n">extractor</span><span class="o">=</span><span class="n">extractor</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
 <div class="viewcode-block" id="call_function_on_network"><a class="viewcode-back" href="../../../api/generated/metawards.utils.call_function_on_network.html#metawards.utils.call_function_on_network">[docs]</a><span class="k">def</span> <span class="nf">call_function_on_network</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="n">Network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">],</span>
                              <span class="n">infections</span><span class="p">:</span> <span class="n">Infections</span><span class="p">,</span>
                              <span class="n">workspace</span><span class="p">:</span> <span class="n">Workspace</span><span class="p">,</span>
@@ -424,6 +477,7 @@
                              <span class="n">parallel</span><span class="p">:</span> <span class="n">MetaFunction</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                              <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                              <span class="n">switch_to_parallel</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+                             <span class="n">call_on_overall</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                              <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Call either &#39;func&#39; or &#39;parallel&#39; (depending on the</span>
 <span class="sd">       number of threads, nthreads) on the passed Network,</span>
@@ -458,6 +512,11 @@
             <span class="n">func</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">subnet</span><span class="p">,</span> <span class="n">infections</span><span class="o">=</span><span class="n">subinf</span><span class="p">,</span>
                  <span class="n">population</span><span class="o">=</span><span class="n">subpop</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="n">subwork</span><span class="p">,</span>
                  <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">call_on_overall</span><span class="p">:</span>
+            <span class="n">func</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="o">.</span><span class="n">overall</span><span class="p">,</span> <span class="n">infections</span><span class="o">=</span><span class="n">infections</span><span class="p">,</span>
+                 <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="n">workspace</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">func</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="p">,</span> <span class="n">infections</span><span class="o">=</span><span class="n">infections</span><span class="p">,</span>
              <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span> <span class="n">workspace</span><span class="o">=</span><span class="n">workspace</span><span class="p">,</span>
@@ -475,7 +534,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

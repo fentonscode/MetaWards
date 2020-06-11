@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -230,8 +247,14 @@ are occuring during the outbreak</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Infections.clear" title="metawards.Infections.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>(nthreads)</td>
 <td>Clear all of the infections (resets all to zero)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Infections.get_work_index" title="metawards.Infections.get_work_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_work_index</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Infections.get_stage_mapping" title="metawards.Infections.get_stage_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stage_mapping</span></code></a>()</td>
+<td>Return the mapping from disease stages in this sub-network to disease stages in the overall network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Infections.get_work_index" title="metawards.Infections.get_work_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_work_index</span></code></a>()</td>
 <td>Return the mapping from the index in this sub-networks work matrix to the mapping in the overall network’s work matrix</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Infections.has_different_stage_mapping" title="metawards.Infections.has_different_stage_mapping"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_different_stage_mapping</span></code></a>()</td>
+<td>Return whether or not the sub-network disease stages are different to that of the overall network, and must thus be mapped</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Infections.has_different_work_matrix" title="metawards.Infections.has_different_work_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_different_work_matrix</span></code></a>()</td>
 <td>Return whether or not the sub-network work matrix is different to that of the overall network</td>
@@ -296,19 +319,25 @@ sub-networks</p>
 
 <dl class="staticmethod">
 <dt id="metawards.Infections.build">
-<em class="property">static </em><code class="descname">build</code><span class="sig-paren">(</span><em>network: Union[metawards._network.Network</em>, <em>metawards._networks.Networks] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_infections.html#Infections.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Infections.build" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">build</code><span class="sig-paren">(</span><em>network: Union[metawards._network.Network</em>, <em>metawards._networks.Networks] = None</em>, <em>overall: metawards._network.Network = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_infections.html#Infections.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Infections.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct and return the Infections object that will track
 infections during a model run on the passed Network (or Networks)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>network</strong> (<a class="reference internal" href="metawards.Network.html#metawards.Network" title="metawards.Network"><em>Network</em></a><em> or </em><a class="reference internal" href="metawards.Networks.html#metawards.Networks" title="metawards.Networks"><em>Networks</em></a>) – The network or networks that will be run</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>network</strong> (<a class="reference internal" href="metawards.Network.html#metawards.Network" title="metawards.Network"><em>Network</em></a><em> or </em><a class="reference internal" href="metawards.Networks.html#metawards.Networks" title="metawards.Networks"><em>Networks</em></a>) – The network or networks that will be run</li>
+<li><strong>overall</strong> (<a class="reference internal" href="metawards.Network.html#metawards.Network" title="metawards.Network"><em>Network</em></a>) – The overall network to which this subnet belongs</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>infections</strong> – The space for the work and play infections for the network
-(including space for all of the demographics)</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>infections</strong> – The space for the work and play infections for the network
+(including space for all of the demographics)</p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#metawards.Infections" title="metawards.Infections">Infections</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#metawards.Infections" title="metawards.Infections">Infections</a></p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -330,10 +359,27 @@ of threads to use</td>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Infections.get_stage_mapping">
+<code class="descname">get_stage_mapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_infections.html#Infections.get_stage_mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Infections.get_stage_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mapping from disease stages in this sub-network
+to disease stages in the overall network. This returns a list
+where mapping[i] gives the index of stage i in the subnetwork
+to stage j in the overall network</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Infections.get_work_index">
 <code class="descname">get_work_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_infections.html#Infections.get_work_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Infections.get_work_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mapping from the index in this sub-networks work
 matrix to the mapping in the overall network’s work matrix</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Infections.has_different_stage_mapping">
+<code class="descname">has_different_stage_mapping</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_infections.html#Infections.has_different_stage_mapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Infections.has_different_stage_mapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not the sub-network disease stages
+are different to that of the overall network, and must
+thus be mapped</p>
 </dd></dl>
 
 <dl class="method">
@@ -406,7 +452,7 @@ of int arrays, size work[N_INF_CLASSES][nlinks+1]</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

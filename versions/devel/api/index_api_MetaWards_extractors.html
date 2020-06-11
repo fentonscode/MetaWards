@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
@@ -111,16 +125,19 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -221,7 +238,7 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.extract_small.html#metawards.extractors.extract_small" title="metawards.extractors.extract_small"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_small</span></code></a>(**kwargs)</td>
 <td>This extractor only extracts the ‘small’ default files, e.g.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_basic.html#metawards.extractors.output_basic" title="metawards.extractors.output_basic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_basic</span></code></a>(network,&nbsp;population,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_basic.html#metawards.extractors.output_basic" title="metawards.extractors.output_basic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_basic</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This will write basic trajectory data to the output files.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_core.html#metawards.extractors.output_core" title="metawards.extractors.output_core"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_core</span></code></a>(network,&nbsp;Networks],&nbsp;population,&nbsp;…)</td>
@@ -233,19 +250,22 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_core_serial.html#metawards.extractors.output_core_serial" title="metawards.extractors.output_core_serial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_core_serial</span></code></a>(network,&nbsp;population,&nbsp;…)</td>
 <td>This is the core output function that must be called every iteration as it is responsible for accumulating the core data each day, which is used to report a summary to the main output file.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_incidence.html#metawards.extractors.output_incidence" title="metawards.extractors.output_incidence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_incidence</span></code></a>(population,&nbsp;output_dir,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_incidence.html#metawards.extractors.output_incidence" title="metawards.extractors.output_incidence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_incidence</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This will incidence of infection for each ward for each timestep.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_dispersal.html#metawards.extractors.output_dispersal" title="metawards.extractors.output_dispersal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_dispersal</span></code></a>(network,&nbsp;population,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_dispersal.html#metawards.extractors.output_dispersal" title="metawards.extractors.output_dispersal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_dispersal</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This will calculate and output the geographic dispersal of the outbreak</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_prevalence.html#metawards.extractors.output_prevalence" title="metawards.extractors.output_prevalence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_prevalence</span></code></a>(population,&nbsp;output_dir,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_prevalence.html#metawards.extractors.output_prevalence" title="metawards.extractors.output_prevalence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_prevalence</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This will output the number of infections per ward per timestep as a (large) 2D matrix</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_wards_trajectory.html#metawards.extractors.output_wards_trajectory" title="metawards.extractors.output_wards_trajectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_wards_trajectory</span></code></a>(population,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.output_trajectory.html#metawards.extractors.output_trajectory" title="metawards.extractors.output_trajectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_trajectory</span></code></a>(network,&nbsp;…)</td>
+<td>Call in the “finalise” stage to output the population trajectory to the ‘trajectory.csv’ file</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.output_wards_trajectory.html#metawards.extractors.output_wards_trajectory" title="metawards.extractors.output_wards_trajectory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_wards_trajectory</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This will output the complete trajectory for S, E, I and R for each of the wards in the model.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.extractors.setup_core.html#metawards.extractors.setup_core" title="metawards.extractors.setup_core"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_core</span></code></a>(nthreads,&nbsp;**kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.extractors.setup_core.html#metawards.extractors.setup_core" title="metawards.extractors.setup_core"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_core</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>This is the setup function that corresponds with <a class="reference internal" href="generated/metawards.extractors.output_core.html#metawards.extractors.output_core" title="metawards.extractors.output_core"><code class="xref py py-meth docutils literal notranslate"><span class="pre">output_core()</span></code></a>.</td>
 </tr>
 </tbody>
@@ -276,7 +296,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

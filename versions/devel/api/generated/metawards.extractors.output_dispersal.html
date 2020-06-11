@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -111,16 +125,19 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -202,7 +219,7 @@
 <h1>metawards.extractors.output_dispersal<a class="headerlink" href="#metawards-extractors-output-dispersal" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="metawards.extractors.output_dispersal">
-<code class="descclassname">metawards.extractors.</code><code class="descname">output_dispersal</code><span class="sig-paren">(</span><em>network: Network</em>, <em>population: Population</em>, <em>output_dir: OutputFiles</em>, <em>workspace: Workspace</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#metawards.extractors.output_dispersal" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">metawards.extractors.</code><code class="descname">output_dispersal</code><span class="sig-paren">(</span><em>nthreads: int</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#metawards.extractors.output_dispersal" title="Permalink to this definition">¶</a></dt>
 <dd><p>This will calculate and output the geographic dispersal
 of the outbreak</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -214,7 +231,7 @@ of the outbreak</p>
 <li><strong>population</strong> (<a class="reference internal" href="metawards.Population.html#metawards.Population" title="metawards.Population"><em>Population</em></a>) – The population experiencing the outbreak</li>
 <li><strong>output_dir</strong> (<a class="reference internal" href="metawards.OutputFiles.html#metawards.OutputFiles" title="metawards.OutputFiles"><em>OutputFiles</em></a>) – The directory in which to place all output files</li>
 <li><strong>workspace</strong> (<a class="reference internal" href="metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><em>Workspace</em></a>) – A workspace that can be used to extract data</li>
-<li><strong>kwargs</strong> – Extra argumentst that are ignored by this function</li>
+<li><strong>kwargs</strong> – Extra arguments that are ignored by this function</li>
 </ul>
 </td>
 </tr>
@@ -245,7 +262,7 @@ of the outbreak</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

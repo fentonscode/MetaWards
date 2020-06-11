@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -210,7 +227,7 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Demographic.html#metawards.Demographic" title="metawards.Demographic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Demographic</span></code></a>(name,&nbsp;work_ratio,&nbsp;play_ratio,&nbsp;…)</td>
 <td>This class represents a single demographic</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Demographics.html#metawards.Demographics" title="metawards.Demographics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Demographics</span></code></a>(demographics,&nbsp;_names,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Demographics.html#metawards.Demographics" title="metawards.Demographics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Demographics</span></code></a>(demographics,&nbsp;random_seed,&nbsp;…)</td>
 <td>This class holds metadata about all of the demographics being modelled</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Disease.html#metawards.Disease" title="metawards.Disease"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Disease</span></code></a>(beta,&nbsp;progress,&nbsp;too_ill_to_move,&nbsp;…)</td>
@@ -228,7 +245,7 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Links.html#metawards.Links" title="metawards.Links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Links</span></code></a>(N)</td>
 <td>This is a container class for Links.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Network</span></code></a>(nodes,&nbsp;links,&nbsp;play,&nbsp;nnodes,&nbsp;nlinks,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Network</span></code></a>(name,&nbsp;nodes,&nbsp;links,&nbsp;play,&nbsp;nnodes,&nbsp;…)</td>
 <td>This class represents a network of wards.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Networks</span></code></a>(overall,&nbsp;subnets,&nbsp;demographics)</td>
@@ -316,7 +333,7 @@ into a file or written out to the screen</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

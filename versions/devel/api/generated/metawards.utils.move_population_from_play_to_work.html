@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -105,6 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards.html">MetaWards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index_api_MetaWards_utils.html">MetaWards.utils API Detail</a><ul class="current">
@@ -114,14 +130,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -205,9 +222,8 @@
 <dt id="metawards.utils.move_population_from_play_to_work">
 <code class="descclassname">metawards.utils.</code><code class="descname">move_population_from_play_to_work</code><span class="sig-paren">(</span><em>network: Network</em>, <em>nthreads: int = 1</em>, <em>profiler: Profiler = None</em><span class="sig-paren">)</span><a class="headerlink" href="#metawards.utils.move_population_from_play_to_work" title="Permalink to this definition">¶</a></dt>
 <dd><p>And Vice Versa From Work to Play
-The relevant parameters are network.params.play_to_work and</p>
-<blockquote>
-<div>network.params.work_to_play</div></blockquote>
+The relevant parameters are network.params.play_to_work and
+network.params.work_to_play</p>
 <p>When both are 0, don’t do anything;
 When play_to_work &gt; 0 move work_to_play proportion from play to work.
 When work_to_play &gt; 0 move work_to_play proportion from work to play.</p>
@@ -236,7 +252,7 @@ When work_to_play &gt; 0 move work_to_play proportion from work to play.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

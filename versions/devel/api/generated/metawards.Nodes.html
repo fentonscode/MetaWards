@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -247,6 +264,35 @@ This should improve speed of loading and access.</p>
 </tbody>
 </table>
 <dl class="method">
+<dt id="metawards.Nodes.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>i: int</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Nodes.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the node at index ‘i’. Note that this is a
+deep copy of the node. Changing the node will not change
+the data in this container. To update the data in this
+container you need to use __setitem__, e.g. via the
+index operator (see __setitem__)</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>N: int = 0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.__init__"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Create a container for up to “N” nodes</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Nodes.__len__">
+<code class="descname">__len__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.__len__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Nodes.__len__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of nodes in this container</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Nodes.__setitem__">
+<code class="descname">__setitem__</code><span class="sig-paren">(</span><em>i: int</em>, <em>value: metawards._node.Node</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.__setitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Nodes.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the item as index ‘i’ equal to ‘value’. This deep-copies
+‘value’ into this container</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Nodes.assert_not_null">
 <code class="descname">assert_not_null</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.assert_not_null"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Nodes.assert_not_null" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assert that this collection of nodes is not null</p>
@@ -355,7 +401,7 @@ susceptibles - evenly scales the work and play populations</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

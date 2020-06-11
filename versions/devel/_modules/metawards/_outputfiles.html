@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -227,14 +241,15 @@
         <span class="n">directory</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
         <span class="k">return</span>
 
+    <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">directory</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="n">_rmdir</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;removing file </span><span class="si">{</span><span class="n">item</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="n">item</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;removing directory </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;removing directory </span><span class="si">{</span><span class="n">directory</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="p">)</span>
     <span class="n">directory</span><span class="o">.</span><span class="n">rmdir</span><span class="p">()</span>
 
 
@@ -245,23 +260,27 @@
     <span class="k">if</span> <span class="n">prompt</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot continue as </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists!&quot;</span><span class="p">)</span>
 
-    <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists.</span><span class="se">\n</span><span class="s2">Do you want to remove it? (y/n) &quot;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="s2">&quot;Do you want to remove it? (y/n) &quot;</span><span class="p">)</span>
 
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">==</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing all files in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing all files in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;warning&quot;</span><span class="p">)</span>
         <span class="n">_rmdir</span><span class="p">(</span><span class="n">_Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">))</span>
         <span class="k">return</span>
 
-    <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Continuing with this run will mix its output with</span><span class="se">\n</span><span class="s2">&quot;</span>
-               <span class="sa">f</span><span class="s2">&quot;the files already in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">&quot;</span>
-               <span class="sa">f</span><span class="s2">&quot;Do you want to continue with this run? (y/n) &quot;</span><span class="p">)</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Continuing with this run will mix its output with &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;the files already in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="s2">&quot;Do you want to continue with this run? (y/n) &quot;</span><span class="p">)</span>
 
     <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">!=</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exiting the program as we cannot run any more.&quot;</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exiting the program as we cannot run any more.&quot;</span><span class="p">)</span>
         <span class="kn">import</span> <span class="nn">sys</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
@@ -275,17 +294,19 @@
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
         <span class="k">return</span>
 
-    <span class="k">if</span> <span class="n">prompt</span><span class="p">:</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists.</span><span class="se">\n</span><span class="s2">&quot;</span>
-                   <span class="sa">f</span><span class="s2">&quot;Do you want to remove it? (y/n) &quot;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
 
+    <span class="k">if</span> <span class="n">prompt</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists&quot;</span><span class="p">)</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="n">prompt</span><span class="p">(</span><span class="s2">&quot;Do you want to remove it? (y/n) &quot;</span><span class="p">)</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">!=</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Cannot continue as </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> already exists&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing all files in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removing all files in </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
     <span class="n">_rmdir</span><span class="p">(</span><span class="n">_Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">))</span>
 
 
@@ -293,6 +314,30 @@
     <span class="sd">&quot;&quot;&quot;Expand all variables and user indicators in the passed path&quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">os</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expandvars</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_bz2compress</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bz2filename</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;bz2 compress &#39;filename&#39; to write &#39;bz2filename&#39;&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">filename</span> <span class="o">==</span> <span class="n">bz2filename</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot be equal </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">bz2filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="kn">import</span> <span class="nn">bz2</span> <span class="k">as</span> <span class="nn">_bz2</span>
+
+    <span class="n">compressor</span> <span class="o">=</span> <span class="n">_bz2</span><span class="o">.</span><span class="n">BZ2Compressor</span><span class="p">()</span>
+    <span class="n">BLOCK_SIZE</span> <span class="o">=</span> <span class="mi">2048</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">bz2filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">BZ2FILE</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">block</span> <span class="o">=</span> <span class="n">FILE</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">BLOCK_SIZE</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">block</span><span class="p">:</span>
+                    <span class="n">remaining</span> <span class="o">=</span> <span class="n">compressor</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+                    <span class="n">BZ2FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">remaining</span><span class="p">)</span>
+                    <span class="k">return</span>
+
+                <span class="n">compressed</span> <span class="o">=</span> <span class="n">compressor</span><span class="o">.</span><span class="n">compress</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+                <span class="n">BZ2FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">compressed</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="OutputFiles"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles">[docs]</a><span class="k">class</span> <span class="nc">OutputFiles</span><span class="p">:</span>
@@ -325,6 +370,7 @@
 <span class="sd">       &gt;&gt;&gt;     FILE = output.open(&quot;output.txt&quot;)</span>
 <span class="sd">       &gt;&gt;&gt;     FILE.write(&quot;something\\n&quot;)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="OutputFiles.__init__"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span>
                  <span class="n">check_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
                  <span class="n">force_empty</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -372,6 +418,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_open_dir</span><span class="p">()</span></div>
 
@@ -396,6 +443,8 @@
 
         <span class="n">outdir</span> <span class="o">=</span> <span class="n">_expand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span><span class="p">)</span>
 
+        <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
+
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
             <span class="n">outdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
 
@@ -408,22 +457,56 @@
 
                     <span class="c1"># remake the directory after it has been removed</span>
                     <span class="k">try</span><span class="p">:</span>
-                        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+                        <span class="kn">import</span> <span class="nn">sys</span>
+
+                        <span class="c1"># Make sure write bit is set on Windows.</span>
+                        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">&quot;win32&quot;</span><span class="p">:</span>
+                            <span class="c1"># Safely preserve the permissions of the</span>
+                            <span class="c1"># current process</span>
+                            <span class="kn">import</span> <span class="nn">stat</span>
+                            <span class="n">mask</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWRITE</span><span class="p">)</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+                            <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
                     <span class="k">except</span> <span class="ne">FileExistsError</span><span class="p">:</span>
                         <span class="k">pass</span>
+                    <span class="k">finally</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                            <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+                            <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
 
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot open </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> as it is not a directory!&quot;</span><span class="p">)</span>
+                <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+                <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Cannot open </span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> as it is not a directory!&quot;</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> is an existing file!&quot;</span><span class="p">)</span>
 
         <span class="k">try</span><span class="p">:</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+            <span class="kn">import</span> <span class="nn">sys</span>
+
+            <span class="c1"># Make sure write bit is set on Windows.</span>
+            <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s2">&quot;win32&quot;</span><span class="p">:</span>
+                <span class="c1"># Safely preserve the permissions of the current process</span>
+                <span class="kn">import</span> <span class="nn">stat</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">stat</span><span class="o">.</span><span class="n">S_IWRITE</span><span class="p">)</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span>
+
         <span class="k">except</span> <span class="ne">FileExistsError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="c1"># this is no problem, as we have already validated</span>
             <span class="c1"># that the directory already existing is ok</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">outdir</span><span class="p">):</span>
                 <span class="c1"># but it is a problem if it is not a directory...</span>
                 <span class="k">raise</span> <span class="n">e</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">_Path</span><span class="p">(</span><span class="n">outdir</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
 
@@ -438,7 +521,18 @@
 
         <span class="k">for</span> <span class="n">filename</span><span class="p">,</span> <span class="n">handle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">handle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="n">handle</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+                    <span class="n">handle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;bz2&quot;</span><span class="p">):</span>
+                        <span class="c1"># we need to manually compress this file</span>
+                        <span class="n">_bz2compress</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">])</span>
+                        <span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+                        <span class="n">_os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">handle</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not close </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">: &quot;</span>
                               <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -446,6 +540,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_is_open</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="OutputFiles.is_database"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles.is_database">[docs]</a>    <span class="k">def</span> <span class="nf">is_database</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether or not &#39;filename&#39; is an open database&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="OutputFiles.remove"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles.remove">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="nb">input</span><span class="p">):</span>
@@ -475,6 +574,90 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span></div>
 
+<div class="viewcode-block" id="OutputFiles.open_db"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles.open_db">[docs]</a>    <span class="k">def</span> <span class="nf">open_db</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initialise</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Open up a SQLite3 database connection to a file called</span>
+<span class="sd">           &#39;filename&#39; in the output directory, returning the</span>
+<span class="sd">           SQLite3 connection to the database. Note that this will</span>
+<span class="sd">           open the database one, and will return the already-made</span>
+<span class="sd">           connection on all subsequence calls.</span>
+
+<span class="sd">           Parameters</span>
+<span class="sd">           ----------</span>
+<span class="sd">           filename: str</span>
+<span class="sd">             The name of the file containing the database to open.</span>
+<span class="sd">             This must be relative to the output directory, and within</span>
+<span class="sd">             that directory. It is an error to try to open a database</span>
+<span class="sd">             that is not contained in this directory.</span>
+<span class="sd">           auto_bzip: bool</span>
+<span class="sd">             Whether or not to automatically compress the file</span>
+<span class="sd">             using bzip2 when it is closed. The filename will</span>
+<span class="sd">             automatically have &#39;.bz2&#39; appended so that this</span>
+<span class="sd">             is clear. If &#39;None&#39; is passed (the default) then</span>
+<span class="sd">             the value of &#39;auto_bzip&#39; that was passed to the</span>
+<span class="sd">             constructor of this OutputFiles will be used. Note that</span>
+<span class="sd">             this flag is ignored if the database is already open</span>
+<span class="sd">          initialise: function</span>
+<span class="sd">             A function that is called to initialise the database the</span>
+<span class="sd">             first time that it is opened. The function is called</span>
+<span class="sd">             with the argument &quot;CONN&quot; (representing the sqlite3 database</span>
+<span class="sd">             connection). Use this to create the tables that you need</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_open_dir</span><span class="p">()</span>
+
+        <span class="n">outdir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_dir</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">_Path</span><span class="p">(</span><span class="n">_expand</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">():</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">_Path</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">))</span>
+
+        <span class="n">filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">())</span>
+
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">commonprefix</span><span class="p">([</span><span class="n">outdir</span><span class="p">,</span> <span class="n">filename</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">prefix</span> <span class="o">!=</span> <span class="n">outdir</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You cannot try to open </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> as &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;this is not in the output directory &quot;</span>
+                             <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> - common prefix is </span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> is a file, not a database!&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">auto_bzip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">auto_bzip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_bzip</span>
+
+        <span class="n">auto_bzip</span> <span class="o">=</span> <span class="n">_get_bool</span><span class="p">(</span><span class="n">auto_bzip</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">auto_bzip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">auto_bzip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_bzip</span>
+
+        <span class="n">auto_bzip</span> <span class="o">=</span> <span class="n">_get_bool</span><span class="p">(</span><span class="n">auto_bzip</span><span class="p">)</span>
+
+        <span class="kn">import</span> <span class="nn">sqlite3</span> <span class="k">as</span> <span class="nn">_sqlite3</span>
+
+        <span class="n">CONN</span> <span class="o">=</span> <span class="n">_sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">initialise</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">initialise</span><span class="p">(</span><span class="n">CONN</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">CONN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="n">auto_bzip</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.bz2&quot;</span><span class="p">):</span>
+                <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;.bz2&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
+
+        <span class="k">return</span> <span class="n">CONN</span></div>
+
 <div class="viewcode-block" id="OutputFiles.open"><a class="viewcode-back" href="../../api/generated/metawards.OutputFiles.html#metawards.OutputFiles.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span>
              <span class="n">headers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Open the file called &#39;filename&#39; in the output directory,</span>
@@ -502,12 +685,13 @@
 <span class="sd">           mode: str</span>
 <span class="sd">             The mode of opening the file, e.g. &#39;t&#39; for text mode, and</span>
 <span class="sd">             &#39;b&#39; for binary mode. The default is text mode</span>
-<span class="sd">           headers: list[str] or plain str</span>
+<span class="sd">           headers: list[str] or plain str or function</span>
 <span class="sd">             The headers to add to the top of the file, e.g. if it will</span>
 <span class="sd">             contain column data. This will be written to the first line</span>
 <span class="sd">             when the file is opened. If a list is passed, then this</span>
 <span class="sd">             will be written joined together using &#39;sep&#39;. If a plain</span>
-<span class="sd">             string is passed then this will be written.</span>
+<span class="sd">             string is passed then this will be written. If this is a function</span>
+<span class="sd">             then this function will be called with &quot;FILE&quot; as the argument.</span>
 <span class="sd">             If nothing is passed then no headers will be written.</span>
 <span class="sd">           sep: str</span>
 <span class="sd">             The separator used for the headers (e.g. &quot; &quot; or &quot;,&quot; are good</span>
@@ -537,12 +721,26 @@
                              <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">outdir</span><span class="si">}</span><span class="s2"> - common prefix is </span><span class="si">{</span><span class="n">prefix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_database</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> is a database, not a file!&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">auto_bzip</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">auto_bzip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_auto_bzip</span>
 
         <span class="n">auto_bzip</span> <span class="o">=</span> <span class="n">_get_bool</span><span class="p">(</span><span class="n">auto_bzip</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span>
+        <span class="k">elif</span> <span class="n">mode</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">mode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;w</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="n">mode</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># text file = encoding should be &quot;UTF-8&quot;</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="s2">&quot;UTF-8&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">encoding</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">auto_bzip</span><span class="p">:</span>
             <span class="kn">import</span> <span class="nn">bz2</span>
@@ -551,11 +749,20 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">suffix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 
-            <span class="n">FILE</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;w</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">encoding</span><span class="p">:</span>
+                <span class="n">FILE</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+                                <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">FILE</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">FILE</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">filename</span><span class="si">}{</span><span class="n">suffix</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">FILE</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;w</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">encoding</span><span class="p">:</span>
+                <span class="n">FILE</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">FILE</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span>
+
             <span class="bp">self</span><span class="o">.</span><span class="n">_open_files</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">FILE</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_filenames</span><span class="p">[</span><span class="n">filename</span><span class="p">]</span> <span class="o">=</span> <span class="n">filename</span>
 
@@ -563,6 +770,8 @@
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
                 <span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
                 <span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span>
+                <span class="n">headers</span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">]))</span>
                 <span class="n">FILE</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -657,7 +866,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

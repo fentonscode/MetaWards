@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -182,32 +196,10 @@
 
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run_worker&quot;</span><span class="p">,</span> <span class="s2">&quot;prepare_worker&quot;</span><span class="p">]</span>
 
 <span class="n">global_network</span> <span class="o">=</span> <span class="kc">None</span>
-
-
-<span class="nd">@contextmanager</span>
-<span class="k">def</span> <span class="nf">silence_output</span><span class="p">():</span>
-    <span class="sd">&quot;&quot;&quot;Nice way to silence stdout and stderr - thanks to</span>
-<span class="sd">       Emil Stenström in</span>
-<span class="sd">       https://stackoverflow.com/questions/6735917/redirecting-stdout-to-nothing-in-python</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">new_out</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-    <span class="n">old_out</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">new_out</span>
-
-    <span class="n">new_err</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">devnull</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-    <span class="n">old_err</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">new_err</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">new_out</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="n">old_out</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span> <span class="o">=</span> <span class="n">old_err</span>
 
 
 <div class="viewcode-block" id="prepare_worker"><a class="viewcode-back" href="../../../api/generated/metawards.utils.prepare_worker.html#metawards.utils.prepare_worker">[docs]</a><span class="k">def</span> <span class="nf">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span> <span class="n">demographics</span><span class="p">:</span> <span class="n">Demographics</span><span class="p">,</span>
@@ -227,58 +219,36 @@
 <span class="sd">         into Networks</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># switch off printing to stdout and stderr</span>
-    <span class="k">with</span> <span class="n">silence_output</span><span class="p">():</span>
-        <span class="k">global</span> <span class="n">global_network</span>
+    <span class="k">global</span> <span class="n">global_network</span>
 
-        <span class="n">max_nodes</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">]</span>
-        <span class="n">max_links</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_links&quot;</span><span class="p">]</span>
-        <span class="n">nthreads</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;nthreads&quot;</span><span class="p">]</span>
-        <span class="n">seed</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;seed&quot;</span><span class="p">]</span>
+    <span class="n">max_nodes</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">]</span>
+    <span class="n">max_links</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_links&quot;</span><span class="p">]</span>
+    <span class="n">nthreads</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;nthreads&quot;</span><span class="p">]</span>
+
+    <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">]</span>
+    <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_links&quot;</span><span class="p">]</span>
+
+    <span class="n">profiler</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;profiler&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">global_network</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
+                                <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
+                                <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">._ran_binomial</span> <span class="kn">import</span> <span class="n">seed_ran_binomial</span>
-            <span class="kn">from</span> <span class="nn">._parallel</span> <span class="kn">import</span> <span class="n">create_thread_generators</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">network</span><span class="p">,</span>
+                                              <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
+                                              <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
 
-            <span class="k">if</span> <span class="n">seed</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="c1"># this is a special mode that a developer can use to force</span>
-                <span class="c1"># all jobs to use the same random number seed (15324) that</span>
-                <span class="c1"># is used for comparing outputs. This should NEVER be used</span>
-                <span class="c1"># for production code</span>
-                <span class="n">rng</span> <span class="o">=</span> <span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">15324</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">rng</span> <span class="o">=</span> <span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="o">+</span><span class="mi">7</span><span class="p">)</span>
+        <span class="n">global_network</span> <span class="o">=</span> <span class="n">network</span>
 
-                <span class="n">rngs</span> <span class="o">=</span> <span class="n">create_thread_generators</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">rngs</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># always work in a copy</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">global_network</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">network</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
+                   <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
 
-        <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">]</span>
-        <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_links&quot;</span><span class="p">]</span>
-
-        <span class="n">profiler</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;profiler&quot;</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">global_network</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                                    <span class="n">calculate_distances</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                    <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
-                                    <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
-                                    <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-                <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">rngs</span><span class="o">=</span><span class="n">rngs</span><span class="p">,</span>
-                                                  <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
-                                                  <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
-
-            <span class="n">global_network</span> <span class="o">=</span> <span class="n">network</span>
-
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">global_network</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                                  <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
-                                  <span class="n">rngs</span><span class="o">=</span><span class="n">rngs</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
-                                  <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">global_network</span></div>
+    <span class="k">return</span> <span class="n">network</span></div>
 
 
 <span class="k">def</span> <span class="nf">run_worker</span><span class="p">(</span><span class="n">arguments</span><span class="p">):</span>
@@ -296,29 +266,29 @@
     <span class="n">demographics</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;demographics&quot;</span><span class="p">]</span>
     <span class="n">options</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">]</span>
 
-    <span class="c1"># first, build and prepare the Network(s). This is built once</span>
-    <span class="c1"># from the parameters and demographics by loading files from</span>
-    <span class="c1"># the filesystem, as sending this over the physical network</span>
-    <span class="c1"># would be too expensive. Subsequent calls to this function</span>
-    <span class="c1"># after the Network(s) has been built will call</span>
-    <span class="c1"># network.update(params, demographics)</span>
-    <span class="n">network</span> <span class="o">=</span> <span class="n">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
-                             <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
-
     <span class="c1"># next, run the job, writing to output</span>
-    <span class="kn">from</span> <span class="nn">._runner</span> <span class="kn">import</span> <span class="n">redirect_output</span>
-
     <span class="n">outdir</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">]</span>
     <span class="n">auto_bzip</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;auto_bzip&quot;</span><span class="p">]</span>
     <span class="k">del</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;auto_bzip&quot;</span><span class="p">]</span>
 
-    <span class="c1"># if the user wanted to remove this directory then they would</span>
-    <span class="c1"># have done so in the main process - no need to check again</span>
+    <span class="kn">from</span> <span class="nn">._console</span> <span class="kn">import</span> <span class="n">Console</span>
+
     <span class="k">with</span> <span class="n">OutputFiles</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">check_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                      <span class="n">prompt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="n">auto_bzip</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_dir</span><span class="p">:</span>
-        <span class="n">options</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_dir</span>
+        <span class="k">with</span> <span class="n">Console</span><span class="o">.</span><span class="n">redirect_output</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="n">outdir</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="n">auto_bzip</span><span class="p">):</span>
+            <span class="c1"># first, build and prepare the Network(s). This is built once</span>
+            <span class="c1"># from the parameters and demographics by loading files from</span>
+            <span class="c1"># the filesystem, as sending this over the physical network</span>
+            <span class="c1"># would be too expensive. Subsequent calls to this function</span>
+            <span class="c1"># after the Network(s) has been built will call</span>
+            <span class="c1"># network.update(params, demographics)</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="n">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
+                                     <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-        <span class="k">with</span> <span class="n">redirect_output</span><span class="p">(</span><span class="n">output_dir</span><span class="o">.</span><span class="n">get_path</span><span class="p">()):</span>
+            <span class="c1"># if the user wanted to remove this directory then they would</span>
+            <span class="c1"># have done so in the main process - no need to check again</span>
+            <span class="n">options</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_dir</span>
+
             <span class="n">output</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
 
             <span class="k">return</span> <span class="n">output</span>
@@ -335,7 +305,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

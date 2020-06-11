@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -278,23 +295,75 @@ VariableSet from one another</li>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.make_compatible_with" title="metawards.VariableSet.make_compatible_with"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_compatible_with</span></code></a>(other)</td>
 <td>Return a copy of this VariableSet which has been made compatible with ‘other’.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.read" title="metawards.VariableSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.output_dir" title="metawards.VariableSet.output_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_dir</span></code></a>()</td>
+<td>Return the output directory in which runs using this variable set should be placed.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.read" title="metawards.VariableSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename)</td>
 <td>Read a single set of adjustable variables from the passed file.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.repeat_index" title="metawards.VariableSet.repeat_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat_index</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.repeat_index" title="metawards.VariableSet.repeat_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat_index</span></code></a>()</td>
 <td>Return the repeat index of this set.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.variable_names" title="metawards.VariableSet.variable_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_names</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.variable_names" title="metawards.VariableSet.variable_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_names</span></code></a>()</td>
 <td>Return the names of the variables that will be adjusted by this VariableSet</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.variable_values" title="metawards.VariableSet.variable_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_values</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.variable_values" title="metawards.VariableSet.variable_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_values</span></code></a>()</td>
 <td>Return the values that the variables will be adjusted to.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.variables" title="metawards.VariableSet.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.variables" title="metawards.VariableSet.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a>()</td>
 <td>Return the variables (name and values) to be adjusted</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="metawards.VariableSet.__eq__">
+<code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.__eq__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return self==value.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>variables: Dict[str</em>, <em>float] = None</em>, <em>repeat_index: int = 1</em>, <em>names: List[str] = None</em>, <em>values: List[float] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.__init__"><span class="viewcode-link">[source]</span></a></dt>
+<dd><p>Construct a new VariableSet from the passed adjusted variable
+values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – The list of the names of the variables to adjust</li>
+<li><strong>values</strong> (<em>List</em><em>[</em><em>float</em><em>]</em>) – The values of the variables to adjust (same order as names)</li>
+<li><strong>variables</strong> (<em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – names and values of variables to adjust passed as a dictionary</li>
+<li><strong>repeat_index</strong> (<em>int</em>) – the index used to distinguish different repeats of the same
+VariableSet from one another</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">VariableSet</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;beta[1]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.95</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;beta[2]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">fingerprint</span><span class="p">())</span>
+<span class="go">(beta[1]=0.95, beta[2]=0.9)[repeat 1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.VariableSet.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.VariableSet.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a printable representation of the variables to
+be adjusted</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="metawards.VariableSet.adjust">
 <code class="descname">adjust</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.adjust"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.adjust" title="Permalink to this definition">¶</a></dt>
@@ -421,6 +490,16 @@ if it is not possible to make this set compatible</p>
 </div>
 </dd></dl>
 
+<dl class="method">
+<dt id="metawards.VariableSet.output_dir">
+<code class="descname">output_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.output_dir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.output_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the output directory in which runs using this
+variable set should be placed. Normally this would
+be the fingerprint of the variable set, but users may
+prefer to specify their own naming scheme, which
+can be added via a design file</p>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="metawards.VariableSet.read">
 <em class="property">static </em><code class="descname">read</code><span class="sig-paren">(</span><em>filename: str</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.read" title="Permalink to this definition">¶</a></dt>
@@ -539,7 +618,7 @@ with be adjusted to their desired values</td>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

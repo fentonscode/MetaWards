@@ -11,8 +11,7 @@ In this fourth part of the tutorial you will:
   during a *model run*.
 * Learn how to extract geographical information and include this in
   the outputs.
-* Combine a custom extractor and custom iterator to model
-  innovative lockdown strategies
+
 
 .. toctree::
    :maxdepth: 2
@@ -20,4 +19,4 @@ In this fourth part of the tutorial you will:
    part04/01_extractors
    part04/02_default
    part04/03_regional
-   part04/04_iterators
+   part04/04_rates

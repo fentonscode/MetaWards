@@ -38,5 +38,6 @@ metawards.Workspace
       ~Workspace.subspaces
       ~Workspace.total_inf_ward
       ~Workspace.total_new_inf_ward
+      ~Workspace.ward_inf_tot
    
    

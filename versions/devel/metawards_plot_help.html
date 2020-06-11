@@ -87,13 +87,16 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="usage.html">Usage</a><ul class="current">
@@ -113,13 +116,24 @@
 <li class="toctree-l1"><a class="reference internal" href="cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -196,39 +210,48 @@
   <div class="section" id="command-line-options">
 <h1>Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline">¶</a></h1>
 <p>The full set of command line options for metawards-plot is below;</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: metawards-plot [-h] [--version] [-i INPUT] [-a [ANIMATE [ANIMATE ...]]]
-                      [-o OUTPUT] [--format FORMAT] [--align-axes]
-                      [--no-align-axes] [--dpi DPI] [--delay DELAY]
-                      [--ordering ORDERING]
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: metawards-plot [-h] [--version] [-c CONFIG] [-i [INPUT [INPUT ...]]]
+                      [-a [ANIMATE [ANIMATE ...]]] [-o OUTPUT]
+                      [--format FORMAT] [--align-axes] [--no-align-axes]
+                      [--dpi DPI] [--delay DELAY] [--ordering ORDERING]
 
-MetaWards simple plotting program - see https://github.com/metawards/metawards
-for more information
+MetaWards simple plotting program - see https://metawards.org for more
+information. Args that start with &#39;--&#39; (eg. --version) can also be set in a
+config file (specified via -c). Config file syntax allows: key=value,
+flag=true, stuff=[a,b,c] (for details, see syntax at https://goo.gl/R74nmi).
+If an arg is specified in more than one place, then commandline values
+override config file values which override defaults.
 
 optional arguments:
   -h, --help            show this help message and exit
   --version             Print the version information about metawards-plot
-  -i INPUT, --input INPUT
+                        (default: None)
+  -c CONFIG, --config CONFIG
+                        Config file that can be used to set some or all of
+                        these command line options. (default: None)
+  -i [INPUT [INPUT ...]], --input [INPUT [INPUT ...]]
                         Full path to the &#39;results.csv.bz2&#39; file that you want
-                        to quickly plot.
+                        to quickly plot. (default: None)
   -a [ANIMATE [ANIMATE ...]], --animate [ANIMATE [ANIMATE ...]]
                         Full path to the set of plots that you want to animate
-                        together into an animated gif
+                        together into an animated gif (default: None)
   -o OUTPUT, --output OUTPUT
                         Location for the output. By default this is inferred
-                        from the input
+                        from the input (default: None)
   --format FORMAT       Desired format of the graphs that are produced. Good
                         formats are &#39;pdf&#39; for publication graphics and &#39;png&#39;
-                        or &#39;jpeg&#39; for webpages
+                        or &#39;jpeg&#39; for webpages (default: jpg)
   --align-axes          Whether to align the axes of all graphs so that they
                         are all plotted on the same scale (default true)
+                        (default: None)
   --no-align-axes       Disable alignment of the axes of graphs. Each graph
-                        will be drawn using its own scale
+                        will be drawn using its own scale (default: None)
   --dpi DPI             Resolution to use when creating bitmap outputs, e.g.
-                        jpg, png etc.
+                        jpg, png etc. (default: 150)
   --delay DELAY         The delay in milliseconds between animation frames if
-                        an animation is being produced
+                        an animation is being produced (default: 500)
   --ordering ORDERING   Ordering to use for the frames. This can be
-                        fingerprint, filename or custom
+                        fingerprint, filename or custom (default: fingerprint)
 </pre></div>
 </div>
 </div>
@@ -254,7 +277,7 @@ optional arguments:
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

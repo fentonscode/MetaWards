@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -224,6 +241,12 @@ disease through the population</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Population.assert_sane" title="metawards.Population.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
 <td>Assert that this population is sane, i.e.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.has_equal_SEIR" title="metawards.Population.has_equal_SEIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_equal_SEIR</span></code></a>(other)</td>
+<td>Return whether or not the SEIR values for this population equal ‘other’</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.increment_day" title="metawards.Population.increment_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increment_day</span></code></a>(ndays)</td>
+<td>Advance the day count by ‘ndays’ (default 1)</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.specialise" title="metawards.Population.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network)</td>
 <td>Specialise this population for the passed Networks</td>
 </tr>
@@ -278,6 +301,12 @@ disease through the population</p>
 </tbody>
 </table>
 <dl class="method">
+<dt id="metawards.Population.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Population.assert_sane">
 <code class="descname">assert_sane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population.assert_sane"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.assert_sane" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assert that this population is sane, i.e. the totals within
@@ -295,6 +324,19 @@ the correct values</p>
 <dt id="metawards.Population.day">
 <code class="descname">day</code><em class="property"> = 0</em><a class="headerlink" href="#metawards.Population.day" title="Permalink to this definition">¶</a></dt>
 <dd><p>The day in the outbreak of this record (e.g. day 0, day 10 etc.)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Population.has_equal_SEIR">
+<code class="descname">has_equal_SEIR</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population.has_equal_SEIR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.has_equal_SEIR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not the SEIR values for this population
+equal ‘other’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Population.increment_day">
+<code class="descname">increment_day</code><span class="sig-paren">(</span><em>ndays: int = 1</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_population.html#Population.increment_day"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.increment_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Advance the day count by ‘ndays’ (default 1)</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -408,7 +450,7 @@ out during a model run</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

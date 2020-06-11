@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -175,6 +189,7 @@
 
 <span class="kn">from</span> <span class="nn">._variableset</span> <span class="kn">import</span> <span class="n">VariableSet</span>
 <span class="kn">from</span> <span class="nn">._network</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="kn">from</span> <span class="nn">._disease</span> <span class="kn">import</span> <span class="n">Disease</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Demographic&quot;</span><span class="p">]</span>
 
@@ -210,6 +225,11 @@
     <span class="c1">#: If this is None then this demographic will have the same</span>
     <span class="c1">#: parameters as the whole population</span>
     <span class="n">adjustment</span><span class="p">:</span> <span class="n">VariableSet</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">#: The Disease that should be used for this demographic. Is this</span>
+    <span class="c1">#: is None, then the global Disease is used. Otherwise</span>
+    <span class="c1">#: this demographic will follow this Disease</span>
+    <span class="n">disease</span><span class="p">:</span> <span class="n">Disease</span> <span class="o">=</span> <span class="kc">None</span>
 
 <div class="viewcode-block" id="Demographic.specialise"><a class="viewcode-back" href="../../api/generated/metawards.Demographic.html#metawards.Demographic.specialise">[docs]</a>    <span class="k">def</span> <span class="nf">specialise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">network</span><span class="p">:</span> <span class="n">Network</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
@@ -248,9 +268,24 @@
         <span class="n">subnet</span><span class="o">.</span><span class="n">scale_susceptibles</span><span class="p">(</span><span class="n">work_ratio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">work_ratio</span><span class="p">,</span>
                                   <span class="n">play_ratio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">play_ratio</span><span class="p">)</span>
 
-        <span class="c1"># Now specialise the parameters for this network</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">specialised_demographics</span><span class="p">():</span>
+            <span class="n">subnet</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">subnet</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Does this demographic have a custom disease pathway?</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">disease</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">subnet</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">disease_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">disease</span>
+
+        <span class="c1"># Do we need to specialise the parameters for this demographic?</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjustment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">subnet</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">set_variables</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjustment</span><span class="p">)</span>
+            <span class="n">subnet</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">subnet</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">set_variables</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjustment</span><span class="p">)</span>
+
+        <span class="n">subnet</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">subnet</span><span class="o">.</span><span class="n">reset_everything</span><span class="p">(</span><span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
+        <span class="n">subnet</span><span class="o">.</span><span class="n">rescale_play_matrix</span><span class="p">(</span><span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
+        <span class="n">subnet</span><span class="o">.</span><span class="n">move_from_play_to_work</span><span class="p">(</span><span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">subnet</span></div></div>
 </pre></div>
@@ -266,7 +301,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

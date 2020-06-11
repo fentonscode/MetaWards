@@ -40,7 +40,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Command line options" href="metawards_help.html" />
-    <link rel="prev" title="Combining extractors with iterators" href="tutorial/part04/04_iterators.html" /> 
+    <link rel="prev" title="Modelling the ICU" href="tutorial/part07/04_icu.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,13 +87,16 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
@@ -116,13 +119,24 @@
 <li class="toctree-l1"><a class="reference internal" href="cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -185,7 +199,7 @@
         <a href="metawards_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tutorial/part04/04_iterators.html" class="btn btn-neutral float-left" title="Combining extractors with iterators" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorial/part07/04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -207,43 +221,69 @@ type;</p>
 </div>
 <p>This prints out the version of <code class="docutils literal notranslate"><span class="pre">metawards</span></code>, which should look something
 like this;</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>      ***********************************
-      metawards version 0.8.5+96.ga765acf
-      ***********************************
-
-            -- Source information --
-repository: https://github.com/metawards/MetaWards
-                 branch: devel
-revision: a765acf3950efa8450e82e740c52bd4e4d6dd317
-    last modified: 2020-05-06T10:09:06+0100
-
-          -- Additional information --
-Visit https://metawards.org for more information
-  about metawards, its authors and its license
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│                                                                      │
+│                MetaWards version 0.10.0+289.g88086bd                 │
+│                                                                      │
+│                                                                      │
+│                        https://metawards.org                         │
+│                                                                      │
+│                          Source information                          │
+│                                                                      │
+│   • repository: https://github.com/fentonscode/MetaWards             │
+│   • branch: devel                                                    │
+│   • revision: 88086bdd9cce4eb1ea4e0810c2c7aeb5948a23c4               │
+│   • last modified: 2020-06-11T11:57:34+0100                          │
+│                                                                      │
+│  WARNING: MetaWardsData cannot be found! Please see                  │
+│  https://metawards.org/model_data for instructions on how to         │
+│  download and install this necessary data.                           │
+│                                                                      │
+│                        Additional information                        │
+│                                                                      │
+│  Visit https://metawards.org for more information about metawards,   │
+│  its authors and its license                                         │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
 </pre></div>
 </div>
 <p>This version information gives you the provenance of this executable which
 should help in reproducing output. It is written to the top of all
 metawards outputs.</p>
 <p>If you see output like this, with <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> lines about the version
-being <code class="docutils literal notranslate"><span class="pre">dirty</span></code>…</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   *****************************************
-   metawards version 0.3.0+58.g6e1f4c4.dirty
-   *****************************************
-
-            -- Source information --
-repository: https://github.com/metawards/MetaWards
-                 branch: devel
-revision: 6e1f4c45092ec345ee3673709d780ebe71ca0309
-    last modified: 2020-04-09T17:57:18+0100
-
-WARNING: This version has not been committed to git,
-WARNING: so you may not be able to recover the original
-WARNING: source code that was used to generate this run!
-
-          -- Additional information --
- Visit https://metawards.org for more informaion
-  about metawards, its authors and its license
+not having been committed to git…</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│                                                                      │
+│             MetaWards version 0.12.0+17.gd839bca1.dirty              │
+│                                                                      │
+│                                                                      │
+│                        https://metawards.org                         │
+│                                                                      │
+│                          Source information                          │
+│                                                                      │
+│   • repository: https://github.com/metawards/MetaWards               │
+│   • branch: feature-mover-tutorial                                   │
+│   • revision: d839bca1e32e8c8b1814d7f72667e84ead1a59d7               │
+│   • last modified: 2020-05-20T13:01:14+0100                          │
+│                                                                      │
+│  WARNING: This version has not been committed to git, so you may     │
+│  not be able to recover the original source code that was used to    │
+│  generate this run!                                                  │
+│                                                                      │
+│                      MetaWardsData information                       │
+│                                                                      │
+│   • version: 0.5.0                                                   │
+│   • repository: https://github.com/metawards/MetaWardsData           │
+│   • branch: master                                                   │
+│                                                                      │
+│                        Additional information                        │
+│                                                                      │
+│  Visit https://metawards.org for more information about metawards,   │
+│  its authors and its license                                         │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
 </pre></div>
 </div>
 <p>then this means that your <code class="docutils literal notranslate"><span class="pre">metawards</span></code> executable has been built using
@@ -445,11 +485,16 @@ to the screen, e.g.</p>
 whether they become infected, and then progress through the outbreak.
 The codes mean;</p>
 <ul class="simple">
-<li><em class="xref py py-obj">S</em> : number who are susceptible to infection (and not infected)</li>
-<li><em class="xref py py-obj">E</em> : number who are infected but not yet infectious (latent)</li>
-<li><em class="xref py py-obj">I</em> : number who are infected, infectious and symptomatic</li>
-<li><em class="xref py py-obj">IW</em> : number of wards that have at least one infected individual</li>
-<li><em class="xref py py-obj">R</em> : number who are recovered from the infection and thus immune</li>
+<li><strong>S</strong>: The number of the population who are <em>susceptible</em> to infection</li>
+<li><strong>E</strong>: The number of the population who are <em>latent</em>, meaning they are
+infected, but not yet infectious.</li>
+<li><strong>I</strong>: The number of the population who are <em>infected</em>, meaning they
+have symptoms and are infectious</li>
+<li><strong>R</strong>: The number of the population who are removed from being susceptible,
+either because they have been newly infected that day, or because they
+have recovered from the infection and are no longer susceptible to infection</li>
+<li><strong>IW</strong>: The number of electoral wards that contain at least one
+individual who was newly infected that day.</li>
 </ul>
 <p>As well as being printed to the screen, this data is also written
 to the CSV file <code class="docutils literal notranslate"><span class="pre">output/results.csv.bz2</span></code> for easy reading and analysis
@@ -496,7 +541,7 @@ The full help is <a class="reference internal" href="metawards_plot_help.html"><
         <a href="metawards_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="tutorial/part04/04_iterators.html" class="btn btn-neutral float-left" title="Combining extractors with iterators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="tutorial/part07/04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -506,7 +551,7 @@ The full help is <a class="reference internal" href="metawards_plot_help.html"><
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

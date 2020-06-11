@@ -15,6 +15,7 @@ metawards.Demographics
    
       ~Demographics.__init__
       ~Demographics.add
+      ~Demographics.copy
       ~Demographics.get_index
       ~Demographics.get_name
       ~Demographics.load
@@ -23,5 +24,12 @@ metawards.Demographics
    
 
    
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Demographics.interaction_matrix
+      ~Demographics.random_seed
    
    

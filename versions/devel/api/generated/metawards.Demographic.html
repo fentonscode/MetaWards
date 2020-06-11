@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -203,11 +220,11 @@
 <h1>metawards.Demographic<a class="headerlink" href="#metawards-demographic" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Demographic">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Demographic</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>work_ratio: float = 0.0</em>, <em>play_ratio: float = 0.0</em>, <em>adjustment: metawards._variableset.VariableSet = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographic.html#Demographic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographic" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Demographic</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>work_ratio: float = 0.0</em>, <em>play_ratio: float = 0.0</em>, <em>adjustment: metawards._variableset.VariableSet = None</em>, <em>disease: metawards._disease.Disease = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographic.html#Demographic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographic" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class represents a single demographic</p>
 <dl class="method">
 <dt id="metawards.Demographic.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>work_ratio: float = 0.0</em>, <em>play_ratio: float = 0.0</em>, <em>adjustment: metawards._variableset.VariableSet = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Demographic.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>work_ratio: float = 0.0</em>, <em>play_ratio: float = 0.0</em>, <em>adjustment: metawards._variableset.VariableSet = None</em>, <em>disease: metawards._disease.Disease = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Demographic.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -235,13 +252,16 @@
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographic.adjustment" title="metawards.Demographic.adjustment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjustment</span></code></a></td>
 <td>How the parameters for this demographic should be changed compared to the parameters used for the whole population.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographic.name" title="metawards.Demographic.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographic.disease" title="metawards.Demographic.disease"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disease</span></code></a></td>
+<td>The Disease that should be used for this demographic.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographic.name" title="metawards.Demographic.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a></td>
 <td>The name of this demographic.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographic.play_ratio" title="metawards.Demographic.play_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_ratio</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographic.play_ratio" title="metawards.Demographic.play_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_ratio</span></code></a></td>
 <td>The proportion of “play” (random movement) members in this demographic out of the entire population.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographic.work_ratio" title="metawards.Demographic.work_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">work_ratio</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographic.work_ratio" title="metawards.Demographic.work_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">work_ratio</span></code></a></td>
 <td>The proportion of “work” (fixed movement) members in this demographic out of the entire population.</td>
 </tr>
 </tbody>
@@ -255,6 +275,14 @@ changed to fixed values, but future developments in VariableSet
 will support rules for varying relative to the whole population.
 If this is None then this demographic will have the same
 parameters as the whole population</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="metawards.Demographic.disease">
+<code class="descname">disease</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Demographic.disease" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Disease that should be used for this demographic. Is this
+is None, then the global Disease is used. Otherwise
+this demographic will follow this Disease</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -333,7 +361,7 @@ must be represented)</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

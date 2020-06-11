@@ -87,18 +87,22 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index_part01.html">Part 1 - Modelling outbreaks</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Started</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#introducing-the-lurgy">Introducing the Lurgy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#seeding-an-outbreak">Seeding an outbreak</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#repeating-a-calculation">Repeating a calculation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-config-files-for-inputs">Using config files for inputs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02_repeating.html">Multiple model runs</a></li>
@@ -108,6 +112,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_part02.html">Part 2 - Refining the model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part03.html">Part 3 - Customising the outbreak</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part04.html">Part 4 - Customising the output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
 </ul>
 </li>
 </ul>
@@ -116,13 +123,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -168,7 +186,7 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../tutorial.html">Tutorial</a> &raquo;</li>
+          <li><a href="../index.html">Tutorial</a> &raquo;</li>
         
           <li><a href="../index_part01.html">Part 1 - Modelling outbreaks</a> &raquo;</li>
         
@@ -208,20 +226,31 @@ that you have, type the following into your console;</p>
 <p>and then press return. You should see something similar to the below
 printed to your screen.</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>$ metawards --version
-
-      ***********************************
-      metawards version 0.8.5+96.ga765acf
-      ***********************************
-
-            -- Source information --
-repository: https://github.com/metawards/MetaWards
-                 branch: devel
-revision: a765acf3950efa8450e82e740c52bd4e4d6dd317
-    last modified: 2020-05-06T10:09:06+0100
-
-          -- Additional information --
-Visit https://metawards.org for more information
-  about metawards, its authors and its license
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│                                                                      │
+│                MetaWards version 0.10.0+289.g88086bd                 │
+│                                                                      │
+│                                                                      │
+│                        https://metawards.org                         │
+│                                                                      │
+│                          Source information                          │
+│                                                                      │
+│   • repository: https://github.com/fentonscode/MetaWards             │
+│   • branch: devel                                                    │
+│   • revision: 88086bdd9cce4eb1ea4e0810c2c7aeb5948a23c4               │
+│   • last modified: 2020-06-11T11:57:34+0100                          │
+│                                                                      │
+│  WARNING: MetaWardsData cannot be found! Please see                  │
+│  https://metawards.org/model_data for instructions on how to         │
+│  download and install this necessary data.                           │
+│                                                                      │
+│                        Additional information                        │
+│                                                                      │
+│  Visit https://metawards.org for more information about metawards,   │
+│  its authors and its license                                         │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
 </pre></div>
 </div>
 <p>If you don’t see this, or the output includes a warning about not being
@@ -230,7 +259,7 @@ about to find <em class="xref py py-obj">MetaWardsData</em>, then please try
 <a class="reference internal" href="../../model_data.html"><span class="doc">installing and configuring MetaWardsData</span></a> again.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">This tutorial is written for <code class="docutils literal notranslate"><span class="pre">metawards</span></code> version 0.8.5 or
+<p class="last">This tutorial is written for <code class="docutils literal notranslate"><span class="pre">metawards</span></code> version 0.10.0 or
 higher. If you are using an older version then please upgrade.</p>
 </div>
 <div class="section" id="introducing-the-lurgy">
@@ -244,23 +273,26 @@ the <code class="docutils literal notranslate"><span class="pre">--disease</span
 </div>
 <p>Press return and you should see a lot of output printed. Near the end
 of the output you will see these lines;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 0 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">0</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 1 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">1</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 2 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">2</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 3 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">3</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-
- <span class="mi">4</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-<span class="n">Infection</span> <span class="n">died</span> <span class="o">...</span> <span class="n">Ending</span> <span class="n">on</span> <span class="n">day</span> <span class="mi">5</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 4 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
+Infection died ... Ending on day 5
 </pre></div>
 </div>
 <div class="admonition note">
@@ -299,23 +331,26 @@ options, e.g.</p>
 <div class="section" id="seeding-an-outbreak">
 <h2>Seeding an outbreak<a class="headerlink" href="#seeding-an-outbreak" title="Permalink to this headline">¶</a></h2>
 <p>The key output from <code class="docutils literal notranslate"><span class="pre">metawards</span></code> are the lines which read;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 0 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">0</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 1 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">1</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 2 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">2</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 3 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
 
- <span class="mi">3</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-
- <span class="mi">4</span> <span class="mi">0</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">56082077</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-<span class="n">Infection</span> <span class="n">died</span> <span class="o">...</span> <span class="n">Ending</span> <span class="n">on</span> <span class="n">day</span> <span class="mi">5</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 4 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 56082077  E: 0  I: 0  R: 0  IW: 0  POPULATION: 56082077
+Number of infections: 0
+Infection died ... Ending on day 5
 </pre></div>
 </div>
 <p>These tell you how long the outbreak lasted (in this case, 5 days),
@@ -327,10 +362,11 @@ to the codes;</p>
 infected, but not yet infectious.</li>
 <li><strong>I</strong>: The number of the population who are <em>infected</em>, meaning they
 have symptoms and are infectious</li>
-<li><strong>R</strong>: The number of the population who are removed from the outbreak,
-e.g. because they have recovered and are no longer susceptible to infection</li>
-<li><strong>IW</strong>: The number electoral wards that contain at least one infected
-individual.</li>
+<li><strong>R</strong>: The number of the population who are removed from being susceptible,
+either because they have been newly infected that day, or because they
+have recovered from the infection and are no longer susceptible to infection</li>
+<li><strong>IW</strong>: The number of electoral wards that contain at least one
+individual who was newly infected that day.</li>
 </ul>
 <p>For more information about these values, please
 <a class="reference external" href="https://doi.org/10.1016/j.epidem.2009.11.002">read</a>
@@ -351,30 +387,26 @@ file to use via the <code class="docutils literal notranslate"><span class="pre"
 <p>Now the program will run for a long time (minutes), and you will see
 an outbreak move through the population. The final lines of your output
 may look something like this;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">217</span> <span class="mi">9</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772514</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">7</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309556</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">1</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 214 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 11780863  E: 0  I: 1  R: 44301213  IW: 1  POPULATION: 56082077
+Number of infections: 1
 
-<span class="mi">218</span> <span class="mi">7</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772513</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">1</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">7</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309556</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">1</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082076</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 215 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 11780863  E: 1  I: 0  R: 44301213  IW: 0  POPULATION: 56082077
+Number of infections: 1
 
-<span class="mi">219</span> <span class="mi">8</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">1</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">5</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309559</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">1</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082076</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 216 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 11780863  E: 0  I: 1  R: 44301213  IW: 0  POPULATION: 56082077
+Number of infections: 1
 
-<span class="mi">220</span> <span class="mi">6</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">1</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">5</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309559</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082076</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 217 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 11780863  E: 0  I: 1  R: 44301213  IW: 0  POPULATION: 56082077
+Number of infections: 1
 
-<span class="mi">221</span> <span class="mi">6</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">3</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309562</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-
-<span class="mi">222</span> <span class="mi">3</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">2</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309563</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-
-<span class="mi">223</span> <span class="mi">2</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">2</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309563</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-
-<span class="mi">224</span> <span class="mi">2</span>
-<span class="n">S</span><span class="p">:</span> <span class="mi">11772512</span>    <span class="n">E</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">I</span><span class="p">:</span> <span class="mi">0</span>    <span class="n">R</span><span class="p">:</span> <span class="mi">44309565</span>    <span class="n">IW</span><span class="p">:</span> <span class="mi">0</span>   <span class="n">TOTAL</span> <span class="n">POPULATION</span> <span class="mi">56082077</span>
-<span class="n">Infection</span> <span class="n">died</span> <span class="o">...</span> <span class="n">Ending</span> <span class="n">on</span> <span class="n">day</span> <span class="mi">225</span>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Day 218 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+S: 11780863  E: 0  I: 0  R: 44301214  IW: 0  POPULATION: 56082077
+Number of infections: 0
+Infection died ... Ending on day 219
 </pre></div>
 </div>
 <div class="admonition note">
@@ -390,11 +422,19 @@ and how quickly they progress through the infection. This means that
 every <code class="docutils literal notranslate"><span class="pre">metawards</span></code> run is different.</p>
 <p>Fortunately, <code class="docutils literal notranslate"><span class="pre">metawards</span></code> prints enough information in the output
 to enable a job to be repeated. Look the for line the reads;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">******************************************</span>
-<span class="o">***</span> <span class="n">To</span> <span class="n">repeat</span> <span class="n">this</span> <span class="n">job</span> <span class="n">use</span> <span class="n">the</span> <span class="n">command</span> <span class="o">***</span>
-<span class="o">******************************************</span>
-
-<span class="n">metawards</span> <span class="o">--</span><span class="n">repeats</span> <span class="mi">1</span> <span class="o">--</span><span class="n">seed</span> <span class="mi">20460833</span> <span class="o">--</span><span class="n">additional</span> <span class="n">ExtraSeedsLondon</span><span class="o">.</span><span class="n">dat</span> <span class="o">--</span><span class="n">output</span> <span class="n">output</span> <span class="o">--</span><span class="n">UV</span> <span class="mf">0.0</span> <span class="o">--</span><span class="n">disease</span> <span class="n">lurgy</span> <span class="o">--</span><span class="nb">input</span><span class="o">-</span><span class="n">data</span> <span class="mi">2011</span><span class="n">Data</span> <span class="o">--</span><span class="n">start</span><span class="o">-</span><span class="n">date</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">04</span><span class="o">-</span><span class="mi">20</span> <span class="o">--</span><span class="n">start</span><span class="o">-</span><span class="n">day</span> <span class="mi">0</span> <span class="o">--</span><span class="n">parameters</span> <span class="n">march29</span> <span class="o">--</span><span class="n">repository</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">chris</span><span class="o">/</span><span class="n">GitHub</span><span class="o">/</span><span class="n">MetaWardsData</span> <span class="o">--</span><span class="n">population</span> <span class="mi">57104043</span> <span class="o">--</span><span class="n">nthreads</span> <span class="mi">4</span> <span class="o">--</span><span class="n">nprocs</span> <span class="mi">1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Repeating this run ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+To repeat this job use the command;
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│metawards –repeats 1 –seed 85564100 –additional ExtraSeedsLondon.dat –output output     │
+│–disease lurgy –start-date 2020-05-20 –start-day 0 –parameters march29 –repository      │
+│/Users/chris/GitHub/MetaWardsData –population 57104043 –nsteps 730 –UV 0.0 –nthreads 4  │
+│–nprocs 1 –max-nodes 16384 –max-links 4194304                                           │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+Or alternatively use the config.yaml file that will be written to the output directory and
+use the command;
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│metawards -c config.yaml                                                                │
+└────────────────────────────────────────────────────────────────────────────────────────┘
 </pre></div>
 </div>
 <p>This is the command line that you can use to repeat a job (note that
@@ -406,6 +446,43 @@ the calculation over the same number of threads. We consider it a bug
 if <code class="docutils literal notranslate"><span class="pre">metawards</span></code> is not reproducible, and ask that you
 <a class="reference external" href="https://github.com/metawards/MetaWards/issues">submit an issue</a> if
 you find you cannot repeat a run.</p>
+<p>As the command line can be quite long, <code class="docutils literal notranslate"><span class="pre">metawards</span></code> will also print out
+a config file in the <code class="docutils literal notranslate"><span class="pre">output</span></code> directory called <code class="docutils literal notranslate"><span class="pre">output/config.yaml</span></code>.
+This file contains everything needed to reproduce the calculation, which
+can be re-run using the command;</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>metawards -c config.yaml
+</pre></div>
+</div>
+<p>(assuming you have copied the <code class="docutils literal notranslate"><span class="pre">config.yaml</span></code> file into your current
+directory)</p>
+</div>
+<div class="section" id="using-config-files-for-inputs">
+<h2>Using config files for inputs<a class="headerlink" href="#using-config-files-for-inputs" title="Permalink to this headline">¶</a></h2>
+<p>You can use this config file directly to run a job using the <code class="docutils literal notranslate"><span class="pre">--config</span></code>
+or <code class="docutils literal notranslate"><span class="pre">-c</span></code> options, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>metawards --config config.yaml
+</pre></div>
+</div>
+<p>This should repeat the calculation that generated this config. You can
+also edit this file and use it to store commonly used options, e.g.
+if you always want to model the lurgy, then the config file would read;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">disease</span><span class="p">:</span> <span class="n">lurgy</span>
+</pre></div>
+</div>
+<p>and you could use this via</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>metawards -c config.yaml
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">metawards</span></code> uses the <a class="reference external" href="https://pypi.org/project/ConfigArgParse/">ConfigArgParse</a>
+python module for parsing command line arguments. Options can be passed
+on the command line, in a yaml or ini format config file, or in
+some identified cases as an environment variable. If an arg is
+specified in more than one place, then commandline values override
+environment variables which override config file values which
+override defaults.</p>
+</div>
 </div>
 </div>
 
@@ -430,7 +507,7 @@ you find you cannot repeat a run.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

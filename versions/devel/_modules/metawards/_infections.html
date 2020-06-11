@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -176,6 +190,7 @@
 
 <span class="kn">from</span> <span class="nn">._network</span> <span class="kn">import</span> <span class="n">Network</span>
 <span class="kn">from</span> <span class="nn">._networks</span> <span class="kn">import</span> <span class="n">Networks</span>
+<span class="kn">from</span> <span class="nn">._disease</span> <span class="kn">import</span> <span class="n">Disease</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Infections&quot;</span><span class="p">]</span>
 
@@ -202,6 +217,12 @@
     <span class="c1">#: both this subnetwork has the same work matrix as the overall</span>
     <span class="c1">#: network</span>
     <span class="n">_work_index</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1">#: The mapping from disease state &#39;i&#39; in this network to</span>
+    <span class="c1">#: disease stage &#39;j&#39; in the overall network. This is used if</span>
+    <span class="c1">#: the disease states in this subnetwork are different to the</span>
+    <span class="c1">#: overall network</span>
+    <span class="n">_stage_mapping</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">N_INF_CLASSES</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
@@ -236,7 +257,8 @@
             <span class="k">return</span> <span class="mi">0</span>
 
 <div class="viewcode-block" id="Infections.build"><a class="viewcode-back" href="../../api/generated/metawards.Infections.html#metawards.Infections.build">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="n">Network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="n">Network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+              <span class="n">overall</span><span class="p">:</span> <span class="n">Network</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct and return the Infections object that will track</span>
 <span class="sd">           infections during a model run on the passed Network (or Networks)</span>
 
@@ -244,6 +266,8 @@
 <span class="sd">           ----------</span>
 <span class="sd">           network: Network or Networks</span>
 <span class="sd">             The network or networks that will be run</span>
+<span class="sd">           overall: Network</span>
+<span class="sd">             The overall network to which this subnet belongs</span>
 
 <span class="sd">           Returns</span>
 <span class="sd">           -------</span>
@@ -261,6 +285,10 @@
             <span class="n">inf</span><span class="o">.</span><span class="n">_ifrom</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">ifrom</span>
             <span class="n">inf</span><span class="o">.</span><span class="n">_ito</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">ito</span>
 
+            <span class="k">if</span> <span class="n">overall</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">inf</span><span class="o">.</span><span class="n">_set_stage_mapping</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="p">,</span>
+                                       <span class="n">overall</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="p">)</span>
+
             <span class="k">return</span> <span class="n">inf</span>
 
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">):</span>
@@ -269,11 +297,42 @@
             <span class="n">subinfs</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="k">for</span> <span class="n">subnet</span> <span class="ow">in</span> <span class="n">network</span><span class="o">.</span><span class="n">subnets</span><span class="p">:</span>
-                <span class="n">subinfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Infections</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">subnet</span><span class="p">))</span>
+                <span class="n">subinf</span> <span class="o">=</span> <span class="n">Infections</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">subnet</span><span class="p">,</span> <span class="n">overall</span><span class="o">=</span><span class="n">network</span><span class="p">)</span>
+                <span class="n">subinfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">subinf</span><span class="p">)</span>
 
             <span class="n">inf</span><span class="o">.</span><span class="n">subinfs</span> <span class="o">=</span> <span class="n">subinfs</span>
 
             <span class="k">return</span> <span class="n">inf</span></div>
+
+    <span class="k">def</span> <span class="nf">_set_stage_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disease_params</span><span class="p">:</span> <span class="n">Disease</span><span class="p">,</span>
+                           <span class="n">overall_params</span><span class="p">:</span> <span class="n">Disease</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the mapping from the disease stages for this sub-network</span>
+<span class="sd">           (from disease_params) to the disease stages for the</span>
+<span class="sd">           overall network (in overall_params)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">disease_params</span> <span class="o">==</span> <span class="n">overall_params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stage_mapping</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_stage_mapping</span> <span class="o">=</span> <span class="n">disease_params</span><span class="o">.</span><span class="n">get_mapping_to</span><span class="p">(</span><span class="n">overall_params</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Infections.has_different_stage_mapping"><a class="viewcode-back" href="../../api/generated/metawards.Infections.html#metawards.Infections.has_different_stage_mapping">[docs]</a>    <span class="k">def</span> <span class="nf">has_different_stage_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return whether or not the sub-network disease stages</span>
+<span class="sd">           are different to that of the overall network, and must</span>
+<span class="sd">           thus be mapped</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_mapping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Infections.get_stage_mapping"><a class="viewcode-back" href="../../api/generated/metawards.Infections.html#metawards.Infections.get_stage_mapping">[docs]</a>    <span class="k">def</span> <span class="nf">get_stage_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the mapping from disease stages in this sub-network</span>
+<span class="sd">           to disease stages in the overall network. This returns a list</span>
+<span class="sd">           where mapping[i] gives the index of stage i in the subnetwork</span>
+<span class="sd">           to stage j in the overall network</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_different_stage_mapping</span><span class="p">():</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_stage_mapping</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Infections.has_different_work_matrix"><a class="viewcode-back" href="../../api/generated/metawards.Infections.html#metawards.Infections.has_different_work_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">has_different_work_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return whether or not the sub-network work matrix</span>
@@ -339,7 +398,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

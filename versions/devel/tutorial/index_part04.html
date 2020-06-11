@@ -87,13 +87,16 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../model_data.html">Model data</a></li>
 </ul>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="tutorial.html">Tutorial</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="index_part01.html">Part 1 - Modelling outbreaks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_part02.html">Part 2 - Refining the model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_part03.html">Part 3 - Customising the outbreak</a></li>
@@ -101,9 +104,12 @@
 <li class="toctree-l3"><a class="reference internal" href="part04/01_extractors.html">Custom extractors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="part04/02_default.html">Accumulating into a Workspace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="part04/03_regional.html">Extracting by location</a></li>
-<li class="toctree-l3"><a class="reference internal" href="part04/04_iterators.html">Combining extractors with iterators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="part04/04_rates.html">Extracting rates by ward</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="index_part05.html">Part 5 - Modelling multiple demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part06.html">Part 6 - Moving between demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part07.html">Part 7 - Different pathways for different demographics</a></li>
 </ul>
 </li>
 </ul>
@@ -112,13 +118,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -164,7 +181,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="tutorial.html">Tutorial</a> &raquo;</li>
+          <li><a href="index.html">Tutorial</a> &raquo;</li>
         
       <li>Part 4 - Customising the output</li>
     
@@ -203,8 +220,6 @@
 during a <em>model run</em>.</li>
 <li>Learn how to extract geographical information and include this in
 the outputs.</li>
-<li>Combine a custom extractor and custom iterator to model
-innovative lockdown strategies</li>
 </ul>
 <div class="toctree-wrapper compound">
 <ul>
@@ -212,6 +227,7 @@ innovative lockdown strategies</li>
 <li class="toctree-l2"><a class="reference internal" href="part04/01_extractors.html#hello-extractors">Hello extractors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part04/01_extractors.html#extract-xxx-and-output-xxx">extract_XXX and output_XXX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part04/01_extractors.html#occasional-functions">Occasional functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part04/01_extractors.html#exiting-early">Exiting early</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="part04/02_default.html">Accumulating into a Workspace</a><ul>
@@ -225,7 +241,13 @@ innovative lockdown strategies</li>
 <li class="toctree-l2"><a class="reference internal" href="part04/03_regional.html#using-location-in-an-extractor">Using location in an extractor</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="part04/04_iterators.html">Combining extractors with iterators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="part04/04_rates.html">Extracting rates by ward</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="part04/04_rates.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part04/04_rates.html#extracting-the-population-in-i1">Extracting the population in I1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part04/04_rates.html#calculating-rates">Calculating rates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part04/04_rates.html#writing-to-a-database">Writing to a database</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -251,7 +273,7 @@ innovative lockdown strategies</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

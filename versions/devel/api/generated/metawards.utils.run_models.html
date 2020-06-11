@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -105,6 +119,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards.html">MetaWards</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../index_api_MetaWards_utils.html">MetaWards.utils API Detail</a><ul class="current">
@@ -114,14 +130,15 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -203,7 +220,7 @@
 <h1>metawards.utils.run_models<a class="headerlink" href="#metawards-utils-run-models" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="metawards.utils.run_models">
-<code class="descclassname">metawards.utils.</code><code class="descname">run_models</code><span class="sig-paren">(</span><em>network: Union[metawards._network.Network, metawards._networks.Networks], variables: metawards._variableset.VariableSets, population: metawards._population.Population, nprocs: int, nthreads: int, seed: int, nsteps: int, output_dir: metawards._outputfiles.OutputFiles, iterator: Callable[[...], None] = None, extractor: Callable[[...], None] = None, mixer: Callable[[...], None] = None, mover: Callable[[...], None] = None, profiler: metawards.utils._profiler.Profiler = None, parallel_scheme: str = 'multiprocessing'</em><span class="sig-paren">)</span> &#x2192; List[Tuple[metawards._variableset.VariableSet, metawards._population.Population]]<a class="reference internal" href="../../_modules/metawards/utils/_run_models.html#run_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.utils.run_models" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">metawards.utils.</code><code class="descname">run_models</code><span class="sig-paren">(</span><em>network: Union[metawards._network.Network, metawards._networks.Networks], variables: metawards._variableset.VariableSets, population: metawards._population.Population, nprocs: int, nthreads: int, seed: int, nsteps: int, output_dir: metawards._outputfiles.OutputFiles, iterator: Callable[[...], None] = None, extractor: Callable[[...], None] = None, mixer: Callable[[...], None] = None, mover: Callable[[...], None] = None, profiler: metawards.utils._profiler.Profiler = None, parallel_scheme: str = 'multiprocessing', debug_seeds=False</em><span class="sig-paren">)</span> &#x2192; List[Tuple[metawards._variableset.VariableSet, metawards._population.Population]]<a class="reference internal" href="../../_modules/metawards/utils/_run_models.html#run_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.utils.run_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run all of the models on the passed Network that are described
 by the passed VariableSets</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -232,6 +249,9 @@ different demographics</li>
 <li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – Profiler used to profile the model run</li>
 <li><strong>parallel_scheme</strong> (<em>str</em>) – Which parallel scheme (multiprocessing, mpi4py or scoop) to use
 to run multiple model runs in parallel</li>
+<li><strong>debug_seeds</strong> (<em>bool</em><em> (</em><em>False</em><em>)</em>) – Set this parameter to force all runs to use the same seed
+(seed) - this is used for debugging and should never be set
+in production runs</li>
 </ul>
 </td>
 </tr>
@@ -269,7 +289,7 @@ end of each run</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

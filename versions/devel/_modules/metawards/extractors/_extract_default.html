@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -204,6 +218,24 @@
         <span class="kn">from</span> <span class="nn">._output_core</span> <span class="kn">import</span> <span class="n">output_core</span>
         <span class="k">return</span> <span class="p">[</span><span class="n">output_core</span><span class="p">]</span>
 
+    <span class="k">elif</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;analyse&quot;</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">._output_basic</span> <span class="kn">import</span> <span class="n">output_basic</span>
+        <span class="kn">from</span> <span class="nn">._output_dispersal</span> <span class="kn">import</span> <span class="n">output_dispersal</span>
+        <span class="kn">from</span> <span class="nn">._output_incidence</span> <span class="kn">import</span> <span class="n">output_incidence</span>
+        <span class="kn">from</span> <span class="nn">._output_prevalence</span> <span class="kn">import</span> <span class="n">output_prevalence</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">output_basic</span><span class="p">,</span> <span class="n">output_dispersal</span><span class="p">,</span>
+                <span class="n">output_incidence</span><span class="p">,</span> <span class="n">output_prevalence</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;finalise&quot;</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">._output_trajectory</span> <span class="kn">import</span> <span class="n">output_trajectory</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">output_trajectory</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;summary&quot;</span><span class="p">:</span>
+        <span class="c1"># output the summary results.csv.bz2 file</span>
+        <span class="kn">from</span> <span class="nn">._output_final_report</span> <span class="kn">import</span> <span class="n">output_final_report</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">output_final_report</span><span class="p">]</span>
+
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># we don&#39;t do anything at the &quot;foi&quot;, &quot;analyse&quot; or &quot;finalise&quot; stages</span>
         <span class="k">return</span> <span class="p">[]</span></div>
@@ -220,7 +252,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

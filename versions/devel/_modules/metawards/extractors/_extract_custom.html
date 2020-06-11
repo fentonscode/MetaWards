@@ -85,26 +85,40 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../snaglist.html">Snag list</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -211,10 +225,11 @@
 <span class="sd">          The wrapped extractor that is suitable for using in the extract</span>
 <span class="sd">          function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">custom_function</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">..utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">custom_function</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">custom_function</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Importing a custom extractor from </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Importing a custom extractor from </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="c1"># we need to find the function</span>
         <span class="kn">import</span> <span class="nn">metawards.extractors</span>
@@ -265,26 +280,43 @@
 
         <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="c1"># we cannot find the extractor</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot find the extractor &#39;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;Please make sure this is spelled correctly and &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;any python modules/files needed are in the &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;PYTHONPATH or current directory&quot;</span><span class="p">)</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot find the extractor &#39;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;Please make sure this is spelled correctly and &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;any python modules/files needed are in the &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;PYTHONPATH or current directory&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not import the extractor &quot;</span>
                               <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">func_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># find the first function that starts with &#39;extract&#39;</span>
+            <span class="c1"># find the last function that starts with &#39;extract&#39;</span>
             <span class="kn">import</span> <span class="nn">inspect</span>
+            <span class="n">funcs</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">module</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;extract&quot;</span><span class="p">):</span>
                     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span>
-                        <span class="c1"># this is a function</span>
-                        <span class="k">return</span> <span class="n">build_custom_extractor</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="n">module</span><span class="o">.</span><span class="vm">__name__</span><span class="p">:</span>
+                            <span class="c1"># this is a function defined in this module</span>
+                            <span class="n">funcs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find any function in the module &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2"> that has a name that starts &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;with &#39;extract&#39;. Please manually specify the &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;name using the &#39;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">::your_function syntax&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">funcs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">func</span> <span class="o">=</span> <span class="n">funcs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">funcs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Multiple possible matching functions: </span><span class="si">{</span><span class="n">funcs</span><span class="si">}</span><span class="s2">. &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;Choosing </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">. Please use the module::function &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;syntax if this is the wrong choice.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">func</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">build_custom_extractor</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Could not find any function in the module &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2"> that has a name that starts &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;with &#39;extract&#39;. Please manually specify the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;name using the &#39;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">::your_function syntax&quot;</span><span class="p">)</span>
 
             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not import the extractor &quot;</span>
                               <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -293,21 +325,24 @@
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">func_name</span><span class="p">):</span>
                 <span class="k">return</span> <span class="n">build_custom_extractor</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">func_name</span><span class="p">))</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find the function </span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> in the &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;module </span><span class="si">{</span><span class="n">func_module</span><span class="si">}</span><span class="s2">. Check that the spelling &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;is correct and that the right version of the module &quot;</span>
-                  <span class="sa">f</span><span class="s2">&quot;is being loaded.&quot;</span><span class="p">)</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Could not find the function </span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2"> in the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;module </span><span class="si">{</span><span class="n">func_module</span><span class="si">}</span><span class="s2">. Check that the spelling &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;is correct and that the right version of the module &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;is being loaded.&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not import the extractor &quot;</span>
                               <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">custom_function</span><span class="p">,</span> <span class="s2">&quot;__call__&quot;</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot build an extractor for </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2"> &quot;</span>
-              <span class="sa">f</span><span class="s2">&quot;as it is missing a __call__ function, i.e. it is &quot;</span>
-              <span class="sa">f</span><span class="s2">&quot;not a function.&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cannot build an extractor for </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;as it is missing a __call__ function, i.e. it is &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;not a function.&quot;</span><span class="p">)</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You can only build custom extractors for &quot;</span>
                          <span class="sa">f</span><span class="s2">&quot;actual functions... </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Building a custom extractor for </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Building a custom extractor for </span><span class="si">{</span><span class="n">custom_function</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                  <span class="n">style</span><span class="o">=</span><span class="s2">&quot;magenta&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="k">lambda</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">extract_custom</span><span class="p">(</span><span class="n">custom_function</span><span class="o">=</span><span class="n">custom_function</span><span class="p">,</span>
                                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -366,7 +401,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

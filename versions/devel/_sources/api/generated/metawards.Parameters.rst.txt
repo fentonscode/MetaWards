@@ -15,12 +15,14 @@ metawards.Parameters
    
       ~Parameters.__init__
       ~Parameters.add_seeds
+      ~Parameters.copy
       ~Parameters.get_repository
       ~Parameters.load
       ~Parameters.read_variables
       ~Parameters.set_disease
       ~Parameters.set_input_files
       ~Parameters.set_variables
+      ~Parameters.specialised_demographics
    
    
 
@@ -46,6 +48,7 @@ metawards.Parameters
       ~Parameters.neighbour_weight_threshold
       ~Parameters.play_to_work
       ~Parameters.plength_day
+      ~Parameters.stage_0
       ~Parameters.static_play_at_home
       ~Parameters.user_params
       ~Parameters.uv_filename

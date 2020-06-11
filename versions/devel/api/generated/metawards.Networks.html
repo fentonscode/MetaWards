@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -235,25 +252,28 @@ that each network will have the same nodes.</p>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.assert_sane" title="metawards.Networks.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>(profiler)</td>
 <td>Assert that the networks is sane.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.build" title="metawards.Networks.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(network,&nbsp;demographics,&nbsp;rngs[,&nbsp;profiler])</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.build" title="metawards.Networks.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(network,&nbsp;demographics[,&nbsp;profiler])</td>
 <td>Build the set of networks that will model the passed demographics based on the overall population model in the passed network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.initialise_infections" title="metawards.Networks.initialise_infections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialise_infections</span></code></a>(nthreads)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.copy" title="metawards.Networks.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</td>
+<td>Return a copy of this Networks.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.initialise_infections" title="metawards.Networks.initialise_infections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initialise_infections</span></code></a>(nthreads)</td>
 <td>Initialise and return the space that will be used to track infections</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.move_from_play_to_work" title="metawards.Networks.move_from_play_to_work"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_from_play_to_work</span></code></a>(nthreads[,&nbsp;profiler])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.move_from_play_to_work" title="metawards.Networks.move_from_play_to_work"><code class="xref py py-obj docutils literal notranslate"><span class="pre">move_from_play_to_work</span></code></a>(nthreads[,&nbsp;profiler])</td>
 <td>Move the population from play to work</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.rescale_play_matrix" title="metawards.Networks.rescale_play_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_play_matrix</span></code></a>(nthreads[,&nbsp;profiler])</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.rescale_play_matrix" title="metawards.Networks.rescale_play_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_play_matrix</span></code></a>(nthreads[,&nbsp;profiler])</td>
 <td>Rescale the play matrix</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.reset_everything" title="metawards.Networks.reset_everything"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_everything</span></code></a>(nthreads[,&nbsp;profiler])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.reset_everything" title="metawards.Networks.reset_everything"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reset_everything</span></code></a>(nthreads[,&nbsp;profiler])</td>
 <td>Resets the networks ready for a new run of the model</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.run" title="metawards.Networks.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(population,&nbsp;output_dir,&nbsp;seed,&nbsp;nsteps,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.run" title="metawards.Networks.run"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run</span></code></a>(population,&nbsp;output_dir,&nbsp;seed,&nbsp;nsteps,&nbsp;…)</td>
 <td>Run the model simulation for the passed population.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Networks.update" title="metawards.Networks.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(params[,&nbsp;demographics,&nbsp;rngs,&nbsp;profiler])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.update" title="metawards.Networks.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(params[,&nbsp;demographics,&nbsp;profiler])</td>
 <td>Update this network with a new set of parameters (and optionally demographics).</td>
 </tr>
 </tbody>
@@ -272,7 +292,7 @@ that each network will have the same nodes.</p>
 <td>The overall Network, which contains a combination of all of the sub-networks.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Networks.params" title="metawards.Networks.params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params</span></code></a></td>
-<td>The overall parameters that are then specialised for the different demographics</td>
+<td>The overall parameters that are then specialised for the different demographics.</td>
 </tr>
 </tbody>
 </table>
@@ -295,7 +315,7 @@ to check every time the networks are accessed</p>
 
 <dl class="staticmethod">
 <dt id="metawards.Networks.build">
-<em class="property">static </em><code class="descname">build</code><span class="sig-paren">(</span><em>network: metawards._network.Network</em>, <em>demographics: metawards._demographics.Demographics</em>, <em>rngs</em>, <em>profiler=None</em>, <em>nthreads: int = 1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_networks.html#Networks.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Networks.build" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">build</code><span class="sig-paren">(</span><em>network: metawards._network.Network</em>, <em>demographics: metawards._demographics.Demographics</em>, <em>profiler=None</em>, <em>nthreads: int = 1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_networks.html#Networks.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Networks.build" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the set of networks that will model the passed
 demographics based on the overall population model
 in the passed network</p>
@@ -311,7 +331,6 @@ the model outbreak</li>
 Note that the sum of the “work” and “play” populations
 across all demographics must be 1.0 in all wards in
 the model</li>
-<li><strong>rngs</strong> – Thread-safe random number generators</li>
 <li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – Optional profiler used to profile this build</li>
 <li><strong>nthreads</strong> (<em>int</em>) – Number of threads over which to distribute the work</li>
 </ul>
@@ -326,6 +345,13 @@ full set of different demographics</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Networks.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_networks.html#Networks.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Networks.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of this Networks. Use this to hold a copy of
+the networks that you can use to reset between runs</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -360,7 +386,9 @@ a means of merging and distributing data between sub-networks</p>
 <dt id="metawards.Networks.params">
 <code class="descname">params</code><a class="headerlink" href="#metawards.Networks.params" title="Permalink to this definition">¶</a></dt>
 <dd><p>The overall parameters that are then specialised for the
-different demographics</p>
+different demographics. Note that this returns a copy,
+so changing this will not change any parameters in the
+networks</p>
 </dd></dl>
 
 <dl class="method">
@@ -432,7 +460,7 @@ only a single demographic is modelled</p>
 
 <dl class="method">
 <dt id="metawards.Networks.update">
-<code class="descname">update</code><span class="sig-paren">(</span><em>params: metawards._parameters.Parameters</em>, <em>demographics=None</em>, <em>rngs=None</em>, <em>nthreads: int = 1</em>, <em>profiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_networks.html#Networks.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Networks.update" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update</code><span class="sig-paren">(</span><em>params: metawards._parameters.Parameters</em>, <em>demographics=None</em>, <em>nthreads: int = 1</em>, <em>profiler=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_networks.html#Networks.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Networks.update" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update this network with a new set of parameters
 (and optionally demographics).</p>
 <p>This is used to update the parameters for the network
@@ -447,8 +475,6 @@ and ready for a new run.</p>
 <li><strong>demographics</strong> (<a class="reference internal" href="metawards.Demographics.html#metawards.Demographics" title="metawards.Demographics"><em>Demographics</em></a>) – The new demographics with which to update this Network.
 Note that this will return a Network object that contains
 the specilisation of this Network</li>
-<li><strong>rngs</strong> – Thread-safe random number generators - needed if you are
-updating the demographics</li>
 <li><strong>nthreads</strong> (<em>int</em>) – Number of threads over which to parallelise this update</li>
 <li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – The profiler used to profile this update</li>
 </ul>
@@ -491,7 +517,7 @@ Demographics</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

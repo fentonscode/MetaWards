@@ -17,7 +17,9 @@ metawards.Infections
       ~Infections.aggregate
       ~Infections.build
       ~Infections.clear
+      ~Infections.get_stage_mapping
       ~Infections.get_work_index
+      ~Infections.has_different_stage_mapping
       ~Infections.has_different_work_matrix
    
    

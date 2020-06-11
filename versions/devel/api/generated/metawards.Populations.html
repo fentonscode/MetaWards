@@ -87,17 +87,31 @@
             
             
               <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../features.html">Features</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation instructions</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Help and support</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../devsupport.html">Developer Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../roadmap.html">Roadmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packaging.html">Packaging releases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../snaglist.html">Snag list</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Documentation</a><ul class="current">
@@ -112,16 +126,19 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_iterators.html">MetaWards.iterators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_extractors.html">MetaWards.extractors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_mixers.html">MetaWards.mixers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_movers.html">MetaWards.movers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_analysis.html">MetaWards.analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_utils.html">MetaWards.utils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_MetaWards_themes.html">MetaWards.themes</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development.html">Developer’s guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgements</a></li>
 </ul>
 
             
@@ -224,8 +241,23 @@ for every step (day) of a model outbreak</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Populations.append" title="metawards.Populations.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(population)</td>
 <td>Append the next step in the trajectory.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Populations.strip_demographics" title="metawards.Populations.strip_demographics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_demographics</span></code></a>()</td>
+<td>Remove the demographics information from this trajectory.</td>
+</tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="metawards.Populations.__getitem__">
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>i: int</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Populations.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Populations.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ith Population in the trajectory</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Populations.__str__">
+<code class="descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Populations.__str__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Populations.__str__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return str(self).</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="metawards.Populations.append">
 <code class="descname">append</code><span class="sig-paren">(</span><em>population: metawards._population.Population</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Populations.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Populations.append" title="Permalink to this definition">¶</a></dt>
@@ -238,6 +270,13 @@ for every step (day) of a model outbreak</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Populations.strip_demographics">
+<code class="descname">strip_demographics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Populations.strip_demographics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Populations.strip_demographics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the demographics information from this trajectory. This
+makes it much smaller and easier to transmit over a network</p>
 </dd></dl>
 
 </dd></dl>
@@ -265,7 +304,7 @@ for every step (day) of a model outbreak</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on May 06, 2020.
+        Last updated on Jun 11, 2020.
       </span>
 
     </p>

@@ -17,6 +17,7 @@ metawards.Networks
       ~Networks.aggregate
       ~Networks.assert_sane
       ~Networks.build
+      ~Networks.copy
       ~Networks.initialise_infections
       ~Networks.move_from_play_to_work
       ~Networks.rescale_play_matrix
