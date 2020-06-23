@@ -15,6 +15,7 @@ metawards.Disease
    
       ~Disease.N_INF_CLASSES
       ~Disease.__init__
+      ~Disease.get_index
       ~Disease.get_mapping_to
       ~Disease.load
    
@@ -30,6 +31,7 @@ metawards.Disease
       ~Disease.contrib_foi
       ~Disease.mapping
       ~Disease.progress
+      ~Disease.stage
       ~Disease.start_symptom
       ~Disease.too_ill_to_move
    

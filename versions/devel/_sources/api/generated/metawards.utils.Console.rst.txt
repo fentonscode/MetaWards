@@ -21,6 +21,7 @@ metawards.utils.Console
       ~Console.info
       ~Console.panel
       ~Console.print
+      ~Console.print_exception
       ~Console.print_population
       ~Console.print_profiler
       ~Console.redirect_output

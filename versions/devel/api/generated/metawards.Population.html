@@ -223,12 +223,12 @@
 <h1>metawards.Population<a class="headerlink" href="#metawards-population" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Population">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Population</code><span class="sig-paren">(</span><em>initial: int = 0</em>, <em>susceptibles: int = 0</em>, <em>latent: int = 0</em>, <em>total: int = 0</em>, <em>recovereds: int = 0</em>, <em>n_inf_wards: int = 0</em>, <em>scale_uv: float = 1.0</em>, <em>day: int = 0</em>, <em>date: datetime.date = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Population</code><span class="sig-paren">(</span><em>initial: int = 0</em>, <em>susceptibles: int = 0</em>, <em>latent: int = 0</em>, <em>total: int = 0</em>, <em>totals: Dict[str</em>, <em>int] = None</em>, <em>recovereds: int = 0</em>, <em>n_inf_wards: int = 0</em>, <em>scale_uv: float = 1.0</em>, <em>day: int = 0</em>, <em>date: datetime.date = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class holds information about the progress of the
 disease through the population</p>
 <dl class="method">
 <dt id="metawards.Population.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>initial: int = 0</em>, <em>susceptibles: int = 0</em>, <em>latent: int = 0</em>, <em>total: int = 0</em>, <em>recovereds: int = 0</em>, <em>n_inf_wards: int = 0</em>, <em>scale_uv: float = 1.0</em>, <em>day: int = 0</em>, <em>date: datetime.date = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Population.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>initial: int = 0</em>, <em>susceptibles: int = 0</em>, <em>latent: int = 0</em>, <em>total: int = 0</em>, <em>totals: Dict[str</em>, <em>int] = None</em>, <em>recovereds: int = 0</em>, <em>n_inf_wards: int = 0</em>, <em>scale_uv: float = 1.0</em>, <em>day: int = 0</em>, <em>date: datetime.date = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Population.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -300,6 +300,9 @@ disease through the population</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Population.total" title="metawards.Population.total"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total</span></code></a></td>
 <td>The total number of infections</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.totals" title="metawards.Population.totals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">totals</span></code></a></td>
+<td>The totao number of infections in other states</td>
 </tr>
 </tbody>
 </table>
@@ -428,6 +431,12 @@ out during a model run</p>
 <dd><p>The total number of infections</p>
 </dd></dl>
 
+<dl class="attribute">
+<dt id="metawards.Population.totals">
+<code class="descname">totals</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Population.totals" title="Permalink to this definition">¶</a></dt>
+<dd><p>The totao number of infections in other states</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -453,7 +462,7 @@ out during a model run</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

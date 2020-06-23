@@ -226,7 +226,19 @@
 <span class="sd">         Whether or not the function accepts the &quot;stage&quot; argument</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">inspect</span>
-    <span class="k">return</span> <span class="s2">&quot;stage&quot;</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;stage&quot;</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">._console</span> <span class="kn">import</span> <span class="n">Console</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find the signature for </span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2">. The error &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;is </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. This is likely because this &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;is an in-built function compiled using cython. To &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;fix this, make sure that the pyx file containing &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;your cython starts with &#39;# cython: binding=True`. &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;This will switch on support in cython for adding &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;signatures to compiled functions.&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="n">e</span>
 
 
 <div class="viewcode-block" id="get_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_functions.html#metawards.utils.get_functions">[docs]</a><span class="k">def</span> <span class="nf">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -537,7 +549,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

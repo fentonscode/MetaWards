@@ -191,6 +191,7 @@
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span> <span class="k">as</span> <span class="n">_dataclass</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> <span class="k">as</span> <span class="n">_List</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="k">as</span> <span class="n">_Union</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span> <span class="k">as</span> <span class="n">_Dict</span>
 
 <span class="kn">from</span> <span class="nn">._network</span> <span class="kn">import</span> <span class="n">Network</span>
 <span class="kn">from</span> <span class="nn">._networks</span> <span class="kn">import</span> <span class="n">Networks</span>
@@ -243,6 +244,10 @@
     <span class="c1">#: The size of the R population in each ward</span>
     <span class="n">R_in_wards</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="c1">#: The sizes of the X populations in each ward - this is</span>
+    <span class="c1">#: for named disease stages that don&#39;t fit into S, E, I or R</span>
+    <span class="n">X_in_wards</span><span class="p">:</span> <span class="n">_Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">_List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="c1">#: The sub-workspaces used for the subnets of a</span>
     <span class="c1">#: multi-demographic Networks (list[Workspace])</span>
     <span class="n">subspaces</span> <span class="o">=</span> <span class="kc">None</span>
@@ -257,9 +262,10 @@
         <span class="n">workspace</span> <span class="o">=</span> <span class="n">Workspace</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">Network</span><span class="p">):</span>
-            <span class="n">n_inf_classes</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
+            <span class="n">disease</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span>
+            <span class="n">n_inf_classes</span> <span class="o">=</span> <span class="n">disease</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
 
-            <span class="n">workspace</span><span class="o">.</span><span class="n">n_inf_classes</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
+            <span class="n">workspace</span><span class="o">.</span><span class="n">n_inf_classes</span> <span class="o">=</span> <span class="n">n_inf_classes</span>
             <span class="n">workspace</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nnodes</span>
 
             <span class="n">size</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># 1-indexed</span>
@@ -275,9 +281,24 @@
             <span class="n">workspace</span><span class="o">.</span><span class="n">incidence</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
             <span class="n">workspace</span><span class="o">.</span><span class="n">S_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">workspace</span><span class="o">.</span><span class="n">E_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">workspace</span><span class="o">.</span><span class="n">I_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="n">workspace</span><span class="o">.</span><span class="n">R_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;E&quot;</span> <span class="ow">in</span> <span class="n">disease</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
+                <span class="n">workspace</span><span class="o">.</span><span class="n">E_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;I&quot;</span> <span class="ow">in</span> <span class="n">disease</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
+                <span class="n">workspace</span><span class="o">.</span><span class="n">I_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="s2">&quot;R&quot;</span> <span class="ow">in</span> <span class="n">disease</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
+                <span class="n">workspace</span><span class="o">.</span><span class="n">R_in_wards</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">mapping</span> <span class="ow">in</span> <span class="n">disease</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">mapping</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="s2">&quot;R&quot;</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">workspace</span><span class="o">.</span><span class="n">X_in_wards</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="n">workspace</span><span class="o">.</span><span class="n">X_in_wards</span> <span class="o">=</span> <span class="p">{}</span>
+
+                    <span class="k">if</span> <span class="n">mapping</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">workspace</span><span class="o">.</span><span class="n">X_in_wards</span><span class="p">:</span>
+                        <span class="n">workspace</span><span class="o">.</span><span class="n">X_in_wards</span><span class="p">[</span><span class="n">mapping</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_int_array</span><span class="p">(</span>
+                            <span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
             <span class="n">workspace</span><span class="o">.</span><span class="n">ward_inf_tot</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -320,7 +341,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

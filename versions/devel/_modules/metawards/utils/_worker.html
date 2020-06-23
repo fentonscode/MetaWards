@@ -279,22 +279,27 @@
     <span class="k">with</span> <span class="n">OutputFiles</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">check_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">force_empty</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                      <span class="n">prompt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="n">auto_bzip</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_dir</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">Console</span><span class="o">.</span><span class="n">redirect_output</span><span class="p">(</span><span class="n">outdir</span><span class="o">=</span><span class="n">outdir</span><span class="p">,</span> <span class="n">auto_bzip</span><span class="o">=</span><span class="n">auto_bzip</span><span class="p">):</span>
-            <span class="c1"># first, build and prepare the Network(s). This is built once</span>
-            <span class="c1"># from the parameters and demographics by loading files from</span>
-            <span class="c1"># the filesystem, as sending this over the physical network</span>
-            <span class="c1"># would be too expensive. Subsequent calls to this function</span>
-            <span class="c1"># after the Network(s) has been built will call</span>
-            <span class="c1"># network.update(params, demographics)</span>
-            <span class="n">network</span> <span class="o">=</span> <span class="n">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
-                                     <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># first, build and prepare the Network(s). This is built once</span>
+                <span class="c1"># from the parameters and demographics by loading files from</span>
+                <span class="c1"># the filesystem, as sending this over the physical network</span>
+                <span class="c1"># would be too expensive. Subsequent calls to this function</span>
+                <span class="c1"># after the Network(s) has been built will call</span>
+                <span class="c1"># network.update(params, demographics)</span>
+                <span class="n">network</span> <span class="o">=</span> <span class="n">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                         <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">,</span>
+                                         <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">)</span>
 
-            <span class="c1"># if the user wanted to remove this directory then they would</span>
-            <span class="c1"># have done so in the main process - no need to check again</span>
-            <span class="n">options</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_dir</span>
+                <span class="c1"># if the user wanted to remove this directory then they would</span>
+                <span class="c1"># have done so in the main process - no need to check again</span>
+                <span class="n">options</span><span class="p">[</span><span class="s2">&quot;output_dir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_dir</span>
 
-            <span class="n">output</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+                <span class="n">output</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
 
-            <span class="k">return</span> <span class="n">output</span>
+                <span class="k">return</span> <span class="n">output</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">Console</span><span class="o">.</span><span class="n">print_exception</span><span class="p">()</span>
+                <span class="k">raise</span>
 </pre></div>
 
            </div>
@@ -308,7 +313,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

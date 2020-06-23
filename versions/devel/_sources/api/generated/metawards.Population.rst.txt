@@ -40,5 +40,6 @@ metawards.Population
       ~Population.subpops
       ~Population.susceptibles
       ~Population.total
+      ~Population.totals
    
    

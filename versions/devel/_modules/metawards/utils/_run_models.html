@@ -447,8 +447,8 @@
                             <span class="n">spinner</span><span class="o">.</span><span class="n">success</span><span class="p">()</span>
                         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                             <span class="n">spinner</span><span class="o">.</span><span class="n">failure</span><span class="p">()</span>
+                            <span class="n">Console</span><span class="o">.</span><span class="n">print_exception</span><span class="p">()</span>
                             <span class="n">error</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;FAILED: </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
-                            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
                             <span class="n">output</span> <span class="o">=</span> <span class="kc">None</span>
 
                     <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -677,7 +677,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

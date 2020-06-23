@@ -223,7 +223,7 @@
 <h1>metawards.Disease<a class="headerlink" href="#metawards-disease" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Disease">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Disease</code><span class="sig-paren">(</span><em>beta: List[float] = None</em>, <em>progress: List[float] = None</em>, <em>too_ill_to_move: List[float] = None</em>, <em>contrib_foi: List[float] = None</em>, <em>start_symptom: int = None</em>, <em>mapping: List[str] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_disease.html#Disease"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Disease" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Disease</code><span class="sig-paren">(</span><em>beta: List[float] = None</em>, <em>progress: List[float] = None</em>, <em>too_ill_to_move: List[float] = None</em>, <em>contrib_foi: List[float] = None</em>, <em>start_symptom: int = None</em>, <em>mapping: List[str] = None</em>, <em>stage: List[str] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_disease.html#Disease"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Disease" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class holds the parameters about a single disease</p>
 <p>A disease is characterised as a serious of stages, each
 with their own values of the beta, progress, too_ill_to_move
@@ -244,7 +244,7 @@ the Disease.load function, e.g.</p>
 </div>
 <dl class="method">
 <dt id="metawards.Disease.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>beta: List[float] = None</em>, <em>progress: List[float] = None</em>, <em>too_ill_to_move: List[float] = None</em>, <em>contrib_foi: List[float] = None</em>, <em>start_symptom: int = None</em>, <em>mapping: List[str] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Disease.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>beta: List[float] = None</em>, <em>progress: List[float] = None</em>, <em>too_ill_to_move: List[float] = None</em>, <em>contrib_foi: List[float] = None</em>, <em>start_symptom: int = None</em>, <em>mapping: List[str] = None</em>, <em>stage: List[str] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Disease.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -260,10 +260,13 @@ the Disease.load function, e.g.</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.__init__" title="metawards.Disease.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(beta,&nbsp;progress,&nbsp;too_ill_to_move,&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.get_mapping_to" title="metawards.Disease.get_mapping_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mapping_to</span></code></a>(other)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.get_index" title="metawards.Disease.get_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index</span></code></a>(idx)</td>
+<td>Return the index of disease stage ‘idx’ in this disease</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.get_mapping_to" title="metawards.Disease.get_mapping_to"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_mapping_to</span></code></a>(other)</td>
 <td>Return the mapping from stage index i of this disease to stage index j other the passed other disease.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.load" title="metawards.Disease.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(disease,&nbsp;repository,&nbsp;folder,&nbsp;filename)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.load" title="metawards.Disease.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(disease,&nbsp;repository,&nbsp;folder,&nbsp;filename)</td>
 <td>Load the disease parameters for the specified disease.</td>
 </tr>
 </tbody>
@@ -287,10 +290,13 @@ the Disease.load function, e.g.</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.progress" title="metawards.Disease.progress"><code class="xref py py-obj docutils literal notranslate"><span class="pre">progress</span></code></a></td>
 <td>Progress parameter for each stage of the disease</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.start_symptom" title="metawards.Disease.start_symptom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_symptom</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.stage" title="metawards.Disease.stage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stage</span></code></a></td>
+<td>Name of the stage, e.g.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.start_symptom" title="metawards.Disease.start_symptom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start_symptom</span></code></a></td>
 <td>Index of the first symptomatic stage</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Disease.too_ill_to_move" title="metawards.Disease.too_ill_to_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">too_ill_to_move</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Disease.too_ill_to_move" title="metawards.Disease.too_ill_to_move"><code class="xref py py-obj docutils literal notranslate"><span class="pre">too_ill_to_move</span></code></a></td>
 <td>TooIllToMove parameter for each stage of the disease</td>
 </tr>
 </tbody>
@@ -333,6 +339,12 @@ stage of the disease</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Disease.get_index">
+<code class="descname">get_index</code><span class="sig-paren">(</span><em>idx</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_disease.html#Disease.get_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Disease.get_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of disease stage ‘idx’ in this disease</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Disease.get_mapping_to">
 <code class="descname">get_mapping_to</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_disease.html#Disease.get_mapping_to"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Disease.get_mapping_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the mapping from stage index i of this disease to
@@ -349,6 +361,8 @@ other = [“*”, “E”, “I”, “I”, “I”, “R”]</p>
 <p>then</p>
 <p>self.get_mapping_to(other) = [0, 1, 2, 3, 5]
 other.get_mapping_to(self) = [0, 1, 2, 3, 3, 4]</p>
+<p>If we can’t map a state, then we will try to map to “I”.
+If we still can’t map, then this is an error.</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -401,6 +415,12 @@ repository</li>
 </dd></dl>
 
 <dl class="attribute">
+<dt id="metawards.Disease.stage">
+<code class="descname">stage</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Disease.stage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of the stage, e.g. “H1”, “I2”, “E1” etc.</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="metawards.Disease.start_symptom">
 <code class="descname">start_symptom</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Disease.start_symptom" title="Permalink to this definition">¶</a></dt>
 <dd><p>Index of the first symptomatic stage</p>
@@ -437,7 +457,7 @@ repository</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>

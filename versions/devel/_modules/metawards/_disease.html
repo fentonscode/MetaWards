@@ -237,6 +237,9 @@
     <span class="c1">#: Mapping label, e.g. &quot;*&quot;, &quot;E&quot;, &quot;I&quot; or &quot;R&quot;</span>
     <span class="n">mapping</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="c1">#: Name of the stage, e.g. &quot;H1&quot;, &quot;I2&quot;, &quot;E1&quot; etc.</span>
+    <span class="n">stage</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="n">_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_authors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
@@ -254,6 +257,7 @@
 <span class="s2">* repository: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* repository_branch: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository_branch</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* repository_version: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository_version</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">* stage: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* mapping: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* beta: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* progress: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="si">}</span><span class="s2"></span>
@@ -263,12 +267,16 @@
 <span class="s2">&quot;&quot;&quot;</span></div>
 
 <div class="viewcode-block" id="Disease.__repr__"><a class="viewcode-back" href="../../api/generated/metawards.Disease.html#metawards.Disease.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Disease(beta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="si">}</span><span class="s2">, progress=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="si">}</span><span class="s2">, &quot;</span> \
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Disease(stage=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="si">}</span><span class="s2">, beta=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="si">}</span><span class="s2">, &quot;</span> \
+               <span class="sa">f</span><span class="s2">&quot;progress=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="si">}</span><span class="s2">, &quot;</span> \
                <span class="sa">f</span><span class="s2">&quot;too_ill_to_move=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">too_ill_to_move</span><span class="si">}</span><span class="s2">, contrib_foi=&quot;</span> \
                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">contrib_foi</span><span class="si">}</span><span class="s2">)&quot;</span></div>
 
 <div class="viewcode-block" id="Disease.__eq__"><a class="viewcode-back" href="../../api/generated/metawards.Disease.html#metawards.Disease.__eq__">[docs]</a>    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">beta</span> <span class="ow">and</span> \
+        <span class="k">return</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">stage</span> <span class="ow">and</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">mapping</span> <span class="ow">and</span> \
+            <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">beta</span> <span class="ow">and</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">progress</span> <span class="ow">and</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">too_ill_to_move</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">too_ill_to_move</span> <span class="ow">and</span> \
             <span class="bp">self</span><span class="o">.</span><span class="n">contrib_foi</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">contrib_foi</span> <span class="ow">and</span> \
@@ -296,15 +304,32 @@
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data read for disease </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">}</span><span class="s2"> &quot;</span>
                                  <span class="sa">f</span><span class="s2">&quot;is corrupted! </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;There must be at least 4 disease stages (&#39;*&#39;, &#39;E&#39;, &#39;I&#39;, &quot;</span>
                 <span class="sa">f</span><span class="s2">&quot;&#39;R&#39;) - the number of stages here is </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> \
-                <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">&gt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># we haven&#39;t set any parameters. This is likely an &quot;overall&quot;</span>
+            <span class="c1"># disease file, where just names are needed. Populate wuth</span>
+            <span class="c1"># default parameters</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">progress</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">too_ill_to_move</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">contrib_foi</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;start_symptom </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span><span class="si">}</span><span class="s2"> is &quot;</span>
-                                 <span class="sa">f</span><span class="s2">&quot;invalid for a disease with </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> stages&quot;</span><span class="p">)</span>
+                                 <span class="sa">f</span><span class="s2">&quot;invalid for a disease with </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> stages. &quot;</span>
+                                 <span class="sa">f</span><span class="s2">&quot;It should be between 1 and </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_symptom</span><span class="p">)</span>
 
@@ -325,58 +350,81 @@
         <span class="c1"># for the model to work the different stages have set meanings</span>
         <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="c1"># - stage 0 is newly infected that day, so progress must be 1</span>
-        <span class="c1">#   and beta must be 0 (not infective)</span>
-        <span class="c1"># This is not an error - the pox and flu2 diseases have this.</span>
-        <span class="c1"># I don&#39;t think I understand correctly though if that is right,</span>
-        <span class="c1"># as this means that individuals will stay longer in the</span>
-        <span class="c1"># post-infect but pre-latent stage and be recorded as &quot;recovered&quot;?</span>
-        <span class="c1"># if self.progress[0] != 1.0:</span>
-        <span class="c1">#    errors.append(</span>
-        <span class="c1">#        f&quot;The progress[0] value must be 1.0 as individuals are &quot;</span>
-        <span class="c1">#        f&quot;only newly infected for one day, and so must progress &quot;</span>
-        <span class="c1">#        f&quot;immediately to the &#39;latent&#39; stage.&quot;)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># - stage 0 is newly infected that day, so progress must be 1</span>
+            <span class="c1">#   and beta must be 0 (not infective)</span>
+            <span class="c1"># This is not an error - the pox and flu2 diseases have this.</span>
+            <span class="c1"># I don&#39;t think I understand correctly though if that is right,</span>
+            <span class="c1"># as this means that individuals will stay longer in the</span>
+            <span class="c1"># post-infect but pre-latent stage and be recorded as &quot;recovered&quot;?</span>
+            <span class="c1"># if self.progress[0] != 1.0:</span>
+            <span class="c1">#    errors.append(</span>
+            <span class="c1">#        f&quot;The progress[0] value must be 1.0 as individuals are &quot;</span>
+            <span class="c1">#        f&quot;only newly infected for one day, and so must progress &quot;</span>
+            <span class="c1">#        f&quot;immediately to the &#39;latent&#39; stage.&quot;)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The beta[0] value must be 0.0 as newly infected &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;individuals should not be infective and cannot &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;infect others.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The beta[0] value must be 0.0 as newly infected &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;individuals should not be infective and cannot &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;infect others.&quot;</span><span class="p">)</span>
 
-        <span class="c1"># - stage 1 is &#39;latent&#39;, meaning that beta must be 0 (not infective)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The beta[1] value must be 0.0 as &#39;latent&#39; individuals &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;are not infectious and should not be able to infect &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;others.&quot;</span><span class="p">)</span>
+            <span class="c1"># - stage 1 is &#39;latent&#39;, meaning that beta must be 0</span>
+            <span class="c1"># (not infective)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The beta[1] value must be 0.0 as &#39;latent&#39; individuals &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;are not infectious and should not be able to infect &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;others.&quot;</span><span class="p">)</span>
 
-        <span class="c1"># - stage -1 is &#39;recovered&#39;, meaning that beta must not be 0</span>
-        <span class="c1">#   and progress is 0, as once recovered, always recovered</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The beta[-1] value must be 0.0 as &#39;recovered&#39; individuals &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;are not infectious and should not be able to infect &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;others.&quot;</span><span class="p">)</span>
+            <span class="c1"># - stage -1 is &#39;recovered&#39;, meaning that beta must not be 0</span>
+            <span class="c1">#   and progress is 0, as once recovered, always recovered</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The beta[-1] value must be 0.0 as &#39;recovered&#39; &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;are not infectious and should not be able to infect &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;others.&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s2">&quot;The progress[-1] value must be 0.0 as &#39;recovered&#39; &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;individuals have no further disease stage to progress to. &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;We hope that once recovered, always recovered.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">progress</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The progress[-1] value must be 0.0 as &#39;recovered&#39; &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;individuals have no further disease stage to progress &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;to. We hope that once recovered, always recovered.&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
-            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
-            <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Invalid disease parameters!</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
-                                 <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+                <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+                <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Invalid disease parameters!</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span>
+                                     <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Number of named stages (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span><span class="si">}</span><span class="s2">) does not &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;equal the number of stages (</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="c1"># default mapping is first stage is &#39;*&#39;, second stage is &#39;E&#39;,</span>
-            <span class="c1"># last stage is &#39;R&#39; and remaining stages are &#39;I&#39;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;E&quot;</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># default mapping is first stage is &#39;*&#39;, second stage is &#39;E&#39;,</span>
+                <span class="c1"># last stage is &#39;R&#39; and remaining stages are &#39;I&#39;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;E&quot;</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># the mapping is the character part of the stage name, e.g.</span>
+                <span class="c1"># &quot;H1&quot; maps to &quot;H&quot;, &quot;ICU2&quot; maps to ICU etc.</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="kn">import</span> <span class="nn">re</span> <span class="k">as</span> <span class="nn">_re</span>
+
+                <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">:</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="n">_re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(.*[^\d^\b^\s])[\b\s]*([\d]*)&quot;</span><span class="p">,</span> <span class="n">stage</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid stage name </span><span class="si">{</span><span class="n">stage</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]))</span>
 
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">)</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">():</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
@@ -403,6 +451,45 @@
                     <span class="sa">f</span><span class="s2">&quot;The mapping must contain at least one &#39;I&#39; stage. &quot;</span>
                     <span class="sa">f</span><span class="s2">&quot;You cannot have &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># set the default names - these are &#39;*&#39;, &quot;E&quot;, &quot;I?&quot;, &quot;R&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;E&quot;</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;I&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;I</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<div class="viewcode-block" id="Disease.get_index"><a class="viewcode-back" href="../../api/generated/metawards.Disease.html#metawards.Disease.get_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the index of disease stage &#39;idx&#39; in this disease&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="c1"># lookup by name</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">i</span>
+
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;There is no disease stage called </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">. Available &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;stages are </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stage</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span> <span class="o">+</span> <span class="n">idx</span>
+
+            <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">idx</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;There is no diseaes stage at index </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">. The number &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;of stages is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">N_INF_CLASSES</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">idx</span></div>
+
 <div class="viewcode-block" id="Disease.get_mapping_to"><a class="viewcode-back" href="../../api/generated/metawards.Disease.html#metawards.Disease.get_mapping_to">[docs]</a>    <span class="k">def</span> <span class="nf">get_mapping_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the mapping from stage index i of this disease to</span>
 <span class="sd">           stage index j other the passed other disease. This returns</span>
@@ -423,6 +510,9 @@
 
 <span class="sd">           self.get_mapping_to(other) = [0, 1, 2, 3, 5]</span>
 <span class="sd">           other.get_mapping_to(self) = [0, 1, 2, 3, 3, 4]</span>
+
+<span class="sd">           If we can&#39;t map a state, then we will try to map to &quot;I&quot;.</span>
+<span class="sd">           If we still can&#39;t map, then this is an error.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
             <span class="c1"># no need to map,</span>
@@ -436,15 +526,31 @@
                   <span class="s2">&quot;R&quot;</span><span class="p">:</span> <span class="p">[]}</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stage</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">mapping</span><span class="p">):</span>
-            <span class="n">stages</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">stages</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">stages</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="p">:</span>
-            <span class="n">s</span> <span class="o">=</span> <span class="n">stages</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">stages</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">stages</span><span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span>
 
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># we are mapped to an invalid state</span>
+                <span class="n">mapping</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">mapping</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">mapping</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
+            <span class="c1"># we are missing a state</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;It is not possible to map from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">mapping</span><span class="si">}</span><span class="s2"> to &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="n">mapping</span><span class="si">}</span><span class="s2">, as the stages marked &#39;-1&#39; cannot be &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;safely mapped: </span><span class="si">{</span><span class="n">mapping</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">mapping</span></div>
 
@@ -543,6 +649,7 @@
                           <span class="n">contrib_foi</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;contrib_foi&quot;</span><span class="p">,</span> <span class="p">[]),</span>
                           <span class="n">start_symptom</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;start_symptom&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                           <span class="n">mapping</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;mapping&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                          <span class="n">stage</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;stage&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
                           <span class="n">_name</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">disease</span><span class="p">),</span>
                           <span class="n">_authors</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;author(s)&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">),</span>
                           <span class="n">_contacts</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;contact(s)&quot;</span><span class="p">,</span> <span class="s2">&quot;unknown&quot;</span><span class="p">),</span>
@@ -568,7 +675,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 18, 2020.
+        Last updated on Jun 23, 2020.
       </span>
 
     </p>
