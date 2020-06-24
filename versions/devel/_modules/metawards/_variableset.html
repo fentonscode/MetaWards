@@ -192,26 +192,32 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span> <span class="k">as</span> <span class="n">_Dict</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="k">as</span> <span class="n">_Union</span>
 
+<span class="kn">from</span> <span class="nn">._disease</span> <span class="kn">import</span> <span class="n">Disease</span>
+
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;VariableSets&quot;</span><span class="p">,</span> <span class="s2">&quot;VariableSet&quot;</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">_set_beta</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_set_beta</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adjust the Disease.beta parameter&quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
     <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_set_progress</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adjust the Disease.progress parameter&quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
     <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">progress</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_set_too_ill_to_move</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adjust the Disease.too_ill_to_move parameter&quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
     <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">too_ill_to_move</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_set_contrib_foi</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Adjust the Disease.contrib_foi parameter&quot;&quot;&quot;</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
     <span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="o">.</span><span class="n">contrib_foi</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
@@ -261,14 +267,6 @@
         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;You cannot index the dyn_play_at_home parameter&quot;</span><span class="p">)</span>
 
     <span class="n">params</span><span class="o">.</span><span class="n">dyn_play_at_home</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">_set_data_dist_cutoff</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Adjust the Parameters.data_dist_cutoff parameter&quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;You cannot index the data_dist_cutoff parameter&quot;</span><span class="p">)</span>
-
-    <span class="n">params</span><span class="o">.</span><span class="n">data_dist_cutoff</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_set_dyn_dist_cutoff</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
@@ -380,7 +378,6 @@
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;initial_inf&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_initial_inf</span>
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;static_play_at_home&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_static_play_at_home</span>
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;dyn_play_at_home&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_dyn_play_at_home</span>
-<span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;data_dist_cutoff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_data_dist_cutoff</span>
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;dyn_dist_cutoff&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_dyn_dist_cutoff</span>
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;play_to_work&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_play_to_work</span>
 <span class="n">_adjustable</span><span class="p">[</span><span class="s2">&quot;work_to_play&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_set_work_to_play</span>
@@ -660,12 +657,21 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">value</span>
             <span class="k">return</span>
 
-        <span class="c1"># look for &#39;variable[index]&#39;</span>
-        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([\s:\.\w]+)\[(\d+)\]&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="c1"># look for &#39;variable[index]&#39;, demographic:variable[index],</span>
+        <span class="c1"># .variable[index], user.variable[index],</span>
+        <span class="c1"># variable[&quot;key&quot;], variable[&#39;key&#39;] and all combinations of above</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([\s:\.\w]+)\[\s*([\d+]|</span><span class="se">\&quot;</span><span class="s2">.+</span><span class="se">\&quot;</span><span class="s2">|&#39;.+&#39;)\s*\]&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
             <span class="n">varname</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-            <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+            <span class="n">index</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">index</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">index</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">):</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
             <span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">varname</span> <span class="o">=</span> <span class="n">name</span>
@@ -689,12 +695,16 @@
 
         <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">varname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;user.&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">varname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span> <span class="ow">or</span>
                 <span class="n">varname</span> <span class="ow">in</span> <span class="n">_adjustable</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;It is not possible to adjust the variable &quot;</span>
-                           <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> to equal </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">. Available variables &quot;</span>
-                           <span class="sa">f</span><span class="s2">&quot;are </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_adjustable</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">, or to set &quot;</span>
-                           <span class="sa">f</span><span class="s2">&quot;a user parameter &#39;user.parameter&#39; or &quot;</span>
-                           <span class="sa">f</span><span class="s2">&quot;&#39;.parameter&#39;. To set an index use &quot;</span>
-                           <span class="sa">f</span><span class="s2">&quot;&#39;parameter[index]&#39;, e.g. &#39;beta[2]&#39;&quot;</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;It is not possible to adjust the variable &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> to equal </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">. Available variables &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;are </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">_adjustable</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">, or to set &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;a user parameter &#39;user.parameter&#39; or &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;&#39;.parameter&#39;. To set an index use &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;&#39;parameter[index]&#39;, e.g. &#39;beta[2]&#39;, &quot;</span>
+                          <span class="sa">f</span><span class="s2">&quot;&#39;parameter[</span><span class="se">\&quot;</span><span class="s2">key</span><span class="se">\&quot;</span><span class="s2">]&#39;, e.g. &#39;beta[</span><span class="se">\&quot;</span><span class="s2">I1</span><span class="se">\&quot;</span><span class="s2">]&#39;&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;It is not possible to adjust </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> to &quot;</span>
+                           <span class="sa">f</span><span class="s2">&quot;equal </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">varname</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;user.&quot;</span><span class="p">):</span>
             <span class="c1"># strip off &#39;user&#39; so that it just starts with a dot</span>
@@ -1510,7 +1520,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 23, 2020.
+        Last updated on Jun 24, 2020.
       </span>
 
     </p>

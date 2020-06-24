@@ -247,13 +247,16 @@ disease through the population</p>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.has_equal_SEIR" title="metawards.Population.has_equal_SEIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_equal_SEIR</span></code></a>(other)</td>
 <td>Return whether or not the SEIR values for this population equal ‘other’</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.increment_day" title="metawards.Population.increment_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increment_day</span></code></a>(ndays)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.headers" title="metawards.Population.headers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headers</span></code></a>()</td>
+<td>Return a list of the headers that should be used to report data from this population.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.increment_day" title="metawards.Population.increment_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increment_day</span></code></a>(ndays)</td>
 <td>Advance the day count by ‘ndays’ (default 1)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.specialise" title="metawards.Population.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.specialise" title="metawards.Population.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network)</td>
 <td>Specialise this population for the passed Networks</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.summary" title="metawards.Population.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a>([demographics])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.summary" title="metawards.Population.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a>([demographics])</td>
 <td>Return a short summary string that is suitable to be printed out during a model run</td>
 </tr>
 </tbody>
@@ -337,6 +340,14 @@ the correct values</p>
 <code class="descname">has_equal_SEIR</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population.has_equal_SEIR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.has_equal_SEIR" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return whether or not the SEIR values for this population
 equal ‘other’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Population.headers">
+<code class="descname">headers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_population.html#Population.headers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Population.headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the headers that should be used to report
+data from this population. This returns a list of headers,
+e.g. [“S”, “E”, “I”, “R”]</p>
 </dd></dl>
 
 <dl class="method">
@@ -462,7 +473,7 @@ out during a model run</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 23, 2020.
+        Last updated on Jun 24, 2020.
       </span>
 
     </p>

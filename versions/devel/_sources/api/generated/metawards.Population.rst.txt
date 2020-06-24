@@ -16,6 +16,7 @@ metawards.Population
       ~Population.__init__
       ~Population.assert_sane
       ~Population.has_equal_SEIR
+      ~Population.headers
       ~Population.increment_day
       ~Population.specialise
       ~Population.summary

@@ -36,7 +36,6 @@ metawards.Parameters
       ~Parameters.additional_seeds
       ~Parameters.daily_imports
       ~Parameters.daily_ward_vaccination_capacity
-      ~Parameters.data_dist_cutoff
       ~Parameters.disease_params
       ~Parameters.dyn_dist_cutoff
       ~Parameters.dyn_play_at_home
