@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -215,7 +218,7 @@
 <span class="sd">       to allow the demographics.json file to store numbers is</span>
 <span class="sd">       a variety of formats</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">safe_eval_number</span>
+    <span class="kn">from</span> <span class="nn">._interpret</span> <span class="kn">import</span> <span class="n">Interpret</span>
 
     <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">0.0</span>
@@ -223,17 +226,17 @@
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
         <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
-            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">safe_eval_number</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Interpret</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">lst</span>
 
     <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">d</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">safe_eval_number</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="n">d</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Interpret</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">d</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">safe_eval_number</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Interpret</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="Demographics"><a class="viewcode-back" href="../../api/generated/metawards.Demographics.html#metawards.Demographics">[docs]</a><span class="nd">@_dataclass</span><span class="p">(</span><span class="n">eq</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -539,7 +542,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

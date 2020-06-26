@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -560,7 +563,7 @@
                      <span class="s2">&quot;environment variable METAWARDS_CORES_PER_NODE&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_threads_per_task</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="get_threads_per_task"><a class="viewcode-back" href="../../../api/generated/metawards.app.get_threads_per_task.html#metawards.app.get_threads_per_task">[docs]</a><span class="k">def</span> <span class="nf">get_threads_per_task</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">nthreads</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">args</span><span class="o">.</span><span class="n">nthreads</span>
 
@@ -582,7 +585,7 @@
     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must specify the number of threads per task &quot;</span>
                      <span class="s2">&quot;using --nthreads or by setting the &quot;</span>
                      <span class="s2">&quot;environment variables METAWARDS_THREADS_PER_TASK &quot;</span>
-                     <span class="s2">&quot;or OMP_NUM_THREADS&quot;</span><span class="p">)</span>
+                     <span class="s2">&quot;or OMP_NUM_THREADS&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="scoop_supervisor"><a class="viewcode-back" href="../../../api/generated/metawards.app.scoop_supervisor.html#metawards.app.scoop_supervisor">[docs]</a><span class="k">def</span> <span class="nf">scoop_supervisor</span><span class="p">(</span><span class="n">hostfile</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
@@ -1057,8 +1060,8 @@
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="kn">from</span> <span class="nn">dateparser</span> <span class="kn">import</span> <span class="n">parse</span>
-            <span class="n">start_date</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">date</span><span class="p">()</span>
+            <span class="kn">from</span> <span class="nn">.._interpret</span> <span class="kn">import</span> <span class="n">Interpret</span>
+            <span class="n">start_date</span> <span class="o">=</span> <span class="n">Interpret</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">start_date</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span>
 
@@ -1172,8 +1175,10 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_disease</span><span class="p">(</span><span class="s2">&quot;ncov&quot;</span><span class="p">)</span>
 
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Adjustable parameters to scan&quot;</span><span class="p">)</span>
-    <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;* </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">]),</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Commenting out for 1.2 release - will work out how to re-enable</span>
+    <span class="c1"># this in 1.3</span>
+    <span class="c1">#Console.rule(&quot;Adjustable parameters to scan&quot;)</span>
+    <span class="c1">#Console.print(&quot;\n&quot;.join([f&quot;* {x}&quot; for x in variables]), markdown=True)</span>
 
     <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Model data&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">:</span>
@@ -1388,7 +1393,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -593,10 +596,6 @@
 
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
                 <span class="n">filename</span> <span class="o">=</span> <span class="n">f</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">FileExistsError</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;Unable to find extra seeds file </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> in &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;the current directory or in </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">additional_seeds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
 
@@ -699,7 +698,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -338,7 +341,7 @@
     <span class="k">return</span> <span class="n">funcs</span></div>
 
 
-<span class="k">def</span> <span class="nf">get_model_loop_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
+<div class="viewcode-block" id="get_model_loop_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_model_loop_functions.html#metawards.utils.get_model_loop_functions">[docs]</a><span class="k">def</span> <span class="nf">get_model_loop_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Convenience function that returns all of the functions</span>
 <span class="sd">       that should be called during the model loop</span>
 <span class="sd">       (i.e. the &quot;setup&quot;, &quot;foi&quot;, &quot;infect&quot; and &quot;analyse&quot; stages)</span>
@@ -379,7 +382,7 @@
     <span class="n">funcs</span> <span class="o">+=</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;infect&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">funcs</span> <span class="o">+=</span> <span class="n">get_functions</span><span class="p">(</span><span class="n">stage</span><span class="o">=</span><span class="s2">&quot;analyse&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">funcs</span>
+    <span class="k">return</span> <span class="n">funcs</span></div>
 
 
 <div class="viewcode-block" id="get_initialise_functions"><a class="viewcode-back" href="../../../api/generated/metawards.utils.get_initialise_functions.html#metawards.utils.get_initialise_functions">[docs]</a><span class="k">def</span> <span class="nf">get_initialise_functions</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="n">MetaFunction</span><span class="p">]:</span>
@@ -549,7 +552,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

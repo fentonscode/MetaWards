@@ -101,6 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -252,16 +255,19 @@ This should improve speed of loading and access.</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Nodes.copy" title="metawards.Nodes.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</td>
 <td>Return a copy of this network, using deep copies for things which are variable, but shallow copies for things which should stay the same (e.g.</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_null</span></code>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Nodes.get_index" title="metawards.Nodes.get_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index</span></code></a>(i)</td>
+<td>Return the mapped index for the ith node.</td>
+</tr>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_null</span></code>()</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Nodes.population" title="metawards.Nodes.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Nodes.population" title="metawards.Nodes.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
 <td>Return the total population of the nodes</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Nodes.resize" title="metawards.Nodes.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(N)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Nodes.resize" title="metawards.Nodes.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resize</span></code></a>(N)</td>
 <td>Resize this container to hold ‘N’ nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Nodes.scale_susceptibles" title="metawards.Nodes.scale_susceptibles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_susceptibles</span></code></a>(ratio,&nbsp;work_ratio,&nbsp;play_ratio)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Nodes.scale_susceptibles" title="metawards.Nodes.scale_susceptibles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_susceptibles</span></code></a>(ratio,&nbsp;work_ratio,&nbsp;play_ratio)</td>
 <td>Scale the number of susceptibles in these Nodes by the passed scale ratios.</td>
 </tr>
 </tbody>
@@ -319,6 +325,14 @@ you are not changing the actual links between nodes, e.g.
 it shallow-copies label, begin_to, end_to, self_w, begin_p, end_p
 and self_p. If you are changing the links then you will
 need to recreate these arrays.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Nodes.get_index">
+<code class="descname">get_index</code><span class="sig-paren">(</span><em>i</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_nodes.html#Nodes.get_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Nodes.get_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the mapped index for the ith node. This will raise an
+IndexError if this is an invalid index. If not, it will map
+a negative index into a canonical positive index</p>
 </dd></dl>
 
 <dl class="method">
@@ -404,7 +418,7 @@ susceptibles - evenly scales the work and play populations</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

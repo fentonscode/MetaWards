@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -361,7 +364,9 @@
 <span class="sd">           Parameters</span>
 <span class="sd">           ----------</span>
 <span class="sd">           name: str or regexp</span>
-<span class="sd">             Name or code of the ward to search</span>
+<span class="sd">             Name or code of the ward to search. You can also include</span>
+<span class="sd">             the authority adn region by separating usign &quot;/&quot;, e.g.</span>
+<span class="sd">             &quot;Clifton/Bristol&quot;.</span>
 <span class="sd">           authority: str or regexp</span>
 <span class="sd">             Name or code of the authority to search</span>
 <span class="sd">           region: str or regexp</span>
@@ -380,16 +385,26 @@
         <span class="n">wards</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">wards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_ward</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
-                                    <span class="n">include_alternates</span><span class="o">=</span><span class="n">include_alternates</span><span class="p">)</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">wards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_ward</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+                                        <span class="n">include_alternates</span><span class="o">=</span><span class="n">include_alternates</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">wards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+                                        <span class="n">include_alternates</span><span class="o">=</span><span class="n">include_alternates</span><span class="p">)</span>
+                <span class="n">authority</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">region</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">wards</span>
 
         <span class="k">if</span> <span class="n">authority</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">authorities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_authority</span><span class="p">(</span>
-                                        <span class="n">authority</span><span class="p">,</span>
-                                        <span class="n">match</span><span class="o">=</span><span class="n">match_authority_and_region</span><span class="p">)</span>
+                <span class="n">authority</span><span class="p">,</span>
+                <span class="n">match</span><span class="o">=</span><span class="n">match_authority_and_region</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">authorities</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">authorities</span>
@@ -433,7 +448,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

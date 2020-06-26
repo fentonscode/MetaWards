@@ -17,6 +17,7 @@ metawards.Nodes
       ~Nodes.assert_not_null
       ~Nodes.assert_valid_index
       ~Nodes.copy
+      ~Nodes.get_index
       ~Nodes.is_null
       ~Nodes.population
       ~Nodes.resize

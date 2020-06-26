@@ -101,6 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -120,6 +123,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#june-26th-2020">1.2.0 - June 26th 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#june-11th-2020">1.1.0 - June 11th 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#may-23rd-2020">1.0.0 - May 23rd 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#may-18th-2020">0.12.0 - May 18th 2020</a></li>
@@ -220,6 +224,43 @@
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="june-26th-2020">
+<h2><a class="reference external" href="https://github.com/metawards/MetaWards/compare/1.1.0...1.2.0">1.2.0</a> - June 26th 2020<a class="headerlink" href="#june-26th-2020" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added the ability to use custom-named disease stages. You can now run any
+type of model, and are not limited to <code class="docutils literal notranslate"><span class="pre">S</span></code>, <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">I</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code>.
+Learn more in the <a class="reference internal" href="tutorial/part07/05_named_stages.html"><span class="doc">tutorial here</span></a>.</li>
+<li>Improved formatting out information output to the user regarding different
+disease stages. This includes better console output and also more
+informative output data files. Again, this is all detailed in the
+above tutorial.</li>
+<li>Updated all output files to support the summary data for custom
+named disease stages. Now you can collect the data you want directly
+without needing to build a custom extractor - just say which mapping
+stage you want. Again, this is described in the above tutorial.</li>
+<li>Added really flexible support for reading in different formats of
+additional seeds. See the <a class="reference internal" href="tutorial/part08/01_networks.html"><span class="doc">tutorial here</span></a>
+and the new <a class="reference internal" href="fileformats/index.html"><span class="doc">fileformats documentation</span></a>.
+This includes being able to read extra seeds from the command line,
+rather than needing to always write a file.</li>
+<li>Added in the ability to seed infections by date as well as day. Also
+seeding wards by name as well as index (e.g. <code class="docutils literal notranslate"><span class="pre">Clifton/Bristol</span></code>).</li>
+<li>Added in <a class="reference internal" href="api/generated/metawards.Interpret.html#metawards.Interpret" title="metawards.Interpret"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Interpret</span></code></a> to consolidate all of the code
+used to interpret strings into data types. This increases the power
+and flexibility of the data parsers, and adds in new features such
+as reading in random data, or adding math functions to the
+expression support, e.g. <code class="docutils literal notranslate"><span class="pre">pi</span> <span class="pre">*</span> <span class="pre">sqrt(3.5)</span></code> now works.</li>
+<li>Added cython support for plugins. If your plugin ends with <code class="docutils literal notranslate"><span class="pre">.pyx</span></code> and
+you have cython installed, then it will be compiled at run time.
+This should enable you to write plugin that are both powerful and fast.</li>
+<li>Fixed a deadlock on Linux when using multiprocessing and OpenMP together</li>
+<li>Removed the unused <code class="docutils literal notranslate"><span class="pre">.err</span></code> file.</li>
+<li>Removed <code class="docutils literal notranslate"><span class="pre">TotalInfections.dat.bz2</span></code> file (and similar) as these were
+difficult to work with and not well understood. Replaced with
+<code class="docutils literal notranslate"><span class="pre">total_infections.csv.bz2</span></code> (and similar) files, which have more
+information and are easier to work with (e.g. have column names).</li>
+</ul>
+</div>
 <div class="section" id="june-11th-2020">
 <h2><a class="reference external" href="https://github.com/metawards/MetaWards/compare/1.0.0...1.1.0">1.1.0</a> - June 11th 2020<a class="headerlink" href="#june-11th-2020" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -533,7 +574,7 @@ understand it.</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

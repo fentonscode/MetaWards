@@ -99,6 +99,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -213,9 +216,7 @@
 
     <span class="k">if</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;initialise&quot;</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">._setup_imports</span> <span class="kn">import</span> <span class="n">setup_seed_wards</span>
-        <span class="kn">from</span> <span class="nn">._advance_additional</span> <span class="kn">import</span> <span class="n">setup_additional_seeds</span>
-
-        <span class="k">return</span> <span class="p">[</span><span class="n">setup_seed_wards</span><span class="p">,</span> <span class="n">setup_additional_seeds</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">setup_seed_wards</span><span class="p">]</span>
 
     <span class="k">elif</span> <span class="n">stage</span> <span class="o">==</span> <span class="s2">&quot;setup&quot;</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">._advance_additional</span> <span class="kn">import</span> <span class="n">advance_additional</span>
@@ -246,7 +247,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

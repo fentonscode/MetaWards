@@ -18,6 +18,7 @@ metawards.Network
       ~Network.build
       ~Network.copy
       ~Network.get_min_max_distances
+      ~Network.get_node_index
       ~Network.get_work_index
       ~Network.has_different_work_matrix
       ~Network.initialise_infections

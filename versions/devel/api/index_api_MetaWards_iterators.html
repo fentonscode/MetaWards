@@ -101,6 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -226,11 +229,11 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.iterators.advance_additional.html#metawards.iterators.advance_additional" title="metawards.iterators.advance_additional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_additional</span></code></a>(nthreads,&nbsp;**kwargs)</td>
-<td>Advance the infection by infecting additional wards based on a pre-determined pattern based on the additional seeds (parallel version)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.iterators.advance_additional.html#metawards.iterators.advance_additional" title="metawards.iterators.advance_additional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_additional</span></code></a>(network,&nbsp;…)</td>
+<td>Advance the infection by infecting additional wards based on a pre-determined pattern based on the additional seeds</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.iterators.advance_additional_omp.html#metawards.iterators.advance_additional_omp" title="metawards.iterators.advance_additional_omp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_additional_omp</span></code></a>(**kwargs)</td>
-<td>Advance the infection by infecting additional wards based on a pre-determined pattern based on the additional seeds (parallel version)</td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_additional_omp</span></code></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.iterators.advance_fixed.html#metawards.iterators.advance_fixed" title="metawards.iterators.advance_fixed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_fixed</span></code></a>(nthreads,&nbsp;**kwargs)</td>
 <td>Advance the model by triggering infections related to fixed ‘work’ movements (parallel version of the function)</td>
@@ -286,8 +289,8 @@
 <tr class="row-even"><td><a class="reference internal" href="generated/metawards.iterators.iterate_working_week.html#metawards.iterators.iterate_working_week" title="metawards.iterators.iterate_working_week"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterate_working_week</span></code></a>(population,&nbsp;**kwargs)</td>
 <td>This returns the default list of ‘advance_XXX’ functions that are called in sequence for each iteration of the model run.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.iterators.setup_additional_seeds.html#metawards.iterators.setup_additional_seeds" title="metawards.iterators.setup_additional_seeds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_additional_seeds</span></code></a>(network,&nbsp;…)</td>
-<td>Setup function that reads in the additional seeds held in <em class="xref py py-obj">params.additional_seeds</em> and puts them ready to be used by <a class="reference internal" href="generated/metawards.iterators.advance_additional.html#metawards.iterators.advance_additional" title="metawards.iterators.advance_additional"><code class="xref py py-obj docutils literal notranslate"><span class="pre">advance_additional</span></code></a> to import additional infections at specified times in specified wards during the outbreak</td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_additional_seeds</span></code></td>
+<td></td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="generated/metawards.iterators.setup_seed_all_wards.html#metawards.iterators.setup_seed_all_wards" title="metawards.iterators.setup_seed_all_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setup_seed_all_wards</span></code></a>(network,&nbsp;…)</td>
 <td>Seed the wards with an initial set of infections, assuming an ‘expected’ number of infected people out of a population of ‘population’, based on the number of daily imports held in params.daily_imports</td>
@@ -326,7 +329,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>

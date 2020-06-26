@@ -101,6 +101,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../fileformats/index.html">Input files and formats</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../cluster_usage.html">Running on a cluster</a></li>
 </ul>
@@ -242,49 +245,52 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/metawards.InputFiles.html#metawards.InputFiles" title="metawards.InputFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">InputFiles</span></code></a>(work,&nbsp;play,&nbsp;identifier,&nbsp;…)</td>
 <td>This class holds all of the input files that must be loaded from METAWARDSDATA to construct the network of wards and links between them</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Link.html#metawards.Link" title="metawards.Link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Link</span></code></a>(ifrom,&nbsp;ito,&nbsp;weight,&nbsp;suscept,&nbsp;distance)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Interpret.html#metawards.Interpret" title="metawards.Interpret"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Interpret</span></code></a></td>
+<td>This is a static class that provides some routines for interpreting values from inputs (normally strings).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Link.html#metawards.Link" title="metawards.Link"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Link</span></code></a>(ifrom,&nbsp;ito,&nbsp;weight,&nbsp;suscept,&nbsp;distance)</td>
 <td>This is a link between nodes in the network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Links.html#metawards.Links" title="metawards.Links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Links</span></code></a>(N)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Links.html#metawards.Links" title="metawards.Links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Links</span></code></a>(N)</td>
 <td>This is a container class for Links.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Network</span></code></a>(name,&nbsp;nodes,&nbsp;links,&nbsp;play,&nbsp;nnodes,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Network</span></code></a>(name,&nbsp;nodes,&nbsp;links,&nbsp;play,&nbsp;nnodes,&nbsp;…)</td>
 <td>This class represents a network of wards.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Networks</span></code></a>(overall,&nbsp;subnets,&nbsp;demographics)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Networks</span></code></a>(overall,&nbsp;subnets,&nbsp;demographics)</td>
 <td>This is a combination of Network objects which together represent an entire diverse population.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Node.html#metawards.Node" title="metawards.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a>(label,&nbsp;begin_to,&nbsp;end_to,&nbsp;self_w,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Node.html#metawards.Node" title="metawards.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a>(label,&nbsp;begin_to,&nbsp;end_to,&nbsp;self_w,&nbsp;…)</td>
 <td>This class represents an electoral ward (node) in the network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Nodes.html#metawards.Nodes" title="metawards.Nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Nodes</span></code></a>(N)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Nodes.html#metawards.Nodes" title="metawards.Nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Nodes</span></code></a>(N)</td>
 <td>This is a container class for Nodes.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.OutputFiles.html#metawards.OutputFiles" title="metawards.OutputFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutputFiles</span></code></a>(output_dir,&nbsp;check_empty,&nbsp;force_empty)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.OutputFiles.html#metawards.OutputFiles" title="metawards.OutputFiles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OutputFiles</span></code></a>(output_dir,&nbsp;check_empty,&nbsp;force_empty)</td>
 <td>This is a class that manages all of the output files that are written to during a model outbreak.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Parameters</span></code></a>(input_files,&nbsp;uv_filename,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Parameters</span></code></a>(input_files,&nbsp;uv_filename,&nbsp;…)</td>
 <td>The full set of Parameters that are used to control the model outbreak over a Network.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Population.html#metawards.Population" title="metawards.Population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Population</span></code></a>(initial,&nbsp;susceptibles,&nbsp;latent,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Population.html#metawards.Population" title="metawards.Population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Population</span></code></a>(initial,&nbsp;susceptibles,&nbsp;latent,&nbsp;…)</td>
 <td>This class holds information about the progress of the disease through the population</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Populations.html#metawards.Populations" title="metawards.Populations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Populations</span></code></a>(_trajectory)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Populations.html#metawards.Populations" title="metawards.Populations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Populations</span></code></a>(_trajectory)</td>
 <td>This class holds the trajectory of Population objects recorded for every step (day) of a model outbreak</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.VariableSet.html#metawards.VariableSet" title="metawards.VariableSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableSet</span></code></a>(variables,&nbsp;float]&nbsp;=&nbsp;None,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.VariableSet.html#metawards.VariableSet" title="metawards.VariableSet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableSet</span></code></a>(variables,&nbsp;float]&nbsp;=&nbsp;None,&nbsp;…)</td>
 <td>This class holds a single set of adjustable variables that are used to adjust the variables as part of a model run</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.VariableSets.html#metawards.VariableSets" title="metawards.VariableSets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableSets</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.VariableSets.html#metawards.VariableSets" title="metawards.VariableSets"><code class="xref py py-obj docutils literal notranslate"><span class="pre">VariableSets</span></code></a>()</td>
 <td>This class holds the collection of all VariableSet objects that contain the set of adjustable variables that are used to control a single run of the model</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.WardInfo.html#metawards.WardInfo" title="metawards.WardInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WardInfo</span></code></a>(name,&nbsp;alternate_names,&nbsp;code,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.WardInfo.html#metawards.WardInfo" title="metawards.WardInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WardInfo</span></code></a>(name,&nbsp;alternate_names,&nbsp;code,&nbsp;…)</td>
 <td>This class holds metadata about a ward, e.g.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.WardInfos.html#metawards.WardInfos" title="metawards.WardInfos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WardInfos</span></code></a>(wards)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/metawards.WardInfos.html#metawards.WardInfos" title="metawards.WardInfos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WardInfos</span></code></a>(wards)</td>
 <td>Simple class that holds a list of WardInfo objects, and provides useful search functions over that list.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workspace</span></code></a>(n_inf_classes,&nbsp;nnodes,&nbsp;inf_tot,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workspace</span></code></a>(n_inf_classes,&nbsp;nnodes,&nbsp;inf_tot,&nbsp;…)</td>
 <td>This class provides a workspace for the running calculation.</td>
 </tr>
 </tbody>
@@ -336,7 +342,7 @@ into a file or written out to the screen</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 24, 2020.
+        Last updated on Jun 26, 2020.
       </span>
 
     </p>
