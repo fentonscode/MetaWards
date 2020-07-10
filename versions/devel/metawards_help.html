@@ -221,8 +221,9 @@
                  [-P POPULATION] [-n NSTEPS] [-u USER_VARIABLES]
                  [--iterator ITERATOR] [--extractor EXTRACTOR] [--mixer MIXER]
                  [--mover MOVER] [--star-is-E] [--star-is-R] [--disable-star]
-                 [--UV UV] [--theme THEME] [--no-spinner] [--debug]
-                 [--debug-level DEBUG_LEVEL] [--nthreads NTHREADS]
+                 [--UV UV] [--theme THEME] [--no-spinner] [--no-progress]
+                 [--debug] [--debug-level DEBUG_LEVEL]
+                 [--outdir-scheme OUTDIR_SCHEME] [--nthreads NTHREADS]
                  [--nprocs NPROCS] [--hostfile HOSTFILE]
                  [--cores-per-node CORES_PER_NODE] [--auto-bzip]
                  [--no-auto-bzip] [--force-overwrite-output]
@@ -359,12 +360,20 @@ optional arguments:
                         (default: None)
   --no-spinner          Disable the spinner that spins when little output is
                         being printed to the screen. (default: None)
+  --no-progress         Disable the progress bars that show progress.
+                        (default: None)
   --debug               Enable debugging output. This is useful for MetaWards
                         developers or if you are writing your own iterators,
                         extractors etc. (default: None)
   --debug-level DEBUG_LEVEL
                         Limit debug output to the specified level. (default:
                         None)
+  --outdir-scheme OUTDIR_SCHEME
+                        Set the naming scheme for output directory names for
+                        multiple model runs. Options are either &#39;fingerprint&#39;
+                        to use the model fingerprint, &#39;sequential&#39; for
+                        sequential numbering, or &#39;uid&#39; to generate a unique
+                        ID. (default: fingerprint)
   --nthreads NTHREADS   Number of threads over which parallelise an individual
                         model run. The total number of cores used by metawards
                         will be nprocesses x nthreads [env var:
@@ -436,7 +445,7 @@ optional arguments:
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

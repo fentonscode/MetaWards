@@ -18,10 +18,6 @@ MetaWards
    :target: https://pepy.tech/project/metawards
    :alt: Number of downloads
 
-.. image:: https://img.shields.io/github/commit-activity/m/metawards/metawards
-   :target: https://github.com/metawards/MetaWards
-   :alt: GitHub commit activity
-
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0.html
    :alt: License

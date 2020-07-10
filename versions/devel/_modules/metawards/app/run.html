@@ -207,7 +207,7 @@
            <span class="s2">&quot;cli&quot;</span><span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">get_parallel_scheme</span><span class="p">():</span>
+<div class="viewcode-block" id="get_parallel_scheme"><a class="viewcode-back" href="../../../api/generated/metawards.app.get_parallel_scheme.html#metawards.app.get_parallel_scheme">[docs]</a><span class="k">def</span> <span class="nf">get_parallel_scheme</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;This function tries to work out which of the different parallel</span>
 <span class="sd">       methods we should use to distribute work between multiple processes.</span>
 
@@ -221,7 +221,7 @@
     <span class="k">elif</span> <span class="s2">&quot;scoop&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;scoop&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;multiprocessing&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;multiprocessing&quot;</span></div>
 
 
 <span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
@@ -410,6 +410,9 @@
                         <span class="n">help</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Disable the spinner that spins when little &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;output is being printed to the screen.&quot;</span><span class="p">)</span>
 
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--no-progress&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Disable the progress bars that show progress.&quot;</span><span class="p">)</span>
+
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--debug&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Enable debugging output. This is useful &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;for MetaWards developers or if you are &quot;</span>
@@ -417,6 +420,13 @@
 
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--debug-level&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Limit debug output to the specified level.&quot;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--outdir-scheme&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;fingerprint&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Set the naming scheme for output directory &quot;</span>
+                             <span class="s2">&quot;names for multiple model runs. Options are &quot;</span>
+                             <span class="s2">&quot;either &#39;fingerprint&#39; to use the model &quot;</span>
+                             <span class="s2">&quot;fingerprint, &#39;sequential&#39; for sequential &quot;</span>
+                             <span class="s2">&quot;numbering, or &#39;uid&#39; to generate a unique ID.&quot;</span><span class="p">)</span>
 
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--nthreads&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Number of threads over which parallelise an &quot;</span>
@@ -506,6 +516,10 @@
         <span class="kn">from</span> <span class="nn">..utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">set_use_spinner</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">no_progress</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">..utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">set_use_progress</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">..utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">set_debugging_enabled</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">debug</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">debug_level</span><span class="p">)</span>
@@ -518,7 +532,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_hostfile</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="get_hostfile"><a class="viewcode-back" href="../../../api/generated/metawards.app.get_hostfile.html#metawards.app.get_hostfile">[docs]</a><span class="k">def</span> <span class="nf">get_hostfile</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Attempt to find the name of the hostfile used to specify the hosts</span>
 <span class="sd">       to use in a cluster</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -539,7 +553,7 @@
     <span class="k">if</span> <span class="n">hostfile</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">hostfile</span>
 
-    <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="kc">None</span></div>
 
 
 <span class="k">def</span> <span class="nf">get_cores_per_node</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
@@ -1013,6 +1027,29 @@
 
     <span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">nrepeats</span><span class="p">)</span>
 
+    <span class="n">outdir_scheme</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">outdir_scheme</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">outdir_scheme</span> <span class="o">==</span> <span class="s2">&quot;fingerprint&quot;</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="s2">&quot;* Naming output subdirectories using a run&#39;s fingerprint&quot;</span><span class="p">,</span>
+            <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">outdir_scheme</span> <span class="o">==</span> <span class="s2">&quot;sequential&quot;</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="s2">&quot;* Naming output subdirectories using a sequential scheme&quot;</span><span class="p">,</span>
+            <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">variables</span><span class="o">.</span><span class="n">set_outdir_from_number</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">outdir_scheme</span> <span class="o">==</span> <span class="s2">&quot;uid&quot;</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="s2">&quot;* Nameing output subdirectories using a unique ID&quot;</span><span class="p">,</span>
+            <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+        <span class="n">variables</span><span class="o">.</span><span class="n">set_outdir_from_uid</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecognised outdir naming scheme &#39;</span><span class="si">{</span><span class="n">outdir_scheme</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unrecognised scheme &#39;</span><span class="si">{</span><span class="n">outdir_scheme</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
     <span class="c1"># working out the number of processes and threads...</span>
     <span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">guess_num_threads_and_procs</span>
     <span class="p">(</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">nprocs</span><span class="p">)</span> <span class="o">=</span> <span class="n">guess_num_threads_and_procs</span><span class="p">(</span>
@@ -1174,11 +1211,6 @@
         <span class="n">params</span><span class="o">.</span><span class="n">set_disease</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">disease</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_disease</span><span class="p">(</span><span class="s2">&quot;ncov&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Commenting out for 1.2 release - will work out how to re-enable</span>
-    <span class="c1"># this in 1.3</span>
-    <span class="c1">#Console.rule(&quot;Adjustable parameters to scan&quot;)</span>
-    <span class="c1">#Console.print(&quot;\n&quot;.join([f&quot;* {x}&quot; for x in variables]), markdown=True)</span>
 
     <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Model data&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">:</span>
@@ -1393,7 +1425,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

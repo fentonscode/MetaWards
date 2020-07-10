@@ -17,6 +17,7 @@ metawards.Network
       ~Network.assert_sane
       ~Network.build
       ~Network.copy
+      ~Network.from_wards
       ~Network.get_min_max_distances
       ~Network.get_node_index
       ~Network.get_work_index
@@ -30,6 +31,7 @@ metawards.Network
       ~Network.scale_susceptibles
       ~Network.single
       ~Network.specialise
+      ~Network.to_wards
       ~Network.update
    
    

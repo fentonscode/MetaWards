@@ -14,7 +14,7 @@ There are three types of input files:
 
 2. Rigid-format: These have a rigid format, which is specific to their
    type. The main examples of this are the files used to specify
-   a model (e.g. the network, connections etc.)
+   a model (e.g. :doc:`the network, connections etc. <network>`)
 
 3. JSON-format: These are files that are in standard
    `JSON <https://en.wikipedia.org/wiki/JSON>`__ format. Examples include
@@ -64,9 +64,13 @@ numbers etc. We plan to ensure that as much data as possible is interpreted
 using :class:`metawards.Interpret`, so that there is a consistent
 experience across the code.
 
+Detailed descriptions
+---------------------
+
 .. toctree::
    :maxdepth: 2
 
+   network
    extraseeds
    design
    userinput

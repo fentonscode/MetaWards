@@ -215,7 +215,7 @@
 <span class="sd">       &gt;&gt;&gt; print(infiles)</span>
 <span class="sd">       Model 2011Data version March 29 2020</span>
 <span class="sd">       repository: https://github.com/metawards/MetaWardsData</span>
-<span class="sd">       repository_branch: master</span>
+<span class="sd">       repository_branch: main</span>
 <span class="sd">       repository_version: 0.2.0</span>
 <span class="sd">       etc.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -397,12 +397,11 @@
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
             <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-
-
-<span class="s2">Could not find the model file </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">. Either it does not exist of was</span>
-<span class="s2">corrupted. Error was </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">. Please see</span>
-<span class="s2">https: // metawards.org/model_data for instructions on how to download</span>
-<span class="s2">and set the model data.&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">Could not find the model file </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">.</span>
+<span class="s2">Either it does not exist or was corrupted.</span>
+<span class="s2">Error was </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.</span>
+<span class="s2">Please see https://metawards.org/model_data for instructions on how</span>
+<span class="s2">to download and set the model data.&quot;&quot;&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not find or read </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">: &quot;</span>
                                     <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
@@ -447,7 +446,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

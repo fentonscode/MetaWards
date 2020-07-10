@@ -376,6 +376,10 @@
     <span class="c1">#: User parameters</span>
     <span class="n">user_params</span><span class="p">:</span> <span class="n">_Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="c1">#: All of the VariableSet adjustments that have been applied</span>
+    <span class="c1">#: to these parameters</span>
+    <span class="n">adjustments</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="n">VariableSet</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
     <span class="n">_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">_authors</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
@@ -610,29 +614,40 @@
 <span class="sd">             If a string is passed then the InputFiles will be loaded</span>
 <span class="sd">             based on that string.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="kn">import</span> <span class="nn">os</span>
+
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">input_files</span><span class="p">):</span>
+                <span class="c1"># this is likely a JSON file containing a custom network</span>
+                <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading custom network from </span><span class="si">{</span><span class="n">input_files</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">input_files</span> <span class="o">=</span> <span class="n">input_files</span>
+                <span class="k">return</span>
+
             <span class="n">input_files</span> <span class="o">=</span> <span class="n">InputFiles</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span>
                                           <span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository_dir</span><span class="p">)</span>
 
-        <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">input_files</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">input_files</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">input_files</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Parameters.set_disease"><a class="viewcode-back" href="../../api/generated/metawards.Parameters.html#metawards.Parameters.set_disease">[docs]</a>    <span class="k">def</span> <span class="nf">set_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disease</span><span class="p">:</span> <span class="n">Disease</span><span class="p">):</span>
+<div class="viewcode-block" id="Parameters.set_disease"><a class="viewcode-back" href="../../api/generated/metawards.Parameters.html#metawards.Parameters.set_disease">[docs]</a>    <span class="k">def</span> <span class="nf">set_disease</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disease</span><span class="p">:</span> <span class="n">Disease</span><span class="p">,</span> <span class="n">silent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;&quot;Set the disease that will be modelled</span>
 
 <span class="sd">            Parameters:</span>
 <span class="sd">              disease: The disease to be modelled. If a string is passed</span>
 <span class="sd">              then the disease will be loaded using that string</span>
+<span class="sd">              silent: Whether or not to suppress printing out the disease</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">disease</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="n">disease</span> <span class="o">=</span> <span class="n">Disease</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">disease</span><span class="p">,</span>
                                    <span class="n">repository</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository_dir</span><span class="p">)</span>
 
-        <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">disease</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+            <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">disease</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
         <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disease_params</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">disease</span><span class="p">)</span></div>
@@ -698,7 +713,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

@@ -226,7 +226,7 @@
 <h1>metawards.Parameters<a class="headerlink" href="#metawards-parameters" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Parameters">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Parameters</code><span class="sig-paren">(</span><em>input_files: metawards._inputfiles.InputFiles = None</em>, <em>uv_filename: str = None</em>, <em>disease_params: metawards._disease.Disease = None</em>, <em>additional_seeds: List[str] = None</em>, <em>length_day: float = 0.7</em>, <em>plength_day: float = 0.5</em>, <em>initial_inf: int = 5</em>, <em>static_play_at_home: float = 0.0</em>, <em>dyn_play_at_home: float = 0.0</em>, <em>dyn_dist_cutoff: float = 10000000.0</em>, <em>play_to_work: float = 0.0</em>, <em>work_to_play: float = 0.0</em>, <em>local_vaccination_thresh: int = 4</em>, <em>global_detection_thresh: int = 4</em>, <em>daily_ward_vaccination_capacity: int = 5</em>, <em>neighbour_weight_threshold: float = 0.0</em>, <em>daily_imports: float = 0.0</em>, <em>stage_0: str = 'R'</em>, <em>UV: float = 0.0</em>, <em>user_params: Dict[str</em>, <em>float] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em>, <em>_repository_dir: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_parameters.html#Parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Parameters" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Parameters</code><span class="sig-paren">(</span><em>input_files: metawards._inputfiles.InputFiles = None</em>, <em>uv_filename: str = None</em>, <em>disease_params: metawards._disease.Disease = None</em>, <em>additional_seeds: List[str] = None</em>, <em>length_day: float = 0.7</em>, <em>plength_day: float = 0.5</em>, <em>initial_inf: int = 5</em>, <em>static_play_at_home: float = 0.0</em>, <em>dyn_play_at_home: float = 0.0</em>, <em>dyn_dist_cutoff: float = 10000000.0</em>, <em>play_to_work: float = 0.0</em>, <em>work_to_play: float = 0.0</em>, <em>local_vaccination_thresh: int = 4</em>, <em>global_detection_thresh: int = 4</em>, <em>daily_ward_vaccination_capacity: int = 5</em>, <em>neighbour_weight_threshold: float = 0.0</em>, <em>daily_imports: float = 0.0</em>, <em>stage_0: str = 'R'</em>, <em>UV: float = 0.0</em>, <em>user_params: Dict[str</em>, <em>float] = None</em>, <em>adjustments: List[metawards._variableset.VariableSet] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em>, <em>_repository_dir: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_parameters.html#Parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>The full set of Parameters that are used to control the model
 outbreak over a Network. The combination of a Network and
 a Parameters defines the model outbreak.</p>
@@ -242,7 +242,7 @@ e.g.</p>
 </div>
 <dl class="method">
 <dt id="metawards.Parameters.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>input_files: metawards._inputfiles.InputFiles = None</em>, <em>uv_filename: str = None</em>, <em>disease_params: metawards._disease.Disease = None</em>, <em>additional_seeds: List[str] = None</em>, <em>length_day: float = 0.7</em>, <em>plength_day: float = 0.5</em>, <em>initial_inf: int = 5</em>, <em>static_play_at_home: float = 0.0</em>, <em>dyn_play_at_home: float = 0.0</em>, <em>dyn_dist_cutoff: float = 10000000.0</em>, <em>play_to_work: float = 0.0</em>, <em>work_to_play: float = 0.0</em>, <em>local_vaccination_thresh: int = 4</em>, <em>global_detection_thresh: int = 4</em>, <em>daily_ward_vaccination_capacity: int = 5</em>, <em>neighbour_weight_threshold: float = 0.0</em>, <em>daily_imports: float = 0.0</em>, <em>stage_0: str = 'R'</em>, <em>UV: float = 0.0</em>, <em>user_params: Dict[str</em>, <em>float] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em>, <em>_repository_dir: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Parameters.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>input_files: metawards._inputfiles.InputFiles = None</em>, <em>uv_filename: str = None</em>, <em>disease_params: metawards._disease.Disease = None</em>, <em>additional_seeds: List[str] = None</em>, <em>length_day: float = 0.7</em>, <em>plength_day: float = 0.5</em>, <em>initial_inf: int = 5</em>, <em>static_play_at_home: float = 0.0</em>, <em>dyn_play_at_home: float = 0.0</em>, <em>dyn_dist_cutoff: float = 10000000.0</em>, <em>play_to_work: float = 0.0</em>, <em>work_to_play: float = 0.0</em>, <em>local_vaccination_thresh: int = 4</em>, <em>global_detection_thresh: int = 4</em>, <em>daily_ward_vaccination_capacity: int = 5</em>, <em>neighbour_weight_threshold: float = 0.0</em>, <em>daily_imports: float = 0.0</em>, <em>stage_0: str = 'R'</em>, <em>UV: float = 0.0</em>, <em>user_params: Dict[str</em>, <em>float] = None</em>, <em>adjustments: List[metawards._variableset.VariableSet] = None</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em>, <em>_repository_dir: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Parameters.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -270,7 +270,7 @@ e.g.</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.read_variables" title="metawards.Parameters.read_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_variables</span></code></a>(filename,&nbsp;line_numbers)</td>
 <td>Read in extra variable parameters from the specified line number(s) of the specified file, returning the list of the dictionaries of variables that have been read.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.set_disease" title="metawards.Parameters.set_disease"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disease</span></code></a>(disease)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.set_disease" title="metawards.Parameters.set_disease"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_disease</span></code></a>(disease,&nbsp;silent)</td>
 <td>“Set the disease that will be modelled</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.set_input_files" title="metawards.Parameters.set_input_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_input_files</span></code></a>(input_files)</td>
@@ -297,58 +297,61 @@ e.g.</p>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.additional_seeds" title="metawards.Parameters.additional_seeds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">additional_seeds</span></code></a></td>
 <td>The set of files that contain additional seeds that seed the outbreak during the model run</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.daily_imports" title="metawards.Parameters.daily_imports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_imports</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.adjustments" title="metawards.Parameters.adjustments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjustments</span></code></a></td>
+<td>All of the VariableSet adjustments that have been applied to these parameters</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.daily_imports" title="metawards.Parameters.daily_imports"><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_imports</span></code></a></td>
 <td>proportion of daily imports</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_ward_vaccination_capacity</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">daily_ward_vaccination_capacity</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.disease_params" title="metawards.Parameters.disease_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disease_params</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.disease_params" title="metawards.Parameters.disease_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">disease_params</span></code></a></td>
 <td>The set of parameters that define the disease</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyn_dist_cutoff</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyn_dist_cutoff</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyn_play_at_home</span></code></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyn_play_at_home</span></code></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">global_detection_thresh</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">global_detection_thresh</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.initial_inf" title="metawards.Parameters.initial_inf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_inf</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.initial_inf" title="metawards.Parameters.initial_inf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_inf</span></code></a></td>
 <td>The number of initial infections</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.input_files" title="metawards.Parameters.input_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_files</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.input_files" title="metawards.Parameters.input_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">input_files</span></code></a></td>
 <td>The set of input files that define the model Network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.length_day" title="metawards.Parameters.length_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length_day</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.length_day" title="metawards.Parameters.length_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">length_day</span></code></a></td>
 <td>The fraction of day considered “day” for work, e.g.</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_vaccination_thresh</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">local_vaccination_thresh</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbour_weight_threshold</span></code></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbour_weight_threshold</span></code></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_to_work</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_to_work</span></code></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.plength_day" title="metawards.Parameters.plength_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plength_day</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.plength_day" title="metawards.Parameters.plength_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plength_day</span></code></a></td>
 <td>The fraction of day considered “day” for play</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.stage_0" title="metawards.Parameters.stage_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stage_0</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.stage_0" title="metawards.Parameters.stage_0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stage_0</span></code></a></td>
 <td>how to treat the * state (stage 0).</td>
 </tr>
-<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">static_play_at_home</span></code></td>
+<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">static_play_at_home</span></code></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.user_params" title="metawards.Parameters.user_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_params</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.user_params" title="metawards.Parameters.user_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">user_params</span></code></a></td>
 <td>User parameters</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Parameters.uv_filename" title="metawards.Parameters.uv_filename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uv_filename</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Parameters.uv_filename" title="metawards.Parameters.uv_filename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uv_filename</span></code></a></td>
 <td>The name of the UV file</td>
 </tr>
-<tr class="row-even"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">work_to_play</span></code></td>
+<tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">work_to_play</span></code></td>
 <td></td>
 </tr>
 </tbody>
@@ -395,6 +398,13 @@ locations. Several additional_seed files can be added</p>
 <code class="descname">additional_seeds</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Parameters.additional_seeds" title="Permalink to this definition">¶</a></dt>
 <dd><p>The set of files that contain additional seeds that
 seed the outbreak during the model run</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="metawards.Parameters.adjustments">
+<code class="descname">adjustments</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Parameters.adjustments" title="Permalink to this definition">¶</a></dt>
+<dd><p>All of the VariableSet adjustments that have been applied
+to these parameters</p>
 </dd></dl>
 
 <dl class="method">
@@ -530,7 +540,7 @@ None then all lines will be read.</li>
 
 <dl class="method">
 <dt id="metawards.Parameters.set_disease">
-<code class="descname">set_disease</code><span class="sig-paren">(</span><em>disease: metawards._disease.Disease</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_parameters.html#Parameters.set_disease"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Parameters.set_disease" title="Permalink to this definition">¶</a></dt>
+<code class="descname">set_disease</code><span class="sig-paren">(</span><em>disease: metawards._disease.Disease</em>, <em>silent: bool = False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_parameters.html#Parameters.set_disease"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Parameters.set_disease" title="Permalink to this definition">¶</a></dt>
 <dd><p>“Set the disease that will be modelled</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -539,6 +549,7 @@ None then all lines will be read.</li>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
 <li><strong>disease</strong> – The disease to be modelled. If a string is passed</li>
 <li><strong>the disease will be loaded using that string</strong> (<em>then</em>) – </li>
+<li><strong>silent</strong> – Whether or not to suppress printing out the disease</li>
 </ul>
 </td>
 </tr>
@@ -637,7 +648,7 @@ supported</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

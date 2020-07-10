@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Extra seeds files" href="extraseeds.html" />
-    <link rel="prev" title="Understanding the Model Network" href="../tutorial/part08/01_networks.html" /> 
+    <link rel="next" title="Network Files" href="network.html" />
+    <link rel="prev" title="Using a Custom Network" href="../tutorial/part08/04_using_custom.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,7 +104,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Input files and formats</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#flexible-format-files">Flexible-format files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rigid-format-files">Rigid-format files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#json-format-files">JSON-format files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#json-format-files">JSON-format files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-descriptions">Detailed descriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="network.html">Network Files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="extraseeds.html">Extra seeds files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="design.html">Design (scan) files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="userinput.html">User input files</a></li>
@@ -196,10 +198,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="extraseeds.html" class="btn btn-neutral float-right" title="Extra seeds files" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="network.html" class="btn btn-neutral float-right" title="Network Files" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tutorial/part08/01_networks.html" class="btn btn-neutral float-left" title="Understanding the Model Network" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tutorial/part08/04_using_custom.html" class="btn btn-neutral float-left" title="Using a Custom Network" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -220,7 +222,7 @@ the <a class="reference internal" href="extraseeds.html"><span class="doc">extra
 and <a class="reference internal" href="userinput.html"><span class="doc">user input</span></a> files.</li>
 <li>Rigid-format: These have a rigid format, which is specific to their
 type. The main examples of this are the files used to specify
-a model (e.g. the network, connections etc.)</li>
+a model (e.g. <a class="reference internal" href="network.html"><span class="doc">the network, connections etc.</span></a>)</li>
 <li>JSON-format: These are files that are in standard
 <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> format. Examples include
 the disease and demographics files, plus many of the files
@@ -264,8 +266,21 @@ data from the JSON file, meaning that these support expressions, random
 numbers etc. We plan to ensure that as much data as possible is interpreted
 using <a class="reference internal" href="../api/generated/metawards.Interpret.html#metawards.Interpret" title="metawards.Interpret"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Interpret</span></code></a>, so that there is a consistent
 experience across the code.</p>
+</div>
+<div class="section" id="detailed-descriptions">
+<h2>Detailed descriptions<a class="headerlink" href="#detailed-descriptions" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="network.html">Network Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="network.html#description-json">description.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#work">work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#work-size">work_size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#play">play</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#play-size">play_size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#position">position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="network.html#lookup">lookup</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="extraseeds.html">Extra seeds files</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="extraseeds.html#examples">Examples</a></li>
 </ul>
@@ -295,10 +310,10 @@ experience across the code.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="extraseeds.html" class="btn btn-neutral float-right" title="Extra seeds files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="network.html" class="btn btn-neutral float-right" title="Network Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../tutorial/part08/01_networks.html" class="btn btn-neutral float-left" title="Understanding the Model Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../tutorial/part08/04_using_custom.html" class="btn btn-neutral float-left" title="Using a Custom Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -308,7 +323,7 @@ experience across the code.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

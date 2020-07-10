@@ -40,7 +40,7 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="metawards.WardInfo" href="metawards.WardInfo.html" />
+    <link rel="next" title="metawards.Ward" href="metawards.Ward.html" />
     <link rel="prev" title="metawards.VariableSet" href="metawards.VariableSet.html" /> 
 </head>
 
@@ -210,7 +210,7 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="metawards.WardInfo.html" class="btn btn-neutral float-right" title="metawards.WardInfo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.Ward.html" class="btn btn-neutral float-right" title="metawards.Ward" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="metawards.VariableSet.html" class="btn btn-neutral float-left" title="metawards.VariableSet" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -280,6 +280,12 @@ to control a single run of the model</p>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSets.repeat" title="metawards.VariableSets.repeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat</span></code></a>(nrepeats,&nbsp;int])</td>
 <td>Return a copy of this VariableSet in which all of the unique VaribleSet objects have been repeated ‘nrepeats’ times</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSets.set_outdir_from_number" title="metawards.VariableSets.set_outdir_from_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_number</span></code></a>()</td>
+<td>This function resets the names of all of the output directories for each run so that they are numbered sequentially from one</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSets.set_outdir_from_uid" title="metawards.VariableSets.set_outdir_from_uid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_uid</span></code></a>()</td>
+<td>This function resets the names of all of the output directories for each run so that they all have a globally unique UID</td>
 </tr>
 </tbody>
 </table>
@@ -400,6 +406,20 @@ of the VariableSet objects from this set</td>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="metawards.VariableSets.set_outdir_from_number">
+<code class="descname">set_outdir_from_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSets.set_outdir_from_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSets.set_outdir_from_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function resets the names of all of the output directories
+for each run so that they are numbered sequentially from one</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.VariableSets.set_outdir_from_uid">
+<code class="descname">set_outdir_from_uid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSets.set_outdir_from_uid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSets.set_outdir_from_uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function resets the names of all of the output directories
+for each run so that they all have a globally unique UID</p>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -412,7 +432,7 @@ of the VariableSet objects from this set</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="metawards.WardInfo.html" class="btn btn-neutral float-right" title="metawards.WardInfo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.Ward.html" class="btn btn-neutral float-right" title="metawards.Ward" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="metawards.VariableSet.html" class="btn btn-neutral float-left" title="metawards.VariableSet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -425,7 +445,7 @@ of the VariableSet objects from this set</td>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

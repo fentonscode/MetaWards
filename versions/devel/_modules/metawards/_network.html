@@ -196,6 +196,7 @@
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="k">as</span> <span class="n">_Union</span>
 
 <span class="kn">from</span> <span class="nn">._parameters</span> <span class="kn">import</span> <span class="n">Parameters</span>
+<span class="kn">from</span> <span class="nn">._disease</span> <span class="kn">import</span> <span class="n">Disease</span>
 <span class="kn">from</span> <span class="nn">._nodes</span> <span class="kn">import</span> <span class="n">Nodes</span>
 <span class="kn">from</span> <span class="nn">._links</span> <span class="kn">import</span> <span class="n">Links</span>
 <span class="kn">from</span> <span class="nn">._population</span> <span class="kn">import</span> <span class="n">Population</span>
@@ -337,7 +338,16 @@
 
         <span class="n">p</span> <span class="o">=</span> <span class="n">profiler</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;Network.build&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="kn">from</span> <span class="nn">._wards</span> <span class="kn">import</span> <span class="n">Wards</span>
+            <span class="n">wards</span> <span class="o">=</span> <span class="n">Wards</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">)</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                         <span class="n">profiler</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+
+            <span class="n">p</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">network</span>
+
+        <span class="k">elif</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">population</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">population</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
 
@@ -704,6 +714,26 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">scale_susceptibles</span><span class="p">(</span><span class="n">work_ratio</span><span class="o">=</span><span class="n">work_ratio</span><span class="p">,</span>
                                       <span class="n">play_ratio</span><span class="o">=</span><span class="n">play_ratio</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="Network.to_wards"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.to_wards">[docs]</a>    <span class="k">def</span> <span class="nf">to_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the ward-level data in this network converted to</span>
+<span class="sd">           a Wards object. This supports editing and save/restore</span>
+<span class="sd">           to JSON</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.utils._network_wards</span> <span class="kn">import</span> <span class="n">save_to_wards</span>
+        <span class="k">return</span> <span class="n">save_to_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Network.from_wards"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.from_wards">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                   <span class="n">disease</span><span class="p">:</span> <span class="n">Disease</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                   <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Construct a Network from the passed Wards object (e.g. after</span>
+<span class="sd">           editing, or restoring from JSON</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">.utils._network_wards</span> <span class="kn">import</span> <span class="n">load_from_wards</span>
+        <span class="k">return</span> <span class="n">load_from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">disease</span><span class="o">=</span><span class="n">disease</span><span class="p">,</span>
+                               <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Network.run"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span>
             <span class="n">output_dir</span><span class="p">:</span> <span class="n">OutputFiles</span><span class="p">,</span>
             <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -820,7 +850,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

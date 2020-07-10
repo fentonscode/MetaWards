@@ -544,6 +544,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_varnames</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_varidxs</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -563,7 +564,8 @@
             <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">_add</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="n">repeat_index</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="n">repeat_index</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">repeat_index</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VariableSet.__str__"><a class="viewcode-back" href="../../api/generated/metawards.VariableSet.html#metawards.VariableSet.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a printable representation of the variables to</span>
@@ -1022,7 +1024,10 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fingerprint</span><span class="p">(</span><span class="n">include_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span></div>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">x</span><span class="si">%03d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_output</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_idx</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="VariableSet.read"><a class="viewcode-back" href="../../api/generated/metawards.VariableSet.html#metawards.VariableSet.read">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -1178,6 +1183,13 @@
                             <span class="sa">f</span><span class="s2">&quot;Cannot set unrecognised parameter </span><span class="si">{</span><span class="n">varname</span><span class="si">}</span><span class="s2"> &quot;</span>
                             <span class="sa">f</span><span class="s2">&quot;to </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> in demographic </span><span class="si">{</span><span class="n">demographic</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
+            <span class="c1"># save this adjustment to the record in the parameters</span>
+            <span class="c1"># object</span>
+            <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">adjustments</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">adjustments</span> <span class="o">=</span> <span class="p">[]</span>
+
+            <span class="n">params</span><span class="o">.</span><span class="n">adjustments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Unable to set parameters from </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">. Error &quot;</span>
@@ -1324,6 +1336,7 @@
                 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vars</span><span class="p">:</span>
                     <span class="n">v2</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
                     <span class="n">v2</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="n">i</span>
+                    <span class="n">v2</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="n">nrepeats</span>
                     <span class="n">repeats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nrepeats</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vars</span><span class="p">):</span>
@@ -1340,6 +1353,7 @@
                     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">nrepeats</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
                         <span class="n">v2</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
                         <span class="n">v2</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="n">n</span>
+                        <span class="n">v2</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="n">nrepeats</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
                         <span class="n">repeats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v2</span><span class="p">)</span>
                         <span class="n">added</span> <span class="o">=</span> <span class="kc">True</span>
 
@@ -1517,7 +1531,31 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Cannot read parameters from line </span><span class="si">{</span><span class="n">line_numbers</span><span class="si">}</span><span class="s2"> &quot;</span>
-                <span class="sa">f</span><span class="s2">&quot;as the number of lines in the file is </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+                <span class="sa">f</span><span class="s2">&quot;as the number of lines in the file is </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="VariableSets.set_outdir_from_number"><a class="viewcode-back" href="../../api/generated/metawards.VariableSets.html#metawards.VariableSets.set_outdir_from_number">[docs]</a>    <span class="k">def</span> <span class="nf">set_outdir_from_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function resets the names of all of the output directories</span>
+<span class="sd">           for each run so that they are numbered sequentially from one</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">max_i</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vars</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">nchars</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">max_i</span><span class="p">))</span>
+
+        <span class="n">fmt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;%0</span><span class="si">{</span><span class="n">nchars</span><span class="si">}</span><span class="s2">d&quot;</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">variable</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_vars</span><span class="p">):</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="n">fmt</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="mi">1</span></div>
+
+<div class="viewcode-block" id="VariableSets.set_outdir_from_uid"><a class="viewcode-back" href="../../api/generated/metawards.VariableSets.html#metawards.VariableSets.set_outdir_from_uid">[docs]</a>    <span class="k">def</span> <span class="nf">set_outdir_from_uid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;This function resets the names of all of the output directories</span>
+<span class="sd">           for each run so that they all have a globally unique UID</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">uuid4</span>
+        <span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vars</span><span class="p">:</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_output</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid4</span><span class="p">())</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_idx</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">variable</span><span class="o">.</span><span class="n">_nrepeats</span> <span class="o">=</span> <span class="mi">1</span></div></div>
 </pre></div>
 
            </div>
@@ -1531,7 +1569,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jun 26, 2020.
+        Last updated on Jul 10, 2020.
       </span>
 
     </p>

@@ -34,6 +34,7 @@ metawards.Parameters
    
       ~Parameters.UV
       ~Parameters.additional_seeds
+      ~Parameters.adjustments
       ~Parameters.daily_imports
       ~Parameters.daily_ward_vaccination_capacity
       ~Parameters.disease_params

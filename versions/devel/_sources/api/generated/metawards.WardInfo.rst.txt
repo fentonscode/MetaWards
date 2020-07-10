@@ -14,6 +14,8 @@ metawards.WardInfo
    .. autosummary::
    
       ~WardInfo.__init__
+      ~WardInfo.from_data
+      ~WardInfo.to_data
    
    
 
