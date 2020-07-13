@@ -53,49 +53,41 @@ First, we will import the necessary classes and create our
    >>> wards = Wards()
 
 Next, we will create a :class:`~metawards.Ward` object to represent
-Bristol (which we will call ``bristol``). We will give this the ID
-number of ``1``, and will add `500`
+Bristol (which we will call ``bristol``). We will add `500`
 workers who will work in Bristol, and ``750`` players.
 
 .. code-block:: python
 
-   >>> bristol = Ward(id=1, name="Bristol")
+   >>> bristol = Ward(name="Bristol")
    >>> bristol.add_workers(500)
    >>> bristol.set_num_players(750)
 
 Next, we will create a :class:`~metawards.Ward` object to represent
-London (which we will call ``london``). We will give this the ID
-number of ``2``, and will add ``8600``
+London (which we will call ``london``). We will add ``8600``
 workers and ``10000`` players.
 
-   >>> london = Ward(id=2, name="London")
+   >>> london = Ward(name="London")
    >>> london.add_workers(8500)
    >>> london.set_num_players(10000)
 
-.. note::
-
-   You are free to use whatever ID number you wish, as long as it is positive
-   and greater or equal to 1. For efficiency, you should identify the
-   wards using ID numbers that start from 1 and increase consecutively.
-
 Now, we will add some commuters. We will have ``500`` Bristolians
-commute each day to London (``destination=2``), while ``100`` Londoners
-will commute each day to Bristol (``destination=1``)
+commute each day to London, while ``100`` Londoners
+will commute each day to Bristol.
 
 .. code-block:: python
 
-   >>> bristol.add_workers(500, destination=2)
-   >>> london.add_workers(100, destination=1)
+   >>> bristol.add_workers(500, destination=london)
+   >>> london.add_workers(100, destination=bristol)
 
 We can confirm that the information is correct by printing, e.g.
 
 .. code-block:: python
 
    >>> print(bristol)
-   Ward( id=1, name=Bristol, num_workers=1000, num_players=750 )
+   Ward( name=Bristol, num_workers=1000, num_players=750 )
 
    >>> print(london)
-   Ward( id=2, name=London, num_workers=8600, num_players=10000 )
+   Ward( name=London, num_workers=8600, num_players=10000 )
 
 Next, we add the two :class:`~metawards.Ward` objects to our
 :class:`~metawards.Wards` object that represents the entire model.
@@ -105,7 +97,15 @@ Next, we add the two :class:`~metawards.Ward` objects to our
    >>> wards.add(bristol)
    >>> wards.add(london)
    >>> print(wards)
-   [ Ward( id=1, name=Bristol, num_workers=1000, num_players=750 ), Ward( id=2, name=London, num_workers=8600, num_players=10000 ) ]
+   [ Ward( info=Bristol, id=1, num_workers=1000, num_players=750 ), Ward( info=London, id=2, num_workers=8600, num_players=10000 ) ]
+
+.. note::
+
+   Note that each :class:`~metawards.Ward` in the :class:`~metawards.Wards`
+   collection has been automatically assigned an ID number (1 for Bristol
+   and 2 for London). You can refer to the wards by their ID number, but
+   should, in general, leave ``metawards`` to automatically generate
+   and manage these IDs.
 
 We can now save this set of :class:`~metawards.Wards` to a file by converting
 this to a data dictionary, and then serialising that dictionary to JSON,

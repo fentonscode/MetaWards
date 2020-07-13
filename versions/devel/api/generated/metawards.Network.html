@@ -226,13 +226,13 @@
 <h1>metawards.Network<a class="headerlink" href="#metawards-network" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Network">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Network</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>nodes: metawards._nodes.Nodes = None</em>, <em>links: metawards._links.Links = None</em>, <em>play: metawards._links.Links = None</em>, <em>nnodes: int = 0</em>, <em>nlinks: int = 0</em>, <em>nplay: int = 0</em>, <em>max_nodes: int = 16384</em>, <em>max_links: int = 4194304</em>, <em>info: metawards._wardinfo.WardInfos = WardInfos(wards=[])</em>, <em>to_seed: List[int] = None</em>, <em>params: metawards._parameters.Parameters = None</em>, <em>work_population: int = None</em>, <em>play_population: int = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_network.html#Network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Network" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Network</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>nodes: metawards._nodes.Nodes = None</em>, <em>links: metawards._links.Links = None</em>, <em>play: metawards._links.Links = None</em>, <em>nnodes: int = 0</em>, <em>nlinks: int = 0</em>, <em>nplay: int = 0</em>, <em>max_nodes: int = 16384</em>, <em>max_links: int = 4194304</em>, <em>info: metawards._wardinfo.WardInfos = WardInfos(wards=[]</em>, <em>_index=None)</em>, <em>to_seed: List[int] = None</em>, <em>params: metawards._parameters.Parameters = None</em>, <em>work_population: int = None</em>, <em>play_population: int = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_network.html#Network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Network" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class represents a network of wards. The network comprises
 nodes (representing wards), connected with links which represent
 work (predictable movements) and play (unpredictable movements)</p>
 <dl class="method">
 <dt id="metawards.Network.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>nodes: metawards._nodes.Nodes = None</em>, <em>links: metawards._links.Links = None</em>, <em>play: metawards._links.Links = None</em>, <em>nnodes: int = 0</em>, <em>nlinks: int = 0</em>, <em>nplay: int = 0</em>, <em>max_nodes: int = 16384</em>, <em>max_links: int = 4194304</em>, <em>info: metawards._wardinfo.WardInfos = WardInfos(wards=[])</em>, <em>to_seed: List[int] = None</em>, <em>params: metawards._parameters.Parameters = None</em>, <em>work_population: int = None</em>, <em>play_population: int = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Network.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>nodes: metawards._nodes.Nodes = None</em>, <em>links: metawards._links.Links = None</em>, <em>play: metawards._links.Links = None</em>, <em>nnodes: int = 0</em>, <em>nlinks: int = 0</em>, <em>nplay: int = 0</em>, <em>max_nodes: int = 16384</em>, <em>max_links: int = 4194304</em>, <em>info: metawards._wardinfo.WardInfos = WardInfos(wards=[]</em>, <em>_index=None)</em>, <em>to_seed: List[int] = None</em>, <em>params: metawards._parameters.Parameters = None</em>, <em>work_population: int = None</em>, <em>play_population: int = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Network.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -425,7 +425,7 @@ is different to that of the overall network</p>
 
 <dl class="attribute">
 <dt id="metawards.Network.info">
-<code class="descname">info</code><em class="property"> = WardInfos(wards=[])</em><a class="headerlink" href="#metawards.Network.info" title="Permalink to this definition">¶</a></dt>
+<code class="descname">info</code><em class="property"> = WardInfos(wards=[], _index=None)</em><a class="headerlink" href="#metawards.Network.info" title="Permalink to this definition">¶</a></dt>
 <dd><p>The metadata for all of the wards</p>
 </dd></dl>
 
@@ -714,7 +714,7 @@ Demographics</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>

@@ -28,6 +28,7 @@ metawards.Ward
       ~Ward.id
       ~Ward.info
       ~Ward.is_null
+      ~Ward.is_resolved
       ~Ward.name
       ~Ward.num_play_links
       ~Ward.num_players
@@ -37,6 +38,7 @@ metawards.Ward
       ~Ward.population
       ~Ward.position
       ~Ward.region
+      ~Ward.resolve
       ~Ward.set_authority
       ~Ward.set_auto_assign_players
       ~Ward.set_code

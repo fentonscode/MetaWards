@@ -226,13 +226,13 @@
 <h1>metawards.WardInfos<a class="headerlink" href="#metawards-wardinfos" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.WardInfos">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">WardInfos</code><span class="sig-paren">(</span><em>wards: List[metawards._wardinfo.WardInfo] = &lt;factory&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">WardInfos</code><span class="sig-paren">(</span><em>wards: List[metawards._wardinfo.WardInfo] = &lt;factory&gt;</em>, <em>_index: Dict[metawards._wardinfo.WardInfo</em>, <em>int] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple class that holds a list of WardInfo objects, and provides
 useful search functions over that list. This prevents me from
 cluttering up the interface of Network</p>
 <dl class="method">
 <dt id="metawards.WardInfos.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: List[metawards._wardinfo.WardInfo] = &lt;factory&gt;</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.WardInfos.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: List[metawards._wardinfo.WardInfo] = &lt;factory&gt;</em>, <em>_index: Dict[metawards._wardinfo.WardInfo</em>, <em>int] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.WardInfos.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -242,14 +242,41 @@ cluttering up the interface of Network</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.WardInfos.__init__" title="metawards.WardInfos.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(wards)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.WardInfos.__init__" title="metawards.WardInfos.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(wards,&nbsp;_index,&nbsp;int]&nbsp;=&nbsp;None)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.WardInfos.find" title="metawards.WardInfos.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(name,&nbsp;authority,&nbsp;region,&nbsp;match,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.WardInfos.contains" title="metawards.WardInfos.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(info)</td>
+<td>Return whether or not this contains the passed WardInfo</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.WardInfos.find" title="metawards.WardInfos.find"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find</span></code></a>(name,&nbsp;authority,&nbsp;region,&nbsp;match,&nbsp;…)</td>
 <td>Generic search function that will search using any or all of the terms provided.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.WardInfos.index" title="metawards.WardInfos.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(info)</td>
+<td>Return the index of the passed ‘info’ object if it is in this list.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.WardInfos.reindex" title="metawards.WardInfos.reindex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reindex</span></code></a>()</td>
+<td>Rebuild the WardInfo index.</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="metawards.WardInfos.__contains__">
+<code class="descname">__contains__</code><span class="sig-paren">(</span><em>info: metawards._wardinfo.WardInfo</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not this contains the passed WardInfo</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.WardInfos.__setitem__">
+<code class="descname">__setitem__</code><span class="sig-paren">(</span><em>i: int</em>, <em>info: metawards._wardinfo.WardInfo</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.__setitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.__setitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the ith WardInfo equal to ‘info’.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.WardInfos.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>info: metawards._wardinfo.WardInfo</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.contains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not this contains the passed WardInfo</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="metawards.WardInfos.find">
 <code class="descname">find</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>authority: str = None</em>, <em>region: str = None</em>, <em>match: bool = False</em>, <em>match_authority_and_region: bool = False</em>, <em>include_alternates: bool = True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.find" title="Permalink to this definition">¶</a></dt>
@@ -266,18 +293,35 @@ the authority adn region by separating usign “/”, e.g.
 “Clifton/Bristol”.</li>
 <li><strong>authority</strong> (<em>str</em><em> or </em><em>regexp</em>) – Name or code of the authority to search</li>
 <li><strong>region</strong> (<em>str</em><em> or </em><em>regexp</em>) – Name or code of the region to search</li>
-<li><strong>match</strong> (<em>bool</em><em> (</em><em>False</em><em>)</em>) – Use a regular expression match for the ward rather than a
+<li><strong>match</strong> (<em>bool</em><em>(</em><em>False</em><em>)</em>) – Use a regular expression match for the ward rather than a
 search. This forces the match to be at the start of the string</li>
-<li><strong>match_authority_and_region</strong> (<em>bool</em><em> (</em><em>False</em><em>)</em>) – Use a regular expression match for the authority and region
+<li><strong>match_authority_and_region</strong> (<em>bool</em><em>(</em><em>False</em><em>)</em>) – Use a regular expression match for the authority and region
 rather than a search. This forces the match to be at the start
 of the string</li>
-<li><strong>include_alternates</strong> (<em>bool</em><em> (</em><em>True</em><em>)</em>) – Whether or not to include alternative names and codes when
+<li><strong>include_alternates</strong> (<em>bool</em><em>(</em><em>True</em><em>)</em>) – Whether or not to include alternative names and codes when
 searching for the ward</li>
 </ul>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.WardInfos.index">
+<code class="descname">index</code><span class="sig-paren">(</span><em>info: metawards._wardinfo.WardInfo</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of the passed ‘info’ object if it is in this
+list. If not, then a ValueError exception is raised. Note that
+only the first matching WardInfo will be returned</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.WardInfos.reindex">
+<code class="descname">reindex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wardinfo.html#WardInfos.reindex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.WardInfos.reindex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rebuild the WardInfo index. You must call this function after
+you have modified the list of WardInfo objects, as otherwise
+this will fall out of date. Note that this will be automatically
+called the first time you use the “contains” or “index” functions</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -311,7 +355,7 @@ searching for the ward</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>

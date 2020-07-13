@@ -250,38 +250,57 @@
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.assert_sane" title="metawards.Wards.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
 <td>Make sure that we don’t refer to any non-existent wards</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.from_data" title="metawards.Wards.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data,&nbsp;profiler)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.contains" title="metawards.Wards.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(id,&nbsp;metawards._wardinfo.WardInfo])</td>
+<td>Return whether or not the passed id - which can be an integer ID or WardInfo - is in this Wards object</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.from_data" title="metawards.Wards.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data,&nbsp;profiler)</td>
 <td>Return the Wards constructed from a data represnetation, which may have come from deserialised JSON</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.from_json" title="metawards.Wards.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(s)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.from_json" title="metawards.Wards.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(s)</td>
 <td>Return the Wards constructed from the passed json.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.index" title="metawards.Wards.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(id,&nbsp;metawards._wardinfo.WardInfo])</td>
+<td>Return the index of the ward that matches the passed id - which can be the integer ID or WardInfo - in this Wards object.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.insert" title="metawards.Wards.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(wards)</td>
 <td>Append the passed wards onto this list</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_play_links" title="metawards.Wards.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.is_resolved" title="metawards.Wards.is_resolved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_resolved</span></code></a>()</td>
+<td>Return whether or not this is a fully resolved set of Wards (i.e.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_play_links" title="metawards.Wards.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
 <td>Return the total number of play links</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_players" title="metawards.Wards.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_players" title="metawards.Wards.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
 <td>Return the total number of players in this network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_work_links" title="metawards.Wards.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_work_links" title="metawards.Wards.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
 <td>Return the total number of work links</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_workers" title="metawards.Wards.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_workers" title="metawards.Wards.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
 <td>Return the total number of workers in this network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.population" title="metawards.Wards.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.population" title="metawards.Wards.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
 <td>Return the total population in this network</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.to_data" title="metawards.Wards.to_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data</span></code></a>(profiler)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.to_data" title="metawards.Wards.to_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data</span></code></a>(profiler)</td>
 <td>Return a data representation of these wards that can be serialised to JSON</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.to_json" title="metawards.Wards.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(filename,&nbsp;indent,&nbsp;auto_bzip)</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.to_json" title="metawards.Wards.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(filename,&nbsp;indent,&nbsp;auto_bzip)</td>
 <td>Serialise the wards to JSON.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.unresolved_wards" title="metawards.Wards.unresolved_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unresolved_wards</span></code></a>()</td>
+<td>Return the list of IDs of unresolved wards</td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="metawards.Wards.__contains__">
+<code class="descname">__contains__</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__contains__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not the passed id - which can be an integer
+ID or WardInfo - is in this Wards object</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="metawards.Wards.__eq__">
 <code class="descname">__eq__</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__eq__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__eq__" title="Permalink to this definition">¶</a></dt>
@@ -290,8 +309,9 @@
 
 <dl class="method">
 <dt id="metawards.Wards.__getitem__">
-<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__getitem__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the ward with specified id</p>
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; metawards._ward.Ward<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__getitem__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ward with specified id - this can be the integer
+ID of the ward, or the WardInfo of the ward</p>
 </dd></dl>
 
 <dl class="method">
@@ -308,7 +328,7 @@
 
 <dl class="method">
 <dt id="metawards.Wards.add">
-<code class="descname">add</code><span class="sig-paren">(</span><em>ward: metawards._ward.Ward</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.add" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add</code><span class="sig-paren">(</span><em>ward: metawards._ward.Ward</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Synonym for insert</p>
 </dd></dl>
 
@@ -316,6 +336,13 @@
 <dt id="metawards.Wards.assert_sane">
 <code class="descname">assert_sane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.assert_sane"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.assert_sane" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make sure that we don’t refer to any non-existent wards</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.contains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.contains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not the passed id - which can be an integer
+ID or WardInfo - is in this Wards object</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -334,9 +361,25 @@ from the passed file</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Wards.index">
+<code class="descname">index</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the index of the ward that matches the passed
+id - which can be the integer ID or WardInfo - in this
+Wards object. This raises a ValueError if the
+ward doens’t exist</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Wards.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward]</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.insert" title="Permalink to this definition">¶</a></dt>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.insert" title="Permalink to this definition">¶</a></dt>
 <dd><p>Append the passed wards onto this list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.is_resolved">
+<code class="descname">is_resolved</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.is_resolved"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.is_resolved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not this is a fully resolved set of Wards
+(i.e. each ward only links to other wards in this set)</p>
 </dd></dl>
 
 <dl class="method">
@@ -381,29 +424,32 @@ be serialised to JSON</p>
 <code class="descname">to_json</code><span class="sig-paren">(</span><em>filename: str = None</em>, <em>indent: int = None</em>, <em>auto_bzip: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialise the wards to JSON. This will write to a file
 if filename is set, otherwise it will return a JSON string.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filename</strong> (<em>str</em>) – The name of the file to write the JSON to. The absolute
+<p>Parameters
+== == == == ==
+filename: str</p>
+<blockquote>
+<div>The name of the file to write the JSON to. The absolute
 path to the written file will be returned. If filename is None
 then this will serialise to a JSON string which will be
-returned.</li>
-<li><strong>indent</strong> (<em>int</em>) – The number of spaces of indent to use when writing the json</li>
-<li><strong>auto_bzip</strong> (<em>bool</em>) – Whether or not to automatically bzip2 the written json file</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns either the absolute path to the written file, or
-the json-serialised string</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
-</td>
-</tr>
-</tbody>
-</table>
+returned.</div></blockquote>
+<dl class="docutils">
+<dt>indent: int</dt>
+<dd>The number of spaces of indent to use when writing the json</dd>
+<dt>auto_bzip: bool</dt>
+<dd>Whether or not to automatically bzip2 the written json file</dd>
+</dl>
+<p>Returns
+== == == =
+str</p>
+<blockquote>
+<div>Returns either the absolute path to the written file, or
+the json-serialised string</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.unresolved_wards">
+<code class="descname">unresolved_wards</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[int]<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.unresolved_wards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.unresolved_wards" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the list of IDs of unresolved wards</p>
 </dd></dl>
 
 </dd></dl>
@@ -431,7 +477,7 @@ the json-serialised string</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>

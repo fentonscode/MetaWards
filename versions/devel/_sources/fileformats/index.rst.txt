@@ -57,7 +57,7 @@ the parameters for a disease, or specifying the data associated with
 different demographics. These files are read using the
 `Python JSON module <https://docs.python.org/3/library/json.html>`__
 into dictionaries, which are interpreted by the classes associated with
-each file (e.g. :class:`MetaWards.Disease` in the case of disease parameters).
+each file (e.g. :class:`~metawards.Disease` in the case of disease parameters).
 Many of these classes use :class:`metawards.Interpret` to interpret the
 data from the JSON file, meaning that these support expressions, random
 numbers etc. We plan to ensure that as much data as possible is interpreted

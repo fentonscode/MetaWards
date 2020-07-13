@@ -270,9 +270,9 @@ ward</li>
 <td>Construct a new Ward, optionally supplying information about the ward</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.add_player_weight" title="metawards.Ward.add_player_weight"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_player_weight</span></code></a>(weight,&nbsp;destination)</td>
-<td>Add the weight for players who will randomly move to the specified destination to play (or to play in the home ward if destination is not set).</td>
+<td>Add the weight for players who will randomly move to the specified destination to play(or to play in the home ward if destination is not set).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.add_workers" title="metawards.Ward.add_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_workers</span></code></a>(number,&nbsp;destination)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.add_workers" title="metawards.Ward.add_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_workers</span></code></a>(number,&nbsp;destination,&nbsp;…)</td>
 <td>Add some workers to this ward, specifying their destination if they work out of ward</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.assert_sane" title="metawards.Ward.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
@@ -311,32 +311,38 @@ ward</li>
 <tr class="row-odd"><td><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_null</span></code>()</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.name" title="metawards.Ward.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.is_resolved" title="metawards.Ward.is_resolved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_resolved</span></code></a>()</td>
+<td>Return whether or not any of the worker or player links in this ward are unresolved, or whether the ID of this ward is None</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.name" title="metawards.Ward.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a>()</td>
 <td>Return the name of this ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.num_play_links" title="metawards.Ward.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.num_play_links" title="metawards.Ward.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
 <td>Return the total number of play links</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.num_players" title="metawards.Ward.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.num_players" title="metawards.Ward.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
 <td>Return the total number of players who make their home in this ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.num_work_links" title="metawards.Ward.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.num_work_links" title="metawards.Ward.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
 <td>Return the total number of work links</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.num_workers" title="metawards.Ward.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.num_workers" title="metawards.Ward.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
 <td>Return the total number of workers who make their home in this ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.play_connections" title="metawards.Ward.play_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_connections</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.play_connections" title="metawards.Ward.play_connections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">play_connections</span></code></a>()</td>
 <td>Return the full list of play connections for this ward</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.population" title="metawards.Ward.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.population" title="metawards.Ward.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
 <td>Return the total population of this ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.position" title="metawards.Ward.position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.position" title="metawards.Ward.position"><code class="xref py py-obj docutils literal notranslate"><span class="pre">position</span></code></a>()</td>
 <td>Return the position of the center of this ward.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.region" title="metawards.Ward.region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">region</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.region" title="metawards.Ward.region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">region</span></code></a>()</td>
 <td>Return the region containing this ward</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#metawards.Ward.resolve" title="metawards.Ward.resolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resolve</span></code></a>(wards)</td>
+<td>Resolve any unresolved links using the passed Wards object ‘wards’</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Ward.set_authority" title="metawards.Ward.set_authority"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_authority</span></code></a>(authority)</td>
 <td>Set the local authority of this ward</td>
@@ -434,14 +440,14 @@ ward</li>
 <dt id="metawards.Ward.add_player_weight">
 <code class="descname">add_player_weight</code><span class="sig-paren">(</span><em>weight: float</em>, <em>destination: int = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.add_player_weight"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.add_player_weight" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add the weight for players who will randomly move to
-the specified destination to play (or to play in the home
+the specified destination to play(or to play in the home
 ward if destination is not set). Note that the sum of
 player weights cannot be greater than 1.0.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="metawards.Ward.add_workers">
-<code class="descname">add_workers</code><span class="sig-paren">(</span><em>number: int</em>, <em>destination: int = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.add_workers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.add_workers" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_workers</code><span class="sig-paren">(</span><em>number: int</em>, <em>destination: Union[int</em>, <em>metawards._wardinfo.WardInfo] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.add_workers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.add_workers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add some workers to this ward, specifying their destination
 if they work out of ward</p>
 </dd></dl>
@@ -525,6 +531,13 @@ identifying metadata</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Ward.is_resolved">
+<code class="descname">is_resolved</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.is_resolved"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.is_resolved" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not any of the worker or player links in
+this ward are unresolved, or whether the ID of this ward is None</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Ward.name">
 <code class="descname">name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the name of this ward</p>
@@ -582,6 +595,13 @@ if cooordinates have not been set.</p>
 <dt id="metawards.Ward.region">
 <code class="descname">region</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.region"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.region" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the region containing this ward</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Ward.resolve">
+<code class="descname">resolve</code><span class="sig-paren">(</span><em>wards</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_ward.html#Ward.resolve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Ward.resolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolve any unresolved links using the passed Wards object
+‘wards’</p>
 </dd></dl>
 
 <dl class="method">
@@ -717,7 +737,7 @@ if they work out of ward</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>

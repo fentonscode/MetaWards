@@ -14,7 +14,10 @@ metawards.WardInfos
    .. autosummary::
    
       ~WardInfos.__init__
+      ~WardInfos.contains
       ~WardInfos.find
+      ~WardInfos.index
+      ~WardInfos.reindex
    
    
 

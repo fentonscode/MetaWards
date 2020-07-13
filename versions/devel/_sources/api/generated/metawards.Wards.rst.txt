@@ -16,9 +16,12 @@ metawards.Wards
       ~Wards.__init__
       ~Wards.add
       ~Wards.assert_sane
+      ~Wards.contains
       ~Wards.from_data
       ~Wards.from_json
+      ~Wards.index
       ~Wards.insert
+      ~Wards.is_resolved
       ~Wards.num_play_links
       ~Wards.num_players
       ~Wards.num_work_links
@@ -26,6 +29,7 @@ metawards.Wards
       ~Wards.population
       ~Wards.to_data
       ~Wards.to_json
+      ~Wards.unresolved_wards
    
    
 

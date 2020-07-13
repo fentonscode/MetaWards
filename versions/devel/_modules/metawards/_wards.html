@@ -192,10 +192,12 @@
   <h1>Source code for metawards._wards</h1><div class="highlight"><pre>
 <span></span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> <span class="k">as</span> <span class="n">_List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span> <span class="k">as</span> <span class="n">_Union</span>
 
 <span class="kn">from</span> <span class="nn">.utils._profiler</span> <span class="kn">import</span> <span class="n">Profiler</span><span class="p">,</span> <span class="n">NullProfiler</span>
 
 <span class="kn">from</span> <span class="nn">._ward</span> <span class="kn">import</span> <span class="n">Ward</span>
+<span class="kn">from</span> <span class="nn">._wardinfo</span> <span class="kn">import</span> <span class="n">WardInfos</span><span class="p">,</span> <span class="n">WardInfo</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Wards&quot;</span><span class="p">]</span>
 
@@ -206,6 +208,9 @@
 <div class="viewcode-block" id="Wards.__init__"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wards</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="n">Ward</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Construct, optionally from a list of Ward objects&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_info</span> <span class="o">=</span> <span class="n">WardInfos</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span> <span class="o">=</span> <span class="p">[]</span>
 
         <span class="k">if</span> <span class="n">wards</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">wards</span><span class="p">)</span></div>
@@ -225,7 +230,7 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="vm">__class__</span> <span class="ow">and</span> \
             <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="vm">__dict__</span></div>
 
-<div class="viewcode-block" id="Wards.insert"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wards</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="n">Ward</span><span class="p">]):</span>
+<div class="viewcode-block" id="Wards.insert"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wards</span><span class="p">:</span> <span class="n">_List</span><span class="p">[</span><span class="n">Ward</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Append the passed wards onto this list&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
             <span class="n">wards</span> <span class="o">=</span> <span class="p">[</span><span class="n">wards</span><span class="p">]</span>
@@ -244,23 +249,131 @@
 
         <span class="k">for</span> <span class="n">ward</span> <span class="ow">in</span> <span class="n">wards</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ward</span><span class="p">,</span> <span class="n">Ward</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">largest_id</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">largest_id</span><span class="p">:</span>
                     <span class="n">largest_id</span> <span class="o">=</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">largest_id</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span> <span class="o">+=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">largest_id</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
+        <span class="n">add_later</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="k">for</span> <span class="n">ward</span> <span class="ow">in</span> <span class="n">wards</span><span class="p">:</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">ward</span><span class="p">,</span> <span class="n">Ward</span><span class="p">):</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()]</span> <span class="o">=</span> <span class="n">ward</span></div>
+                <span class="c1"># make sure that this is not a duplicate...</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="n">ward</span><span class="o">.</span><span class="n">_info</span>
 
-<div class="viewcode-block" id="Wards.add"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ward</span><span class="p">:</span> <span class="n">Ward</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">info</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">:</span>
+                    <span class="n">idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">idx</span> <span class="o">!=</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">():</span>
+                        <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;You cannot have two different wards that have &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;the same info: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="c1"># otherwise the IDs are the same, so this is an</span>
+                    <span class="c1"># update to an existing ward</span>
+
+                <span class="k">if</span> <span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">add_later</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()]</span> <span class="o">=</span> <span class="n">ward</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">[</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()]</span> <span class="o">=</span> <span class="n">info</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+
+        <span class="k">for</span> <span class="n">ward</span> <span class="ow">in</span> <span class="n">add_later</span><span class="p">:</span>
+            <span class="c1"># append this onto the end of the list</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span>
+            <span class="n">ward</span><span class="o">.</span><span class="n">set_id</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="p">[</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">()]</span> <span class="o">=</span> <span class="n">ward</span><span class="o">.</span><span class="n">_info</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ward</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Wards.add"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ward</span><span class="p">:</span> <span class="n">Ward</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Synonym for insert&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Wards.__getitem__"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the ward with specified id&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span></div>
+<div class="viewcode-block" id="Wards.is_resolved"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.is_resolved">[docs]</a>    <span class="k">def</span> <span class="nf">is_resolved</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return whether or not this is a fully resolved set of Wards</span>
+<span class="sd">           (i.e. each ward only links to other wards in this set)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span></div>
+
+<div class="viewcode-block" id="Wards.unresolved_wards"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.unresolved_wards">[docs]</a>    <span class="k">def</span> <span class="nf">unresolved_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return the list of IDs of unresolved wards&quot;&quot;&quot;</span>
+        <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+        <span class="k">return</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Try to resolve all of the links. Note that this will only resolve</span>
+<span class="sd">           as many wards as it can. Any unresolved wards will be available</span>
+<span class="sd">           as &#39;unresolvd_wards&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">still_unresolved</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">unresolved</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="n">unresolved</span><span class="p">]</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="n">unresolved</span><span class="p">]</span><span class="o">.</span><span class="n">is_resolved</span><span class="p">():</span>
+                <span class="n">still_unresolved</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unresolved</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unresolved</span> <span class="o">=</span> <span class="n">still_unresolved</span>
+
+<div class="viewcode-block" id="Wards.__getitem__"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.__getitem__">[docs]</a>    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Ward</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the ward with specified id - this can be the integer</span>
+<span class="sd">           ID of the ward, or the WardInfo of the ward</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">id</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="Wards.index"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.index">[docs]</a>    <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return the index of the ward that matches the passed</span>
+<span class="sd">           id - which can be the integer ID or WardInfo - in this</span>
+<span class="sd">           Wards object. This raises a ValueError if the</span>
+<span class="sd">           ward doens&#39;t exist</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No ward matching </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span> <span class="o">+</span> <span class="nb">id</span>
+
+            <span class="k">if</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">id</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No ward matching </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No ward matching </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="nb">id</span></div>
+
+<div class="viewcode-block" id="Wards.__contains__"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.__contains__">[docs]</a>    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return whether or not the passed id - which can be an integer</span>
+<span class="sd">           ID or WardInfo - is in this Wards object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">):</span>
+            <span class="k">return</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_info</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">id</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span> <span class="o">+</span> <span class="nb">id</span>
+
+            <span class="k">if</span> <span class="nb">id</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">id</span> <span class="o">&gt;=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">):</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Wards.contains"><a class="viewcode-back" href="../../api/generated/metawards.Wards.html#metawards.Wards.contains">[docs]</a>    <span class="k">def</span> <span class="nf">contains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">WardInfo</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return whether or not the passed id - which can be an integer</span>
+<span class="sd">           ID or WardInfo - is in this Wards object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span>
@@ -320,6 +433,8 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span>
 
+        <span class="bp">self</span><span class="o">.</span><span class="n">_resolve</span><span class="p">()</span>
+
         <span class="n">nwards</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
 
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ward</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_wards</span><span class="p">):</span>
@@ -330,7 +445,9 @@
                 <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2"> should have index </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ward</span><span class="o">.</span><span class="n">work_connections</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">nwards</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unresolved connection </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">nwards</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2"> has a work connection to an invalid &quot;</span>
                         <span class="sa">f</span><span class="s2">&quot;ward ID </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">. Range should be 1 &lt;= n &lt;= </span><span class="si">{</span><span class="n">nwards</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -340,7 +457,9 @@
                         <span class="sa">f</span><span class="s2">&quot;ward ID </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">. This ward is null&quot;</span><span class="p">)</span>
 
             <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ward</span><span class="o">.</span><span class="n">play_connections</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">nwards</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unresolved connection </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">&gt;</span> <span class="n">nwards</span><span class="p">:</span>
                     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2"> has a play connection to an invalid &quot;</span>
                         <span class="sa">f</span><span class="s2">&quot;ward ID </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">. Range should be 1 &lt;= n &lt;= </span><span class="si">{</span><span class="n">nwards</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -437,7 +556,7 @@
 <span class="sd">           if filename is set, otherwise it will return a JSON string.</span>
 
 <span class="sd">           Parameters</span>
-<span class="sd">           ==========</span>
+<span class="sd">           == == == == ==</span>
 <span class="sd">           filename: str</span>
 <span class="sd">             The name of the file to write the JSON to. The absolute</span>
 <span class="sd">             path to the written file will be returned. If filename is None</span>
@@ -449,7 +568,7 @@
 <span class="sd">             Whether or not to automatically bzip2 the written json file</span>
 
 <span class="sd">           Returns</span>
-<span class="sd">           =======</span>
+<span class="sd">           == == == =</span>
 <span class="sd">           str</span>
 <span class="sd">             Returns either the absolute path to the written file, or</span>
 <span class="sd">             the json-serialised string</span>
@@ -527,7 +646,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>

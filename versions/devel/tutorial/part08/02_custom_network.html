@@ -269,42 +269,34 @@ in, e.g. ipython or a jupyter notebook;</p>
 </pre></div>
 </div>
 <p>Next, we will create a <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
-Bristol (which we will call <code class="docutils literal notranslate"><span class="pre">bristol</span></code>). We will give this the ID
-number of <code class="docutils literal notranslate"><span class="pre">1</span></code>, and will add <em class="xref py py-obj">500</em>
+Bristol (which we will call <code class="docutils literal notranslate"><span class="pre">bristol</span></code>). We will add <em class="xref py py-obj">500</em>
 workers who will work in Bristol, and <code class="docutils literal notranslate"><span class="pre">750</span></code> players.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bristol&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bristol&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span><span class="o">.</span><span class="n">set_num_players</span><span class="p">(</span><span class="mi">750</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Next, we will create a <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
-London (which we will call <code class="docutils literal notranslate"><span class="pre">london</span></code>). We will give this the ID
-number of <code class="docutils literal notranslate"><span class="pre">2</span></code>, and will add <code class="docutils literal notranslate"><span class="pre">8600</span></code>
+London (which we will call <code class="docutils literal notranslate"><span class="pre">london</span></code>). We will add <code class="docutils literal notranslate"><span class="pre">8600</span></code>
 workers and <code class="docutils literal notranslate"><span class="pre">10000</span></code> players.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">london</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;London&quot;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">london</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;London&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">london</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">8500</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">london</span><span class="o">.</span><span class="n">set_num_players</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You are free to use whatever ID number you wish, as long as it is positive
-and greater or equal to 1. For efficiency, you should identify the
-wards using ID numbers that start from 1 and increase consecutively.</p>
-</div>
 <p>Now, we will add some commuters. We will have <code class="docutils literal notranslate"><span class="pre">500</span></code> Bristolians
-commute each day to London (<code class="docutils literal notranslate"><span class="pre">destination=2</span></code>), while <code class="docutils literal notranslate"><span class="pre">100</span></code> Londoners
-will commute each day to Bristol (<code class="docutils literal notranslate"><span class="pre">destination=1</span></code>)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">london</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+commute each day to London, while <code class="docutils literal notranslate"><span class="pre">100</span></code> Londoners
+will commute each day to Bristol.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">london</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">london</span><span class="o">.</span><span class="n">add_workers</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">bristol</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We can confirm that the information is correct by printing, e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">bristol</span><span class="p">)</span>
-<span class="go">Ward( id=1, name=Bristol, num_workers=1000, num_players=750 )</span>
+<span class="go">Ward( name=Bristol, num_workers=1000, num_players=750 )</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">london</span><span class="p">)</span>
-<span class="go">Ward( id=2, name=London, num_workers=8600, num_players=10000 )</span>
+<span class="go">Ward( name=London, num_workers=8600, num_players=10000 )</span>
 </pre></div>
 </div>
 <p>Next, we add the two <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> objects to our
@@ -312,8 +304,16 @@ will commute each day to Bristol (<code class="docutils literal notranslate"><sp
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bristol</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">london</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wards</span><span class="p">)</span>
-<span class="go">[ Ward( id=1, name=Bristol, num_workers=1000, num_players=750 ), Ward( id=2, name=London, num_workers=8600, num_players=10000 ) ]</span>
+<span class="go">[ Ward( info=Bristol, id=1, num_workers=1000, num_players=750 ), Ward( info=London, id=2, num_workers=8600, num_players=10000 ) ]</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note that each <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> in the <a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a>
+collection has been automatically assigned an ID number (1 for Bristol
+and 2 for London). You can refer to the wards by their ID number, but
+should, in general, leave <code class="docutils literal notranslate"><span class="pre">metawards</span></code> to automatically generate
+and manage these IDs.</p>
 </div>
 <p>We can now save this set of <a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> to a file by converting
 this to a data dictionary, and then serialising that dictionary to JSON,
@@ -404,7 +404,7 @@ It won’t affect the included information - just its human-readability.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 10, 2020.
+        Last updated on Jul 13, 2020.
       </span>
 
     </p>
