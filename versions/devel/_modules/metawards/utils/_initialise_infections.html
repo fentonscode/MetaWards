@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -217,7 +220,7 @@
     <span class="c1"># single link in network.links. 1-indexing is used throughout</span>
     <span class="c1"># the code, hence why we size for n + 1</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="n">infections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_int_array</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nlinks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">infections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_int_array</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nlinks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">infections</span></div>
 
@@ -240,7 +243,7 @@
     <span class="c1"># each ward (node) according to the &#39;play&#39; rules. 1-indexing</span>
     <span class="c1"># is used throughout the code, hence why we size for n + 1</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-        <span class="n">infections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_int_array</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nnodes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">infections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">create_int_array</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">nnodes</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">infections</span></div>
 </pre></div>
@@ -256,7 +259,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -193,6 +196,7 @@
 <span></span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span> <span class="k">as</span> <span class="n">_dataclass</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span> <span class="k">as</span> <span class="n">_Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> <span class="k">as</span> <span class="n">_List</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;InputFiles&quot;</span><span class="p">]</span>
 
@@ -201,7 +205,45 @@
 <span class="n">_default_folder_name</span> <span class="o">=</span> <span class="s2">&quot;model_data&quot;</span>
 
 
-<div class="viewcode-block" id="InputFiles"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles">[docs]</a><span class="nd">@_dataclass</span>
+<span class="k">def</span> <span class="nf">_expand_path</span><span class="p">(</span><span class="n">json_file</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">_is_description_json</span><span class="p">(</span><span class="n">json_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return whether or not this json file contains description data&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">json_file</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">bz2</span>
+        <span class="k">with</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">FILE</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="kc">False</span>
+                    <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">FILE</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[&quot;</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+                <span class="k">elif</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;{&quot;</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="InputFiles"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles">[docs]</a><span class="nd">@_dataclass</span>
 <span class="k">class</span> <span class="nc">InputFiles</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;This class holds all of the input files that must be loaded</span>
 <span class="sd">       from METAWARDSDATA to construct the network of wards</span>
@@ -251,6 +293,8 @@
     <span class="n">uv</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Whether or not this is the special &quot;single&quot; ward model</span>
     <span class="n">is_single</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1">#: The json file containing the wards data if this is a ward_json</span>
+    <span class="n">wards_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="n">_filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>            <span class="c1"># Full path of the description.json file</span>
     <span class="n">_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>          <span class="c1"># Name of the model</span>
@@ -263,24 +307,46 @@
     <span class="n">_repository_version</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Git version of the data</span>
     <span class="n">_repository_branch</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># Git branch for the data</span>
 
-<div class="viewcode-block" id="InputFiles.model_name"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_name">[docs]</a>    <span class="k">def</span> <span class="nf">model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_model_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_wards_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wards_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="InputFiles.model_name"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_name">[docs]</a>    <span class="k">def</span> <span class="nf">model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the name of this model&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;custom&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;single&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span></div>
 
-<div class="viewcode-block" id="InputFiles.model_path"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_path">[docs]</a>    <span class="k">def</span> <span class="nf">model_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.model_path"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_path">[docs]</a>    <span class="k">def</span> <span class="nf">model_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the path to the directory containing this model&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span></div>
 
-<div class="viewcode-block" id="InputFiles.model_version"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_version">[docs]</a>    <span class="k">def</span> <span class="nf">model_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.model_version"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_version">[docs]</a>    <span class="k">def</span> <span class="nf">model_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the version of the data in this model&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_version</span></div>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_version</span></div>
 
-<div class="viewcode-block" id="InputFiles.__str__"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.__str__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;Model: single ward&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">os</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wards_data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Model: </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">* Model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2"></span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;* Model: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* loaded from: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* repository: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* repository_branch: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_repository_branch</span><span class="si">}</span><span class="s2"></span>
@@ -297,20 +363,36 @@
 <span class="s2">* lookup: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lookup</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* lookup_columns: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">lookup_columns</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* seed: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">* nodes_to_track: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes_to_track</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">&quot;&quot;&quot;</span></div>
+<span class="s2">* nodes_to_track: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes_to_track</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span></div>
+
+<div class="viewcode-block" id="InputFiles.__repr__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputFiles::single&quot;</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
+            <span class="kn">import</span> <span class="nn">os</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wards_data</span><span class="p">)</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputFiles(wards_data=&#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39;)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputFiles(model=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span></div>
+
+<div class="viewcode-block" id="InputFiles.__hash__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__hash__">[docs]</a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_localise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Localise the filenames in this input files set. This will</span>
 <span class="sd">           prepend model_path/model to every filename and will also</span>
 <span class="sd">           double-check that all files exist and are readable</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
+            <span class="k">return</span>
+
         <span class="n">members</span> <span class="o">=</span> <span class="p">[</span><span class="n">attr</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
                    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">))</span>
                    <span class="ow">and</span> <span class="ow">not</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)]</span>
 
         <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">member</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup_columns&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">member</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">,</span> <span class="s2">&quot;lookup_columns&quot;</span><span class="p">,</span> <span class="s2">&quot;is_model_dir&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;is_wards_data&quot;</span><span class="p">,</span> <span class="s2">&quot;wards_data&quot;</span><span class="p">,</span> <span class="s2">&quot;is_single&quot;</span><span class="p">]:</span>
                 <span class="k">continue</span>
 
             <span class="n">filename</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">member</span><span class="p">)</span>
@@ -325,10 +407,10 @@
 
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">member</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 
-<div class="viewcode-block" id="InputFiles.load"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.load">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="InputFiles.load"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.load">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;2011Data&quot;</span><span class="p">,</span>
              <span class="n">repository</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-             <span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">_default_folder_name</span><span class="p">,</span>
+             <span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
              <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;description.json&quot;</span><span class="p">,</span>
              <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Load the parameters associated with the passed model.</span>
@@ -376,28 +458,60 @@
             <span class="kn">from</span> <span class="nn">._parameters</span> <span class="kn">import</span> <span class="n">get_repository</span>
             <span class="kn">import</span> <span class="nn">os</span>
 
-            <span class="n">repository</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">get_repository</span><span class="p">(</span><span class="n">repository</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">folder</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isabs</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">model</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 
-            <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repository</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span>
-                                    <span class="n">model</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">_expand_path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">repository</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">get_repository</span><span class="p">(</span><span class="n">repository</span><span class="p">)</span>
 
-            <span class="n">repository</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;repository&quot;</span><span class="p">]</span>
-            <span class="n">repository_version</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span>
-            <span class="n">repository_branch</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;branch&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">folder</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">folder</span> <span class="o">=</span> <span class="n">_default_folder_name</span>
+
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repository</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span>
+                                        <span class="n">model</span><span class="p">,</span> <span class="n">description</span><span class="p">)</span>
+
+                <span class="n">filename</span> <span class="o">=</span> <span class="n">_expand_path</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+                <span class="n">repository</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;repository&quot;</span><span class="p">]</span>
+                <span class="n">repository_version</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;version&quot;</span><span class="p">]</span>
+                <span class="n">repository_branch</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;branch&quot;</span><span class="p">]</span>
 
         <span class="n">json_file</span> <span class="o">=</span> <span class="n">filename</span>
         <span class="kn">import</span> <span class="nn">os</span>
         <span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">json_file</span><span class="p">)):</span>
+            <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot read file </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2"> as it doesn&#39;t exist&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot load inputfiles as </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2"> doesn&#39;t exist&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_description_json</span><span class="p">(</span><span class="n">json_file</span><span class="p">):</span>
+            <span class="c1"># this must be wards data...</span>
+            <span class="n">json_file</span> <span class="o">=</span> <span class="n">_expand_path</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">InputFiles</span><span class="p">(</span><span class="n">wards_data</span><span class="o">=</span><span class="n">json_file</span><span class="p">,</span>
+                              <span class="n">_filename</span><span class="o">=</span><span class="n">json_file</span><span class="p">)</span>
+
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
-                <span class="kn">import</span> <span class="nn">json</span>
-                <span class="n">files</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span>
+            <span class="kn">import</span> <span class="nn">json</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">bz2</span>
+                <span class="k">with</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
+                    <span class="n">files</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">files</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="k">if</span> <span class="n">files</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
+                    <span class="n">files</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span>
 
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
-            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">Could not find the model file </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">.</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Could not find the model file </span><span class="si">{</span><span class="n">json_file</span><span class="si">}</span><span class="s2">.</span>
 <span class="s2">Either it does not exist or was corrupted.</span>
 <span class="s2">Error was </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">.</span>
 <span class="s2">Please see https://metawards.org/model_data for instructions on how</span>
@@ -446,7 +560,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

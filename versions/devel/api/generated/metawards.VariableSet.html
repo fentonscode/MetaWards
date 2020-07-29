@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -280,43 +283,46 @@ VariableSet from one another</li>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.__init__" title="metawards.VariableSet.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(variables,&nbsp;float]&nbsp;=&nbsp;None,&nbsp;…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.__init__" title="metawards.VariableSet.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(variables,&nbsp;float]&nbsp;=&nbsp;None,&nbsp;…)</td>
 <td>Construct a new VariableSet from the passed adjusted variable values.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.adjust" title="metawards.VariableSet.adjust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjust</span></code></a>(params)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.adjust" title="metawards.VariableSet.adjust"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjust</span></code></a>(params)</td>
 <td>Use the variables in this set to adjust the passed parameters.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.adjustable_help" title="metawards.VariableSet.adjustable_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjustable_help</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.adjustable_help" title="metawards.VariableSet.adjustable_help"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjustable_help</span></code></a>()</td>
 <td>Return a string that contains some help that is useful for finding out which variables can be adjusted</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.create_fingerprint" title="metawards.VariableSet.create_fingerprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_fingerprint</span></code></a>(vals,&nbsp;index,&nbsp;include_index)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.create_fingerprint" title="metawards.VariableSet.create_fingerprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_fingerprint</span></code></a>(vals,&nbsp;index,&nbsp;include_index)</td>
 <td>Create the fingerprint for the passed values</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.extract_values" title="metawards.VariableSet.extract_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_values</span></code></a>(fingerprint)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.extract_values" title="metawards.VariableSet.extract_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_values</span></code></a>(fingerprint)</td>
 <td>Return the original values from the passed fingerprint or filename.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.fingerprint" title="metawards.VariableSet.fingerprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fingerprint</span></code></a>(include_index)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.fingerprint" title="metawards.VariableSet.fingerprint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fingerprint</span></code></a>(include_index)</td>
 <td>Return a fingerprint for this VariableSet.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.make_compatible_with" title="metawards.VariableSet.make_compatible_with"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_compatible_with</span></code></a>(other)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.is_empty" title="metawards.VariableSet.is_empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_empty</span></code></a>()</td>
+<td>Return whether or not there is nothing to change</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.make_compatible_with" title="metawards.VariableSet.make_compatible_with"><code class="xref py py-obj docutils literal notranslate"><span class="pre">make_compatible_with</span></code></a>(other)</td>
 <td>Return a copy of this VariableSet which has been made compatible with ‘other’.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.output_dir" title="metawards.VariableSet.output_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_dir</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.output_dir" title="metawards.VariableSet.output_dir"><code class="xref py py-obj docutils literal notranslate"><span class="pre">output_dir</span></code></a>()</td>
 <td>Return the output directory in which runs using this variable set should be placed.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.read" title="metawards.VariableSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.read" title="metawards.VariableSet.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename)</td>
 <td>Read a single set of adjustable variables from the passed file.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.repeat_index" title="metawards.VariableSet.repeat_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat_index</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.repeat_index" title="metawards.VariableSet.repeat_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat_index</span></code></a>()</td>
 <td>Return the repeat index of this set.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.variable_names" title="metawards.VariableSet.variable_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_names</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.variable_names" title="metawards.VariableSet.variable_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_names</span></code></a>()</td>
 <td>Return the names of the variables that will be adjusted by this VariableSet</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSet.variable_values" title="metawards.VariableSet.variable_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_values</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.variable_values" title="metawards.VariableSet.variable_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable_values</span></code></a>()</td>
 <td>Return the values that the variables will be adjusted to.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSet.variables" title="metawards.VariableSet.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet.variables" title="metawards.VariableSet.variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variables</span></code></a>()</td>
 <td>Return the variables (name and values) to be adjusted</td>
 </tr>
 </tbody>
@@ -379,7 +385,7 @@ Note that this directly modifies ‘params’</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference internal" href="metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><em>Parameters</em></a>) – The parameters whose variables will be adjusted</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>params</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><em>Parameters</em></a>) – The parameters whose variables will be adjusted</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
 </tr>
@@ -462,6 +468,12 @@ but different parameters</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.VariableSet.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.is_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not there is nothing to change</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.VariableSet.make_compatible_with">
 <code class="descname">make_compatible_with</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_variableset.html#VariableSet.make_compatible_with"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.VariableSet.make_compatible_with" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of this VariableSet which has been made
@@ -473,11 +485,11 @@ if it is not possible to make this set compatible</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="#metawards.VariableSet" title="metawards.VariableSet"><em>VariableSet</em></a>) – The passed VariableSet for which this should be made compatible</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>other</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet"><em>VariableSet</em></a>) – The passed VariableSet for which this should be made compatible</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>result</strong> – A copy of this VariableSet which is now compatible with ‘other’</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#metawards.VariableSet" title="metawards.VariableSet">VariableSet</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet">VariableSet</a></td>
 </tr>
 </tbody>
 </table>
@@ -523,7 +535,7 @@ a large VariableSets</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>variables</strong> – The VariableSet that has been read</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#metawards.VariableSet" title="metawards.VariableSet">VariableSet</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet">VariableSet</a></td>
 </tr>
 </tbody>
 </table>
@@ -624,7 +636,7 @@ with be adjusted to their desired values</td>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

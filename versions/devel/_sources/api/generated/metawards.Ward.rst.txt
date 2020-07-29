@@ -20,7 +20,10 @@ metawards.Ward
       ~Ward.authority
       ~Ward.auto_assign_players
       ~Ward.code
+      ~Ward.depopulate
+      ~Ward.dereference
       ~Ward.from_data
+      ~Ward.from_json
       ~Ward.get_player_lists
       ~Ward.get_players
       ~Ward.get_worker_lists
@@ -29,6 +32,7 @@ metawards.Ward
       ~Ward.info
       ~Ward.is_null
       ~Ward.is_resolved
+      ~Ward.merge
       ~Ward.name
       ~Ward.num_play_links
       ~Ward.num_players
@@ -39,6 +43,7 @@ metawards.Ward
       ~Ward.position
       ~Ward.region
       ~Ward.resolve
+      ~Ward.scale
       ~Ward.set_authority
       ~Ward.set_auto_assign_players
       ~Ward.set_code
@@ -52,6 +57,7 @@ metawards.Ward
       ~Ward.subtract_player_weight
       ~Ward.subtract_workers
       ~Ward.to_data
+      ~Ward.to_json
       ~Ward.work_connections
    
    

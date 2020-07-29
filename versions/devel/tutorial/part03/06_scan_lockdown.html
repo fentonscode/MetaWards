@@ -97,6 +97,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index_part01.html">Part 1 - Modelling outbreaks</a></li>
@@ -328,8 +331,8 @@ meaning no lockdown, <code class="docutils literal notranslate"><span class="pre
 it returns the <code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code> function that we’ve defined.</p>
 <p>This <code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code> function obtains the <code class="docutils literal notranslate"><span class="pre">scale_rate</span></code> and
 <code class="docutils literal notranslate"><span class="pre">can_work</span></code> custom user parameters from the
-<a class="reference internal" href="../../api/generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameters</span></code></a> objects in the model
-<a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>.</p>
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameters</span></code></a> objects in the model
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>.</p>
 <p>It calls <a class="reference internal" href="../../api/generated/metawards.iterators.advance_infprob.html#metawards.iterators.advance_infprob" title="metawards.iterators.advance_infprob"><code class="xref py py-meth docutils literal notranslate"><span class="pre">advance_infprob()</span></code></a> with
 the set <code class="docutils literal notranslate"><span class="pre">scale_rate</span></code> scaling factor, before calling
 <a class="reference internal" href="../../api/generated/metawards.iterators.advance_play.html#metawards.iterators.advance_play" title="metawards.iterators.advance_play"><code class="xref py py-meth docutils literal notranslate"><span class="pre">advance_play()</span></code></a>, and then, if
@@ -486,12 +489,12 @@ be modelled using custom parameters and custom iterators.</p>
 <p>You can of course go further, e.g. by using your custom <code class="docutils literal notranslate"><span class="pre">advance</span> <span class="pre">function</span></code>
 to change actual parameters of the model or of the disease. Feel
 free to change any of the parameters in
-<a class="reference internal" href="../../api/generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">network.params</span></code></a> or
-<a class="reference internal" href="../../api/generated/metawards.Disease.html#metawards.Disease" title="metawards.Disease"><code class="xref py py-class docutils literal notranslate"><span class="pre">network.params.disease_params</span></code></a> directly.
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">network.params</span></code></a> or
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Disease" title="metawards.Disease"><code class="xref py py-class docutils literal notranslate"><span class="pre">network.params.disease_params</span></code></a> directly.
 You could, for example, reduce the
-<a class="reference internal" href="../../api/generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-data docutils literal notranslate"><span class="pre">network.params.dyn_dist_cutoff</span></code></a>
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-data docutils literal notranslate"><span class="pre">network.params.dyn_dist_cutoff</span></code></a>
 variable as lockdown starts. Or you could directly adjust
-<a class="reference internal" href="../../api/generated/metawards.Disease.html#metawards.Disease.beta" title="metawards.Disease.beta"><code class="xref py py-data docutils literal notranslate"><span class="pre">network.params.disease_params.beta[0]</span></code></a>.</p>
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Disease.beta" title="metawards.Disease.beta"><code class="xref py py-data docutils literal notranslate"><span class="pre">network.params.disease_params.beta[0]</span></code></a>.</p>
 <p>A good example of an
 <a class="reference external" href="https://github.com/metawards/MetaWards/tree/devel/examples/lockdown">alternative lockdown model is here</a>.
 This is provided as an example in the MetaWards GitHub repository, and
@@ -586,7 +589,7 @@ work_to_play:
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

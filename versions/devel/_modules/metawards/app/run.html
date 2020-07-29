@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -207,7 +210,7 @@
            <span class="s2">&quot;cli&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="get_parallel_scheme"><a class="viewcode-back" href="../../../api/generated/metawards.app.get_parallel_scheme.html#metawards.app.get_parallel_scheme">[docs]</a><span class="k">def</span> <span class="nf">get_parallel_scheme</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">get_parallel_scheme</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;This function tries to work out which of the different parallel</span>
 <span class="sd">       methods we should use to distribute work between multiple processes.</span>
 
@@ -221,10 +224,10 @@
     <span class="k">elif</span> <span class="s2">&quot;scoop&quot;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;scoop&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;multiprocessing&quot;</span></div>
+        <span class="k">return</span> <span class="s2">&quot;multiprocessing&quot;</span>
 
 
-<span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
+<div class="viewcode-block" id="parse_args"><a class="viewcode-back" href="../../../api/generated/metawards.app.parse_args.html#metawards.app.parse_args">[docs]</a><span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
     <span class="sd">&quot;&quot;&quot;Parse all of the command line arguments&quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">configargparse</span>
     <span class="kn">import</span> <span class="nn">sys</span>
@@ -290,7 +293,7 @@
                              <span class="s2">&quot;specific days at different locations &quot;</span>
                              <span class="s2">&quot;during a model run&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the directory in which to place all &quot;</span>
                              <span class="s2">&quot;output files (default &#39;output&#39;). This &quot;</span>
                              <span class="s2">&quot;directory will be subdivided if multiple &quot;</span>
@@ -320,7 +323,7 @@
                              <span class="s2">&quot;are weekends, or to make it easier to specify &quot;</span>
                              <span class="s2">&quot;time-based events.&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--start-day&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--start-day&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The start day of the model outbreak. By &quot;</span>
                              <span class="s2">&quot;default the model outbreak starts on day &quot;</span>
                              <span class="s2">&quot;zero (0), with each step of the model &quot;</span>
@@ -331,7 +334,7 @@
                              <span class="s2">&quot;&#39;--start-date&#39; is always day 0, so day 10 &quot;</span>
                              <span class="s2">&quot;has a date which is 10 days after start-date&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--parameters&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;march29&quot;</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-p&#39;</span><span class="p">,</span> <span class="s1">&#39;--parameters&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Name of the input parameter set used to &quot;</span>
                              <span class="s2">&quot;control the simulation (default &#39;march29&#39;)&quot;</span><span class="p">)</span>
 
@@ -343,10 +346,10 @@
                              <span class="s2">&quot;$HOME/GitHub/MetaWardsData&quot;</span><span class="p">,</span>
                              <span class="n">env_var</span><span class="o">=</span><span class="s2">&quot;METAWARDSDATA&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="s1">&#39;--population&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">57104043</span><span class="p">,</span>
-                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Initial population (default 57104043)&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-P&#39;</span><span class="p">,</span> <span class="s1">&#39;--population&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Initial population (default 1000)&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="s1">&#39;--nsteps&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">730</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-n&#39;</span><span class="p">,</span> <span class="s1">&#39;--nsteps&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum number of steps (days) to run for the &quot;</span>
                              <span class="s2">&quot;simulation. Each step represents one day in the &quot;</span>
                              <span class="s2">&quot;outbreak (default is to run for a maximum &quot;</span>
@@ -397,7 +400,7 @@
                         <span class="n">help</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Disable the * state. Now state 0 is the first &quot;</span>
                              <span class="sa">f</span><span class="s2">&quot;and only latent state. There is no star state.&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--UV&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--UV&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Value for the UV parameter for the model &quot;</span>
                              <span class="s2">&quot;(default is 0.0)&quot;</span><span class="p">)</span>
 
@@ -421,7 +424,7 @@
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--debug-level&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Limit debug output to the specified level.&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--outdir-scheme&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;fingerprint&quot;</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--outdir-scheme&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Set the naming scheme for output directory &quot;</span>
                              <span class="s2">&quot;names for multiple model runs. Options are &quot;</span>
                              <span class="s2">&quot;either &#39;fingerprint&#39; to use the model &quot;</span>
@@ -483,10 +486,10 @@
                              <span class="s2">&quot;exists. Dangerous as this can remove &quot;</span>
                              <span class="s2">&quot;existing output files&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max-nodes&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">16384</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max-nodes&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum number of nodes that can be read&quot;</span><span class="p">)</span>
 
-    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max-links&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">4194304</span><span class="p">,</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--max-links&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Maximum number of links that can be read&quot;</span><span class="p">)</span>
 
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--profile&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
@@ -529,10 +532,10 @@
         <span class="n">print_version_string</span><span class="p">()</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="get_hostfile"><a class="viewcode-back" href="../../../api/generated/metawards.app.get_hostfile.html#metawards.app.get_hostfile">[docs]</a><span class="k">def</span> <span class="nf">get_hostfile</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_hostfile</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Attempt to find the name of the hostfile used to specify the hosts</span>
 <span class="sd">       to use in a cluster</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -553,7 +556,7 @@
     <span class="k">if</span> <span class="n">hostfile</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">hostfile</span>
 
-    <span class="k">return</span> <span class="kc">None</span></div>
+    <span class="k">return</span> <span class="kc">None</span>
 
 
 <span class="k">def</span> <span class="nf">get_cores_per_node</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
@@ -607,7 +610,6 @@
 <span class="sd">       form the scoop call to run a scoop version of the program</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">os</span>
-    <span class="kn">import</span> <span class="nn">stat</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">Console</span>
 
@@ -716,7 +718,6 @@
 <span class="sd">       form the mpiexec call to run an MPI version of the program</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">os</span>
-    <span class="kn">import</span> <span class="nn">stat</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">Console</span>
 
@@ -1027,7 +1028,10 @@
 
     <span class="n">variables</span> <span class="o">=</span> <span class="n">variables</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">nrepeats</span><span class="p">)</span>
 
-    <span class="n">outdir_scheme</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">outdir_scheme</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">outdir_scheme</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">outdir_scheme</span> <span class="o">=</span> <span class="s2">&quot;fingerprint&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">outdir_scheme</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">outdir_scheme</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">outdir_scheme</span> <span class="o">==</span> <span class="s2">&quot;fingerprint&quot;</span><span class="p">:</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
@@ -1083,11 +1087,12 @@
         <span class="c1"># for production code</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Using special mode to fix all random number&quot;</span>
                         <span class="s2">&quot;seeds to 15324. DO NOT USE IN PRODUCTION!!!&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* Using random number seed </span><span class="si">{</span><span class="n">seed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># get the starting day and date</span>
-    <span class="n">start_day</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">start_day</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">start_day</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">start_day</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">start_day</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">start_day</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">start_day</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You cannot use a start day </span><span class="si">{</span><span class="n">start_day</span><span class="si">}</span><span class="s2"> that is &quot;</span>
@@ -1185,16 +1190,19 @@
     <span class="n">Console</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="s2">&quot;metawards -c config.yaml&quot;</span><span class="p">)</span>
 
     <span class="c1"># load all of the parameters</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Unable to load parameter files. Make sure that you have &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;cloned the MetaWardsData repository and have set the &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;environment variable METAWARDSDATA to point to the &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;local directory containing the repository, e.g. the &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;default is $HOME/GitHub/MetaWardsData&quot;</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="n">e</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">parameters</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="o">.</span><span class="n">default</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">Parameters</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Unable to load parameter files. Make sure that you have &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;cloned the MetaWardsData repository and have set the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;environment variable METAWARDSDATA to point to the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;local directory containing the repository, e.g. the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;default is $HOME/GitHub/MetaWardsData&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
 
     <span class="c1"># should we profile the code? (default no as it prints a lot)</span>
     <span class="n">profiler</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1206,34 +1214,29 @@
         <span class="n">profiler</span> <span class="o">=</span> <span class="n">Profiler</span><span class="p">()</span>
 
     <span class="c1"># load the disease and starting-point input files</span>
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Disease&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">disease</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_disease</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">disease</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_disease</span><span class="p">(</span><span class="s2">&quot;ncov&quot;</span><span class="p">)</span>
 
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Model data&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_input_files</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">params</span><span class="o">.</span><span class="n">set_input_files</span><span class="p">(</span><span class="s2">&quot;2011Data&quot;</span><span class="p">)</span>
 
+    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Parameters&quot;</span><span class="p">)</span>
+
     <span class="c1"># load the user-defined custom parameters</span>
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Custom parameters and seeds&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">user_variables</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Custom parameters and seeds&quot;</span><span class="p">)</span>
         <span class="n">custom</span> <span class="o">=</span> <span class="n">VariableSet</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">user_variables</span><span class="p">)</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Adjusting variables to </span><span class="si">{</span><span class="n">custom</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">custom</span><span class="o">.</span><span class="n">adjust</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Not adjusting any parameters...&quot;</span><span class="p">)</span>
 
     <span class="c1"># read the additional seeds</span>
-    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">additional</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">additional</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Not using any additional seeds...&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">additional</span> <span class="ow">in</span> <span class="n">args</span><span class="o">.</span><span class="n">additional</span><span class="p">:</span>
-            <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading additional seeds from </span><span class="si">{</span><span class="n">additional</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">params</span><span class="o">.</span><span class="n">add_seeds</span><span class="p">(</span><span class="n">additional</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">additional</span> <span class="ow">in</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">additional</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">additional</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading additional seeds from </span><span class="si">{</span><span class="n">additional</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">add_seeds</span><span class="p">(</span><span class="n">additional</span><span class="p">)</span>
 
     <span class="c1"># what to do with the 0 state?</span>
     <span class="n">stage_0</span> <span class="o">=</span> <span class="s2">&quot;R&quot;</span>
@@ -1252,7 +1255,10 @@
     <span class="n">params</span><span class="o">.</span><span class="n">stage_0</span> <span class="o">=</span> <span class="n">stage_0</span>
 
     <span class="c1"># extra parameters that are set</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">UV</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">UV</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">UV</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">UV</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">params</span><span class="o">.</span><span class="n">UV</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">UV</span><span class="p">)</span>
 
     <span class="c1"># set these extra parameters to 0</span>
     <span class="n">params</span><span class="o">.</span><span class="n">static_play_at_home</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1260,40 +1266,61 @@
     <span class="n">params</span><span class="o">.</span><span class="n">work_to_play</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">params</span><span class="o">.</span><span class="n">daily_imports</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Parameters&quot;</span><span class="p">)</span>
     <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># the size of the starting population</span>
-    <span class="n">population</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">population</span><span class="p">,</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">population</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="mi">1000</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">population</span><span class="p">)</span>
+
+    <span class="n">population</span> <span class="o">=</span> <span class="n">Population</span><span class="p">(</span><span class="n">initial</span><span class="o">=</span><span class="n">population</span><span class="p">,</span>
                             <span class="n">date</span><span class="o">=</span><span class="n">start_day_date</span><span class="p">,</span>
                             <span class="n">day</span><span class="o">=</span><span class="n">start_day</span><span class="p">)</span>
 
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Building the network&quot;</span><span class="p">)</span>
-    <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                            <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span>
-                            <span class="n">max_nodes</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">max_nodes</span><span class="p">,</span>
-                            <span class="n">max_links</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">max_links</span><span class="p">,</span>
-                            <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
-                            <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">max_nodes</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_nodes</span> <span class="o">=</span> <span class="mi">16384</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_nodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">max_nodes</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">max_links</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">max_links</span> <span class="o">=</span> <span class="mi">4194304</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_links</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">max_links</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">demographics</span><span class="p">:</span>
         <span class="kn">from</span> <span class="nn">metawards</span> <span class="kn">import</span> <span class="n">Demographics</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Specialising into demographics&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Building the demographic networks&quot;</span><span class="p">)</span>
         <span class="n">demographics</span> <span class="o">=</span> <span class="n">Demographics</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">demographics</span><span class="p">)</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">demographics</span><span class="p">)</span>
-
-        <span class="n">network</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">demographics</span><span class="p">,</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                     <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span>
+                                     <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
+                                     <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">,</span>
                                      <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
                                      <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Preparing to run&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Disease&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">disease_params</span><span class="p">,</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Building the network&quot;</span><span class="p">)</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span>
+                                <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
+                                <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">,</span>
+                                <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
+                                <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+
     <span class="kn">from</span> <span class="nn">metawards</span> <span class="kn">import</span> <span class="n">OutputFiles</span>
     <span class="kn">from</span> <span class="nn">metawards.utils</span> <span class="kn">import</span> <span class="n">run_models</span>
 
-    <span class="n">outdir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">output</span>
-
-    <span class="k">if</span> <span class="n">outdir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">output</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">outdir</span> <span class="o">=</span> <span class="s2">&quot;output&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">outdir</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">output</span>
 
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">force_overwrite_output</span><span class="p">:</span>
         <span class="n">prompt</span> <span class="o">=</span> <span class="kc">None</span>
@@ -1328,11 +1355,18 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="n">mover</span> <span class="o">=</span> <span class="kc">None</span>
 
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">nsteps</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">nsteps</span> <span class="o">=</span> <span class="mi">730</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">nsteps</span><span class="p">)</span>
+
+    <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Preparing the output directory&quot;</span><span class="p">)</span>
+
     <span class="k">with</span> <span class="n">OutputFiles</span><span class="p">(</span><span class="n">outdir</span><span class="p">,</span> <span class="n">force_empty</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">force_overwrite_output</span><span class="p">,</span>
                      <span class="n">auto_bzip</span><span class="o">=</span><span class="n">auto_bzip</span><span class="p">,</span> <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span> <span class="k">as</span> <span class="n">output_dir</span><span class="p">:</span>
         <span class="c1"># write the config file for this job to output/config.yaml</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Running the model&quot;</span><span class="p">)</span>
         <span class="n">CONSOLE</span> <span class="o">=</span> <span class="n">output_dir</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;console.log&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Preparing to run&quot;</span><span class="p">)</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">CONSOLE</span><span class="p">)</span>
 
         <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1371,7 +1405,7 @@
         <span class="n">result</span> <span class="o">=</span> <span class="n">run_models</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">,</span>
                             <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span> <span class="n">nprocs</span><span class="o">=</span><span class="n">nprocs</span><span class="p">,</span>
                             <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
-                            <span class="n">nsteps</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">nsteps</span><span class="p">,</span>
+                            <span class="n">nsteps</span><span class="o">=</span><span class="n">nsteps</span><span class="p">,</span>
                             <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
                             <span class="n">iterator</span><span class="o">=</span><span class="n">iterator</span><span class="p">,</span>
                             <span class="n">extractor</span><span class="o">=</span><span class="n">extractor</span><span class="p">,</span>
@@ -1425,7 +1459,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

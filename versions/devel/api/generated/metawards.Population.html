@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -244,22 +247,22 @@ disease through the population</p>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.__init__" title="metawards.Population.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(initial,&nbsp;susceptibles,&nbsp;latent,&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.assert_sane" title="metawards.Population.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.assert_sane" title="metawards.Population.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
 <td>Assert that this population is sane, i.e.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.has_equal_SEIR" title="metawards.Population.has_equal_SEIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_equal_SEIR</span></code></a>(other)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.has_equal_SEIR" title="metawards.Population.has_equal_SEIR"><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_equal_SEIR</span></code></a>(other)</td>
 <td>Return whether or not the SEIR values for this population equal ‘other’</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.headers" title="metawards.Population.headers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headers</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.headers" title="metawards.Population.headers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">headers</span></code></a>()</td>
 <td>Return a list of the headers that should be used to report data from this population.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.increment_day" title="metawards.Population.increment_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increment_day</span></code></a>(ndays)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.increment_day" title="metawards.Population.increment_day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">increment_day</span></code></a>(ndays)</td>
 <td>Advance the day count by ‘ndays’ (default 1)</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.specialise" title="metawards.Population.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.specialise" title="metawards.Population.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network)</td>
 <td>Specialise this population for the passed Networks</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.summary" title="metawards.Population.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a>([demographics])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.summary" title="metawards.Population.summary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">summary</span></code></a>([demographics])</td>
 <td>Return a short summary string that is suitable to be printed out during a model run</td>
 </tr>
 </tbody>
@@ -271,43 +274,43 @@ disease through the population</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.date" title="metawards.Population.date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">date</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.date" title="metawards.Population.date"><code class="xref py py-obj docutils literal notranslate"><span class="pre">date</span></code></a></td>
 <td>The date in the outbreak of this record</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.day" title="metawards.Population.day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">day</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.day" title="metawards.Population.day"><code class="xref py py-obj docutils literal notranslate"><span class="pre">day</span></code></a></td>
 <td>The day in the outbreak of this record (e.g.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.infecteds" title="metawards.Population.infecteds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">infecteds</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.infecteds" title="metawards.Population.infecteds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">infecteds</span></code></a></td>
 <td>The number who are infected across all wards</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.initial" title="metawards.Population.initial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.initial" title="metawards.Population.initial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial</span></code></a></td>
 <td>The initial population loaded into the model</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.latent" title="metawards.Population.latent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latent</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.latent" title="metawards.Population.latent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">latent</span></code></a></td>
 <td>The number of latent infections</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.n_inf_wards" title="metawards.Population.n_inf_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_wards</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.n_inf_wards" title="metawards.Population.n_inf_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_wards</span></code></a></td>
 <td>The number infected in all wards</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.population" title="metawards.Population.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.population" title="metawards.Population.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a></td>
 <td>The total population in all wards</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.recovereds" title="metawards.Population.recovereds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recovereds</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.recovereds" title="metawards.Population.recovereds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recovereds</span></code></a></td>
 <td>The total number who are removed from the outbreak, either because they have recovered, or are otherwise no longer able to be infected</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.scale_uv" title="metawards.Population.scale_uv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_uv</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.scale_uv" title="metawards.Population.scale_uv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale_uv</span></code></a></td>
 <td>The scale_uv parameter that can be used to affect the foi calculation.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.subpops" title="metawards.Population.subpops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subpops</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.subpops" title="metawards.Population.subpops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subpops</span></code></a></td>
 <td>The populations in each of the multi-demographic subnetworks</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.susceptibles" title="metawards.Population.susceptibles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">susceptibles</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.susceptibles" title="metawards.Population.susceptibles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">susceptibles</span></code></a></td>
 <td>The number of members who could be infected</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Population.total" title="metawards.Population.total"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.total" title="metawards.Population.total"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total</span></code></a></td>
 <td>The total number of infections</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Population.totals" title="metawards.Population.totals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">totals</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Population.totals" title="metawards.Population.totals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">totals</span></code></a></td>
 <td>The totao number of infections in other states</td>
 </tr>
 </tbody>
@@ -476,7 +479,7 @@ out during a model run</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

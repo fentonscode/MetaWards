@@ -15,11 +15,18 @@ metawards.Demographics
    
       ~Demographics.__init__
       ~Demographics.add
+      ~Demographics.build
       ~Demographics.copy
+      ~Demographics.from_data
+      ~Demographics.from_json
       ~Demographics.get_index
       ~Demographics.get_name
+      ~Demographics.is_multi_network
       ~Demographics.load
       ~Demographics.specialise
+      ~Demographics.to_data
+      ~Demographics.to_json
+      ~Demographics.uses_named_network
    
    
 

@@ -19,6 +19,9 @@ metawards.Wards
       ~Wards.contains
       ~Wards.from_data
       ~Wards.from_json
+      ~Wards.get
+      ~Wards.getinfo
+      ~Wards.harmonise
       ~Wards.index
       ~Wards.insert
       ~Wards.is_resolved
@@ -27,6 +30,7 @@ metawards.Wards
       ~Wards.num_work_links
       ~Wards.num_workers
       ~Wards.population
+      ~Wards.scale
       ~Wards.to_data
       ~Wards.to_json
       ~Wards.unresolved_wards

@@ -27,6 +27,7 @@ metawards.Demographic
       ~Demographic.adjustment
       ~Demographic.disease
       ~Demographic.name
+      ~Demographic.network
       ~Demographic.play_ratio
       ~Demographic.work_ratio
    

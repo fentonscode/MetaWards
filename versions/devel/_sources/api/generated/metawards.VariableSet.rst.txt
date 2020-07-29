@@ -19,6 +19,7 @@ metawards.VariableSet
       ~VariableSet.create_fingerprint
       ~VariableSet.extract_values
       ~VariableSet.fingerprint
+      ~VariableSet.is_empty
       ~VariableSet.make_compatible_with
       ~VariableSet.output_dir
       ~VariableSet.read

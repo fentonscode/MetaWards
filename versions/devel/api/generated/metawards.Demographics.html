@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -226,12 +229,12 @@
 <h1>metawards.Demographics<a class="headerlink" href="#metawards-demographics" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Demographics">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Demographics</code><span class="sig-paren">(</span><em>demographics: List[metawards._demographic.Demographic] = &lt;factory&gt;</em>, <em>random_seed: int = None</em>, <em>interaction_matrix: List[List[int]] = None</em>, <em>_names: Dict[str</em>, <em>int] = &lt;factory&gt;</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Demographics</code><span class="sig-paren">(</span><em>demographics: List[metawards._demographic.Demographic] = &lt;factory&gt;</em>, <em>random_seed: Optional[int] = None</em>, <em>interaction_matrix: Optional[List[List[int]]] = None</em>, <em>_names: Dict[str</em>, <em>int] = &lt;factory&gt;</em>, <em>_name: Optional[str] = None</em>, <em>_version: Optional[str] = None</em>, <em>_authors: Optional[str] = None</em>, <em>_contacts: Optional[str] = None</em>, <em>_references: Optional[str] = None</em>, <em>_filename: Optional[str] = None</em>, <em>_repository: Optional[str] = None</em>, <em>_repository_version: Optional[str] = None</em>, <em>_repository_branch: Optional[str] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class holds metadata about all of the demographics
 being modelled</p>
 <dl class="method">
 <dt id="metawards.Demographics.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>demographics: List[metawards._demographic.Demographic] = &lt;factory&gt;</em>, <em>random_seed: int = None</em>, <em>interaction_matrix: List[List[int]] = None</em>, <em>_names: Dict[str</em>, <em>int] = &lt;factory&gt;</em>, <em>_name: str = None</em>, <em>_version: str = None</em>, <em>_authors: str = None</em>, <em>_contacts: str = None</em>, <em>_references: str = None</em>, <em>_filename: str = None</em>, <em>_repository: str = None</em>, <em>_repository_version: str = None</em>, <em>_repository_branch: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Demographics.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>demographics: List[metawards._demographic.Demographic] = &lt;factory&gt;</em>, <em>random_seed: Optional[int] = None</em>, <em>interaction_matrix: Optional[List[List[int]]] = None</em>, <em>_names: Dict[str</em>, <em>int] = &lt;factory&gt;</em>, <em>_name: Optional[str] = None</em>, <em>_version: Optional[str] = None</em>, <em>_authors: Optional[str] = None</em>, <em>_contacts: Optional[str] = None</em>, <em>_references: Optional[str] = None</em>, <em>_filename: Optional[str] = None</em>, <em>_repository: Optional[str] = None</em>, <em>_repository_version: Optional[str] = None</em>, <em>_repository_branch: Optional[str] = None</em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#metawards.Demographics.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p class="rubric">Methods</p>
@@ -244,23 +247,44 @@ being modelled</p>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographics.__init__" title="metawards.Demographics.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(demographics,&nbsp;random_seed,&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographics.add" title="metawards.Demographics.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(demographic)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.add" title="metawards.Demographics.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(demographic)</td>
 <td>Add a demographic to the set to be modelled</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographics.copy" title="metawards.Demographics.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.build" title="metawards.Demographics.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(params,&nbsp;population,&nbsp;max_nodes,&nbsp;…)</td>
+<td>Build the set of networks described by these demographics and the passed parameters</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.copy" title="metawards.Demographics.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</td>
 <td>Return a copy of this demographics object that should allow a safe reset between runs.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographics.get_index" title="metawards.Demographics.get_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index</span></code></a>(item)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.from_data" title="metawards.Demographics.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data[,&nbsp;json_dir])</td>
+<td>Construct and return a Demographics object constructed from a (json-deserialised) data dictionary</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.from_json" title="metawards.Demographics.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(s)</td>
+<td>Construct and return Demographics loaded from the passed json file</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.get_index" title="metawards.Demographics.get_index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_index</span></code></a>(item)</td>
 <td>Return the index of the passed item</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographics.get_name" title="metawards.Demographics.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>(item)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.get_name" title="metawards.Demographics.get_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_name</span></code></a>(item)</td>
 <td>Return the name of the demographic at ‘item’</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographics.load" title="metawards.Demographics.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(name,&nbsp;repository,&nbsp;folder,&nbsp;filename)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.is_multi_network" title="metawards.Demographics.is_multi_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multi_network</span></code></a>()</td>
+<td>Return whether or not these demographics need to use multiple custom networks (e.g.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.load" title="metawards.Demographics.load"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load</span></code></a>(name,&nbsp;repository,&nbsp;folder,&nbsp;filename)</td>
 <td>Load the parameters for the specified set of demographics.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographics.specialise" title="metawards.Demographics.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network[,&nbsp;profiler])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.specialise" title="metawards.Demographics.specialise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">specialise</span></code></a>(network,&nbsp;profiler,&nbsp;nthreads)</td>
 <td>Build the set of networks that will model this set of demographics applied to the passed Network.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.to_data" title="metawards.Demographics.to_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data</span></code></a>()</td>
+<td>Return a data dictionary for this object that can be serialised to json</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.to_json" title="metawards.Demographics.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(filename,&nbsp;indent,&nbsp;auto_bzip)</td>
+<td>Serialise the Demographics to JSON.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.uses_named_network" title="metawards.Demographics.uses_named_network"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uses_named_network</span></code></a>()</td>
+<td>Return whether or not at least one of these demographics specifies the use of a named network model</td>
 </tr>
 </tbody>
 </table>
@@ -271,10 +295,10 @@ being modelled</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Demographics.interaction_matrix" title="metawards.Demographics.interaction_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interaction_matrix</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.interaction_matrix" title="metawards.Demographics.interaction_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interaction_matrix</span></code></a></td>
 <td>The interaction matrix between demographics.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Demographics.random_seed" title="metawards.Demographics.random_seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_seed</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics.random_seed" title="metawards.Demographics.random_seed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">random_seed</span></code></a></td>
 <td>The random seed to used when using any random number generator to resolve decisions needed when allocating individuals to demographics.</td>
 </tr>
 </tbody>
@@ -298,6 +322,36 @@ being modelled</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Demographics.build">
+<code class="descname">build</code><span class="sig-paren">(</span><em>params: Parameters</em>, <em>population: Population = None</em>, <em>max_nodes: int = 16384</em>, <em>max_links: int = 4194304</em>, <em>nthreads: int = 1</em>, <em>profiler: Profiler = None</em><span class="sig-paren">)</span> &#x2192; _Union[Network, Networks]<a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build the set of networks described by these demographics
+and the passed parameters</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><em>Parameters</em></a>) – Parameters used to help build the model networks</li>
+<li><strong>max_nodes</strong> (<em>int</em>) – Initial guess for the maximum number of nodes(wards)</li>
+<li><strong>max_links</strong> (<em>int</em>) – Initial guess for the maximum number of links between wards</li>
+<li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – Profiler used to profile the specialisation</li>
+<li><strong>nthreads</strong> (<em>int</em>) – Number of threads over which to parallelise the work</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The set of Networks that represent the model run over the
+full set of different demographics(or Network if there is
+just a single demographic)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../index_api_MetaWards.html#metawards.Network" title="metawards.Network">Network</a> or <a class="reference internal" href="../index_api_MetaWards.html#metawards.Networks" title="metawards.Networks">Networks</a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Demographics.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a copy of this demographics object that should
@@ -310,6 +364,20 @@ that may change, while shallow copying things that won’t</p>
 <code class="descname">demographics</code><em class="property"> = None</em><a class="headerlink" href="#metawards.Demographics.demographics" title="Permalink to this definition">¶</a></dt>
 <dd><p>The list of individual Demographic objects, one for each
 demographic being modelled</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="metawards.Demographics.from_data">
+<em class="property">static </em><code class="descname">from_data</code><span class="sig-paren">(</span><em>data</em>, <em>json_dir=None</em><span class="sig-paren">)</span> &#x2192; metawards._demographics.Demographics<a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.from_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.from_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct and return a Demographics object constructed
+from a (json-deserialised) data dictionary</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="metawards.Demographics.from_json">
+<em class="property">static </em><code class="descname">from_json</code><span class="sig-paren">(</span><em>s: str</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.from_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct and return Demographics loaded from the passed
+json file</p>
 </dd></dl>
 
 <dl class="method">
@@ -332,9 +400,16 @@ be a list of lists that shows how demographic ‘i’ affects
 demographic ‘j’</p>
 </dd></dl>
 
+<dl class="method">
+<dt id="metawards.Demographics.is_multi_network">
+<code class="descname">is_multi_network</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.is_multi_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.is_multi_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not these demographics need to use multiple
+custom networks (e.g. refer to different network models)</p>
+</dd></dl>
+
 <dl class="staticmethod">
 <dt id="metawards.Demographics.load">
-<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>name: str = None</em>, <em>repository: str = None</em>, <em>folder: str = 'demographics'</em>, <em>filename: str = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.load" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">load</code><span class="sig-paren">(</span><em>name: Optional[str] = None</em>, <em>repository: Optional[str] = None</em>, <em>folder: str = 'demographics'</em>, <em>filename: Optional[str] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.load" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the parameters for the specified set of demographics.
 This will look for a file called f”{name}.json”
 in the directory f”{repository}/{folder}/{name}.json”</p>
@@ -360,7 +435,7 @@ repository</li>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>demographics</strong> – The constructed and validated demographics</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#metawards.Demographics" title="metawards.Demographics">Demographics</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../index_api_MetaWards.html#metawards.Demographics" title="metawards.Demographics">Demographics</a></p>
 </td>
 </tr>
 </tbody>
@@ -378,7 +453,7 @@ are uniquely determined and reproducible across runs</p>
 
 <dl class="method">
 <dt id="metawards.Demographics.specialise">
-<code class="descname">specialise</code><span class="sig-paren">(</span><em>network: metawards._network.Network</em>, <em>profiler=None</em>, <em>nthreads: int = 1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.specialise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.specialise" title="Permalink to this definition">¶</a></dt>
+<code class="descname">specialise</code><span class="sig-paren">(</span><em>network: Network</em>, <em>profiler: Profiler = None</em>, <em>nthreads: int = 1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.specialise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.specialise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the set of networks that will model this set
 of demographics applied to the passed Network.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -386,7 +461,7 @@ of demographics applied to the passed Network.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>network</strong> (<a class="reference internal" href="metawards.Network.html#metawards.Network" title="metawards.Network"><em>Network</em></a>) – The overall population model - this contains the base
+<li><strong>network</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Network" title="metawards.Network"><em>Network</em></a>) – The overall population model - this contains the base
 parameters, wards, work and play links that define
 the model outbreak</li>
 <li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – Profiler used to profile the specialisation</li>
@@ -398,11 +473,55 @@ the model outbreak</li>
 full set of different demographics</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="metawards.Networks.html#metawards.Networks" title="metawards.Networks">Networks</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../index_api_MetaWards.html#metawards.Networks" title="metawards.Networks">Networks</a></p>
 </td>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Demographics.to_data">
+<code class="descname">to_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.to_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.to_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a data dictionary for this object that can
+be serialised to json</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Demographics.to_json">
+<code class="descname">to_json</code><span class="sig-paren">(</span><em>filename: Optional[str] = None</em>, <em>indent: Optional[int] = None</em>, <em>auto_bzip: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>Serialise the Demographics to JSON. This will write to a file
+if filename is set, otherwise it will return a JSON string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>str</em>) – The name of the file to write the JSON to. The absolute
+path to the written file will be returned. If filename is None
+then this will serialise to a JSON string which will be
+returned.</li>
+<li><strong>indent</strong> (<em>int</em>) – The number of spaces of indent to use when writing the json</li>
+<li><strong>auto_bzip</strong> (<em>bool</em>) – Whether or not to automatically bzip2 the written json file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns either the absolute path to the written file, or
+the json-serialised string</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Demographics.uses_named_network">
+<code class="descname">uses_named_network</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_demographics.html#Demographics.uses_named_network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Demographics.uses_named_network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether or not at least one of these demographics
+specifies the use of a named network model</p>
 </dd></dl>
 
 </dd></dl>
@@ -430,7 +549,7 @@ full set of different demographics</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

@@ -16,6 +16,7 @@ metawards.Parameters
       ~Parameters.__init__
       ~Parameters.add_seeds
       ~Parameters.copy
+      ~Parameters.default
       ~Parameters.get_repository
       ~Parameters.load
       ~Parameters.read_variables

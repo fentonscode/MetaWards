@@ -41,7 +41,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="metawards.get_version_string" href="metawards.get_version_string.html" />
-    <link rel="prev" title="metawards.WardInfos" href="metawards.WardInfos.html" /> 
+    <link rel="prev" title="metawards.Wards" href="metawards.Wards.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,6 +96,9 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
@@ -213,7 +216,7 @@
         <a href="metawards.get_version_string.html" class="btn btn-neutral float-right" title="metawards.get_version_string" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="metawards.WardInfos.html" class="btn btn-neutral float-left" title="metawards.WardInfos" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.Wards.html" class="btn btn-neutral float-left" title="metawards.Wards" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -245,10 +248,10 @@ can then be used via cython memory views</p>
 <tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.__init__" title="metawards.Workspace.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(n_inf_classes,&nbsp;nnodes,&nbsp;inf_tot,&nbsp;…)</td>
 <td></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.build" title="metawards.Workspace.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(network,&nbsp;metawards._networks.Networks])</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.build" title="metawards.Workspace.build"><code class="xref py py-obj docutils literal notranslate"><span class="pre">build</span></code></a>(network,&nbsp;metawards._networks.Networks])</td>
 <td>Create the workspace needed to run the model for the passed network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.zero_all" title="metawards.Workspace.zero_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_all</span></code></a>([zero_subspaces])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.zero_all" title="metawards.Workspace.zero_all"><code class="xref py py-obj docutils literal notranslate"><span class="pre">zero_all</span></code></a>([zero_subspaces])</td>
 <td>Reset the values of all of the arrays to zero.</td>
 </tr>
 </tbody>
@@ -260,49 +263,49 @@ can then be used via cython memory views</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.E_in_wards" title="metawards.Workspace.E_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">E_in_wards</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.E_in_wards" title="metawards.Workspace.E_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">E_in_wards</span></code></a></td>
 <td>The size of the E population in each ward</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.I_in_wards" title="metawards.Workspace.I_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">I_in_wards</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.I_in_wards" title="metawards.Workspace.I_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">I_in_wards</span></code></a></td>
 <td>The size of the I population in each ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.R_in_wards" title="metawards.Workspace.R_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_in_wards</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.R_in_wards" title="metawards.Workspace.R_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">R_in_wards</span></code></a></td>
 <td>The size of the R population in each ward</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.S_in_wards" title="metawards.Workspace.S_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">S_in_wards</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.S_in_wards" title="metawards.Workspace.S_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">S_in_wards</span></code></a></td>
 <td>The size of the S population in each ward</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.X_in_wards" title="metawards.Workspace.X_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">X_in_wards</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.X_in_wards" title="metawards.Workspace.X_in_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">X_in_wards</span></code></a></td>
 <td>The sizes of the X populations in each ward - this is for named disease stages that don’t fit into S, E, I or R</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.incidence" title="metawards.Workspace.incidence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">incidence</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.incidence" title="metawards.Workspace.incidence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">incidence</span></code></a></td>
 <td>The incidence of the infection (sum of infections up to disease_class == I_start)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.inf_tot" title="metawards.Workspace.inf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inf_tot</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.inf_tot" title="metawards.Workspace.inf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inf_tot</span></code></a></td>
 <td>Size of population in each disease stage for work infections</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.n_inf_classes" title="metawards.Workspace.n_inf_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_classes</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.n_inf_classes" title="metawards.Workspace.n_inf_classes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_classes</span></code></a></td>
 <td>Number of disease classes (stages)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.n_inf_wards" title="metawards.Workspace.n_inf_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_wards</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.n_inf_wards" title="metawards.Workspace.n_inf_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">n_inf_wards</span></code></a></td>
 <td>Number of wards with at least one individual in this disease stage</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.nnodes" title="metawards.Workspace.nnodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnodes</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.nnodes" title="metawards.Workspace.nnodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nnodes</span></code></a></td>
 <td>Number of wards (nodes)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.pinf_tot" title="metawards.Workspace.pinf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pinf_tot</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.pinf_tot" title="metawards.Workspace.pinf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pinf_tot</span></code></a></td>
 <td>Size of population in each disease stage for play infections</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.subspaces" title="metawards.Workspace.subspaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subspaces</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.subspaces" title="metawards.Workspace.subspaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subspaces</span></code></a></td>
 <td>The sub-workspaces used for the subnets of a multi-demographic Networks (list[Workspace])</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.total_inf_ward" title="metawards.Workspace.total_inf_ward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total_inf_ward</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.total_inf_ward" title="metawards.Workspace.total_inf_ward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total_inf_ward</span></code></a></td>
 <td>Total number of infections in each ward over the last day This is also equal to the prevalence</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Workspace.total_new_inf_ward" title="metawards.Workspace.total_new_inf_ward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total_new_inf_ward</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.total_new_inf_ward" title="metawards.Workspace.total_new_inf_ward"><code class="xref py py-obj docutils literal notranslate"><span class="pre">total_new_inf_ward</span></code></a></td>
 <td>Number of new infections in each ward over the last day</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Workspace.ward_inf_tot" title="metawards.Workspace.ward_inf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ward_inf_tot</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Workspace.ward_inf_tot" title="metawards.Workspace.ward_inf_tot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ward_inf_tot</span></code></a></td>
 <td>Size of population in each disease stage in each ward</td>
 </tr>
 </tbody>
@@ -431,7 +434,7 @@ By default we zero the subspace networks
         <a href="metawards.get_version_string.html" class="btn btn-neutral float-right" title="metawards.get_version_string" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="metawards.WardInfos.html" class="btn btn-neutral float-left" title="metawards.WardInfos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.Wards.html" class="btn btn-neutral float-left" title="metawards.Wards" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -441,7 +444,7 @@ By default we zero the subspace networks
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

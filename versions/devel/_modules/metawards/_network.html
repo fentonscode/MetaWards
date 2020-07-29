@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -206,7 +209,7 @@
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Network&quot;</span><span class="p">]</span>
 
 
-<div class="viewcode-block" id="Network"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network">[docs]</a><span class="nd">@_dataclass</span>
+<div class="viewcode-block" id="Network"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network">[docs]</a><span class="nd">@_dataclass</span>
 <span class="k">class</span> <span class="nc">Network</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;This class represents a network of wards. The network comprises</span>
 <span class="sd">       nodes (representing wards), connected with links which represent</span>
@@ -267,7 +270,7 @@
 
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">node_pop</span> <span class="o">+</span> <span class="n">link_pop</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Network.single"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.single">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Network.single"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.single">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">single</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span>
                <span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span>
                <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -293,32 +296,23 @@
             <span class="sa">f</span><span class="s2">&quot;Creating a single ward Network with a population &quot;</span>
             <span class="sa">f</span><span class="s2">&quot;of </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="p">()</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">nnodes</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">nlinks</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">nplay</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="kn">from</span> <span class="nn">._wards</span> <span class="kn">import</span> <span class="n">Wards</span>
+        <span class="kn">from</span> <span class="nn">._ward</span> <span class="kn">import</span> <span class="n">Ward</span>
 
-        <span class="c1"># Everything is 1-indexed, so need to create space for the</span>
-        <span class="c1"># null 0-index objects...</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">params</span> <span class="o">=</span> <span class="n">params</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">play</span> <span class="o">=</span> <span class="n">Links</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">links</span> <span class="o">=</span> <span class="n">Links</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ward</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">)</span>
+        <span class="n">ward</span><span class="o">.</span><span class="n">set_num_players</span><span class="p">(</span><span class="n">pop</span><span class="p">)</span>
 
-        <span class="n">nodes</span> <span class="o">=</span> <span class="n">Nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-        <span class="kn">from</span> <span class="nn">._node</span> <span class="kn">import</span> <span class="n">Node</span>
-        <span class="c1"># 1-indexed node</span>
-        <span class="n">nodes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">play_suscept</span><span class="o">=</span><span class="n">pop</span><span class="p">,</span>
-                        <span class="n">save_play_suscept</span><span class="o">=</span><span class="n">pop</span><span class="p">)</span>
+        <span class="n">wards</span> <span class="o">=</span> <span class="n">Wards</span><span class="p">()</span>
+        <span class="n">wards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
 
-        <span class="n">network</span><span class="o">.</span><span class="n">nodes</span> <span class="o">=</span> <span class="n">nodes</span>
+        <span class="k">assert</span> <span class="n">wards</span><span class="o">.</span><span class="n">population</span><span class="p">()</span> <span class="o">==</span> <span class="n">pop</span>
 
-        <span class="n">network</span><span class="o">.</span><span class="n">reset_everything</span><span class="p">(</span><span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">rescale_play_matrix</span><span class="p">(</span><span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
-        <span class="n">network</span><span class="o">.</span><span class="n">move_from_play_to_work</span><span class="p">(</span><span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
+        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span>
 
         <span class="k">return</span> <span class="n">network</span></div>
 
-<div class="viewcode-block" id="Network.build"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.build">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Network.build"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.build">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span>
               <span class="n">population</span><span class="p">:</span> <span class="n">Population</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
               <span class="n">max_nodes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16384</span><span class="p">,</span>
@@ -338,11 +332,12 @@
 
         <span class="n">p</span> <span class="o">=</span> <span class="n">profiler</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="s2">&quot;Network.build&quot;</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">._wards</span> <span class="kn">import</span> <span class="n">Wards</span>
-            <span class="n">wards</span> <span class="o">=</span> <span class="n">Wards</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">)</span>
+            <span class="n">wards</span> <span class="o">=</span> <span class="n">Wards</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="o">.</span><span class="n">wards_data</span><span class="p">)</span>
             <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
                                          <span class="n">profiler</span><span class="o">=</span><span class="n">p</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+            <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span>
 
             <span class="n">p</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
             <span class="k">return</span> <span class="n">network</span>
@@ -376,10 +371,6 @@
         <span class="n">add_wards_network_distance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
 
         <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Get min/max distances...&quot;</span><span class="p">)</span>
-        <span class="p">(</span><span class="n">_mindist</span><span class="p">,</span> <span class="n">maxdist</span><span class="p">)</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">get_min_max_distances</span><span class="p">(</span><span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
-
-        <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dyn_dist_cutoff</span> <span class="o">=</span> <span class="n">maxdist</span> <span class="o">+</span> <span class="mi">1</span>
         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
         <span class="c1"># add metadata about the wards</span>
@@ -427,7 +418,7 @@
 
         <span class="k">return</span> <span class="n">network</span></div>
 
-<div class="viewcode-block" id="Network.copy"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.copy"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a copy of this Network. Use this to hold a copy of</span>
 <span class="sd">           the network that you can use to reset between runs</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -443,7 +434,7 @@
 
         <span class="k">return</span> <span class="n">network</span></div>
 
-<div class="viewcode-block" id="Network.assert_sane"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.assert_sane">[docs]</a>    <span class="k">def</span> <span class="nf">assert_sane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.assert_sane"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.assert_sane">[docs]</a>    <span class="k">def</span> <span class="nf">assert_sane</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="p">:</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Assert that this network is sane. This checks that the network</span>
 <span class="sd">           is laid out correctly in memory and that it doesn&#39;t have</span>
 <span class="sd">           anything unexpected. Checking here will prevent us from having</span>
@@ -462,7 +453,7 @@
 
         <span class="n">lookup_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Network.get_node_index"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.get_node_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+<div class="viewcode-block" id="Network.get_node_index"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.get_node_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;Return the index of the node in this network that matches</span>
 <span class="sd">           &#39;index&#39;. This could be an integer, in which case this</span>
 <span class="sd">           will directly look up the index of the node in the</span>
@@ -508,14 +499,14 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Network.initialise_infections"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.initialise_infections">[docs]</a>    <span class="k">def</span> <span class="nf">initialise_infections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.initialise_infections"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.initialise_infections">[docs]</a>    <span class="k">def</span> <span class="nf">initialise_infections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialise and return the space that will be used</span>
 <span class="sd">           to track infections</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">._infections</span> <span class="kn">import</span> <span class="n">Infections</span>
         <span class="k">return</span> <span class="n">Infections</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.recalculate_denominators"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.recalculate_denominators">[docs]</a>    <span class="k">def</span> <span class="nf">recalculate_denominators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.recalculate_denominators"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.recalculate_denominators">[docs]</a>    <span class="k">def</span> <span class="nf">recalculate_denominators</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Recalculate the denominators used in the calculation. This should</span>
 <span class="sd">           be called after you have changed the population of the</span>
 <span class="sd">           network, e.g. during a move function</span>
@@ -539,7 +530,7 @@
                           <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;Disagreement in population size&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.get_min_max_distances"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.get_min_max_distances">[docs]</a>    <span class="k">def</span> <span class="nf">get_min_max_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.get_min_max_distances"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.get_min_max_distances">[docs]</a>    <span class="k">def</span> <span class="nf">get_min_max_distances</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                               <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Calculate and return the minimum and maximum distances</span>
 <span class="sd">           between nodes in the network</span>
@@ -555,13 +546,13 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_min_max_distances</span></div>
 
-<div class="viewcode-block" id="Network.reset_everything"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.reset_everything">[docs]</a>    <span class="k">def</span> <span class="nf">reset_everything</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.reset_everything"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.reset_everything">[docs]</a>    <span class="k">def</span> <span class="nf">reset_everything</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                          <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Resets the network ready for a new run of the model&quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">reset_everything</span>
         <span class="n">reset_everything</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.update"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.update"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.update">[docs]</a>    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span> <span class="n">demographics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Update this network with a new set of parameters</span>
 <span class="sd">           (and optionally demographics).</span>
@@ -607,9 +598,18 @@
         <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">demographics</span><span class="p">:</span>
-            <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-                                              <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
-                                              <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
+            <span class="kn">from</span> <span class="nn">.utils._worker</span> <span class="kn">import</span> <span class="n">must_rebuild_network</span>
+
+            <span class="k">if</span> <span class="n">must_rebuild_network</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
+                                    <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">):</span>
+                <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
+                                             <span class="n">population</span><span class="o">=</span><span class="n">population</span><span class="p">,</span>
+                                             <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
+                                             <span class="n">profiler</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                                                  <span class="n">profiler</span><span class="o">=</span><span class="n">p</span><span class="p">,</span>
+                                                  <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">network</span> <span class="o">=</span> <span class="bp">self</span>
 
@@ -625,26 +625,26 @@
 
         <span class="k">return</span> <span class="n">network</span></div>
 
-<div class="viewcode-block" id="Network.rescale_play_matrix"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.rescale_play_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">rescale_play_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.rescale_play_matrix"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.rescale_play_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">rescale_play_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                             <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Rescale the play matrix&quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">rescale_play_matrix</span>
         <span class="n">rescale_play_matrix</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.move_from_play_to_work"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.move_from_play_to_work">[docs]</a>    <span class="k">def</span> <span class="nf">move_from_play_to_work</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.move_from_play_to_work"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.move_from_play_to_work">[docs]</a>    <span class="k">def</span> <span class="nf">move_from_play_to_work</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                                <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Move the population from play to work&quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">move_population_from_play_to_work</span>
         <span class="n">move_population_from_play_to_work</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
                                           <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.has_different_work_matrix"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.has_different_work_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">has_different_work_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.has_different_work_matrix"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.has_different_work_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">has_different_work_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return whether or not the sub-network work matrix</span>
 <span class="sd">           is different to that of the overall network</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_work_index</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Network.get_work_index"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.get_work_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_work_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.get_work_index"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.get_work_index">[docs]</a>    <span class="k">def</span> <span class="nf">get_work_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the mapping from the index in this sub-networks work</span>
 <span class="sd">           matrix to the mapping in the overall network&#39;s work matrix</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -655,7 +655,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">nlinks</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.specialise"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.specialise">[docs]</a>    <span class="k">def</span> <span class="nf">specialise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">demographic</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.specialise"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.specialise">[docs]</a>    <span class="k">def</span> <span class="nf">specialise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">demographic</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return a copy of this network that has been specialised</span>
 <span class="sd">           for the passed demographic. The returned network will</span>
@@ -677,7 +677,7 @@
                                       <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
                                       <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.scale_susceptibles"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.scale_susceptibles">[docs]</a>    <span class="k">def</span> <span class="nf">scale_susceptibles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.scale_susceptibles"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.scale_susceptibles">[docs]</a>    <span class="k">def</span> <span class="nf">scale_susceptibles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratio</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                            <span class="n">work_ratio</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">play_ratio</span><span class="p">:</span> <span class="nb">any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Scale the number of susceptibles in this Network</span>
 <span class="sd">           by the passed scale ratios. These can be values, e.g.</span>
@@ -708,13 +708,10 @@
         <span class="k">if</span> <span class="n">work_ratio</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">scale_susceptibles</span><span class="p">(</span><span class="n">work_ratio</span><span class="p">)</span>
 
-        <span class="c1"># if play_ratio is not None:</span>
-        <span class="c1">#    self.play.scale_susceptibles(play_ratio)</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">scale_susceptibles</span><span class="p">(</span><span class="n">work_ratio</span><span class="o">=</span><span class="n">work_ratio</span><span class="p">,</span>
                                       <span class="n">play_ratio</span><span class="o">=</span><span class="n">play_ratio</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.to_wards"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.to_wards">[docs]</a>    <span class="k">def</span> <span class="nf">to_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="Network.to_wards"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.to_wards">[docs]</a>    <span class="k">def</span> <span class="nf">to_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the ward-level data in this network converted to</span>
 <span class="sd">           a Wards object. This supports editing and save/restore</span>
 <span class="sd">           to JSON</span>
@@ -722,7 +719,7 @@
         <span class="kn">from</span> <span class="nn">.utils._network_wards</span> <span class="kn">import</span> <span class="n">save_to_wards</span>
         <span class="k">return</span> <span class="n">save_to_wards</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.from_wards"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.from_wards">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Network.from_wards"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.from_wards">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                    <span class="n">disease</span><span class="p">:</span> <span class="n">Disease</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                    <span class="n">profiler</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -734,7 +731,7 @@
         <span class="k">return</span> <span class="n">load_from_wards</span><span class="p">(</span><span class="n">wards</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">disease</span><span class="o">=</span><span class="n">disease</span><span class="p">,</span>
                                <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span> <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Network.run"><a class="viewcode-back" href="../../api/generated/metawards.Network.html#metawards.Network.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span>
+<div class="viewcode-block" id="Network.run"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.Network.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span>
             <span class="n">output_dir</span><span class="p">:</span> <span class="n">OutputFiles</span><span class="p">,</span>
             <span class="n">seed</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
             <span class="n">nsteps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -796,7 +793,8 @@
             <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
             <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Using special mode to fix all random number &quot;</span>
                             <span class="s2">&quot;seeds to 15324. DO NOT USE IN PRODUCTION!!!&quot;</span><span class="p">)</span>
-            <span class="n">rng</span> <span class="o">=</span> <span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">15324</span><span class="p">)</span>
+            <span class="n">seed</span> <span class="o">=</span> <span class="mi">15324</span>
+            <span class="n">rng</span> <span class="o">=</span> <span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">rng</span> <span class="o">=</span> <span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
@@ -809,21 +807,28 @@
 
         <span class="kn">from</span> <span class="nn">.utils._console</span> <span class="kn">import</span> <span class="n">Console</span>
 
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First five random numbers equal </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">randnums</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;* Using random number seed </span><span class="si">{</span><span class="n">seed</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;* First five random numbers equal **</span><span class="si">{</span><span class="s1">&#39;**, **&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">randnums</span><span class="p">)</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">,</span>
+            <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">randnums</span> <span class="o">=</span> <span class="kc">None</span>
 
         <span class="k">if</span> <span class="n">nthreads</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="kn">from</span> <span class="nn">.utils._parallel</span> <span class="kn">import</span> <span class="n">get_available_num_threads</span>
             <span class="n">nthreads</span> <span class="o">=</span> <span class="n">get_available_num_threads</span><span class="p">()</span>
 
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of threads used equals </span><span class="si">{</span><span class="n">nthreads</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
         <span class="kn">from</span> <span class="nn">.utils._parallel</span> <span class="kn">import</span> <span class="n">create_thread_generators</span>
         <span class="n">rngs</span> <span class="o">=</span> <span class="n">create_thread_generators</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">)</span>
 
         <span class="c1"># Create space to hold the results of the simulation</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Initialise infections...&quot;</span><span class="p">)</span>
         <span class="n">infections</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initialise_infections</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">nthreads</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>
+
+        <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Running the model using </span><span class="si">{</span><span class="n">nthreads</span><span class="si">}</span><span class="s2"> thread</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
         <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">run_model</span>
         <span class="n">population</span> <span class="o">=</span> <span class="n">run_model</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
@@ -850,7 +855,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

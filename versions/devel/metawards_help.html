@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -280,7 +283,7 @@ optional arguments:
                         Path to the directory in which to place all output
                         files (default &#39;output&#39;). This directory will be
                         subdivided if multiple adjustable parameter sets or
-                        repeats are used. (default: output)
+                        repeats are used. (default: None)
   -d DISEASE, --disease DISEASE
                         Name of the disease to model (default is &#39;ncov&#39;)
                         (default: None)
@@ -307,10 +310,10 @@ optional arguments:
                         want to more quickly reach time based events. Note
                         that the passed &#39;--start-date&#39; is always day 0, so day
                         10 has a date which is 10 days after start-date
-                        (default: 0)
+                        (default: None)
   -p PARAMETERS, --parameters PARAMETERS
                         Name of the input parameter set used to control the
-                        simulation (default &#39;march29&#39;) (default: march29)
+                        simulation (default &#39;march29&#39;) (default: None)
   -R REPOSITORY, --repository REPOSITORY
                         Path to the MetaWardsData repository. If unspecified
                         this defaults to the value in the environment variable
@@ -318,13 +321,12 @@ optional arguments:
                         $HOME/GitHub/MetaWardsData [env var: METAWARDSDATA]
                         (default: None)
   -P POPULATION, --population POPULATION
-                        Initial population (default 57104043) (default:
-                        57104043)
+                        Initial population (default 1000) (default: None)
   -n NSTEPS, --nsteps NSTEPS
                         Maximum number of steps (days) to run for the
                         simulation. Each step represents one day in the
                         outbreak (default is to run for a maximum of two years
-                        - 730 days) (default: 730)
+                        - 730 days) (default: None)
   -u USER_VARIABLES, --user-variables USER_VARIABLES
                         Name of the file containing user-defined custom
                         variables. These provide extra information that can be
@@ -354,7 +356,7 @@ optional arguments:
   --disable-star        Disable the * state. Now state 0 is the first and only
                         latent state. There is no star state. (default: None)
   --UV UV               Value for the UV parameter for the model (default is
-                        0.0) (default: 0.0)
+                        0.0) (default: None)
   --theme THEME         The theme to use to color the output. Use &#39;--theme
                         simple&#39; if you prefer a simple and colorless output.
                         (default: None)
@@ -373,7 +375,7 @@ optional arguments:
                         multiple model runs. Options are either &#39;fingerprint&#39;
                         to use the model fingerprint, &#39;sequential&#39; for
                         sequential numbering, or &#39;uid&#39; to generate a unique
-                        ID. (default: fingerprint)
+                        ID. (default: None)
   --nthreads NTHREADS   Number of threads over which parallelise an individual
                         model run. The total number of cores used by metawards
                         will be nprocesses x nthreads [env var:
@@ -410,10 +412,10 @@ optional arguments:
                         (default: False)
   --max-nodes MAX_NODES
                         Maximum number of nodes that can be read (default:
-                        16384)
+                        None)
   --max-links MAX_LINKS
                         Maximum number of links that can be read (default:
-                        4194304)
+                        None)
   --profile             Enable profiling of the code (default: None)
   --no-profile          Disable profiling of the code (default: None)
   --mpi                 Force use of MPI to parallelise across runs (default:
@@ -445,7 +447,7 @@ optional arguments:
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

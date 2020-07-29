@@ -97,6 +97,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index_part01.html">Part 1 - Modelling outbreaks</a></li>
@@ -244,11 +247,18 @@ To set this, use the <code class="docutils literal notranslate"><span class="pre
 </pre></div>
 </div>
 <p>(remembering to use the path that is appropriate for your computer)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We have provided the <code class="docutils literal notranslate"><span class="pre">metawards-reticulate</span></code> command. Run this from
+the console/terminal to get the list of commmands you need to type into
+R to import reticulate, set the Python executable and import the
+<a class="reference internal" href="../../api/index_api_MetaWards.html#module-metawards" title="metawards"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metawards</span></code></a> module.</p>
+</div>
 </div>
 <div class="section" id="using-metawards-in-r">
 <h2>Using metawards in R<a class="headerlink" href="#using-metawards-in-r" title="Permalink to this headline">¶</a></h2>
 <p>Next, you can import the <a class="reference internal" href="../../api/index_api_MetaWards.html#module-metawards" title="metawards"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metawards</span></code></a> module by typing;</p>
-<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="n">metawards</span> <span class="o">&lt;-</span> <span class="nf">import</span><span class="p">(</span><span class="s">&quot;metawards&quot;</span><span class="p">)</span>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">metawards</span> <span class="o">&lt;-</span> <span class="nf">import</span><span class="p">(</span><span class="s">&quot;metawards&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This loads all of the <a class="reference internal" href="../../api/index_api_MetaWards.html#module-metawards" title="metawards"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metawards</span></code></a> Python objects into the
@@ -257,18 +267,18 @@ as you would in Python.</p>
 <p>For example, we can create the same custom network containing Bristol
 and London in R as we did in Python via;</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">wards</span> <span class="o">&lt;-</span> <span class="n">metawards</span><span class="o">$</span><span class="nf">Wards</span><span class="p">()</span>
-<span class="o">&gt;</span> <span class="n">bristol</span> <span class="o">&lt;-</span> <span class="nf">Ward</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;Bristol&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">bristol</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">500</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">bristol</span> <span class="o">&lt;-</span> <span class="n">metawards</span><span class="o">$</span><span class="nf">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Bristol&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">bristol</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">bristol</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">bristol</span><span class="o">$</span><span class="nf">set_num_players</span><span class="p">(</span><span class="m">750</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">bristol</span><span class="p">)</span>
 <span class="nf">Ward</span><span class="p">(</span> <span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">Bristol</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="m">500</span><span class="p">,</span> <span class="n">num_players</span><span class="o">=</span><span class="m">750</span> <span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">london</span> <span class="o">&lt;-</span> <span class="n">metawards</span><span class="o">$</span><span class="nf">Ward</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">&quot;London&quot;</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">london</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">8500</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">london</span> <span class="o">&lt;-</span> <span class="n">metawards</span><span class="o">$</span><span class="nf">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;London&quot;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">london</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">8500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">london</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">london</span><span class="o">$</span><span class="nf">set_num_players</span><span class="p">(</span><span class="m">10000</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">london</span><span class="p">)</span>
 <span class="nf">Ward</span><span class="p">(</span> <span class="n">id</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">London</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="m">8500</span><span class="p">,</span> <span class="n">num_players</span><span class="o">=</span><span class="m">10000</span> <span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">bristol</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
-<span class="o">&gt;</span> <span class="n">london</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">bristol</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">500</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">london</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">london</span><span class="o">$</span><span class="nf">add_workers</span><span class="p">(</span><span class="m">100</span><span class="p">,</span> <span class="n">destination</span><span class="o">=</span><span class="n">bristol</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">wards</span><span class="o">$</span><span class="nf">add</span><span class="p">(</span><span class="n">bristol</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">wards</span><span class="o">$</span><span class="nf">add</span><span class="p">(</span><span class="n">london</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="nf">print</span><span class="p">(</span><span class="n">wards</span><span class="p">)</span>
@@ -353,7 +363,7 @@ code completion and inline help are also available at the
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

@@ -97,6 +97,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tutorial</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index_part01.html">Part 1 - Modelling outbreaks</a></li>
@@ -253,22 +256,22 @@ edited using the Python API described below.</li>
 <div class="section" id="creating-and-editing-networks-in-python">
 <h2>Creating and editing Networks in Python<a class="headerlink" href="#creating-and-editing-networks-in-python" title="Permalink to this headline">¶</a></h2>
 <p>The best way to create a new network is to use the Python API. A
-<a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> is edited or created via the
-<a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> class. This represents an editable collection
-of individual <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> objects, each of which
-represents a ward. The <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> provides functions
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> is edited or created via the
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> class. This represents an editable collection
+of individual <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> objects, each of which
+represents a ward. The <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> provides functions
 for setting the name and metadata for a ward, plus adding work and
 play connections to other wards.</p>
-<p>For example, we can interactively create a new <a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>
-using the <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> and <a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> classes
+<p>For example, we can interactively create a new <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>
+using the <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> and <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> classes
 in, e.g. ipython or a jupyter notebook;</p>
 <p>First, we will import the necessary classes and create our
-<a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> object, which we will call <code class="docutils literal notranslate"><span class="pre">wards</span></code>;</p>
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> object, which we will call <code class="docutils literal notranslate"><span class="pre">wards</span></code>;</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">metawards</span> <span class="kn">import</span> <span class="n">Ward</span><span class="p">,</span> <span class="n">Wards</span><span class="p">,</span> <span class="n">Network</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span> <span class="o">=</span> <span class="n">Wards</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Next, we will create a <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
+<p>Next, we will create a <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
 Bristol (which we will call <code class="docutils literal notranslate"><span class="pre">bristol</span></code>). We will add <em class="xref py py-obj">500</em>
 workers who will work in Bristol, and <code class="docutils literal notranslate"><span class="pre">750</span></code> players.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Bristol&quot;</span><span class="p">)</span>
@@ -276,7 +279,7 @@ workers who will work in Bristol, and <code class="docutils literal notranslate"
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bristol</span><span class="o">.</span><span class="n">set_num_players</span><span class="p">(</span><span class="mi">750</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Next, we will create a <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
+<p>Next, we will create a <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> object to represent
 London (which we will call <code class="docutils literal notranslate"><span class="pre">london</span></code>). We will add <code class="docutils literal notranslate"><span class="pre">8600</span></code>
 workers and <code class="docutils literal notranslate"><span class="pre">10000</span></code> players.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">london</span> <span class="o">=</span> <span class="n">Ward</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;London&quot;</span><span class="p">)</span>
@@ -299,8 +302,8 @@ will commute each day to Bristol.</p>
 <span class="go">Ward( name=London, num_workers=8600, num_players=10000 )</span>
 </pre></div>
 </div>
-<p>Next, we add the two <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> objects to our
-<a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> object that represents the entire model.</p>
+<p>Next, we add the two <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> objects to our
+<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> object that represents the entire model.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">bristol</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">london</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">wards</span><span class="p">)</span>
@@ -309,13 +312,13 @@ will commute each day to Bristol.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Note that each <a class="reference internal" href="../../api/generated/metawards.Ward.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> in the <a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a>
+<p class="last">Note that each <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> in the <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a>
 collection has been automatically assigned an ID number (1 for Bristol
 and 2 for London). You can refer to the wards by their ID number, but
 should, in general, leave <code class="docutils literal notranslate"><span class="pre">metawards</span></code> to automatically generate
 and manage these IDs.</p>
 </div>
-<p>We can now save this set of <a class="reference internal" href="../../api/generated/metawards.Wards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> to a file by converting
+<p>We can now save this set of <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> to a file by converting
 this to a data dictionary, and then serialising that dictionary to JSON,
 which we will stream to the file <code class="docutils literal notranslate"><span class="pre">custom_network.json.bz2</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">wards</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;custom_network.json&quot;</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -404,7 +407,7 @@ It won’t affect the included information - just its human-readability.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

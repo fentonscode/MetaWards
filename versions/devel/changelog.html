@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -123,6 +126,7 @@
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#july-22nd-2020">1.3.0 - July 22nd 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#june-26th-2020">1.2.0 - June 26th 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#june-11th-2020">1.1.0 - June 11th 2020</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#may-23rd-2020">1.0.0 - May 23rd 2020</a></li>
@@ -224,6 +228,51 @@
             
   <div class="section" id="changelog">
 <h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="july-22nd-2020">
+<h2><a class="reference external" href="https://github.com/metawards/MetaWards/compare/1.2.0...1.3.0">1.3.0</a> - July 22nd 2020<a class="headerlink" href="#july-22nd-2020" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Added a new <a class="reference internal" href="quickstart/index.html"><span class="doc">quick start guide</span></a> that quickly
+showcases the main features of MetaWards. A Python, R and command line
+version is available, so this should suit a range of audiences.</li>
+<li>Added support for different demographics to use different networks.
+This is described partially in the <a class="reference internal" href="tutorial/index_part08.html"><span class="doc">Part 8 - Different networks for different demographics</span></a>,
+but mostly in the new <a class="reference internal" href="quickstart/index.html"><span class="doc">quick start guide</span></a>.
+This will be documented further in the tutorial in a future release
+(e.g. 1.3.1 or 1.4.0).</li>
+<li>Added a <a class="reference internal" href="api/generated/metawards.run.html#metawards.run" title="metawards.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">metawards.run()</span></code></a> function to run MetaWards jobs from the API.
+This enables jobs to be run from within Python or R scripts, or to run
+interactively from within, e.g. RStudio or Jupyter.</li>
+<li>Added in R support via reticulate. You can now use the MetaWards API
+within R, plus, via the new <a class="reference internal" href="api/generated/metawards.run.html#metawards.run" title="metawards.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">metawards.run()</span></code></a> function you can
+write nice tutorials or vignettes that include running the jobs.
+Aim to create a CRAN MetaWards package in a future release.</li>
+<li>Cleaned up the Python API so that this is as flexible as the R API.
+Made sure that key classes, like <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Disease" title="metawards.Disease"><code class="xref py py-class docutils literal notranslate"><span class="pre">Disease</span></code></a>,
+<a class="reference internal" href="api/index_api_MetaWards.html#metawards.InputFiles" title="metawards.InputFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">InputFiles</span></code></a> and <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Demographics" title="metawards.Demographics"><code class="xref py py-class docutils literal notranslate"><span class="pre">Demographics</span></code></a>
+are easy to use and can serialised to/from JSON.</li>
+<li>New <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ward</span></code></a> / <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a> API to let
+you easily create new networks in Python or R.
+You can convert <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> to and from a
+<a class="reference internal" href="api/index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><code class="xref py py-class docutils literal notranslate"><span class="pre">Wards</span></code></a>, and these can be saved and loaded from JSON.
+You can harmonise multiple Wards objects, which enables different
+demographics to use different networks. Also can now refer to wards
+in a network by name rather than index.</li>
+<li>Fixed issues with the “single” ward model. This did not assign any
+player weights, so outbreaks were incorrect. This is now fixed, and the
+single-ward model now matches a manually-created single ward model.</li>
+<li>Added convenience executables (metawards-python, metawards-jupyter
+and metawards-reticulate) to make it easier for users to use the
+right Python executable if many are installed on the system.</li>
+<li>Cleaned up the output and changed “UV” to “scale_uv” as this clashed with
+the UV command-line parameter (and confused people).</li>
+<li>Fixed a bug where the “population” parameter was ignored for repeated
+single-ward network runs.</li>
+<li>More robust reading of the traditional network file format</li>
+<li>Added progress bars for slow operations :-)</li>
+<li>Better support for sequential naming of output directories for repeated runs</li>
+<li>“master” branch was renamed to “main”</li>
+</ul>
+</div>
 <div class="section" id="june-26th-2020">
 <h2><a class="reference external" href="https://github.com/metawards/MetaWards/compare/1.1.0...1.2.0">1.2.0</a> - June 26th 2020<a class="headerlink" href="#june-26th-2020" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -245,7 +294,7 @@ This includes being able to read extra seeds from the command line,
 rather than needing to always write a file.</li>
 <li>Added in the ability to seed infections by date as well as day. Also
 seeding wards by name as well as index (e.g. <code class="docutils literal notranslate"><span class="pre">Clifton/Bristol</span></code>).</li>
-<li>Added in <a class="reference internal" href="api/generated/metawards.Interpret.html#metawards.Interpret" title="metawards.Interpret"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Interpret</span></code></a> to consolidate all of the code
+<li>Added in <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Interpret" title="metawards.Interpret"><code class="xref py py-class docutils literal notranslate"><span class="pre">metawards.Interpret</span></code></a> to consolidate all of the code
 used to interpret strings into data types. This increases the power
 and flexibility of the data parsers, and adds in new features such
 as reading in random data, or adding math functions to the
@@ -289,10 +338,10 @@ day earlier than previous versions, so outbreaks are now one day ahead.</li>
 denominators. These have not been used in production yet. If you
 are going to use demographic sub-networks then please make sure
 you use this version (1.1.0) or above.</li>
-<li>Added database support to <a class="reference internal" href="api/generated/metawards.OutputFiles.html#metawards.OutputFiles" title="metawards.OutputFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutputFiles</span></code></a>, so that you
+<li>Added database support to <a class="reference internal" href="api/index_api_MetaWards.html#metawards.OutputFiles" title="metawards.OutputFiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutputFiles</span></code></a>, so that you
 can now write data to SQLite3 databases. This is described in a new
 part of <a class="reference internal" href="tutorial/part04/04_rates.html"><span class="doc">tutorial chapter 4</span></a>.</li>
-<li>Added in extra output to <a class="reference internal" href="api/generated/metawards.Workspace.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workspace</span></code></a> so that you can
+<li>Added in extra output to <a class="reference internal" href="api/index_api_MetaWards.html#metawards.Workspace" title="metawards.Workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">Workspace</span></code></a> so that you can
 get the populations of all disease stages for all demographics. This
 is demonstrated in a rate calculation, also in the
 <a class="reference internal" href="tutorial/part04/04_rates.html"><span class="doc">new tutorial chapter 4</span></a>.</li>
@@ -574,7 +623,7 @@ understand it.</li>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -200,12 +203,46 @@
 <span class="kn">from</span> <span class="nn">.._parameters</span> <span class="kn">import</span> <span class="n">Parameters</span>
 <span class="kn">from</span> <span class="nn">.._outputfiles</span> <span class="kn">import</span> <span class="n">OutputFiles</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run_worker&quot;</span><span class="p">,</span> <span class="s2">&quot;prepare_worker&quot;</span><span class="p">]</span>
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;run_worker&quot;</span><span class="p">,</span> <span class="s2">&quot;prepare_worker&quot;</span><span class="p">,</span> <span class="s2">&quot;must_rebuild_network&quot;</span><span class="p">]</span>
 
 <span class="n">global_network</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">must_rebuild_network</span><span class="p">(</span><span class="n">network</span><span class="p">:</span> <span class="n">_Union</span><span class="p">[</span><span class="n">Network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">],</span>
+                         <span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span>
+                         <span class="n">demographics</span><span class="p">:</span> <span class="n">Demographics</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Return whether a change in parameters or demographics</span>
+<span class="sd">       would force a rebuild of the passed network</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">network</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">elif</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">demographics</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">Networks</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">demographics</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">Network</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">network</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">input_files</span> <span class="o">!=</span> <span class="n">params</span><span class="o">.</span><span class="n">input_files</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">demographics</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">demographics</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">demographics</span><span class="o">.</span><span class="n">is_multi_network</span><span class="p">():</span>
+        <span class="c1"># check if any of the networks has changed</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">network</span><span class="o">.</span><span class="n">demographics</span><span class="o">.</span><span class="n">is_multi_network</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">for</span> <span class="n">d1</span><span class="p">,</span> <span class="n">d2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">demographics</span><span class="p">,</span> <span class="n">network</span><span class="o">.</span><span class="n">demographics</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">d1</span><span class="o">.</span><span class="n">network</span> <span class="o">!=</span> <span class="n">d2</span><span class="o">.</span><span class="n">network</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">return</span> <span class="kc">False</span>
 
 
 <div class="viewcode-block" id="prepare_worker"><a class="viewcode-back" href="../../../api/generated/metawards.utils.prepare_worker.html#metawards.utils.prepare_worker">[docs]</a><span class="k">def</span> <span class="nf">prepare_worker</span><span class="p">(</span><span class="n">params</span><span class="p">:</span> <span class="n">Parameters</span><span class="p">,</span> <span class="n">demographics</span><span class="p">:</span> <span class="n">Demographics</span><span class="p">,</span>
@@ -224,7 +261,6 @@
 <span class="sd">         If not None, then demographics used to specialise the Network</span>
 <span class="sd">         into Networks</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># switch off printing to stdout and stderr</span>
     <span class="k">global</span> <span class="n">global_network</span>
 
     <span class="n">max_nodes</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;max_nodes&quot;</span><span class="p">]</span>
@@ -236,16 +272,28 @@
 
     <span class="n">profiler</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;profiler&quot;</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">global_network</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
-                                <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
-                                <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
-                                <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">._console</span> <span class="kn">import</span> <span class="n">Console</span>
+
+    <span class="k">if</span> <span class="n">must_rebuild_network</span><span class="p">(</span><span class="n">network</span><span class="o">=</span><span class="n">global_network</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                            <span class="n">demographics</span><span class="o">=</span><span class="n">demographics</span><span class="p">):</span>
+
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Must rebuild network...&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">demographics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">specialise</span><span class="p">(</span><span class="n">network</span><span class="p">,</span>
-                                              <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
-                                              <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="n">demographics</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                         <span class="n">population</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">,</span>
+                                                                <span class="kc">None</span><span class="p">),</span>
+                                         <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
+                                         <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">,</span>
+                                         <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
+                                         <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="n">Network</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+                                    <span class="n">population</span><span class="o">=</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                                    <span class="n">profiler</span><span class="o">=</span><span class="n">profiler</span><span class="p">,</span>
+                                    <span class="n">nthreads</span><span class="o">=</span><span class="n">nthreads</span><span class="p">,</span>
+                                    <span class="n">max_nodes</span><span class="o">=</span><span class="n">max_nodes</span><span class="p">,</span>
+                                    <span class="n">max_links</span><span class="o">=</span><span class="n">max_links</span><span class="p">)</span>
 
         <span class="n">global_network</span> <span class="o">=</span> <span class="n">network</span>
 
@@ -253,7 +301,6 @@
     <span class="n">network</span> <span class="o">=</span> <span class="n">global_network</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">adjustments</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">._console</span> <span class="kn">import</span> <span class="n">Console</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">rule</span><span class="p">(</span><span class="s2">&quot;Adjustable parameters to scan&quot;</span><span class="p">)</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;* </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">adjustments</span><span class="p">]),</span>
                       <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -324,7 +371,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

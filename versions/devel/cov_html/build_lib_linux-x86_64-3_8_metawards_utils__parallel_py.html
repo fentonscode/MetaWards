@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=emulateIE7" />
-    <title>Coverage for build/lib.linux-x86_64-3.8/metawards/utils/_parallel.py: 59.18%</title>
+    <title>Coverage for build/lib.linux-x86_64-3.8/metawards/utils/_parallel.py: 58.00%</title>
     <link rel="stylesheet" href="style.css" type="text/css">
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery.hotkeys.js"></script>
@@ -17,13 +17,13 @@
 <div id="header">
     <div class="content">
         <h1>Coverage for <b>build/lib.linux-x86_64-3.8/metawards/utils/_parallel.py</b> :
-            <span class="pc_cov">59.18%</span>
+            <span class="pc_cov">58.00%</span>
         </h1>
         <img id="keyboard_icon" src="keybd_closed.png" alt="Show keyboard shortcuts" />
         <h2 class="stats">
-            62 statements &nbsp;
+            64 statements &nbsp;
             <button type="button" class="run shortkey_r button_toggle_run" title="Toggle lines run">37 run</button>
-            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">25 missing</button>
+            <button type="button" class="mis show_mis shortkey_m button_toggle_mis" title="Toggle lines missing">27 missing</button>
             <button type="button" class="exc show_exc shortkey_x button_toggle_exc" title="Toggle lines excluded">0 excluded</button>
             <button type="button" class="par run show_par shortkey_p button_toggle_par" title="Toggle lines partially run">11 partial</button>
         </h2>
@@ -184,26 +184,29 @@
     <p id="t130" class="pln"><span class="n"><a href="#t130">130</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p id="t131" class="mis show_mis"><span class="n"><a href="#t131">131</a></span><span class="t">        <span class="key">from</span> <span class="op">.</span><span class="nam">_console</span> <span class="key">import</span> <span class="nam">Console</span>&nbsp;</span><span class="r"></span></p>
     <p id="t132" class="pln"><span class="n"><a href="#t132">132</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t133" class="mis show_mis"><span class="n"><a href="#t133">133</a></span><span class="t">        <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="nam">nthreads</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t134" class="mis show_mis"><span class="n"><a href="#t134">134</a></span><span class="t">            <span class="nam">seed</span> <span class="op">=</span> <span class="nam">ran_int</span><span class="op">(</span><span class="nam">rng</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t135" class="mis show_mis"><span class="n"><a href="#t135">135</a></span><span class="t">            <span class="nam">Console</span><span class="op">.</span><span class="nam">print</span><span class="op">(</span><span class="str">f"Random seed for thread {i} equals **{seed}**"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t136" class="pln"><span class="n"><a href="#t136">136</a></span><span class="t">                          <span class="nam">markdown</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t137" class="mis show_mis"><span class="n"><a href="#t137">137</a></span><span class="t">            <span class="nam">rngs</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">seed_ran_binomial</span><span class="op">(</span><span class="nam">seed</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t138" class="pln"><span class="n"><a href="#t138">138</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p id="t139" class="pln"><span class="n"><a href="#t139">139</a></span><span class="t">    <span class="com"># need to return these as an array so that they are more easily</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t140" class="pln"><span class="n"><a href="#t140">140</a></span><span class="t">    <span class="com"># accessible from the OpenMP loops - rng is a unsigned 64-bit integer</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t141" class="pln"><span class="n"><a href="#t141">141</a></span><span class="t">    <span class="com"># as a uintptr_t - this best corresponds to unsigned long ("L")</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t142" class="par run show_par"><span class="n"><a href="#t142">142</a></span><span class="t">    <span class="key">if</span> <span class="nam">platform</span> <span class="op">==</span> <span class="str">"win32"</span><span class="op">:</span>&nbsp;</span><span class="r"><span class="annotate short">142&#x202F;&#x219B;&#x202F;144</span><span class="annotate long">line 142 didn't jump to line 144, because the condition on line 142 was never true</span></span></p>
-    <p id="t143" class="pln"><span class="n"><a href="#t143">143</a></span><span class="t">        <span class="com"># Use unsigned long long ("Q") on Windows since it has a 32-bit long.</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t144" class="mis show_mis"><span class="n"><a href="#t144">144</a></span><span class="t">        <span class="key">return</span> <span class="nam">array</span><span class="op">(</span><span class="str">"Q"</span><span class="op">,</span> <span class="nam">rngs</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t145" class="pln"><span class="n"><a href="#t145">145</a></span><span class="t">    <span class="key">else</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p id="t146" class="run"><span class="n"><a href="#t146">146</a></span><span class="t">        <span class="key">return</span> <span class="nam">array</span><span class="op">(</span><span class="str">"L"</span><span class="op">,</span> <span class="nam">rngs</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t133" class="mis show_mis"><span class="n"><a href="#t133">133</a></span><span class="t">        <span class="nam">lines</span> <span class="op">=</span> <span class="op">[</span><span class="op">]</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t134" class="pln"><span class="n"><a href="#t134">134</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t135" class="mis show_mis"><span class="n"><a href="#t135">135</a></span><span class="t">        <span class="key">for</span> <span class="nam">i</span> <span class="key">in</span> <span class="nam">range</span><span class="op">(</span><span class="num">0</span><span class="op">,</span> <span class="nam">nthreads</span><span class="op">)</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t136" class="mis show_mis"><span class="n"><a href="#t136">136</a></span><span class="t">            <span class="nam">seed</span> <span class="op">=</span> <span class="nam">ran_int</span><span class="op">(</span><span class="nam">rng</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t137" class="mis show_mis"><span class="n"><a href="#t137">137</a></span><span class="t">            <span class="nam">lines</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="str">f"* Random seed for thread {i} equals **{seed}**"</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t138" class="mis show_mis"><span class="n"><a href="#t138">138</a></span><span class="t">            <span class="nam">rngs</span><span class="op">.</span><span class="nam">append</span><span class="op">(</span><span class="nam">seed_ran_binomial</span><span class="op">(</span><span class="nam">seed</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t139" class="pln"><span class="n"><a href="#t139">139</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t140" class="mis show_mis"><span class="n"><a href="#t140">140</a></span><span class="t">        <span class="nam">Console</span><span class="op">.</span><span class="nam">print</span><span class="op">(</span><span class="str">"\n"</span><span class="op">.</span><span class="nam">join</span><span class="op">(</span><span class="nam">lines</span><span class="op">)</span><span class="op">,</span> <span class="nam">markdown</span><span class="op">=</span><span class="key">True</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t141" class="pln"><span class="n"><a href="#t141">141</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p id="t142" class="pln"><span class="n"><a href="#t142">142</a></span><span class="t">    <span class="com"># need to return these as an array so that they are more easily</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t143" class="pln"><span class="n"><a href="#t143">143</a></span><span class="t">    <span class="com"># accessible from the OpenMP loops - rng is a unsigned 64-bit integer</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t144" class="pln"><span class="n"><a href="#t144">144</a></span><span class="t">    <span class="com"># as a uintptr_t - this best corresponds to unsigned long ("L")</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t145" class="par run show_par"><span class="n"><a href="#t145">145</a></span><span class="t">    <span class="key">if</span> <span class="nam">platform</span> <span class="op">==</span> <span class="str">"win32"</span><span class="op">:</span>&nbsp;</span><span class="r"><span class="annotate short">145&#x202F;&#x219B;&#x202F;147</span><span class="annotate long">line 145 didn't jump to line 147, because the condition on line 145 was never true</span></span></p>
+    <p id="t146" class="pln"><span class="n"><a href="#t146">146</a></span><span class="t">        <span class="com"># Use unsigned long long ("Q") on Windows since it has a 32-bit long.</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t147" class="mis show_mis"><span class="n"><a href="#t147">147</a></span><span class="t">        <span class="key">return</span> <span class="nam">array</span><span class="op">(</span><span class="str">"Q"</span><span class="op">,</span> <span class="nam">rngs</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t148" class="pln"><span class="n"><a href="#t148">148</a></span><span class="t">    <span class="key">else</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p id="t149" class="run"><span class="n"><a href="#t149">149</a></span><span class="t">        <span class="key">return</span> <span class="nam">array</span><span class="op">(</span><span class="str">"L"</span><span class="op">,</span> <span class="nam">rngs</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
 </div>
 <div id="footer">
     <div class="content">
         <p>
-            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.2</a>,
-            created at 2020-07-13 21:01
+            <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v5.2.1</a>,
+            created at 2020-07-29 12:37 +0000
         </p>
     </div>
 </div>

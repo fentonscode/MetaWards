@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul class="current">
@@ -224,7 +227,7 @@ file containing information about a specific seeding event.</p>
 <ol class="arabic simple">
 <li><code class="docutils literal notranslate"><span class="pre">day</span></code> : The day or date to seed the infection(s). This should be
 an integer or a date that is interpreted via
-<a class="reference internal" href="../api/generated/metawards.Interpret.html#metawards.Interpret.day_or_date" title="metawards.Interpret.day_or_date"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.day_or_date</span></code></a> function.
+<a class="reference internal" href="../api/index_api_MetaWards.html#metawards.Interpret.day_or_date" title="metawards.Interpret.day_or_date"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.day_or_date</span></code></a> function.
 This either sets the day number on which to seed, or the exact date
 in which to seed.</li>
 <li><code class="docutils literal notranslate"><span class="pre">ward</span></code> : The ward (either index or name) in which the infection
@@ -232,16 +235,16 @@ will be seeded. This should either be an integer (whole number) specifying
 the index of the ward (1-indexed), or a string that identifies the
 ward by name, e.g. <code class="docutils literal notranslate"><span class="pre">Clifton/Bristol</span></code> would look for the ward called
 <code class="docutils literal notranslate"><span class="pre">Clifton</span></code> in the authority <code class="docutils literal notranslate"><span class="pre">Bristol</span></code>. The ward is looked up by
-name using the <a class="reference internal" href="../api/generated/metawards.WardInfos.html#metawards.WardInfos.find" title="metawards.WardInfos.find"><code class="xref py py-func docutils literal notranslate"><span class="pre">WardInfos.find</span></code></a>
+name using the <a class="reference internal" href="../api/index_api_MetaWards.html#metawards.WardInfos.find" title="metawards.WardInfos.find"><code class="xref py py-func docutils literal notranslate"><span class="pre">WardInfos.find</span></code></a>
 function.</li>
 <li><code class="docutils literal notranslate"><span class="pre">number</span></code> : The number of infections to be seeded. This is an integer
 that is interpreted via the
-<a class="reference internal" href="../api/generated/metawards.Interpret.html#metawards.Interpret.integer" title="metawards.Interpret.integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.integer</span></code></a> function.</li>
+<a class="reference internal" href="../api/index_api_MetaWards.html#metawards.Interpret.integer" title="metawards.Interpret.integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.integer</span></code></a> function.</li>
 <li><code class="docutils literal notranslate"><span class="pre">demographic</span></code> (optional) : The demographic (either index or name)
 in which the infection will be seeded. If this is not specified,
 then the first demographic in the network is seeded. If this is
 the index it is interpreted via
-<a class="reference internal" href="../api/generated/metawards.Interpret.html#metawards.Interpret.integer" title="metawards.Interpret.integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.integer</span></code></a>, while if this
+<a class="reference internal" href="../api/index_api_MetaWards.html#metawards.Interpret.integer" title="metawards.Interpret.integer"><code class="xref py py-func docutils literal notranslate"><span class="pre">Interpret.integer</span></code></a>, while if this
 is the name then this will direct look-up the demographic by name.</li>
 </ol>
 <p>This is a column-formatted file. Like all flexible-format files you can use
@@ -315,7 +318,7 @@ each day.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

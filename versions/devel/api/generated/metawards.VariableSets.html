@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -269,22 +272,22 @@ to control a single run of the model</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSets.__init__" title="metawards.VariableSets.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.__init__" title="metawards.VariableSets.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>()</td>
 <td>Initialise an empty VariableSets object</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSets.append" title="metawards.VariableSets.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(variables)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.append" title="metawards.VariableSets.append"><code class="xref py py-obj docutils literal notranslate"><span class="pre">append</span></code></a>(variables)</td>
 <td>Append the passed set of variables to the set that will be used to run a model.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSets.read" title="metawards.VariableSets.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename,&nbsp;line_numbers)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.read" title="metawards.VariableSets.read"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read</span></code></a>(filename,&nbsp;line_numbers)</td>
 <td>Read and return collection of VariableSet objects from the specified line number(s) of the specified file</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSets.repeat" title="metawards.VariableSets.repeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat</span></code></a>(nrepeats,&nbsp;int])</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.repeat" title="metawards.VariableSets.repeat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">repeat</span></code></a>(nrepeats,&nbsp;int])</td>
 <td>Return a copy of this VariableSet in which all of the unique VaribleSet objects have been repeated ‘nrepeats’ times</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.VariableSets.set_outdir_from_number" title="metawards.VariableSets.set_outdir_from_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_number</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.set_outdir_from_number" title="metawards.VariableSets.set_outdir_from_number"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_number</span></code></a>()</td>
 <td>This function resets the names of all of the output directories for each run so that they are numbered sequentially from one</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.VariableSets.set_outdir_from_uid" title="metawards.VariableSets.set_outdir_from_uid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_uid</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets.set_outdir_from_uid" title="metawards.VariableSets.set_outdir_from_uid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_outdir_from_uid</span></code></a>()</td>
 <td>This function resets the names of all of the output directories for each run so that they all have a globally unique UID</td>
 </tr>
 </tbody>
@@ -342,7 +345,7 @@ must adjust the same variables</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variables</strong> (<a class="reference internal" href="metawards.VariableSet.html#metawards.VariableSet" title="metawards.VariableSet"><em>VariableSet</em></a>) – The VariableSet to append to this list. If you pass a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>variables</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet"><em>VariableSet</em></a>) – The VariableSet to append to this list. If you pass a
 dict of {str: float} values, then this will automatically
 be converted into a VariableSet. Note that all VariableSet
 objects in a VariableSets must adjust the same variables</td>
@@ -376,7 +379,7 @@ then all lines are read and used</li>
 in the order they were read from the file</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#metawards.VariableSets" title="metawards.VariableSets">VariableSets</a></p>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets" title="metawards.VariableSets">VariableSets</a></p>
 </td>
 </tr>
 </tbody>
@@ -400,7 +403,7 @@ the number of times to repeat variables[i]</td>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>repeats</strong> – A new VariableSets object containing ‘nrepeats’ copies
 of the VariableSet objects from this set</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#metawards.VariableSets" title="metawards.VariableSets">VariableSets</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets" title="metawards.VariableSets">VariableSets</a></td>
 </tr>
 </tbody>
 </table>
@@ -445,7 +448,7 @@ for each run so that they all have a globally unique UID</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

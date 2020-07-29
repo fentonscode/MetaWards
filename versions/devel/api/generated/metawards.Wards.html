@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="metawards.WardInfo" href="metawards.WardInfo.html" />
-    <link rel="prev" title="metawards.Ward" href="metawards.Ward.html" /> 
+    <link rel="next" title="metawards.Workspace" href="metawards.Workspace.html" />
+    <link rel="prev" title="metawards.WardInfos" href="metawards.WardInfos.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,6 +96,9 @@
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
@@ -210,10 +213,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="metawards.WardInfo.html" class="btn btn-neutral float-right" title="metawards.WardInfo" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.Workspace.html" class="btn btn-neutral float-right" title="metawards.Workspace" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="metawards.Ward.html" class="btn btn-neutral float-left" title="metawards.Ward" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.WardInfos.html" class="btn btn-neutral float-left" title="metawards.WardInfos" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -226,11 +229,11 @@
 <h1>metawards.Wards<a class="headerlink" href="#metawards-wards" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="metawards.Wards">
-<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Wards</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">metawards.</code><code class="descname">Wards</code><span class="sig-paren">(</span><em>wards: Optional[List[metawards._ward.Ward]] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class holds an entire network of Ward objects</p>
 <dl class="method">
 <dt id="metawards.Wards.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: Optional[List[metawards._ward.Ward]] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Construct, optionally from a list of Ward objects</p>
 </dd></dl>
 
@@ -241,62 +244,74 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.__init__" title="metawards.Wards.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(wards)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.__init__" title="metawards.Wards.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(wards)</td>
 <td>Construct, optionally from a list of Ward objects</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.add" title="metawards.Wards.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(ward)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.add" title="metawards.Wards.add"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add</span></code></a>(ward)</td>
 <td>Synonym for insert</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.assert_sane" title="metawards.Wards.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.assert_sane" title="metawards.Wards.assert_sane"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assert_sane</span></code></a>()</td>
 <td>Make sure that we don’t refer to any non-existent wards</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.contains" title="metawards.Wards.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(id,&nbsp;metawards._wardinfo.WardInfo])</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.contains" title="metawards.Wards.contains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">contains</span></code></a>(id,&nbsp;str,&nbsp;metawards._wardinfo.WardInfo])</td>
 <td>Return whether or not the passed id - which can be an integer ID or WardInfo - is in this Wards object</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.from_data" title="metawards.Wards.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data,&nbsp;profiler)</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.from_data" title="metawards.Wards.from_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_data</span></code></a>(data,&nbsp;profiler)</td>
 <td>Return the Wards constructed from a data represnetation, which may have come from deserialised JSON</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.from_json" title="metawards.Wards.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(s)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.from_json" title="metawards.Wards.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(s)</td>
 <td>Return the Wards constructed from the passed json.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.index" title="metawards.Wards.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(id,&nbsp;metawards._wardinfo.WardInfo])</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.get" title="metawards.Wards.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(id,&nbsp;metawards._wardinfo.WardInfo],&nbsp;…)</td>
+<td>Return the ward with the specified id - this can eb the integer ID of the ward or the WardInfo of the ward.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.getinfo" title="metawards.Wards.getinfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getinfo</span></code></a>(id,&nbsp;str,&nbsp;metawards._wardinfo.WardInfo])</td>
+<td>Return the WardInfo matching the ward with the passed ID</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.harmonise" title="metawards.Wards.harmonise"><code class="xref py py-obj docutils literal notranslate"><span class="pre">harmonise</span></code></a>(wardss)</td>
+<td>Harmonise the passed list of wards, returning a tuple that contains the overall sum of all of these wards, plus a new list where all Wards use IDs that are correct and valid across the entire group</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.index" title="metawards.Wards.index"><code class="xref py py-obj docutils literal notranslate"><span class="pre">index</span></code></a>(id,&nbsp;str,&nbsp;metawards._wardinfo.WardInfo,&nbsp;…)</td>
 <td>Return the index of the ward that matches the passed id - which can be the integer ID or WardInfo - in this Wards object.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.insert" title="metawards.Wards.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(wards)</td>
-<td>Append the passed wards onto this list</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.insert" title="metawards.Wards.insert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">insert</span></code></a>(wards,&nbsp;overwrite,&nbsp;_need_deep_copy)</td>
+<td>Insert the passed wards onto this list.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.is_resolved" title="metawards.Wards.is_resolved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_resolved</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.is_resolved" title="metawards.Wards.is_resolved"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_resolved</span></code></a>()</td>
 <td>Return whether or not this is a fully resolved set of Wards (i.e.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_play_links" title="metawards.Wards.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.num_play_links" title="metawards.Wards.num_play_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_play_links</span></code></a>()</td>
 <td>Return the total number of play links</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_players" title="metawards.Wards.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.num_players" title="metawards.Wards.num_players"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_players</span></code></a>()</td>
 <td>Return the total number of players in this network</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.num_work_links" title="metawards.Wards.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.num_work_links" title="metawards.Wards.num_work_links"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_work_links</span></code></a>()</td>
 <td>Return the total number of work links</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.num_workers" title="metawards.Wards.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.num_workers" title="metawards.Wards.num_workers"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_workers</span></code></a>()</td>
 <td>Return the total number of workers in this network</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.population" title="metawards.Wards.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.population" title="metawards.Wards.population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">population</span></code></a>()</td>
 <td>Return the total population in this network</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.to_data" title="metawards.Wards.to_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data</span></code></a>(profiler)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.scale" title="metawards.Wards.scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scale</span></code></a>(work_ratio,&nbsp;play_ratio,&nbsp;_inplace)</td>
+<td>Return a copy of these wards where the number of workers and players have been scaled by ‘work_ratios’ and ‘play_ratios’ respectively.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.to_data" title="metawards.Wards.to_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_data</span></code></a>(profiler)</td>
 <td>Return a data representation of these wards that can be serialised to JSON</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#metawards.Wards.to_json" title="metawards.Wards.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(filename,&nbsp;indent,&nbsp;auto_bzip)</td>
+<tr class="row-even"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.to_json" title="metawards.Wards.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>(filename,&nbsp;indent,&nbsp;auto_bzip)</td>
 <td>Serialise the wards to JSON.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#metawards.Wards.unresolved_wards" title="metawards.Wards.unresolved_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unresolved_wards</span></code></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards.unresolved_wards" title="metawards.Wards.unresolved_wards"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unresolved_wards</span></code></a>()</td>
 <td>Return the list of IDs of unresolved wards</td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="metawards.Wards.__contains__">
-<code class="descname">__contains__</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__contains__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__contains__</code><span class="sig-paren">(</span><em>id: Union[int, str, metawards._wardinfo.WardInfo, metawards._ward.Ward]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__contains__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__contains__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return whether or not the passed id - which can be an integer
 ID or WardInfo - is in this Wards object</p>
 </dd></dl>
@@ -309,15 +324,40 @@ ID or WardInfo - is in this Wards object</p>
 
 <dl class="method">
 <dt id="metawards.Wards.__getitem__">
-<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; metawards._ward.Ward<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__getitem__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__getitem__</code><span class="sig-paren">(</span><em>id: Union[int, str, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; metawards._ward.Ward<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__getitem__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__getitem__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the ward with specified id - this can be the integer
-ID of the ward, or the WardInfo of the ward</p>
+ID of the ward, or the WardInfo of the ward. Note that
+this returns a copy of the Ward</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.__imul__">
+<code class="descname">__imul__</code><span class="sig-paren">(</span><em>scale: float</em><span class="sig-paren">)</span> &#x2192; metawards._wards.Wards<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__imul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__imul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>In-place multiply the number of workers and players by ‘scale’</p>
 </dd></dl>
 
 <dl class="method">
 <dt>
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__init__"><span class="viewcode-link">[source]</span></a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>wards: Optional[List[metawards._ward.Ward]] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__init__"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Construct, optionally from a list of Ward objects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.__mul__">
+<code class="descname">__mul__</code><span class="sig-paren">(</span><em>scale: float</em><span class="sig-paren">)</span> &#x2192; metawards._wards.Wards<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__mul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale the number of workers and players by ‘scale’</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.__repr__">
+<code class="descname">__repr__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__repr__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__repr__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return repr(self).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.__rmul__">
+<code class="descname">__rmul__</code><span class="sig-paren">(</span><em>scale: float</em><span class="sig-paren">)</span> &#x2192; metawards._wards.Wards<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.__rmul__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.__rmul__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scale the number of workers and players by ‘scale’</p>
 </dd></dl>
 
 <dl class="method">
@@ -340,14 +380,14 @@ ID of the ward, or the WardInfo of the ward</p>
 
 <dl class="method">
 <dt id="metawards.Wards.contains">
-<code class="descname">contains</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.contains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.contains" title="Permalink to this definition">¶</a></dt>
+<code class="descname">contains</code><span class="sig-paren">(</span><em>id: Union[int, str, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.contains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.contains" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return whether or not the passed id - which can be an integer
 ID or WardInfo - is in this Wards object</p>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="metawards.Wards.from_data">
-<em class="property">static </em><code class="descname">from_data</code><span class="sig-paren">(</span><em>data</em>, <em>profiler: metawards.utils._profiler.Profiler = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.from_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.from_data" title="Permalink to this definition">¶</a></dt>
+<em class="property">static </em><code class="descname">from_data</code><span class="sig-paren">(</span><em>data</em>, <em>profiler: Optional[metawards.utils._profiler.Profiler] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.from_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.from_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Wards constructed from a data represnetation,
 which may have come from deserialised JSON</p>
 </dd></dl>
@@ -361,8 +401,33 @@ from the passed file</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Wards.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo], dereference: bool = True</em><span class="sig-paren">)</span> &#x2192; metawards._ward.Ward<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the ward with the specified id - this can eb the integer
+ID of the ward or the WardInfo of the ward. If ‘dereference’
+is True then this will dereference all of the IDs into
+WardInfo objects. This is useful if you want to use the
+resulting Ward with other Wards collections</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="metawards.Wards.getinfo">
+<code class="descname">getinfo</code><span class="sig-paren">(</span><em>id: Union[int, str, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; metawards._wardinfo.WardInfo<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.getinfo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.getinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the WardInfo matching the ward with the passed ID</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="metawards.Wards.harmonise">
+<em class="property">static </em><code class="descname">harmonise</code><span class="sig-paren">(</span><em>wardss: List[Wards]</em><span class="sig-paren">)</span> &#x2192; Tuple[Wards, List[Wards]]<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.harmonise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.harmonise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Harmonise the passed list of wards, returning a tuple that
+contains the overall sum of all of these wards, plus a new list
+where all Wards use IDs that are correct and valid
+across the entire group</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Wards.index">
-<code class="descname">index</code><span class="sig-paren">(</span><em>id: Union[int, metawards._wardinfo.WardInfo]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">index</code><span class="sig-paren">(</span><em>id: Union[int, str, metawards._wardinfo.WardInfo, metawards._ward.Ward]</em><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the index of the ward that matches the passed
 id - which can be the integer ID or WardInfo - in this
 Wards object. This raises a ValueError if the
@@ -371,8 +436,10 @@ ward doens’t exist</p>
 
 <dl class="method">
 <dt id="metawards.Wards.insert">
-<code class="descname">insert</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward]</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.insert" title="Permalink to this definition">¶</a></dt>
-<dd><p>Append the passed wards onto this list</p>
+<code class="descname">insert</code><span class="sig-paren">(</span><em>wards: List[metawards._ward.Ward], overwrite: bool = True, _need_deep_copy: bool = True</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert the passed wards onto this list. This will overwrite
+the existing ward if ‘overwrite’ is true, otherwise it will
+add the ward’s data to the existing ward</p>
 </dd></dl>
 
 <dl class="method">
@@ -413,37 +480,67 @@ ward doens’t exist</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="metawards.Wards.scale">
+<code class="descname">scale</code><span class="sig-paren">(</span><em>work_ratio: float = 1.0</em>, <em>play_ratio: float = 1.0</em>, <em>_inplace: bool = False</em><span class="sig-paren">)</span> &#x2192; metawards._wards.Wards<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.scale"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a copy of these wards where the number of workers
+and players have been scaled by ‘work_ratios’ and ‘play_ratios’
+respectively. These can be greater than 1.0, e.g. if you want
+to scale up the number of workers and players</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>work_ratio</strong> (<em>float</em>) – The scaling ratio for workers</li>
+<li><strong>play_ratio</strong> (<em>float</em>) – The scaling ratio for players</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Wards</strong></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">A copy of this Wards scaled by the requested amount</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="metawards.Wards.to_data">
-<code class="descname">to_data</code><span class="sig-paren">(</span><em>profiler: metawards.utils._profiler.Profiler = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.to_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.to_data" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_data</code><span class="sig-paren">(</span><em>profiler: Optional[metawards.utils._profiler.Profiler] = None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.to_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.to_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a data representation of these wards that can
 be serialised to JSON</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="metawards.Wards.to_json">
-<code class="descname">to_json</code><span class="sig-paren">(</span><em>filename: str = None</em>, <em>indent: int = None</em>, <em>auto_bzip: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.to_json" title="Permalink to this definition">¶</a></dt>
+<code class="descname">to_json</code><span class="sig-paren">(</span><em>filename: Optional[str] = None</em>, <em>indent: Optional[int] = None</em>, <em>auto_bzip: bool = True</em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="../../_modules/metawards/_wards.html#Wards.to_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.Wards.to_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>Serialise the wards to JSON. This will write to a file
 if filename is set, otherwise it will return a JSON string.</p>
-<p>Parameters
-== == == == ==
-filename: str</p>
-<blockquote>
-<div>The name of the file to write the JSON to. The absolute
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> (<em>str</em>) – The name of the file to write the JSON to. The absolute
 path to the written file will be returned. If filename is None
 then this will serialise to a JSON string which will be
-returned.</div></blockquote>
-<dl class="docutils">
-<dt>indent: int</dt>
-<dd>The number of spaces of indent to use when writing the json</dd>
-<dt>auto_bzip: bool</dt>
-<dd>Whether or not to automatically bzip2 the written json file</dd>
-</dl>
-<p>Returns
-== == == =
-str</p>
-<blockquote>
-<div>Returns either the absolute path to the written file, or
-the json-serialised string</div></blockquote>
+returned.</li>
+<li><strong>indent</strong> (<em>int</em>) – The number of spaces of indent to use when writing the json</li>
+<li><strong>auto_bzip</strong> (<em>bool</em>) – Whether or not to automatically bzip2 the written json file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns either the absolute path to the written file, or
+the json-serialised string</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -464,10 +561,10 @@ the json-serialised string</div></blockquote>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="metawards.WardInfo.html" class="btn btn-neutral float-right" title="metawards.WardInfo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.Workspace.html" class="btn btn-neutral float-right" title="metawards.Workspace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="metawards.Ward.html" class="btn btn-neutral float-left" title="metawards.Ward" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.WardInfos.html" class="btn btn-neutral float-left" title="metawards.WardInfos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -477,7 +574,7 @@ the json-serialised string</div></blockquote>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

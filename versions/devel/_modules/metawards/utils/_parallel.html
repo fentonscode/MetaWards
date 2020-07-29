@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -322,11 +325,14 @@
 
         <span class="kn">from</span> <span class="nn">._console</span> <span class="kn">import</span> <span class="n">Console</span>
 
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">nthreads</span><span class="p">):</span>
             <span class="n">seed</span> <span class="o">=</span> <span class="n">ran_int</span><span class="p">(</span><span class="n">rng</span><span class="p">)</span>
-            <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random seed for thread </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> equals **</span><span class="si">{</span><span class="n">seed</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">,</span>
-                          <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* Random seed for thread </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> equals **</span><span class="si">{</span><span class="n">seed</span><span class="si">}</span><span class="s2">**&quot;</span><span class="p">)</span>
             <span class="n">rngs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">seed_ran_binomial</span><span class="p">(</span><span class="n">seed</span><span class="p">))</span>
+
+        <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="n">markdown</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># need to return these as an array so that they are more easily</span>
     <span class="c1"># accessible from the OpenMP loops - rng is a unsigned 64-bit integer</span>
@@ -349,7 +355,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

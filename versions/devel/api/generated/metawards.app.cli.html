@@ -98,6 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -225,11 +228,18 @@
 <h1>metawards.app.cli<a class="headerlink" href="#metawards-app-cli" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="metawards.app.cli">
-<code class="descclassname">metawards.app.</code><code class="descname">cli</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/app/plot.html#cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.app.cli" title="Permalink to this definition">¶</a></dt>
-<dd><p>Main function for the metawards-plot command line interface.
-This is a simple program that creates basic plots of the output
-data. The aim is to make visualisation of the data as quick
-and painless as possible.</p>
+<code class="descclassname">metawards.app.</code><code class="descname">cli</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/metawards/app/run.html#cli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.app.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function for the command line interface. This does one of three
+things:</p>
+<ol class="arabic simple">
+<li>If this is the main process, then it parses the arguments and
+runs and manages the jobs</li>
+<li>If this is a worker process, then it starts up and waits for work</li>
+<li>If this is a supervisor process, then it query the job scheduling
+system for information about the compute nodes to use, and will then
+set up and run a manager (main) process that will use those
+nodes to run the jobs</li>
+</ol>
 </dd></dl>
 
 </div>
@@ -255,7 +265,7 @@ and painless as possible.</p>
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>

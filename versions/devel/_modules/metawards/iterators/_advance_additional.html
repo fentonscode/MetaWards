@@ -96,6 +96,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../model_data.html">Model data</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart/index.html">Quick Start Guide</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../tutorial/index.html">Tutorial</a></li>
 </ul>
 <ul>
@@ -243,10 +246,16 @@
     <span class="k">if</span> <span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading additional seeds from </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">FILE</span><span class="p">:</span>
-            <span class="n">lines</span> <span class="o">=</span> <span class="n">FILE</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+            <span class="n">ilines</span> <span class="o">=</span> <span class="n">FILE</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading additional seeds from the command line&quot;</span><span class="p">)</span>
-        <span class="n">lines</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">)</span>
+        <span class="n">ilines</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">)</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">ilines</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">):</span>
+            <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 
     <span class="n">seeds</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -269,14 +278,19 @@
     <span class="k">try</span><span class="p">:</span>
         <span class="n">dialect</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">Sniffer</span><span class="p">()</span><span class="o">.</span><span class="n">sniff</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">delimiters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-        <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
-            <span class="sa">f</span><span class="s2">&quot;Could not identify what sort of separator to use to &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;read the additional seeds, so will assume commas. If this is &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;wrong then could you add commas to separate the &quot;</span>
-            <span class="sa">f</span><span class="s2">&quot;fields?&quot;</span><span class="p">)</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Could not identify what sort of separator to use to &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;read the additional seeds, so will assume commas. If this &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;is wrong then could you add commas to separate the &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;fields?&quot;</span><span class="p">)</span>
+
         <span class="n">dialect</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">excel</span>  <span class="c1">#  default comma-separated file</span>
 
     <span class="n">titles</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">nwords</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">dialect</span><span class="o">=</span><span class="n">dialect</span><span class="p">,</span>
                            <span class="n">quoting</span><span class="o">=</span><span class="n">csv</span><span class="o">.</span><span class="n">QUOTE_ALL</span><span class="p">,</span>
@@ -303,25 +317,54 @@
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">continue</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">nwords</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nwords</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">nwords</span><span class="p">:</span>
             <span class="k">continue</span>
 
         <span class="k">if</span> <span class="n">titles</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">if</span> <span class="s2">&quot;day&quot;</span> <span class="ow">in</span> <span class="n">words</span> <span class="ow">and</span> <span class="s2">&quot;number&quot;</span> <span class="ow">in</span> <span class="n">words</span> <span class="ow">and</span> <span class="s2">&quot;ward&quot;</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s2">&quot;day&quot;</span> <span class="ow">in</span> <span class="n">words</span> <span class="ow">or</span> <span class="s2">&quot;number&quot;</span> <span class="ow">in</span> <span class="n">words</span> <span class="ow">or</span> <span class="s2">&quot;ward&quot;</span> <span class="ow">in</span> <span class="n">words</span> <span class="ow">or</span> \
+                    <span class="s2">&quot;demographics&quot;</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
                 <span class="n">titles</span> <span class="o">=</span> <span class="p">{}</span>
-                <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
-                <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">)</span>
-                <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;ward&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;number&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;ward&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                    <span class="k">pass</span>
 
                 <span class="k">try</span><span class="p">:</span>
                     <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;demographic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;demographic&quot;</span><span class="p">)</span>
                 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-                    <span class="n">titles</span><span class="p">[</span><span class="s2">&quot;demographic&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+                    <span class="k">pass</span>
 
                 <span class="k">continue</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># yes, this is really the order of the seeds - &quot;t num loc&quot;</span>
-                <span class="n">titles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ward&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;demographic&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+                <span class="c1"># try to guess the values based on the number of items and</span>
+                <span class="c1"># their type</span>
+                <span class="k">if</span> <span class="n">nwords</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">titles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ward&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+                    <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                    <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">nwords</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                    <span class="n">titles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ward&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+                    <span class="n">words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">nwords</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">titles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;ward&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># yes, this is really the order of the seeds - &quot;t num loc&quot;</span>
+                    <span class="n">titles</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;day&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;number&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                              <span class="s2">&quot;ward&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;demographic&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 
         <span class="n">row</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -334,7 +377,7 @@
 
         <span class="n">this_network</span> <span class="o">=</span> <span class="n">network</span>
 
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">titles</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;demographic&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>
             <span class="n">demographic</span> <span class="o">=</span> <span class="n">_get_demographic</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="n">titles</span><span class="p">[</span><span class="s2">&quot;demographic&quot;</span><span class="p">]],</span>
                                            <span class="n">network</span><span class="o">=</span><span class="n">network</span><span class="p">)</span>
 
@@ -455,29 +498,30 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">demographic</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">demographics</span><span class="o">.</span><span class="n">get_index</span><span class="p">(</span><span class="n">demographic</span><span class="p">)</span>
 
-                <span class="n">network</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">subnets</span><span class="p">[</span><span class="n">demographic</span><span class="p">]</span>
-                <span class="n">wards</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nodes</span>
-                <span class="n">play_infections</span> <span class="o">=</span> <span class="n">infections</span><span class="o">.</span><span class="n">subinfs</span><span class="p">[</span><span class="n">demographic</span><span class="p">]</span><span class="o">.</span><span class="n">play</span>
+                <span class="n">seed_network</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">subnets</span><span class="p">[</span><span class="n">demographic</span><span class="p">]</span>
+                <span class="n">seed_wards</span> <span class="o">=</span> <span class="n">seed_network</span><span class="o">.</span><span class="n">nodes</span>
+                <span class="n">seed_infections</span> <span class="o">=</span> <span class="n">infections</span><span class="o">.</span><span class="n">subinfs</span><span class="p">[</span><span class="n">demographic</span><span class="p">]</span><span class="o">.</span><span class="n">play</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">demographic</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">wards</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">nodes</span>
-                <span class="n">play_infections</span> <span class="o">=</span> <span class="n">infections</span><span class="o">.</span><span class="n">play</span>
+                <span class="n">seed_network</span> <span class="o">=</span> <span class="n">network</span>
+                <span class="n">seed_wards</span> <span class="o">=</span> <span class="n">seed_network</span><span class="o">.</span><span class="n">nodes</span>
+                <span class="n">seed_infections</span> <span class="o">=</span> <span class="n">infections</span><span class="o">.</span><span class="n">play</span>
 
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">ward</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">get_node_index</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
+                <span class="n">ward</span> <span class="o">=</span> <span class="n">seed_network</span><span class="o">.</span><span class="n">get_node_index</span><span class="p">(</span><span class="n">ward</span><span class="p">)</span>
 
-                <span class="k">if</span> <span class="n">wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">seed_wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                     <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;Cannot seed </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2"> infection(s) in ward </span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2"> &quot;</span>
                         <span class="sa">f</span><span class="s2">&quot;as there are no susceptibles remaining&quot;</span><span class="p">)</span>
                     <span class="k">continue</span>
 
-                <span class="k">elif</span> <span class="n">wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+                <span class="k">elif</span> <span class="n">seed_wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
                     <span class="n">Console</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;Not enough susceptibles in ward to see all </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-                    <span class="n">num</span> <span class="o">=</span> <span class="n">wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span>
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">seed_wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span>
 
-                <span class="n">wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">-=</span> <span class="n">num</span>
+                <span class="n">seed_wards</span><span class="o">.</span><span class="n">play_suscept</span><span class="p">[</span><span class="n">ward</span><span class="p">]</span> <span class="o">-=</span> <span class="n">num</span>
                 <span class="k">if</span> <span class="n">demographic</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;seeding demographic </span><span class="si">{</span><span class="n">demographic</span><span class="si">}</span><span class="s2"> &quot;</span>
@@ -486,7 +530,7 @@
                     <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span>
                         <span class="sa">f</span><span class="s2">&quot;seeding play_infections[0][</span><span class="si">{</span><span class="n">ward</span><span class="si">}</span><span class="s2">] += </span><span class="si">{</span><span class="n">num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-                <span class="n">play_infections</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ward</span><span class="p">]</span> <span class="o">+=</span> <span class="n">num</span>
+                <span class="n">seed_infections</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ward</span><span class="p">]</span> <span class="o">+=</span> <span class="n">num</span>
 
             <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                 <span class="n">Console</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
@@ -510,7 +554,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 13, 2020.
+        Last updated on Jul 29, 2020.
       </span>
 
     </p>
