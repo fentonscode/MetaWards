@@ -234,20 +234,25 @@
 
 <span class="k">class</span> <span class="nc">_Progress</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">rich.progress</span> <span class="kn">import</span> <span class="n">Progress</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_progress</span> <span class="o">=</span> <span class="n">Progress</span><span class="p">(</span><span class="n">auto_refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="kn">from</span> <span class="nn">rich.progress</span> <span class="kn">import</span> <span class="n">Progress</span><span class="p">,</span> <span class="n">BarColumn</span><span class="p">,</span> <span class="n">TimeRemainingColumn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress</span> <span class="o">=</span> <span class="n">Progress</span><span class="p">(</span>
+            <span class="s2">&quot;[progress.description]</span><span class="si">{task.description}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">BarColumn</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;bar.back&quot;</span><span class="p">,</span>
+                      <span class="n">complete_style</span><span class="o">=</span><span class="s2">&quot;bar.complete&quot;</span><span class="p">,</span>
+                      <span class="n">finished_style</span><span class="o">=</span><span class="s2">&quot;bar.complete&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;[progress.percentage]</span><span class="si">{task.percentage:&gt;3.0f}</span><span class="s2">%&quot;</span><span class="p">,</span>
+            <span class="n">TimeRemainingColumn</span><span class="p">(),</span>
+            <span class="n">auto_refresh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_last_update</span> <span class="o">=</span> <span class="n">_datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_show_limit</span> <span class="o">=</span> <span class="n">show_limit</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_completed</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress</span><span class="o">.</span><span class="fm">__enter__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_completed</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">_progress</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
-            <span class="n">Console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">_progress</span><span class="o">.</span><span class="fm">__exit__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">total</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
@@ -741,7 +746,7 @@
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Jul 29, 2020.
+        Last updated on Aug 04, 2020.
       </span>
 
     </p>
