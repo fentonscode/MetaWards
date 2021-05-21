@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Extending the Model in R &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -187,6 +189,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -200,7 +204,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -209,10 +213,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="03_R.html" class="btn btn-neutral float-right" title="Multiple pathways with R" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="03_R.html" class="btn btn-neutral float-right" title="Multiple pathways with R" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="01_R.html" class="btn btn-neutral float-left" title="Getting Started in R" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="01_R.html" class="btn btn-neutral float-left" title="Getting Started in R" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -243,8 +247,8 @@ value 0.1</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">MetaWards is a Python program, so the index is counted from 0.
+<p class="admonition-title">Note</p>
+<p>MetaWards is a Python program, so the index is counted from 0.
 Index 0 is E, index 1 is I and (before this call), index 2 was R.
 Inserting at index 2 will insert IR between I and R</p>
 </div>
@@ -261,8 +265,8 @@ to the screen.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All of the output is written to the (randomly) named output directory
+<p class="admonition-title">Note</p>
+<p>All of the output is written to the (randomly) named output directory
 indicated, e.g. for me to output_n81uzd7l. The full log of the run
 is recorded in the file called <code class="docutils literal notranslate"><span class="pre">console.log.bz2</span></code> which is in
 this directory.</p>
@@ -308,8 +312,8 @@ which indexes each run with a repeat number, e.g.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Because <code class="docutils literal notranslate"><span class="pre">repeat</span></code> is a keyword in R, the column is automatically renamed
+<p class="admonition-title">Note</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">repeat</span></code> is a keyword in R, the column is automatically renamed
 as <code class="docutils literal notranslate"><span class="pre">repeat.</span></code></p>
 </div>
 <p>We can pivot and graph these runs using;</p>
@@ -321,8 +325,8 @@ as <code class="docutils literal notranslate"><span class="pre">repeat.</span></
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We have used <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> rather than <code class="docutils literal notranslate"><span class="pre">geom_line()</span></code> as this better
+<p class="admonition-title">Note</p>
+<p>We have used <code class="docutils literal notranslate"><span class="pre">geom_point()</span></code> rather than <code class="docutils literal notranslate"><span class="pre">geom_line()</span></code> as this better
 shows the different runs. With a bit more R you could adjust the
 point shape to match the repeat number.</p>
 </div>
@@ -346,8 +350,8 @@ from <em>home</em> to <em>work</em> or <em>school</em>.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The term <em>worker</em> is very broad in MetaWards. It means any individual
+<p class="admonition-title">Note</p>
+<p>The term <em>worker</em> is very broad in MetaWards. It means any individual
 that make regular, predictable movements each day. In this case, it
 refers to workers, teachers and students.</p>
 </div>
@@ -370,8 +374,8 @@ parameter.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The format is <strong>day number</strong> (in this case seed on day 1), then
+<p class="admonition-title">Note</p>
+<p>The format is <strong>day number</strong> (in this case seed on day 1), then
 <strong>number to seed</strong> (seeding 100 infections), then
 <strong>ward name or number</strong> (in this case, home)</p>
 </div>
@@ -438,30 +442,23 @@ re-copied below (this continues from the code in the last part);</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="03_R.html" class="btn btn-neutral float-right" title="Multiple pathways with R" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="01_R.html" class="btn btn-neutral float-left" title="Getting Started in R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="03_R.html" class="btn btn-neutral float-right" title="Multiple pathways with R" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_R.html" class="btn btn-neutral float-left" title="Getting Started in R" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

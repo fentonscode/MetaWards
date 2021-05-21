@@ -113,6 +113,15 @@ copying in the below;
 
         return [merge_using_matrix]
 
+.. note::
+
+   Note that we are using :func:`~metawards.mixers.merge_using_matrix`.
+   This may not be the right choice depending on how we want the
+   population dynamics to mix, e.g.
+   :func:`~metawards.mixers.merge_matrix_single_population` or
+   :func:`~metawards.mixers.merge_matrix_multi_population` may
+   be a better choice. :doc:`See here for more information <../part05/04_contacts>`.
+
 Here we use :class:`metawards.mixers.InteractionMatrix` to simplify the
 creation of the interation matrix. We first create a 2x2 matrix;
 

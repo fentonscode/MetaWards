@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Multi-demographic sub-networks &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -115,11 +117,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="02_mixers.html">Mixers and Merge-functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03_custom.html">Using custom merge functions to model shielding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_contacts.html">Contact probabilities and Demographics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -189,6 +193,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -204,7 +210,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -213,10 +219,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="02_mixers.html" class="btn btn-neutral float-right" title="Mixers and Merge-functions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="02_mixers.html" class="btn btn-neutral float-right" title="Mixers and Merge-functions" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="../index_part05.html" class="btn btn-neutral float-left" title="Part 5 - Modelling multiple demographics" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index_part05.html" class="btn btn-neutral float-left" title="Part 5 - Modelling multiple demographics" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -237,22 +243,22 @@ the evening, and <em>players</em>, who just made random interactions within
 their home ward.</p>
 <div class="section" id="understanding-network">
 <h2>Understanding Network<a class="headerlink" href="#understanding-network" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> class models this network of <em>workers</em> and
-<em>players</em>. It holds a set of <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Nodes" title="metawards.Nodes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Nodes</span></code></a> that represent each
-electoral ward, and a set of <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Links" title="metawards.Links"><code class="xref py py-class docutils literal notranslate"><span class="pre">Links</span></code></a> that represent the
+<p>The <a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> class models this network of <em>workers</em> and
+<em>players</em>. It holds a set of <a class="reference internal" href="../../api/generated/metawards.Nodes.html#metawards.Nodes" title="metawards.Nodes"><code class="xref py py-class docutils literal notranslate"><span class="pre">Nodes</span></code></a> that represent each
+electoral ward, and a set of <a class="reference internal" href="../../api/generated/metawards.Links.html#metawards.Links" title="metawards.Links"><code class="xref py py-class docutils literal notranslate"><span class="pre">Links</span></code></a> that represent the
 fixed motions between wards made by the “workers”.</p>
-<p>The <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Node" title="metawards.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a> class holds the number of <em>players</em> who
+<p>The <a class="reference internal" href="../../api/generated/metawards.Node.html#metawards.Node" title="metawards.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a> class holds the number of <em>players</em> who
 are susceptible to infection (S). This is held in the variable
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Node.play_suscept" title="metawards.Node.play_suscept"><code class="xref py py-data docutils literal notranslate"><span class="pre">metawards.Node.play_suscept</span></code></a>.</p>
-<p>The <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Link" title="metawards.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> class contains the number of <em>workers</em> who are
+<a class="reference internal" href="../../api/generated/metawards.Node.html#metawards.Node.play_suscept" title="metawards.Node.play_suscept"><code class="xref py py-data docutils literal notranslate"><span class="pre">metawards.Node.play_suscept</span></code></a>.</p>
+<p>The <a class="reference internal" href="../../api/generated/metawards.Link.html#metawards.Link" title="metawards.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a> class contains the number of <em>workers</em> who are
 susceptible to infection (S) who travel regularly between their
 “home” ward and their “work” ward. This is held in the
-variable <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Link.suscept" title="metawards.Link.suscept"><code class="xref py py-data docutils literal notranslate"><span class="pre">metawards.Link.suscept</span></code></a>.</p>
+variable <a class="reference internal" href="../../api/generated/metawards.Link.html#metawards.Link.suscept" title="metawards.Link.suscept"><code class="xref py py-data docutils literal notranslate"><span class="pre">metawards.Link.suscept</span></code></a>.</p>
 <p>During a <em>model run</em> these values will be reduced as individuals are
 infected and then progressed through the different disease stages.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These variables are stored as double precision floating point numbers,
+<p class="admonition-title">Note</p>
+<p>These variables are stored as double precision floating point numbers,
 despite representing integer values. This is because it
 is more efficient to use double precision numbers when they are used
 for calculations during a <em>model run</em>.</p>
@@ -262,10 +268,10 @@ for calculations during a <em>model run</em>.</p>
 <h2>Understanding Networks<a class="headerlink" href="#understanding-networks" title="Permalink to this headline">¶</a></h2>
 <p>To model multiple demographics, we need to create space for multiple different
 sets of <em>workers</em> and <em>players</em>. This is achieved in <code class="docutils literal notranslate"><span class="pre">metawards</span></code> by
-giving each demographic its own <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>. All of these
+giving each demographic its own <a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a>. All of these
 demographic sub-networks are merged and managed via the
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> class.</p>
-<p>We create a <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> object by first specifying the way
+<a class="reference internal" href="../../api/generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> class.</p>
+<p>We create a <a class="reference internal" href="../../api/generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> object by first specifying the way
 we would like to distribute the population between different demographics.
 We do this by writing a <em>demographics</em> file, which is a simple
 <a class="reference external" href="https://guide.couchdb.org/draft/json.html">JSON-format</a>
@@ -290,10 +296,10 @@ that should belong to each demographic. For example, here 50% of the
 <em>players</em> are in the <em>red</em> demographic, and 50% of the <em>players</em> are in the
 <em>blue</em> demographic.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You can specify the work and play ratios using either numbers between
+<p class="admonition-title">Note</p>
+<p>You can specify the work and play ratios using either numbers between
 0.0 and 1.0, or you can pass in strings that are interpreted using
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Interpret.number" title="metawards.Interpret.number"><code class="xref py py-func docutils literal notranslate"><span class="pre">metawards.Interpret.number()</span></code></a>, e.g. “50%”, “1/4” or
+<a class="reference internal" href="../../api/generated/metawards.Interpret.html#metawards.Interpret.number" title="metawards.Interpret.number"><code class="xref py py-func docutils literal notranslate"><span class="pre">metawards.Interpret.number()</span></code></a>, e.g. “50%”, “1/4” or
 “(10+15)%”. The only requirement is that the sum of ratios must
 equal 1.0 (or 100%), as every individual must be assigned to one
 of the demographics.</p>
@@ -328,24 +334,24 @@ blue - population: 39275547
 </pre></div>
 </div>
 <p>These show that your demographics file was read correctly. In this case,
-this has specialised the <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> which modelled a
-population of 56082077 individuals into a <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a>
+this has specialised the <a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> which modelled a
+population of 56082077 individuals into a <a class="reference internal" href="../../api/generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a>
 which has a <em>red</em> population of 16806530 and a <em>blue</em> population of
 39275547.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">A fixed random number seed is used to assign left-over individuals
+<p class="admonition-title">Warning</p>
+<p>A fixed random number seed is used to assign left-over individuals
 to a random demographic. For example, 10 individuals cannot be divided
 equally between 3 demographics, so one randomly chosen demographic
 will have 4 individuals, while the other two will have 3. This
 division is performed by <code class="docutils literal notranslate"><span class="pre">metawards</span></code> in every single
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Node" title="metawards.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a> and every single <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Link" title="metawards.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>,
+<a class="reference internal" href="../../api/generated/metawards.Node.html#metawards.Node" title="metawards.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></a> and every single <a class="reference internal" href="../../api/generated/metawards.Link.html#metawards.Link" title="metawards.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">Link</span></code></a>,
 to ensure that every individual is allocated. This random seed is
 hard-coded to <code class="docutils literal notranslate"><span class="pre">4751828</span></code>. Or, you can set it for a demographic
 by adding <code class="docutils literal notranslate"><span class="pre">&quot;random_seed&quot;</span> <span class="pre">=</span> <span class="pre">number</span></code> to the <em>demographics</em> file,
 e.g. <code class="docutils literal notranslate"><span class="pre">&quot;random_seed&quot;</span> <span class="pre">=</span> <span class="pre">10859403</span></code>.</p>
 </div>
-<p>Once the <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> had been specialised, the <em>model run</em>
+<p>Once the <a class="reference internal" href="../../api/generated/metawards.Networks.html#metawards.Networks" title="metawards.Networks"><code class="xref py py-class docutils literal notranslate"><span class="pre">Networks</span></code></a> had been specialised, the <em>model run</em>
 was performed as before. Now, the output shows the S, E, I, R values
 for both the overall total population, and also for the demographic
 sub-network populations, e.g.</p>
@@ -436,18 +442,18 @@ the additional seeding file. Create a new seeding file called
 <p>The format of this file is a list of lines that say which wards should
 be seeded. In this case, there is just one line containing four values.</p>
 <ul class="simple">
-<li>The first value (<code class="docutils literal notranslate"><span class="pre">1</span></code>) is the day of seeding, in this case on day 1.</li>
-<li>The second value  (<code class="docutils literal notranslate"><span class="pre">5</span></code>) is the number of individuals to infect, in
-this case 5.</li>
-<li>The third value (<code class="docutils literal notranslate"><span class="pre">255</span></code>) is the index of the ward to infect. You can find
+<li><p>The first value (<code class="docutils literal notranslate"><span class="pre">1</span></code>) is the day of seeding, in this case on day 1.</p></li>
+<li><p>The second value  (<code class="docutils literal notranslate"><span class="pre">5</span></code>) is the number of individuals to infect, in
+this case 5.</p></li>
+<li><p>The third value (<code class="docutils literal notranslate"><span class="pre">255</span></code>) is the index of the ward to infect. You can find
 the index of the ward you want using the <a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.WardInfos" title="metawards.WardInfos"><code class="xref py py-class docutils literal notranslate"><span class="pre">WardInfos</span></code></a>
-object, e.g. via <code class="docutils literal notranslate"><span class="pre">network.info.find(&quot;...&quot;)</span></code>.</li>
-<li>The fourth value (<code class="docutils literal notranslate"><span class="pre">blue</span></code>) is the name or index of the demographic
-you want to seed.</li>
+object, e.g. via <code class="docutils literal notranslate"><span class="pre">network.info.find(&quot;...&quot;)</span></code>.</p></li>
+<li><p>The fourth value (<code class="docutils literal notranslate"><span class="pre">blue</span></code>) is the name or index of the demographic
+you want to seed.</p></li>
 </ul>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you want, you could have specified the demographic in this file by
+<p class="admonition-title">Note</p>
+<p>If you want, you could have specified the demographic in this file by
 its index (<code class="docutils literal notranslate"><span class="pre">1</span></code>) rather than by its name (<code class="docutils literal notranslate"><span class="pre">blue</span></code>). It is up to you.</p>
 </div>
 <p>The <em>blue</em> demographic contains all of the <em>workers</em>, so we would expect
@@ -487,30 +493,23 @@ demographic were infected.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="02_mixers.html" class="btn btn-neutral float-right" title="Mixers and Merge-functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../index_part05.html" class="btn btn-neutral float-left" title="Part 5 - Modelling multiple demographics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="02_mixers.html" class="btn btn-neutral float-right" title="Mixers and Merge-functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index_part05.html" class="btn btn-neutral float-left" title="Part 5 - Modelling multiple demographics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

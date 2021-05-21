@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Part 6 - Moving between demographics &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -41,7 +43,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Movers and go functions" href="part06/01_movers.html" />
-    <link rel="prev" title="Using custom merge functions to model shielding" href="part05/03_custom.html" /> 
+    <link rel="prev" title="Contact probabilities and Demographics" href="part05/04_contacts.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -116,7 +118,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -186,6 +189,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -199,7 +204,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -208,10 +213,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="part06/01_movers.html" class="btn btn-neutral float-right" title="Movers and go functions" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="part06/01_movers.html" class="btn btn-neutral float-right" title="Movers and go functions" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="part05/03_custom.html" class="btn btn-neutral float-left" title="Using custom merge functions to model shielding" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="part05/04_contacts.html" class="btn btn-neutral float-left" title="Contact probabilities and Demographics" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -224,16 +229,16 @@
 <h1>Part 6 - Moving between demographics<a class="headerlink" href="#part-6-moving-between-demographics" title="Permalink to this headline">¶</a></h1>
 <p>In this sixth part of the tutorial you will:</p>
 <ul class="simple">
-<li>Understand how you can move individuals between demographics using
-<a class="reference internal" href="../api/index_MetaWards_movers.html"><span class="doc">metawards.movers</span></a>.</li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">functions</span></code> to model the movement of individuals as they
-go into isolation and then are released back to their normal life</li>
-<li>Learn how to write custom movers to investigate when individuals
-should isolate, and how many days they should stay quarantined.</li>
-<li>Learn how to conditionally send a fraction of individuals to
+<li><p>Understand how you can move individuals between demographics using
+<a class="reference internal" href="../api/index_MetaWards_movers.html"><span class="doc">metawards.movers</span></a>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">go</span> <span class="pre">functions</span></code> to model the movement of individuals as they
+go into isolation and then are released back to their normal life</p></li>
+<li><p>Learn how to write custom movers to investigate when individuals
+should isolate, and how many days they should stay quarantined.</p></li>
+<li><p>Learn how to conditionally send a fraction of individuals to
 another demographic, so you can investigate different levels of
 compliance with self-isolation orders, and different compliance
-rates for quarantine</li>
+rates for quarantine</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 <ul>
@@ -278,30 +283,23 @@ rates for quarantine</li>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="part06/01_movers.html" class="btn btn-neutral float-right" title="Movers and go functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="part05/03_custom.html" class="btn btn-neutral float-left" title="Using custom merge functions to model shielding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="part06/01_movers.html" class="btn btn-neutral float-right" title="Movers and go functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="part05/04_contacts.html" class="btn btn-neutral float-left" title="Contact probabilities and Demographics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Command line options &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/custom.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -179,6 +181,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -192,7 +196,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -201,10 +205,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="metawards_plot_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards_plot_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -224,8 +228,8 @@
                  [-P POPULATION] [-n NSTEPS] [-u USER_VARIABLES]
                  [--iterator ITERATOR] [--extractor EXTRACTOR] [--mixer MIXER]
                  [--mover MOVER] [--star-is-E] [--star-is-R] [--disable-star]
-                 [--UV UV] [--theme THEME] [--no-spinner] [--no-progress]
-                 [--debug] [--debug-level DEBUG_LEVEL]
+                 [--UV UV] [--UV-max UV_MAX] [--theme THEME] [--no-spinner]
+                 [--no-progress] [--debug] [--debug-level DEBUG_LEVEL]
                  [--outdir-scheme OUTDIR_SCHEME] [--nthreads NTHREADS]
                  [--nprocs NPROCS] [--hostfile HOSTFILE]
                  [--cores-per-node CORES_PER_NODE] [--auto-bzip]
@@ -234,11 +238,6 @@
                  [--no-profile] [--mpi] [--scoop]
 
 MetaWards epidemic modelling - see https://metawards.org for more information.
-Args that start with &#39;--&#39; (eg. --version) can also be set in a config file
-(specified via -c). Config file syntax allows: key=value, flag=true,
-stuff=[a,b,c] (for details, see syntax at https://goo.gl/R74nmi). If an arg is
-specified in more than one place, then commandline values override environment
-variables which override config file values which override defaults.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -357,6 +356,10 @@ optional arguments:
                         latent state. There is no star state. (default: None)
   --UV UV               Value for the UV parameter for the model (default is
                         0.0) (default: None)
+  --UV-max UV_MAX       Date when the seasonal adjustment should be at its
+                        maximum. By default, this is January 1st on the
+                        assumption that disease spread is stronger in the
+                        (Northern) winter (default: None)
   --theme THEME         The theme to use to color the output. Use &#39;--theme
                         simple&#39; if you prefer a simple and colorless output.
                         (default: None)
@@ -422,6 +425,12 @@ optional arguments:
                         None)
   --scoop               Force use of scoop to parallelise across runs
                         (default: None)
+
+Args that start with &#39;--&#39; (eg. --version) can also be set in a config file
+(specified via -c). Config file syntax allows: key=value, flag=true,
+stuff=[a,b,c] (for details, see syntax at https://goo.gl/R74nmi). If an arg is
+specified in more than one place, then commandline values override environment
+variables which override config file values which override defaults.
 </pre></div>
 </div>
 </div>
@@ -431,30 +440,23 @@ optional arguments:
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="metawards_plot_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="metawards_plot_help.html" class="btn btn-neutral float-right" title="Command line options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

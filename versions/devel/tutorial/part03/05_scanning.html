@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Custom variables &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -116,13 +118,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="06_scan_lockdown.html">Scanning lockdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07_cutoff.html">Alternative lockdowns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08_local_lockdown.html">Local lockdowns</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part04.html">Part 4 - Customising the output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -192,6 +197,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -207,7 +214,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -216,10 +223,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="06_scan_lockdown.html" class="btn btn-neutral float-right" title="Scanning lockdown" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="06_scan_lockdown.html" class="btn btn-neutral float-right" title="Scanning lockdown" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="04_dynamic.html" class="btn btn-neutral float-left" title="Responding to changing conditions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="04_dynamic.html" class="btn btn-neutral float-left" title="Responding to changing conditions" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -253,8 +260,8 @@ create a new file called <code class="docutils literal notranslate"><span class=
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Comments start with a ‘#’. The file format is very flexible. You can
+<p class="admonition-title">Note</p>
+<p>Comments start with a ‘#’. The file format is very flexible. You can
 use an ‘=’ sign or a ‘:’ or even nothing, e.g. “user.scale[1] 0.5”.
 You can abbreviate “user.variable” to “.variable” too if you want.</p>
 </div>
@@ -274,13 +281,13 @@ Adjusting variables to (.scale[0]=0.2, .flag[0]=False, .scale[1]=0.5, .flag[1]=T
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">See how “user.variable” has been abbreviated to “.variable” in this output</p>
+<p class="admonition-title">Note</p>
+<p>See how “user.variable” has been abbreviated to “.variable” in this output</p>
 </div>
 <p>This shows that <code class="docutils literal notranslate"><span class="pre">metawards</span></code> has read your custom parameters into the
 program. They are stored as <code class="docutils literal notranslate"><span class="pre">user_params</span></code> in a
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameters</span></code></a> object that is stored in the
-<a class="reference internal" href="../../api/index_api_MetaWards.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> that holds the network of wards being modelled.</p>
+<a class="reference internal" href="../../api/generated/metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameters</span></code></a> object that is stored in the
+<a class="reference internal" href="../../api/generated/metawards.Network.html#metawards.Network" title="metawards.Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">Network</span></code></a> that holds the network of wards being modelled.</p>
 </div>
 <div class="section" id="reading-user-variables-in-custom-iterators">
 <h2>Reading user variables in custom iterators<a class="headerlink" href="#reading-user-variables-in-custom-iterators" title="Permalink to this headline">¶</a></h2>
@@ -324,18 +331,18 @@ you want. For example, <code class="docutils literal notranslate"><span class="p
 </div>
 <p>This code defines four functions:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">get_state</span></code> - this returns the state that the population should be
+<li><p><code class="docutils literal notranslate"><span class="pre">get_state</span></code> - this returns the state that the population should be
 set to. In this case, the state is 0, 1 or 2 depending on the day
-of the outbreak.</li>
-<li><code class="docutils literal notranslate"><span class="pre">iterate_custom</span></code> - this gets the state using <code class="docutils literal notranslate"><span class="pre">get_state</span></code>. It then
+of the outbreak.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iterate_custom</span></code> - this gets the state using <code class="docutils literal notranslate"><span class="pre">get_state</span></code>. It then
 looks up the <code class="docutils literal notranslate"><span class="pre">flag</span></code> custom parameter at index <code class="docutils literal notranslate"><span class="pre">state</span></code>.
 If the flag is True, then it returns <code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code>. Otherwise
-it returns <code class="docutils literal notranslate"><span class="pre">advance_relaxed</span></code>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code> - this gets the state using <code class="docutils literal notranslate"><span class="pre">get_state</span></code>. It then
+it returns <code class="docutils literal notranslate"><span class="pre">advance_relaxed</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code> - this gets the state using <code class="docutils literal notranslate"><span class="pre">get_state</span></code>. It then
 looks up the <code class="docutils literal notranslate"><span class="pre">scale</span></code> custom parameter at index <code class="docutils literal notranslate"><span class="pre">state</span></code>.
-It prints this to the screen.</li>
-<li><code class="docutils literal notranslate"><span class="pre">advance_relaxed</span></code> - this does the same as <code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code>, but
-prints a different message to the screen.</li>
+It prints this to the screen.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">advance_relaxed</span></code> - this does the same as <code class="docutils literal notranslate"><span class="pre">advance_lockdown</span></code>, but
+prints a different message to the screen.</p></li>
 </ol>
 <p>Use this iterator by running <code class="docutils literal notranslate"><span class="pre">metawards</span></code> via;</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>metawards -d lurgy3 -u custom.inp --iterator custom --debug
@@ -573,30 +580,23 @@ constructed identially to in-built variables, e.g.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="06_scan_lockdown.html" class="btn btn-neutral float-right" title="Scanning lockdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="04_dynamic.html" class="btn btn-neutral float-left" title="Responding to changing conditions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="06_scan_lockdown.html" class="btn btn-neutral float-right" title="Scanning lockdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="04_dynamic.html" class="btn btn-neutral float-left" title="Responding to changing conditions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

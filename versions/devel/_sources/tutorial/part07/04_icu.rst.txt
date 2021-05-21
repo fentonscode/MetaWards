@@ -51,6 +51,15 @@ Next, we need to modify the ``mix_hospital.py`` to read;
   population. They don't contribute to the FOI of each other, other patients
   or home, but can infect and be infected by the hospital staff.
 
+.. note::
+
+   Note that we are using :func:`~metawards.mixers.merge_using_matrix`.
+   This may not be the right choice depending on how we want the
+   population dynamics to mix, e.g.
+   :func:`~metawards.mixers.merge_matrix_single_population` or
+   :func:`~metawards.mixers.merge_matrix_multi_population` may
+   be a better choice. :doc:`See here for more information <../part05/04_contacts>`.
+
 Next we need to modify ``extract_hospital.py`` to obtain the ICU
 statistics. Edit the file and copy in the below;
 

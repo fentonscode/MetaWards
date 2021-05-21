@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Overview: module code &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -167,6 +169,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -208,6 +212,7 @@
 <li><a href="metawards/_run.html">metawards._run</a></li>
 <li><a href="metawards/_variableset.html">metawards._variableset</a></li>
 <li><a href="metawards/_ward.html">metawards._ward</a></li>
+<li><a href="metawards/_wardid.html">metawards._wardid</a></li>
 <li><a href="metawards/_wardinfo.html">metawards._wardinfo</a></li>
 <li><a href="metawards/_wards.html">metawards._wards</a></li>
 <li><a href="metawards/_workspace.html">metawards._workspace</a></li>
@@ -229,10 +234,12 @@
 <li><a href="metawards/iterators/_advance_additional.html">metawards.iterators._advance_additional</a></li>
 <li><a href="metawards/iterators/_advance_fixed.html">metawards.iterators._advance_fixed</a></li>
 <li><a href="metawards/iterators/_advance_foi.html">metawards.iterators._advance_foi</a></li>
+<li><a href="metawards/iterators/_advance_foi_work_to_play.html">metawards.iterators._advance_foi_work_to_play</a></li>
 <li><a href="metawards/iterators/_advance_imports.html">metawards.iterators._advance_imports</a></li>
 <li><a href="metawards/iterators/_advance_infprob.html">metawards.iterators._advance_infprob</a></li>
 <li><a href="metawards/iterators/_advance_play.html">metawards.iterators._advance_play</a></li>
 <li><a href="metawards/iterators/_advance_recovery.html">metawards.iterators._advance_recovery</a></li>
+<li><a href="metawards/iterators/_advance_work_to_play.html">metawards.iterators._advance_work_to_play</a></li>
 <li><a href="metawards/iterators/_iterate_custom.html">metawards.iterators._iterate_custom</a></li>
 <li><a href="metawards/iterators/_iterate_default.html">metawards.iterators._iterate_default</a></li>
 <li><a href="metawards/iterators/_iterate_weekday.html">metawards.iterators._iterate_weekday</a></li>
@@ -241,15 +248,26 @@
 <li><a href="metawards/iterators/_setup_imports.html">metawards.iterators._setup_imports</a></li>
 <li><a href="metawards/mixers/_interaction_matrix.html">metawards.mixers._interaction_matrix</a></li>
 <li><a href="metawards/mixers/_merge_evenly.html">metawards.mixers._merge_evenly</a></li>
+<li><a href="metawards/mixers/_merge_matrix_multi_population.html">metawards.mixers._merge_matrix_multi_population</a></li>
+<li><a href="metawards/mixers/_merge_matrix_single_population.html">metawards.mixers._merge_matrix_single_population</a></li>
+<li><a href="metawards/mixers/_merge_using_matrix.html">metawards.mixers._merge_using_matrix</a></li>
 <li><a href="metawards/mixers/_mix_custom.html">metawards.mixers._mix_custom</a></li>
 <li><a href="metawards/mixers/_mix_default.html">metawards.mixers._mix_default</a></li>
 <li><a href="metawards/mixers/_mix_evenly.html">metawards.mixers._mix_evenly</a></li>
+<li><a href="metawards/mixers/_mix_evenly_multi_population.html">metawards.mixers._mix_evenly_multi_population</a></li>
+<li><a href="metawards/mixers/_mix_evenly_single_population.html">metawards.mixers._mix_evenly_single_population</a></li>
 <li><a href="metawards/mixers/_mix_none.html">metawards.mixers._mix_none</a></li>
+<li><a href="metawards/mixers/_mix_none_multi_population.html">metawards.mixers._mix_none_multi_population</a></li>
+<li><a href="metawards/mixers/_mix_none_single_population.html">metawards.mixers._mix_none_single_population</a></li>
 <li><a href="metawards/movers/_go_isolate.html">metawards.movers._go_isolate</a></li>
+<li><a href="metawards/movers/_go_record.html">metawards.movers._go_record</a></li>
 <li><a href="metawards/movers/_go_stage.html">metawards.movers._go_stage</a></li>
 <li><a href="metawards/movers/_go_to.html">metawards.movers._go_to</a></li>
+<li><a href="metawards/movers/_go_ward.html">metawards.movers._go_ward</a></li>
 <li><a href="metawards/movers/_move_custom.html">metawards.movers._move_custom</a></li>
 <li><a href="metawards/movers/_move_default.html">metawards.movers._move_default</a></li>
+<li><a href="metawards/movers/_movegenerator.html">metawards.movers._movegenerator</a></li>
+<li><a href="metawards/movers/_moverecord.html">metawards.movers._moverecord</a></li>
 <li><a href="metawards/themes/_simple.html">metawards.themes._simple</a></li>
 <li><a href="metawards/themes/_spring_flowers.html">metawards.themes._spring_flowers</a></li>
 <li><a href="metawards/utils/_add_lookup.html">metawards.utils._add_lookup</a></li>
@@ -259,6 +277,7 @@
 <li><a href="metawards/utils/_assert_sane_network.html">metawards.utils._assert_sane_network</a></li>
 <li><a href="metawards/utils/_build_play_matrix.html">metawards.utils._build_play_matrix</a></li>
 <li><a href="metawards/utils/_build_wards_network.html">metawards.utils._build_wards_network</a></li>
+<li><a href="metawards/utils/_check_openmp.html">metawards.utils._check_openmp</a></li>
 <li><a href="metawards/utils/_clear_all_infections.html">metawards.utils._clear_all_infections</a></li>
 <li><a href="metawards/utils/_console.html">metawards.utils._console</a></li>
 <li><a href="metawards/utils/_fill_in_gaps.html">metawards.utils._fill_in_gaps</a></li>
@@ -278,7 +297,7 @@
 <li><a href="metawards/utils/_safe_eval.html">metawards.utils._safe_eval</a></li>
 <li><a href="metawards/utils/_scale_susceptibles.html">metawards.utils._scale_susceptibles</a></li>
 <li><a href="metawards/utils/_string_to_ints.html">metawards.utils._string_to_ints</a></li>
-<li><a href="metawards/utils/_vaccination.html">metawards.utils._vaccination</a></li>
+<li><a href="metawards/utils/_updates.html">metawards.utils._updates</a></li>
 <li><a href="metawards/utils/_worker.html">metawards.utils._worker</a></li>
 <li><a href="metawards/utils/_zero_workspace.html">metawards.utils._zero_workspace</a></li>
 </ul></ul>
@@ -287,21 +306,19 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

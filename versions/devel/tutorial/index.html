@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Tutorial &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/custom.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -109,7 +111,8 @@
 <li class="toctree-l2"><a class="reference internal" href="index_part05.html">Part 5 - Modelling multiple demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -179,6 +182,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -190,7 +195,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -199,10 +204,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="index_part01.html" class="btn btn-neutral float-right" title="Part 1 - Modelling outbreaks" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="index_part01.html" class="btn btn-neutral float-right" title="Part 1 - Modelling outbreaks" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="../quickstart/03_console.html" class="btn btn-neutral float-left" title="Multiple pathways with Python" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../quickstart/03_console.html" class="btn btn-neutral float-left" title="Multiple pathways with Python" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -217,8 +222,8 @@
 analysing and customising metawards. The tutorial is designed to be run
 through in order.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This tutorial models a <strong>completely fictional</strong> disease called the
+<p class="admonition-title">Warning</p>
+<p>This tutorial models a <strong>completely fictional</strong> disease called the
 <a class="reference external" href="https://en.wiktionary.org/wiki/lurgy">lurgy</a>.
 Any similarity to any real diseases is unintended, and the results or
 outputs from this tutorial <strong>should not be used</strong> to infer or
@@ -248,6 +253,8 @@ imply anything about any real outbreak.</p>
 <li class="toctree-l2"><a class="reference internal" href="part03/04_dynamic.html">Responding to changing conditions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part03/05_scanning.html">Custom variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part03/06_scan_lockdown.html">Scanning lockdown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part03/07_cutoff.html">Alternative lockdowns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part03/08_local_lockdown.html">Local lockdowns</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index_part04.html">Part 4 - Customising the output</a><ul>
@@ -261,6 +268,7 @@ imply anything about any real outbreak.</p>
 <li class="toctree-l2"><a class="reference internal" href="part05/01_demographics.html">Multi-demographic sub-networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part05/02_mixers.html">Mixers and Merge-functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part05/03_custom.html">Using custom merge functions to model shielding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part05/04_contacts.html">Contact probabilities and Demographics</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index_part06.html">Part 6 - Moving between demographics</a><ul>
@@ -280,11 +288,21 @@ imply anything about any real outbreak.</p>
 <li class="toctree-l2"><a class="reference internal" href="part07/06_hospital.html">Modelling a Hospital</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index_part08.html">Part 8 - Different networks for different demographics</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="index_part08.html">Part 8 - Creating your own models / networks</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="part08/01_networks.html">Understanding the Model Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part08/02_custom_network.html">Creating a Custom Network</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part08/03_reticulate.html">Creating Networks in R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="part08/04_using_custom.html">Using a Custom Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part08/05_local_network.html">Specifying ward-local parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part08/06_network_demographics.html">Different networks for different demographics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="index_part09.html">Part 9 - Advanced Moves and Scenarios</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="part09/01_move_ward.html">Creating intricate moves</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part09/02_vaccinate.html">Modelling vaccination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part09/03_fading_immunity.html">Fading immunity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part09/04_university.html">Modelling population movements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="part09/05_holidays.html">Holidays and quarantine</a></li>
 </ul>
 </li>
 </ul>
@@ -296,30 +314,23 @@ imply anything about any real outbreak.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="index_part01.html" class="btn btn-neutral float-right" title="Part 1 - Modelling outbreaks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../quickstart/03_console.html" class="btn btn-neutral float-left" title="Multiple pathways with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="index_part01.html" class="btn btn-neutral float-right" title="Part 1 - Modelling outbreaks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../quickstart/03_console.html" class="btn btn-neutral float-left" title="Multiple pathways with Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

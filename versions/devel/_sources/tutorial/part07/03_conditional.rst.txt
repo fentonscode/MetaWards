@@ -136,6 +136,15 @@ and copy in the below.
    This is essentially an identical mixing function as that used
    in the :doc:`shielding example <../part05/03_custom>`.
 
+.. note::
+
+   Note that we are using :func:`~metawards.mixers.merge_using_matrix`.
+   This may not be the right choice depending on how we want the
+   population dynamics to mix, e.g.
+   :func:`~metawards.mixers.merge_matrix_single_population` or
+   :func:`~metawards.mixers.merge_matrix_multi_population` may
+   be a better choice. :doc:`See here for more information <../part05/04_contacts>`.
+
 Next, we want to make sure that we have output the populations in the
 ``H1`` and ``H2`` states. We can do this by creating a custom extractor
 that writes the populations of all of the disease stages for just

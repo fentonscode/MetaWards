@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Plotting outputs &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -118,7 +120,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -188,6 +191,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -203,7 +208,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -212,10 +217,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../index_part02.html" class="btn btn-neutral float-right" title="Part 2 - Refining the model" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../index_part02.html" class="btn btn-neutral float-right" title="Part 2 - Refining the model" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="02_repeating.html" class="btn btn-neutral float-left" title="Multiple model runs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="02_repeating.html" class="btn btn-neutral float-left" title="Multiple model runs" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -236,8 +241,8 @@ To run this, type;</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">metawards-plot</span></code> uses <a class="reference external" href="https://pandas.pydata.org">pandas</a> and
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">metawards-plot</span></code> uses <a class="reference external" href="https://pandas.pydata.org">pandas</a> and
 <a class="reference external" href="https://matplotlib.org">matplotlib</a> for plotting. If you don’t have
 these on your computer then you will see an error message giving
 instructions on how to install the packages. Note that the default
@@ -251,21 +256,21 @@ to support output in some file formats.</p>
 <h2>Understanding the graphs<a class="headerlink" href="#understanding-the-graphs" title="Permalink to this headline">¶</a></h2>
 <p>This will create two sets of graphs;</p>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">output/overview.pdf</span></code></dt>
-<dd>This is an overview of the <strong>E</strong>, <strong>I</strong>, <strong>IW</strong> and <strong>R</strong> values
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">output/overview.pdf</span></code></dt><dd><p>This is an overview of the <strong>E</strong>, <strong>I</strong>, <strong>IW</strong> and <strong>R</strong> values
 from each day of the model outbreak for each of the four <em>model runs</em>.
-Your graph should look something like this;</dd>
+Your graph should look something like this;</p>
+</dd>
 </dl>
 </li>
 </ul>
 <img alt="Overview image of the outbreak of the lurgy" src="../../_images/tutorial_1_3_overview.jpg" />
 <ul class="simple">
-<li><dl class="first docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">output/average.pdf</span></code></dt>
-<dd>This shows the average of the <strong>E</strong>, <strong>I</strong>, <strong>IW</strong> and <strong>R</strong> values,
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">output/average.pdf</span></code></dt><dd><p>This shows the average of the <strong>E</strong>, <strong>I</strong>, <strong>IW</strong> and <strong>R</strong> values,
 with the standard deviation shown as the error bars. Your graph should
-look something like this;</dd>
+look something like this;</p>
+</dd>
 </dl>
 </li>
 </ul>
@@ -282,8 +287,8 @@ showing exponential growth in the initial stage of the epidemic that
 tails off as the number of individuals susceptible to infection is
 reduced (e.g. as immunity in the population is built up).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Your graphs may look a little different in the exact numbers, but should
+<p class="admonition-title">Note</p>
+<p>Your graphs may look a little different in the exact numbers, but should
 be similar in shape. The purpose of this type of modelling is not to
 make exact numerical predictions, but to instead understand trends
 and timelines.</p>
@@ -294,7 +299,7 @@ and timelines.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">metawards-plot</span></code> command can be used for quick-and-simple plots.
 If you want something more complex then you can take a look at the functions
 in the <a class="reference internal" href="../../api/index_api_MetaWards_analysis.html#module-metawards.analysis" title="metawards.analysis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">metawards.analysis</span></code></a> module. In addition, we have a
-<a class="reference download internal" download="" href="../../_downloads/0a4b2ec193ed97e2aad7418818ebb69f/1_3_plotting.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">notebook</span></code></a>
+<a class="reference download internal" download="" href="../../_downloads/884177eeedc36a3821e057f8750cb1da/1_3_plotting.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">notebook</span></code></a>
 which you can look at which breaks down exactly how <code class="docutils literal notranslate"><span class="pre">metawards-plot</span></code>
 uses pandas and matplotlib to render these two graphs.</p>
 </div>
@@ -305,30 +310,23 @@ uses pandas and matplotlib to render these two graphs.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../index_part02.html" class="btn btn-neutral float-right" title="Part 2 - Refining the model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="02_repeating.html" class="btn btn-neutral float-left" title="Multiple model runs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../index_part02.html" class="btn btn-neutral float-right" title="Part 2 - Refining the model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="02_repeating.html" class="btn btn-neutral float-left" title="Multiple model runs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

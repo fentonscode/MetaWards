@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>metawards.run &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,18 +32,17 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="MetaWards.iterators" href="../index_MetaWards_iterators.html" />
+    <link rel="next" title="metawards.find_mw_exe" href="metawards.find_mw_exe.html" />
     <link rel="prev" title="metawards.input" href="metawards.input.html" /> 
 </head>
 
@@ -187,6 +189,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -204,7 +208,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -213,10 +217,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="../index_MetaWards_iterators.html" class="btn btn-neutral float-right" title="MetaWards.iterators" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.find_mw_exe.html" class="btn btn-neutral float-right" title="metawards.find_mw_exe" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="metawards.input.html" class="btn btn-neutral float-left" title="metawards.input" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.input.html" class="btn btn-neutral float-left" title="metawards.input" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -227,51 +231,46 @@
             
   <div class="section" id="metawards-run">
 <h1>metawards.run<a class="headerlink" href="#metawards-run" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="metawards.run">
-<code class="descclassname">metawards.</code><code class="descname">run</code><span class="sig-paren">(</span><em>help: bool = None</em>, <em>version: bool = None</em>, <em>dry_run: bool = None</em>, <em>silent: bool = False</em>, <em>auto_load: bool = False</em>, <em>config: str = None</em>, <em>input: _Union[str</em>, <em>VariableSet</em>, <em>VariableSets] = None</em>, <em>line: int = None</em>, <em>repeats: int = None</em>, <em>seed: int = None</em>, <em>additional: _Union[str</em>, <em>_List[str]] = None</em>, <em>output: str = None</em>, <em>disease: _Union[str</em>, <em>Disease] = None</em>, <em>model: _Union[str</em>, <em>Wards</em>, <em>Ward] = None</em>, <em>demographics: _Union[str</em>, <em>Demographics</em>, <em>Demographic] = None</em>, <em>start_date: _Union[str</em>, <em>date] = None</em>, <em>start_day: int = None</em>, <em>parameters: _Union[str</em>, <em>Parameters] = None</em>, <em>repository: str = None</em>, <em>population: int = None</em>, <em>nsteps: int = None</em>, <em>user_variables: _Union[str</em>, <em>VariableSet] = None</em>, <em>iterator: str = None</em>, <em>extractor: str = None</em>, <em>mixer: str = None</em>, <em>mover: str = None</em>, <em>star_as_E: bool = None</em>, <em>star_as_R: bool = None</em>, <em>disable_star: bool = None</em>, <em>UV: float = None</em>, <em>debug: bool = None</em>, <em>debug_level: int = None</em>, <em>outdir_scheme: str = None</em>, <em>nthreads: int = None</em>, <em>nprocs: int = None</em>, <em>hostfile: str = None</em>, <em>cores_per_node: int = None</em>, <em>auto_bzip: bool = None</em>, <em>no_auto_bzip: bool = None</em>, <em>force_overwrite_output: bool = None</em>, <em>profile: bool = None</em>, <em>no_profile: bool = None</em>, <em>mpi: bool = None</em>, <em>scoop: bool = None</em><span class="sig-paren">)</span> &#x2192; _Union[str, 'pandas.DataFrame']<a class="reference internal" href="../../_modules/metawards/_run.html#run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#metawards.run" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">metawards.</span></code><code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">help</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dry_run</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_load</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet"><span class="pre">VariableSet</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSets" title="metawards.VariableSets"><span class="pre">VariableSets</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeats</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">_List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disease</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="metawards.Disease.html#metawards.Disease" title="metawards.Disease"><span class="pre">Disease</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><span class="pre">Wards</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><span class="pre">Ward</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">demographics</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="metawards.Demographics.html#metawards.Demographics" title="metawards.Demographics"><span class="pre">Demographics</span></a><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="metawards.Demographic.html#metawards.Demographic" title="metawards.Demographic"><span class="pre">Demographic</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">date</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_day</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="metawards.Parameters.html#metawards.Parameters" title="metawards.Parameters"><span class="pre">Parameters</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repository</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsteps</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_variables</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><a class="reference internal" href="../index_api_MetaWards.html#metawards.VariableSet" title="metawards.VariableSet"><span class="pre">VariableSet</span></a><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterator</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extractor</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixer</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mover</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">star_as_E</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">star_as_R</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_star</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">UV</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">float</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">debug_level</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outdir_scheme</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nthreads</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nprocs</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hostfile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cores_per_node</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_bzip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_auto_bzip</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_overwrite_output</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_profile</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mpi</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoop</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">bool</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">_Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span> </span><span class="pre">pandas.DataFrame</span><span class="p"><span class="pre">]</span></span><a class="reference internal" href="../../_modules/metawards/_run.html#run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#metawards.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run a MetaWards simulation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>silent</strong> (<em>bool</em>) – Run without printing the output to the screen</li>
-<li><strong>dry_run</strong> (<em>bool</em>) – Don’t run anything - just print what will be run</li>
-<li><strong>help</strong> (<em>bool</em>) – Whether or not to print the full help</li>
-<li><strong>version</strong> (<em>bool</em>) – Whether or not to print the metawards version info</li>
-<li><strong>output</strong> (<em>str</em>) – The name of the directory in which to write the output. If this
-is not set, then a new, random-named directory will be used.</li>
-<li><strong>force_overwrite_output</strong> (<em>bool</em>) – Force overwriting the output directory - this will remove any
-existing directory before running</li>
-<li><strong>auto_load</strong> (<em>bool</em>) – Whether or not to automatically load and return a pandas dataframe
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>silent</strong> (<em>bool</em>) – Run without printing the output to the screen</p></li>
+<li><p><strong>dry_run</strong> (<em>bool</em>) – Don’t run anything - just print what will be run</p></li>
+<li><p><strong>help</strong> (<em>bool</em>) – Whether or not to print the full help</p></li>
+<li><p><strong>version</strong> (<em>bool</em>) – Whether or not to print the metawards version info</p></li>
+<li><p><strong>output</strong> (<em>str</em>) – The name of the directory in which to write the output. If this
+is not set, then a new, random-named directory will be used.</p></li>
+<li><p><strong>force_overwrite_output</strong> (<em>bool</em>) – Force overwriting the output directory - this will remove any
+existing directory before running</p></li>
+<li><p><strong>auto_load</strong> (<em>bool</em>) – Whether or not to automatically load and return a pandas dataframe
 of the output/results.csv.bz2 file. If pandas is available then
-this defaults to True, otherwise False</li>
-<li><strong>disease</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Disease" title="metawards.Disease"><em>Disease</em></a><em> or </em><em>str</em>) – The disease to model (or the filename of the json file containing
-the disease, or name of the disease)</li>
-<li><strong>model</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><em>Ward</em></a><em>, </em><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><em>Wards</em></a><em> or </em><em>str</em>) – The network wards to run (of the filename of the json file
-containing the network, or name of the network))</li>
-<li><strong>are many more parameters</strong><strong>, </strong><strong>based on the arguments to</strong> (<em>There</em>) – </li>
-<li><strong>--help.</strong> (<em>metawards</em>) – </li>
-<li><strong>set &quot;help&quot; to True to print out a full list of</strong> (<em>Please</em>) – </li>
-<li><strong>for all of the arguments</strong> (<em>help</em>) – <table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">returns:</th><td class="field-body"><strong>results</strong> – The file containing the output results (output/results.csv.bz2),
+this defaults to True, otherwise False</p></li>
+<li><p><strong>disease</strong> (<a class="reference internal" href="metawards.Disease.html#metawards.Disease" title="metawards.Disease"><em>Disease</em></a><em> or </em><em>str</em>) – The disease to model (or the filename of the json file containing
+the disease, or name of the disease)</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Ward" title="metawards.Ward"><em>Ward</em></a><em>, </em><a class="reference internal" href="../index_api_MetaWards.html#metawards.Wards" title="metawards.Wards"><em>Wards</em></a><em> or </em><em>str</em>) – The network wards to run (of the filename of the json file
+containing the network, or name of the network))</p></li>
+<li><p><strong>are many more parameters</strong> (<em>There</em>) – </p></li>
+<li><p><strong>on the arguments to</strong> (<em>based</em>) – </p></li>
+<li><p><strong>--help.</strong> (<em>metawards</em>) – </p></li>
+<li><p><strong>set &quot;help&quot; to True to print out a full list of</strong> (<em>Please</em>) – </p></li>
+<li><p><strong>for all of the arguments</strong> (<em>help</em>) – <dl class="field-list simple">
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p><strong>results</strong> – The file containing the output results (output/results.csv.bz2),
 or, if auto_load is True, the pandas.DataFrame containing
-those results</td>
-</tr>
-<tr class="field-even field"><th class="field-name">rtype:</th><td class="field-body">str or pandas.DataFrame</td>
-</tr>
-</tbody>
-</table>
-</li>
+those results</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>str or pandas.DataFrame</p>
+</dd>
+</dl>
+</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -281,30 +280,23 @@ those results</td>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../index_MetaWards_iterators.html" class="btn btn-neutral float-right" title="MetaWards.iterators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="metawards.input.html" class="btn btn-neutral float-left" title="metawards.input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="metawards.find_mw_exe.html" class="btn btn-neutral float-right" title="metawards.find_mw_exe" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="metawards.input.html" class="btn btn-neutral float-left" title="metawards.input" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

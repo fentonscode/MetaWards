@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Modelling the ICU &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -120,7 +122,8 @@
 <li class="toctree-l3"><a class="reference internal" href="06_hospital.html">Modelling a Hospital</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -190,6 +193,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -205,7 +210,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -214,10 +219,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="05_named_stages.html" class="btn btn-neutral float-right" title="Named Disease Stages" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="05_named_stages.html" class="btn btn-neutral float-right" title="Named Disease Stages" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="03_conditional.html" class="btn btn-neutral float-left" title="Conditional Pathways" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="03_conditional.html" class="btn btn-neutral float-left" title="Conditional Pathways" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -246,8 +251,8 @@ to the <code class="docutils literal notranslate"><span class="pre">R</span></co
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Now you can see the reason for the <code class="docutils literal notranslate"><span class="pre">H2</span></code> state - it is being used to
+<p class="admonition-title">Note</p>
+<p>Now you can see the reason for the <code class="docutils literal notranslate"><span class="pre">H2</span></code> state - it is being used to
 model the ICU. Using two states like this enables us to use the
 same <code class="docutils literal notranslate"><span class="pre">lurgy_hospital</span></code> disease file to model the hospital.</p>
 </div>
@@ -266,10 +271,19 @@ same <code class="docutils literal notranslate"><span class="pre">lurgy_hospital
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The only change here is adding in the fourth row and column for the ICU
+<p class="admonition-title">Note</p>
+<p>The only change here is adding in the fourth row and column for the ICU
 population. They don’t contribute to the FOI of each other, other patients
 or home, but can infect and be infected by the hospital staff.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that we are using <a class="reference internal" href="../../api/generated/metawards.mixers.merge_using_matrix.html#metawards.mixers.merge_using_matrix" title="metawards.mixers.merge_using_matrix"><code class="xref py py-func docutils literal notranslate"><span class="pre">merge_using_matrix()</span></code></a>.
+This may not be the right choice depending on how we want the
+population dynamics to mix, e.g.
+<a class="reference internal" href="../../api/generated/metawards.mixers.merge_matrix_single_population.html#metawards.mixers.merge_matrix_single_population" title="metawards.mixers.merge_matrix_single_population"><code class="xref py py-func docutils literal notranslate"><span class="pre">merge_matrix_single_population()</span></code></a> or
+<a class="reference internal" href="../../api/generated/metawards.mixers.merge_matrix_multi_population.html#metawards.mixers.merge_matrix_multi_population" title="metawards.mixers.merge_matrix_multi_population"><code class="xref py py-func docutils literal notranslate"><span class="pre">merge_matrix_multi_population()</span></code></a> may
+be a better choice. <a class="reference internal" href="../part05/04_contacts.html"><span class="doc">See here for more information</span></a>.</p>
 </div>
 <p>Next we need to modify <code class="docutils literal notranslate"><span class="pre">extract_hospital.py</span></code> to obtain the ICU
 statistics. Edit the file and copy in the below;</p>
@@ -317,8 +331,8 @@ statistics. Edit the file and copy in the below;</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The change here is that we extract only <code class="docutils literal notranslate"><span class="pre">H1</span></code> and <code class="docutils literal notranslate"><span class="pre">H2</span></code> from the
+<p class="admonition-title">Note</p>
+<p>The change here is that we extract only <code class="docutils literal notranslate"><span class="pre">H1</span></code> and <code class="docutils literal notranslate"><span class="pre">H2</span></code> from the
 <code class="docutils literal notranslate"><span class="pre">patients</span></code> demographic, before getting what we will call <code class="docutils literal notranslate"><span class="pre">ICU</span></code>
 from the <code class="docutils literal notranslate"><span class="pre">icu</span></code> demographic.</p>
 </div>
@@ -327,14 +341,14 @@ from the <code class="docutils literal notranslate"><span class="pre">icu</span>
 <p>Finally, we will now update the <code class="docutils literal notranslate"><span class="pre">move_hospital.py</span></code> file so that
 we will have four “go functions”:</p>
 <ul class="simple">
-<li>First we start with the function that moves 20% of the <code class="docutils literal notranslate"><span class="pre">`home</span></code>
-and <code class="docutils literal notranslate"><span class="pre">staff</span></code> <code class="docutils literal notranslate"><span class="pre">I2</span></code> population to <code class="docutils literal notranslate"><span class="pre">H1</span></code> patients.</li>
-<li>Next, we move 10% of the <code class="docutils literal notranslate"><span class="pre">H2</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> to the same stage
-in the <code class="docutils literal notranslate"><span class="pre">icu</span></code> demographic. We will refer to this as <code class="docutils literal notranslate"><span class="pre">ICU</span></code>.</li>
-<li>Next, we move the remainder of <code class="docutils literal notranslate"><span class="pre">H2</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> to <code class="docutils literal notranslate"><span class="pre">R</span></code> in <code class="docutils literal notranslate"><span class="pre">home</span></code>,
-as these patients have now fully recovered and can go home.</li>
-<li>Finally, we move all <code class="docutils literal notranslate"><span class="pre">R</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> and <code class="docutils literal notranslate"><span class="pre">icu</span></code> members to <code class="docutils literal notranslate"><span class="pre">R</span></code>
-in <code class="docutils literal notranslate"><span class="pre">home</span></code> as they have fully recovered and can go home.</li>
+<li><p>First we start with the function that moves 20% of the <code class="docutils literal notranslate"><span class="pre">`home</span></code>
+and <code class="docutils literal notranslate"><span class="pre">staff</span></code> <code class="docutils literal notranslate"><span class="pre">I2</span></code> population to <code class="docutils literal notranslate"><span class="pre">H1</span></code> patients.</p></li>
+<li><p>Next, we move 10% of the <code class="docutils literal notranslate"><span class="pre">H2</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> to the same stage
+in the <code class="docutils literal notranslate"><span class="pre">icu</span></code> demographic. We will refer to this as <code class="docutils literal notranslate"><span class="pre">ICU</span></code>.</p></li>
+<li><p>Next, we move the remainder of <code class="docutils literal notranslate"><span class="pre">H2</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> to <code class="docutils literal notranslate"><span class="pre">R</span></code> in <code class="docutils literal notranslate"><span class="pre">home</span></code>,
+as these patients have now fully recovered and can go home.</p></li>
+<li><p>Finally, we move all <code class="docutils literal notranslate"><span class="pre">R</span></code> <code class="docutils literal notranslate"><span class="pre">patients</span></code> and <code class="docutils literal notranslate"><span class="pre">icu</span></code> members to <code class="docutils literal notranslate"><span class="pre">R</span></code>
+in <code class="docutils literal notranslate"><span class="pre">home</span></code> as they have fully recovered and can go home.</p></li>
 </ul>
 <p>You can implement this by editing your <code class="docutils literal notranslate"><span class="pre">move_hospital.py</span></code> file and
 copying in the below;</p>
@@ -432,30 +446,23 @@ different demographics, to model a wide range of different scenarios.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="05_named_stages.html" class="btn btn-neutral float-right" title="Named Disease Stages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="03_conditional.html" class="btn btn-neutral float-left" title="Conditional Pathways" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="05_named_stages.html" class="btn btn-neutral float-right" title="Named Disease Stages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="03_conditional.html" class="btn btn-neutral float-left" title="Conditional Pathways" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

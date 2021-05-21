@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Named Disease Stages &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -123,7 +125,8 @@
 <li class="toctree-l3"><a class="reference internal" href="06_hospital.html">Modelling a Hospital</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -193,6 +196,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -208,7 +213,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -217,10 +222,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="06_hospital.html" class="btn btn-neutral float-right" title="Modelling a Hospital" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="06_hospital.html" class="btn btn-neutral float-right" title="Modelling a Hospital" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -254,8 +259,8 @@ below;</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that we’ve not included the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code> or other metadata
+<p class="admonition-title">Note</p>
+<p>Note that we’ve not included the <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">author</span></code> or other metadata
 fields as these are not needed for this simple example. These are optional
 fields. We recommend you include them when you want to publish a disease
 file.</p>
@@ -318,8 +323,8 @@ Number of infections: 15
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that the simulation gets stuck in the <code class="docutils literal notranslate"><span class="pre">C</span></code> state. This is because
+<p class="admonition-title">Note</p>
+<p>Note that the simulation gets stuck in the <code class="docutils literal notranslate"><span class="pre">C</span></code> state. This is because
 any individual who is not in <code class="docutils literal notranslate"><span class="pre">S</span></code> or <code class="docutils literal notranslate"><span class="pre">R</span></code> is counted as an infection,
 and so the 15 individuals in <code class="docutils literal notranslate"><span class="pre">C</span></code> are counted as infecteds. To prevent
 the model running forever we set the maximum number of days to
@@ -640,30 +645,23 @@ outbreak has died out and all individuals are left in <code class="docutils lite
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="06_hospital.html" class="btn btn-neutral float-right" title="Modelling a Hospital" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="06_hospital.html" class="btn btn-neutral float-right" title="Modelling a Hospital" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="04_icu.html" class="btn btn-neutral float-left" title="Modelling the ICU" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Movers and go functions &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -124,7 +126,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -194,6 +197,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -209,7 +214,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -218,10 +223,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="02_duration.html" class="btn btn-neutral float-right" title="Self-isolation duration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="02_duration.html" class="btn btn-neutral float-right" title="Self-isolation duration" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="../index_part06.html" class="btn btn-neutral float-left" title="Part 6 - Moving between demographics" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index_part06.html" class="btn btn-neutral float-left" title="Part 6 - Moving between demographics" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -258,11 +263,11 @@ quarantine during an outbreak.</p>
 </div>
 <p>This specifies two demographics:</p>
 <ol class="arabic simple">
-<li><code class="docutils literal notranslate"><span class="pre">home</span></code> - this holds the entire population and represents individuals
-behaving “normally”, e.g. continuing to <em>work</em> and <em>play</em>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">isolate</span></code> - this currently has no members. We will use this demographic
+<li><p><code class="docutils literal notranslate"><span class="pre">home</span></code> - this holds the entire population and represents individuals
+behaving “normally”, e.g. continuing to <em>work</em> and <em>play</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isolate</span></code> - this currently has no members. We will use this demographic
 to represent individuals who are self-isolating or in quarantine, e.g.
-they will not contribute to the force of infection of any ward.</li>
+they will not contribute to the force of infection of any ward.</p></li>
 </ol>
 </div>
 <div class="section" id="moving-individuals-to-isolation">
@@ -298,8 +303,8 @@ can be returned by <code class="docutils literal notranslate"><span class="pre">
 a new anonymous go function where those arguments are bound to fixed
 values.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Here is a <a class="reference external" href="https://chryswoods.com/parallel_python/lambda.html">good explanation of lambda and argument binding</a>
+<p class="admonition-title">Note</p>
+<p>Here is a <a class="reference external" href="https://chryswoods.com/parallel_python/lambda.html">good explanation of lambda and argument binding</a>
 if you’ve never seen this before. In this case we have bound
 <code class="docutils literal notranslate"><span class="pre">go_from</span></code> to equal <code class="docutils literal notranslate"><span class="pre">&quot;home&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">go_to</span></code> to equal <code class="docutils literal notranslate"><span class="pre">&quot;isolate&quot;</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">self_isolate_stage</span></code> to equal <code class="docutils literal notranslate"><span class="pre">2</span></code> . This means that these values
@@ -339,8 +344,8 @@ which you should copy into this directory. Run the job using;</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note that we are using the <code class="docutils literal notranslate"><span class="pre">lurgy3</span></code> parameters that were
+<p class="admonition-title">Note</p>
+<p>Note that we are using the <code class="docutils literal notranslate"><span class="pre">lurgy3</span></code> parameters that were
 <a class="reference internal" href="../part02/05_refining.html"><span class="doc">optimised earlier</span></a>. These include the
 long-lived asymptomatic but infectious stage 3 of the disease.</p>
 </div>
@@ -480,8 +485,8 @@ the value of <code class="docutils literal notranslate"><span class="pre">beta[3
 </div>
 <p>(we have just changed <code class="docutils literal notranslate"><span class="pre">beta[3]</span></code> from <code class="docutils literal notranslate"><span class="pre">0.4</span></code> to <code class="docutils literal notranslate"><span class="pre">0.2</span></code>)</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">In a real outbreak you should scan the value of <code class="docutils literal notranslate"><span class="pre">beta[3]</span></code> to match
+<p class="admonition-title">Note</p>
+<p>In a real outbreak you should scan the value of <code class="docutils literal notranslate"><span class="pre">beta[3]</span></code> to match
 against observations. We are not doing this now as the lurgy is a
 fictional disease.</p>
 </div>
@@ -490,8 +495,8 @@ fictional disease.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">We’ve switched to using <code class="docutils literal notranslate"><span class="pre">lurgy4</span></code> and have limited the run to modelling
+<p class="admonition-title">Note</p>
+<p>We’ve switched to using <code class="docutils literal notranslate"><span class="pre">lurgy4</span></code> and have limited the run to modelling
 just a single year (365 days)</p>
 </div>
 <p>You should see output similar to;</p>
@@ -517,8 +522,8 @@ Infection died ... Ending on day 365
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">You may find that the outbreak dies out quite quickly. The number of
+<p class="admonition-title">Note</p>
+<p>You may find that the outbreak dies out quite quickly. The number of
 infections is low at the start, and the action of low <code class="docutils literal notranslate"><span class="pre">beta</span></code> and
 the move to self-isolating does quench the outbreak during some runs.
 However, once it catches light, the outbreak will spread to approximately
@@ -536,30 +541,23 @@ a big impact on the spread of the disease in the model.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="02_duration.html" class="btn btn-neutral float-right" title="Self-isolation duration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../index_part06.html" class="btn btn-neutral float-left" title="Part 6 - Moving between demographics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="02_duration.html" class="btn btn-neutral float-right" title="Self-isolation duration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index_part06.html" class="btn btn-neutral float-left" title="Part 6 - Moving between demographics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

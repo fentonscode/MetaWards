@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Responding to changing conditions &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -116,13 +118,16 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="05_scanning.html">Custom variables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="06_scan_lockdown.html">Scanning lockdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="07_cutoff.html">Alternative lockdowns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="08_local_lockdown.html">Local lockdowns</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part04.html">Part 4 - Customising the output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -192,6 +197,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -207,7 +214,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -216,10 +223,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="05_scanning.html" class="btn btn-neutral float-right" title="Custom variables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="05_scanning.html" class="btn btn-neutral float-right" title="Custom variables" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="03_lockdown.html" class="btn btn-neutral float-left" title="Custom advance functions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="03_lockdown.html" class="btn btn-neutral float-left" title="Custom advance functions" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -487,8 +494,8 @@ is brought under control. The overview plots are here;</p>
 <p>There is a small second peak as the lockdown is relaxed, but
 this seems to be under control.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Remember, we cannot read too much into single <strong>model runs</strong>
+<p class="admonition-title">Warning</p>
+<p>Remember, we cannot read too much into single <strong>model runs</strong>
 as these are very stochastic simulations. We would need to
 run models many times and average before we could gain real
 insight.</p>
@@ -580,30 +587,23 @@ a graph similar to below?</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="05_scanning.html" class="btn btn-neutral float-right" title="Custom variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="03_lockdown.html" class="btn btn-neutral float-left" title="Custom advance functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="05_scanning.html" class="btn btn-neutral float-right" title="Custom variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="03_lockdown.html" class="btn btn-neutral float-left" title="Custom advance functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

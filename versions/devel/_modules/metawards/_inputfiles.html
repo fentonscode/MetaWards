@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>metawards._inputfiles &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -167,6 +169,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -243,7 +247,7 @@
     <span class="k">return</span> <span class="kc">False</span>
 
 
-<div class="viewcode-block" id="InputFiles"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles">[docs]</a><span class="nd">@_dataclass</span>
+<div class="viewcode-block" id="InputFiles"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles">[docs]</a><span class="nd">@_dataclass</span>
 <span class="k">class</span> <span class="nc">InputFiles</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;This class holds all of the input files that must be loaded</span>
 <span class="sd">       from METAWARDSDATA to construct the network of wards</span>
@@ -315,7 +319,7 @@
     <span class="k">def</span> <span class="nf">is_wards_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">wards_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="InputFiles.model_name"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_name">[docs]</a>    <span class="k">def</span> <span class="nf">model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.model_name"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_name">[docs]</a>    <span class="k">def</span> <span class="nf">model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the name of this model&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;custom&quot;</span>
@@ -324,21 +328,21 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span></div>
 
-<div class="viewcode-block" id="InputFiles.model_path"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_path">[docs]</a>    <span class="k">def</span> <span class="nf">model_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.model_path"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_path">[docs]</a>    <span class="k">def</span> <span class="nf">model_path</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the path to the directory containing this model&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_path</span></div>
 
-<div class="viewcode-block" id="InputFiles.model_version"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.model_version">[docs]</a>    <span class="k">def</span> <span class="nf">model_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.model_version"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.model_version">[docs]</a>    <span class="k">def</span> <span class="nf">model_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Return the version of the data in this model&quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_version</span></div>
 
-<div class="viewcode-block" id="InputFiles.__str__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.__str__"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.__str__">[docs]</a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;Model: single ward&quot;</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
@@ -365,7 +369,7 @@
 <span class="s2">* seed: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">* nodes_to_track: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes_to_track</span><span class="si">}</span><span class="s2">&quot;&quot;&quot;</span></div>
 
-<div class="viewcode-block" id="InputFiles.__repr__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.__repr__"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.__repr__">[docs]</a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_single</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputFiles::single&quot;</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_wards_data</span><span class="p">:</span>
@@ -375,7 +379,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;InputFiles(model=&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_name</span><span class="si">}</span><span class="s2">&#39;)&quot;</span></div>
 
-<div class="viewcode-block" id="InputFiles.__hash__"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.__hash__">[docs]</a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="InputFiles.__hash__"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.__hash__">[docs]</a>    <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_filename</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span></div>
 
     <span class="k">def</span> <span class="nf">_localise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -407,7 +411,7 @@
 
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">member</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
 
-<div class="viewcode-block" id="InputFiles.load"><a class="viewcode-back" href="../../api/index_api_MetaWards.html#metawards.InputFiles.load">[docs]</a>    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="InputFiles.load"><a class="viewcode-back" href="../../api/generated/metawards.InputFiles.html#metawards.InputFiles.load">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;2011Data&quot;</span><span class="p">,</span>
              <span class="n">repository</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
              <span class="n">folder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -553,21 +557,19 @@
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

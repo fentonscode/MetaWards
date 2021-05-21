@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Refining the disease model &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -121,7 +123,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../index_part05.html">Part 5 - Modelling multiple demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part06.html">Part 6 - Moving between demographics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../index_part07.html">Part 7 - Different pathways for different demographics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Different networks for different demographics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part08.html">Part 8 - Creating your own models / networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index_part09.html">Part 9 - Advanced Moves and Scenarios</a></li>
 </ul>
 </li>
 </ul>
@@ -191,6 +194,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -206,7 +211,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -215,10 +220,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="02_adjustable.html" class="btn btn-neutral float-right" title="Adjustable Variables" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="02_adjustable.html" class="btn btn-neutral float-right" title="Adjustable Variables" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="../index_part02.html" class="btn btn-neutral float-left" title="Part 2 - Refining the model" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../index_part02.html" class="btn btn-neutral float-left" title="Part 2 - Refining the model" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -254,8 +259,8 @@ variable equal to the path to this directory, type;</p>
 </div>
 <p>on Windows.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The above command work on Linux, Mac (OS X) or Windows. If you are following
+<p class="admonition-title">Note</p>
+<p>The above command work on Linux, Mac (OS X) or Windows. If you are following
 this tutorial using a different operating system and know the correct
 copy command to use, then please send it to us by sending us a
 <a class="reference external" href="https://github.com/metawards/MetaWards">pull request</a>
@@ -286,26 +291,26 @@ different stages of the disease. In this case, the lurgy has five
 stages (also called classes). An individual who is infected progresses
 along each stage (or class) in turn according to the value of the parameters;</p>
 <ul class="simple">
-<li><strong>beta</strong> - the rate of infection of the disease. For the first two stages
+<li><p><strong>beta</strong> - the rate of infection of the disease. For the first two stages
 the value of <strong>beta</strong> is zero, meaning that infected individuals are
 not infectious. However, individuals are infectious in stages three
 and four, when <strong>beta</strong> is 0.5. The final fifth stage is when the individual
-is removed from the outbreak, when the <strong>beta</strong> value is zero again.</li>
-<li><strong>progess</strong> - rate of progression of an individual through the stages
+is removed from the outbreak, when the <strong>beta</strong> value is zero again.</p></li>
+<li><p><strong>progess</strong> - rate of progression of an individual through the stages
 of the disease. Individuals progress quickly through the first two
 stages (where <strong>progress</strong> is 1.0), and then progress slows down
 in the third and fourth stages (<strong>progress</strong> is 0.5). The fifth stage
-is the final stage, and so the <strong>progress</strong> value is zero.</li>
-<li><strong>too_ill_to_move</strong> - the proportion of infected individuals who are
+is the final stage, and so the <strong>progress</strong> value is zero.</p></li>
+<li><p><strong>too_ill_to_move</strong> - the proportion of infected individuals who are
 unable to move. This starts low in the initial stages, e.g. at
 stage three individuals can move (<strong>too_ill_to_move</strong> is 0.5) and
 are quite infectious (<strong>beta</strong> is 0.5). This progresses up to 1.0
-for the final stage, when the individual is removed from the oubreak.</li>
-<li><strong>contrib_foi</strong> - this is how much the infected individuals contribute
+for the final stage, when the individual is removed from the oubreak.</p></li>
+<li><p><strong>contrib_foi</strong> - this is how much the infected individuals contribute
 to the force of infection in their home electoral ward or during
 their work commute. In this case, individuals infected with
 this model lurgy contribute fully (<strong>contrib_foi</strong> is 1.0) for all
-but the final stage, when they are removed from the outbreak.</li>
+but the final stage, when they are removed from the outbreak.</p></li>
 </ul>
 </div>
 <div class="section" id="modifying-the-disease-file">
@@ -336,8 +341,8 @@ using this file via;</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">metawards</span></code> automatically used your <code class="docutils literal notranslate"><span class="pre">lurgy2.json</span></code> file as it
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">metawards</span></code> automatically used your <code class="docutils literal notranslate"><span class="pre">lurgy2.json</span></code> file as it
 found the file in your current directory. You can pass a full path to
 your file, with or without the <code class="docutils literal notranslate"><span class="pre">.json</span></code> extension</p>
 </div>
@@ -412,30 +417,23 @@ model of the lurgy.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="02_adjustable.html" class="btn btn-neutral float-right" title="Adjustable Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../index_part02.html" class="btn btn-neutral float-left" title="Part 2 - Refining the model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="02_adjustable.html" class="btn btn-neutral float-right" title="Adjustable Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index_part02.html" class="btn btn-neutral float-left" title="Part 2 - Refining the model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

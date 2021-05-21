@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>metawards.iterators._iterate_working_week &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -167,6 +169,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -196,13 +200,13 @@
 <span></span>
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;iterate_working_week&quot;</span><span class="p">]</span>
 
-<span class="kn">from</span> <span class="nn">._iterate_weekday</span> <span class="kn">import</span> <span class="n">iterate_weekday</span>
+<span class="kn">from</span> <span class="nn">._iterate_default</span> <span class="kn">import</span> <span class="n">iterate_default</span>
 <span class="kn">from</span> <span class="nn">._iterate_weekend</span> <span class="kn">import</span> <span class="n">iterate_weekend</span>
 
 <span class="kn">from</span> <span class="nn">.._population</span> <span class="kn">import</span> <span class="n">Population</span>
 
 
-<div class="viewcode-block" id="iterate_working_week"><a class="viewcode-back" href="../../../api/generated/metawards.iterators.iterate_working_week.html#metawards.iterators.iterate_working_week">[docs]</a><span class="k">def</span> <span class="nf">iterate_working_week</span><span class="p">(</span><span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="iterate_working_week"><a class="viewcode-back" href="../../../api/generated/metawards.iterators.iterate_working_week.html#metawards.iterators.iterate_working_week">[docs]</a><span class="k">def</span> <span class="nf">iterate_working_week</span><span class="p">(</span><span class="n">stage</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">population</span><span class="p">:</span> <span class="n">Population</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This returns the default list of &#39;advance_XXX&#39; functions that</span>
 <span class="sd">       are called in sequence for each iteration of the model run.</span>
 <span class="sd">       This iterator understands the concept of a traditional working week,</span>
@@ -222,6 +226,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">population</span>
+    <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;stage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stage</span>
 
     <span class="c1"># is this a weekday or a weekend?</span>
     <span class="k">if</span> <span class="n">population</span><span class="o">.</span><span class="n">date</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -237,28 +242,26 @@
     <span class="k">if</span> <span class="n">is_weekend</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">iterate_weekend</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">iterate_weekday</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">iterate_default</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
            
           </div>
           <footer>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

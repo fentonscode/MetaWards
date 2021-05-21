@@ -1,11 +1,11 @@
 
 
 <!DOCTYPE html>
-<html class="writer-html4" lang="en" >
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>metawards.iterators.advance_imports_omp &mdash; MetaWards Documentation</title>
   
@@ -19,7 +19,10 @@
   
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
   
+
   
+  
+
   
 
   
@@ -29,11 +32,10 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../_static/custom.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/custom.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -186,6 +188,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -203,7 +207,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
         
       </li>
     
@@ -212,10 +216,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="metawards.iterators.advance_infprob.html" class="btn btn-neutral float-right" title="metawards.iterators.advance_infprob" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="metawards.iterators.advance_infprob.html" class="btn btn-neutral float-right" title="metawards.iterators.advance_infprob" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
       
       
-        <a href="metawards.iterators.advance_imports.html" class="btn btn-neutral float-left" title="metawards.iterators.advance_imports" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="metawards.iterators.advance_imports.html" class="btn btn-neutral float-left" title="metawards.iterators.advance_imports" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
       
   </div>
   
@@ -226,30 +230,26 @@
             
   <div class="section" id="metawards-iterators-advance-imports-omp">
 <h1>metawards.iterators.advance_imports_omp<a class="headerlink" href="#metawards-iterators-advance-imports-omp" title="Permalink to this headline">¶</a></h1>
-<dl class="function">
+<dl class="py function">
 <dt id="metawards.iterators.advance_imports_omp">
-<code class="descclassname">metawards.iterators.</code><code class="descname">advance_imports_omp</code><span class="sig-paren">(</span><em>network: Network</em>, <em>population: Population</em>, <em>infections: Infections</em>, <em>rngs</em>, <em>nthreads: int</em>, <em>profiler: Profiler</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#metawards.iterators.advance_imports_omp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">metawards.iterators.</span></code><code class="sig-name descname"><span class="pre">advance_imports_omp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">network</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Network</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Population</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infections</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Infections</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rngs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nthreads</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">profiler</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Profiler</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#metawards.iterators.advance_imports_omp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Advance the model by importing additional infections
 depending on the additional seeds specified by the user
 and the day of the outbreak (serial version of the function)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>network</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Network" title="metawards.Network"><em>Network</em></a>) – The network being modelled</li>
-<li><strong>population</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Population" title="metawards.Population"><em>Population</em></a>) – The population experiencing the outbreak</li>
-<li><strong>infections</strong> (<a class="reference internal" href="../index_api_MetaWards.html#metawards.Infections" title="metawards.Infections"><em>Infections</em></a>) – The space that holds all of the infections</li>
-<li><strong>rngs</strong> – The list of thread-safe random number generators, one per thread</li>
-<li><strong>nthreads</strong> (<em>int</em>) – The number of threads over which to parallelise the calculation</li>
-<li><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – The profiler used to profile this calculation</li>
-<li><strong>kwargs</strong> – Extra arguments that may be used by other advancers, but which
-are not used by advance_play</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>network</strong> (<a class="reference internal" href="metawards.Network.html#metawards.Network" title="metawards.Network"><em>Network</em></a>) – The network being modelled</p></li>
+<li><p><strong>population</strong> (<a class="reference internal" href="metawards.Population.html#metawards.Population" title="metawards.Population"><em>Population</em></a>) – The population experiencing the outbreak</p></li>
+<li><p><strong>infections</strong> (<a class="reference internal" href="metawards.Infections.html#metawards.Infections" title="metawards.Infections"><em>Infections</em></a>) – The space that holds all of the infections</p></li>
+<li><p><strong>rngs</strong> – The list of thread-safe random number generators, one per thread</p></li>
+<li><p><strong>nthreads</strong> (<em>int</em>) – The number of threads over which to parallelise the calculation</p></li>
+<li><p><strong>profiler</strong> (<a class="reference internal" href="metawards.utils.Profiler.html#metawards.utils.Profiler" title="metawards.utils.Profiler"><em>Profiler</em></a>) – The profiler used to profile this calculation</p></li>
+<li><p><strong>kwargs</strong> – Extra arguments that may be used by other advancers, but which
+are not used by advance_play</p></li>
 </ul>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -259,30 +259,23 @@ are not used by advance_play</li>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="metawards.iterators.advance_infprob.html" class="btn btn-neutral float-right" title="metawards.iterators.advance_infprob" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="metawards.iterators.advance_imports.html" class="btn btn-neutral float-left" title="metawards.iterators.advance_imports" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="metawards.iterators.advance_infprob.html" class="btn btn-neutral float-right" title="metawards.iterators.advance_infprob" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="metawards.iterators.advance_imports.html" class="btn btn-neutral float-left" title="metawards.iterators.advance_imports" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
       <span class="lastupdated">
-        Last updated on Aug 04, 2020.
+        Last updated on May 21, 2021.
       </span>
 
     </p>
   </div> 
 
 </footer>
-
         </div>
       </div>
 

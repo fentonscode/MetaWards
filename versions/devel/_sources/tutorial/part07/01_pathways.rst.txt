@@ -137,6 +137,15 @@ Run ``metawards`` using the command;
    globally. It is better to define things once only, as this leads to fewer
    bugs.
 
+.. note::
+
+   Note that we are using :func:`~metawards.mixers.mix_evenly`.
+   This may not be the right choice depending on how we want the
+   population dynamics to mix, e.g.
+   :func:`~metawards.mixers.mix_evenly_single_population` or
+   :func:`~metawards.mixers.mix_evenly_multi_population` may
+   be a better choice. :doc:`See here for more information <../part05/04_contacts>`.
+
 You should see that the disease spreads quickly via the super-spreaders, with
 all, or almost all becoming infected. You can see this in the demographics
 plot, produced via;
